@@ -7,6 +7,8 @@ public class DotLineManager : MonoBehaviour
     private Camera mainCamera;
     private Vector3 MousePosition;
 
+    DotScore dotscore = new DotScore();
+
     private void Awake()
     {
         // "Maincamera" 태그를 가지고 있는 오브젝트 담색 후 Camera 컴포넌트 정보 전달
@@ -33,9 +35,31 @@ public class DotLineManager : MonoBehaviour
             {
                 // 해당 오브젝트 콜리더 비활성화 (충돌 1번만 발생시키기 위해)
                 hit.transform.GetComponent<CircleCollider2D>().enabled = false;
-                print("점과 충돌했습니다.");
+
+                dotscore.DotCount += 1f;
+                // print("충돌한 점의 개수 = " + dotscore.DotCount);
             }
 
         }
     }
+
+    // 완성 버튼 클릭 시, 총 점수 계산
+    public void DotScore()
+    {
+        print("충돌한 점의 개수 = " + dotscore.DotCount);
+        dotscore.Score = (int) (( dotscore.DotCount / 30 ) * 100) ; // 소수점 이하는 내림 
+        print("퍼센트 = " + dotscore.Score + "%");
+
+    }
+}
+
+public class DotScore
+{
+    // 점의 총 개수 : 30개
+
+    // 충돌한 점의 개수
+    public float DotCount;
+
+    // 총 점수
+    public int Score;
 }
