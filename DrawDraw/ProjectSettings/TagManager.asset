@@ -42,9 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Tangram
+  - name: TangramBlack
     uniqueID: 1497385445
     locked: 0
-  - name: TangramBlack
+  - name: Tangram
     uniqueID: 3529168905
     locked: 0
