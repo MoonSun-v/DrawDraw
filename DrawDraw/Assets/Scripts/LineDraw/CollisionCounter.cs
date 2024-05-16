@@ -42,6 +42,7 @@ public class CollisionCounter : MonoBehaviour
         if (isDragging)
         {
             Vector3 currentPosition = GetInputWorldPosition();
+
             if (currentPosition != lastPosition)
             {
                 RaycastHit2D hit = Physics2D.Linecast(lastPosition, currentPosition);

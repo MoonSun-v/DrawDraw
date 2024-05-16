@@ -33,7 +33,7 @@ public class LineDrawManager : MonoBehaviour
         vertices[2] = center + new Vector2(size.x / 2, size.y / 2); // 오른쪽 위 꼭짓점
         vertices[3] = center + new Vector2(-size.x / 2, size.y / 2); // 왼쪽 위 꼭짓점
 
-        Debug.Log("그리기 영역 꼭짓점 : "+ vertices[0]+vertices[1]+ vertices[2]+ vertices[3]);
+        //Debug.Log("그리기 영역 꼭짓점 : "+ vertices[0]+vertices[1]+ vertices[2]+ vertices[3]);
     }
 
     void Update()
