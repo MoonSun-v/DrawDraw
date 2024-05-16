@@ -44,16 +44,6 @@ public class DrawLine : MonoBehaviour
             currentLineRenderer.endWidth = lineWidth;
             currentLineRenderer.positionCount = 0; // 선의 위치를 초기화합니다.
 
-            // 선분 콜라이더 추가
-            EdgeCollider2D edgeCollider = newLine.AddComponent<EdgeCollider2D>();
-            edgeCollider.edgeRadius = lineWidth / 2f; // 선분 두께의 절반을 콜라이더의 반지름으로 설정
-
-            // Collider2D를 트리거로 설정
-            edgeCollider.isTrigger = true;
-
-            // LineCollisionDetection 스크립트 추가
-            newLine.AddComponent<CollisionHandler>();
-
             // 현재 위치를 이전 위치로 설정
             previousPosition = GetInputPosition();
             AddPointToLine(previousPosition);
