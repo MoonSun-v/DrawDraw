@@ -10,12 +10,15 @@ public class CollisionCounter : MonoBehaviour
     private bool isDragging = false;
     private Vector3 lastPosition;
 
-    private bool[] hasCollided;
+    //private bool[] hasCollided;
+
+    public Text scoreText;
+
 
     private void Start()
     {
         // 콜라이더 수만큼 배열 초기화
-        hasCollided = new bool[2]; //2는 콜라이더의 개수
+        //hasCollided = new bool[2]; //2는 콜라이더의 개수
     }
 
     private void Update()
@@ -27,10 +30,10 @@ public class CollisionCounter : MonoBehaviour
             lastPosition = GetInputWorldPosition();
 
             // 충돌 여부 초기화
-            for (int i = 0; i < hasCollided.Length; i++)
-            {
-                hasCollided[i] = false;
-            }
+            //for (int i = 0; i < hasCollided.Length; i++)
+            //{
+            //    hasCollided[i] = false;
+            //}
         }
 
         if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && isDragging)
@@ -49,7 +52,8 @@ public class CollisionCounter : MonoBehaviour
                 if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
                 {
                     collisionCount++;
-                    //Debug.Log("Collision Count: " + collisionCount);
+                    scoreText.text = collisionCount.ToString();
+                    Debug.Log("Collision Count: " + collisionCount);
 
                 }
                 lastPosition = currentPosition;
@@ -68,10 +72,5 @@ public class CollisionCounter : MonoBehaviour
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-    }
-
-    public int GetCollisionCount()
-    {
-        return collisionCount;  
     }
 }
