@@ -9,4 +9,24 @@ public class GoToOtherScene : MonoBehaviour
     {
         SceneManager.LoadScene("MapScene");
     }
+
+    public void GoToDotLineButton()
+    {
+        SceneManager.LoadScene("DotLineScene");
+    }
+
+    public void GoToLineButton()
+    {
+        SceneManager.LoadScene("LineScene");
+    }
+
+    public void GoToScratchButton()
+    {
+        SceneManager.LoadScene("ScratchScene");
+    }
+
+    public void GoToTangramButton()
+    {
+        SceneManager.LoadScene("TangramScene");
+    }
 }
