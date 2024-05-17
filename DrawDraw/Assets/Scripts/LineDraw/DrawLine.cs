@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DrawLine : MonoBehaviour
 {
@@ -9,30 +10,47 @@ public class DrawLine : MonoBehaviour
 
     private LineRenderer currentLineRenderer; // 현재 그려지는 선의 라인 렌더러
     private Vector2 previousPosition; // 이전 위치
+    private Vector2 previousPosition2; // 이전전 위치
 
+    [SerializeField]
+    private MonoBehaviour LineDrawManager; // 활성화를 판단할 스크립트
 
     void Update()
     {
-        // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
-        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
-        {
-            CreateNewLine();
-        }
-        // 현재 선을 그리는 중이고 마우스가 클릭되었거나 터치가 이동 중인 경우, 새로운 점을 선에 추가한다.
-        else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
-        {
-            Vector2 currentPosition = GetInputPosition();
-            if (Vector2.Distance(currentPosition, previousPosition) > 0.1f) // 선을 그리기 위한 최소한의 거리
+        // 그리기 영역 안에 있어야 그리기 가능
+        if (LineDrawManager.GetComponent<LineDrawManager>().DrawActivate)
+        { // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
+            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                AddPointToLine(currentPosition);
+                CreateNewLine();
+            }
+            // 현재 선을 그리는 중이고 마우스가 클릭되었거나 터치가 이동 중인 경우, 새로운 점을 선에 추가한다.
+            else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+            {
+                Vector2 currentPosition = GetInputPosition();
+                
+                if (Vector2.Distance(currentPosition, previousPosition) > 0.1f) // 선을 그리기 위한 최소한의 거리
+                {
+                    if (currentLineRenderer == null)
+                    {
+                        CreateNewLine();
+                    }
+                    AddPointToLine(currentPosition);
+                }
+            }
+            // 마우스 클릭 또는 터치가 끝나면 현재 선을 비운다.
+            else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+            {
+                currentLineRenderer = null; // 현재 그리는 선 종료
             }
         }
-        // 마우스 클릭 또는 터치가 끝나면 현재 선을 비운다.
-        else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
-        {
-            currentLineRenderer = null;
-        }
 
+        else //영역 밖을 경우
+        {
+            previousPosition = previousPosition2; // 이전 위치 초기화
+        }
+        //*********************************************************************************************************************
+       
         void CreateNewLine()
         {
             // 새로운 선을 그릴 GameObject 생성
@@ -44,20 +62,9 @@ public class DrawLine : MonoBehaviour
             currentLineRenderer.endWidth = lineWidth;
             currentLineRenderer.positionCount = 0; // 선의 위치를 초기화합니다.
 
-            // 선분 콜라이더 추가
-            EdgeCollider2D edgeCollider = newLine.AddComponent<EdgeCollider2D>();
-            edgeCollider.edgeRadius = lineWidth / 2f; // 선분 두께의 절반을 콜라이더의 반지름으로 설정
-
-            // Collider2D를 트리거로 설정
-            edgeCollider.isTrigger = true;
-
-            // LineCollisionDetection 스크립트 추가
-            newLine.AddComponent<CollisionHandler>();
-
             // 현재 위치를 이전 위치로 설정
             previousPosition = GetInputPosition();
             AddPointToLine(previousPosition);
-
         }
 
         void AddPointToLine(Vector2 newPoint)
@@ -67,7 +74,9 @@ public class DrawLine : MonoBehaviour
             currentLineRenderer.SetPosition(currentLineRenderer.positionCount - 1, newPoint);
 
             // 현재 위치를 이전 위치로 설정
+            previousPosition2 = previousPosition;
             previousPosition = newPoint;
+
         }
 
         // 마우스 클릭 또는 터치의 위치를 세계 좌표로 변환하여 반환
