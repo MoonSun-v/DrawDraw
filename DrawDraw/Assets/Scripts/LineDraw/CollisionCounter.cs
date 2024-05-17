@@ -49,7 +49,7 @@ public class CollisionCounter : MonoBehaviour
                 if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
                 {
                     collisionCount++;
-                    Debug.Log("Collision Count: " + collisionCount);
+                    //Debug.Log("Collision Count: " + collisionCount);
 
                 }
                 lastPosition = currentPosition;
@@ -68,5 +68,10 @@ public class CollisionCounter : MonoBehaviour
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
+    }
+
+    public int GetCollisionCount()
+    {
+        return collisionCount;  
     }
 }

@@ -11,8 +11,7 @@ public class LineDrawManager : MonoBehaviour
     Vector2[] vertices = new Vector2[4]; // 그리기 사각형 영역의 꼭짓점
     public bool DrawActivate=true; // 활성화 여부
 
-    [SerializeField]
-    //private MonoBehaviour DrawLine; // 활성화할 스크립트
+    private PopupManager popup;
 
     void Awake()
     {
@@ -41,18 +40,19 @@ public class LineDrawManager : MonoBehaviour
 
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-
         // 입력 마우스의 x, y 좌표가 범위 밖으로 벗어나면 Draw 비활성화 
         if (mousePos.x < vertices[0].x || mousePos.x > vertices[2].x || mousePos.y < vertices[0].y || mousePos.y > vertices[2].y)
         {
-            DrawActivate = false;
-        }
-        else // 그리기 영역 안에 있으면 활성화
+            SetDrawActivate(false);
+        } 
+        else // 그리기 영역 안에 있으면 Draw 활성화
         {
-            DrawActivate = true;
-       
+            SetDrawActivate(true);
         }
+    }
 
-
+    public void SetDrawActivate(bool isActivate)
+    {
+        DrawActivate = isActivate;
     }
 }
