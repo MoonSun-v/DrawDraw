@@ -51,9 +51,9 @@ public class CollisionCounter : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Linecast(lastPosition, currentPosition);
                 if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
                 {
-                    collisionCount++;
+                    collisionCount++;                    
                     scoreText.text = collisionCount.ToString();
-                    Debug.Log("Collision Count: " + collisionCount);
+                    //Debug.Log("Collision Count: " + collisionCount);
 
                 }
                 lastPosition = currentPosition;
