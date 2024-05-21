@@ -29,4 +29,9 @@ public class GoToOtherScene : MonoBehaviour
     {
         SceneManager.LoadScene("TangramScene");
     }
+
+    public void GoToFigureCombinationButton()
+    {
+        SceneManager.LoadScene("FigureSelectionScene");
+    }
 }
