@@ -40,7 +40,7 @@ public class DragAndDrop: MonoBehaviour
         }
 
         // 터치 입력 처리
-        if (Input.touchCount > 0 && !IsPointerOverUIObject()) // 하나 이상의 터치가 발생했고 UI 오브젝트 위가 아닐 때
+        if (Input.touchCount > 0 && IsPointerOverUIObject()) // 하나 이상의 터치가 발생했고 UI 오브젝트 위가 아닐 때
         {
             Touch touch = Input.GetTouch(0); // 첫 번째 터치 정보를 가져옴
             if (touch.phase == TouchPhase.Began) // 터치가 시작되었을 때
@@ -72,6 +72,16 @@ public class DragAndDrop: MonoBehaviour
         if (currentObject == null) // 현재 드래그 중인 오브젝트가 없을 때
         {
             currentObject = Instantiate(selectedPrefab, worldPosition, Quaternion.identity); // 새로운 오브젝트 생성
+            // 오브젝트의 SpriteRenderer 가져오기
+            SpriteRenderer spriteRenderer = currentObject.GetComponent<SpriteRenderer>();
+
+            // Sorting Layer와 Order in Layer 설정
+            if (spriteRenderer != null)
+            {
+                //spriteRenderer.sortingLayerName = "Foreground";  // 원하는 Sorting Layer 이름
+                spriteRenderer.sortingOrder = 10;  // 원하는 Order in Layer 값 (높을수록 앞에 렌더링됨)
+            }
+
         }
 
         Collider2D collider = Physics2D.OverlapPoint(worldPosition); // 입력 위치에 있는 Collider2D를 탐지
@@ -111,7 +121,18 @@ public class DragAndDrop: MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // 마우스 위치를 월드 좌표로 변환
             mousePosition.z = 0; // z축 값을 0으로 설정
-            Instantiate(selectedPrefab, mousePosition, Quaternion.identity); // 선택된 프리팹을 마우스 위치에 생성
+            currentObject = Instantiate(selectedPrefab, mousePosition, Quaternion.identity); // 선택된 프리팹을 마우스 위치에 생성
+            
+            // 오브젝트의 SpriteRenderer 가져오기
+            SpriteRenderer spriteRenderer = currentObject.GetComponent<SpriteRenderer>();
+
+            // Sorting Layer와 Order in Layer 설정
+            if (spriteRenderer != null)
+            {
+                //spriteRenderer.sortingLayerName = "Foreground";  // 원하는 Sorting Layer 이름
+                spriteRenderer.sortingOrder = 10;  // 원하는 Order in Layer 값 (높을수록 앞에 렌더링됨)
+            }
+
         }
         else
         {
