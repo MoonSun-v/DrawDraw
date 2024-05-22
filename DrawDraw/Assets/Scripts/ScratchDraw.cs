@@ -5,7 +5,11 @@ using UnityEngine;
 public class ScratchDraw: MonoBehaviour
 {
     public Camera m_camera;
-    public GameObject brush;
+
+    //// 그림도구 관련 변수 
+    public GameObject brush; // 브러시 프리팹 
+    private LineRenderer lineRenderer;
+    private Color lineColor;
 
     LineRenderer currentLineRenderer; // 현재 선 그리는 데 사용되는 LineRenderer 컴포넌트 저장
 
@@ -15,6 +19,15 @@ public class ScratchDraw: MonoBehaviour
     private float width; // 선 굵기 조절 
 
     public ScratchManager Scratch;
+
+    private void Start()
+    {
+        lineRenderer = brush.GetComponent<LineRenderer>();
+
+        // 기본 색상은 그레이
+        lineColor = Color.gray;
+        SetLineColor();
+    }
 
     private void Update()
     {
@@ -96,5 +109,57 @@ public class ScratchDraw: MonoBehaviour
     public void FinishLineRenderer()
     {
         currentLineRenderer = null; // 현재 그리는 선 종료
+    }
+
+    public void SetLineColor()
+    {
+        // LineRenderer의 색상을 설정합니다.
+        lineRenderer.startColor = lineColor;
+        lineRenderer.endColor = lineColor;
+    }
+
+
+    //// 그림 도구 선택 → 브러시 프리팹의 색상 변경
+    
+    public void ColorRedButton()
+    {
+        lineColor = Color.red;
+        SetLineColor();
+    }
+
+    public void ColorOrangeButton()
+    {
+        lineColor = new Color(1f, 0.5f, 0f);
+        SetLineColor();
+    }
+
+    public void ColorYellowButton()
+    {
+        lineColor = Color.yellow;
+        SetLineColor();
+    }
+
+    public void ColorGreenButton()
+    {
+        lineColor = new Color(0f, 0.392f, 0f);
+        SetLineColor();
+    }
+
+    public void ColorSkyBlueButton()
+    {
+        lineColor = new Color(0.529f, 0.808f, 0.922f); 
+        SetLineColor();
+    }
+
+    public void ColorBlueButton()
+    {
+        lineColor = Color.blue;
+        SetLineColor();
+    }
+
+    public void ColorPurpleButton()
+    {
+        lineColor = new Color(0.859f, 0.439f, 0.576f);
+        SetLineColor();
     }
 }

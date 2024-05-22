@@ -38,7 +38,6 @@ public class ScratchManager : MonoBehaviour
         {
             if(scratchdraw.iscurrentLineRenderer())
             {
-                // scratchdraw.currentLineRenderer = null; // 현재 그리는 선 종료
                 scratchdraw.FinishLineRenderer(); // 현재 그리는 선 종료
             }
 
@@ -50,8 +49,7 @@ public class ScratchManager : MonoBehaviour
         }
         
 
-
     }
 
-
+    
 }
