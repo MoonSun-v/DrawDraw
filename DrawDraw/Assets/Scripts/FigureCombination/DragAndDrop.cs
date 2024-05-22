@@ -64,7 +64,7 @@ public class DragAndDrop: MonoBehaviour
     }
 
     // 입력 처리를 담당하는 메서드
-    void HandleInput(Vector3 inputPosition)
+    public void HandleInput(Vector3 inputPosition)
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(inputPosition); // 입력 위치를 월드 좌표로 변환
         worldPosition.z = 0; // z축 값을 0으로 설정
@@ -81,7 +81,6 @@ public class DragAndDrop: MonoBehaviour
                 //spriteRenderer.sortingLayerName = "Foreground";  // 원하는 Sorting Layer 이름
                 spriteRenderer.sortingOrder = 10;  // 원하는 Order in Layer 값 (높을수록 앞에 렌더링됨)
             }
-
         }
 
         Collider2D collider = Physics2D.OverlapPoint(worldPosition); // 입력 위치에 있는 Collider2D를 탐지
