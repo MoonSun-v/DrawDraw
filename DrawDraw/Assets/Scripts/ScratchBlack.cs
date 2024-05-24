@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-public class ScratchSprite : MonoBehaviour
+public class ScratchBlack : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer; // 스프라이트 렌더러 컴포넌트
     private Texture2D scratchTexture; // 스크레치 텍스처
     private bool isScratching = false; // 스크레치 중인지 여부
 
     private int scratchSize = 20; // 스크레치 영역 크기
+    private Vector2? lastMousePosition = null; // 마지막 마우스 위치 저장 : null도 허용
+    private bool textureNeedsUpdate = false; // 텍스처 업데이트 플래그
 
     void Start()
     {
@@ -26,26 +25,6 @@ public class ScratchSprite : MonoBehaviour
 
         // 새롭게 생성한 텍스처를 이용해 새로운 스프라이트를 생성하고 설정
         spriteRenderer.sprite = Sprite.Create(scratchTexture, new Rect(0, 0, scratchTexture.width, scratchTexture.height), Vector2.one * 0.5f);
-
-
-        #region 직접 변경 방법 
-        /*
-        // 스프라이트의 텍스처를 가져와서 직접 변경할 텍스처로 사용
-        Texture2D originalTexture = spriteRenderer.sprite.texture;
-        scratchTexture = Instantiate(originalTexture); // 기존 텍스처를 복제해서 사용
-        */
-
-        // 스프라이트 렌더러의 소스 텍스처를 스크레치 텍스처로 변경
-        // spriteRenderer.material.mainTexture = scratchTexture;
-
-        /*
-        Color[] pixels = spriteRenderer.sprite.texture.GetPixels();
-        print(pixels[3]);
-        pixels[3] = new Color(1, 1, 1);
-        spriteRenderer.sprite.texture.SetPixels(pixels);
-        spriteRenderer.sprite.texture.Apply();
-        */
-        #endregion
     }
 
     void Update()
@@ -53,48 +32,33 @@ public class ScratchSprite : MonoBehaviour
         // 마우스 입력 감지
         if (Input.GetMouseButtonDown(0))
         {
-            // print("마우스 버튼이 눌렸습니다.");
             isScratching = true;
+            lastMousePosition = null; // 마우스를 처음 누를 때 이전 위치 초기화
         }
-        // 마우스 움직이는 동안 스크레치 적용
         else if (Input.GetMouseButton(0) && isScratching)
         {
             Scratch(Input.mousePosition);
         }
-        // 마우스 버튼이 떼졌을 때 스크레치 종료
         else if (Input.GetMouseButtonUp(0))
         {
             isScratching = false;
+            lastMousePosition = null; // 마우스를 뗄 때 이전 위치 초기화
+
+            // 마우스 버튼을 뗄 때 텍스처를 적용
+            if (textureNeedsUpdate)
+            {
+                scratchTexture.Apply();
+                textureNeedsUpdate = false;
+            }
         }
 
-        #region touchCount 사용
-        /*
-        // 터치 입력 감지
-        if (Input.touchCount > 0)
+        // 마우스 버튼이 눌려있는 동안 주기적으로 텍스처를 적용
+        if (textureNeedsUpdate && Time.frameCount % 5 == 0)
         {
-            print("터치 입력이 감지되었습니다.");
-            Touch touch = Input.GetTouch(0);
-
-            // 터치 시작 시 스크레치 시작
-            if (touch.phase == TouchPhase.Began)
-            {
-                isScratching = true;
-            }
-            // 터치 이동 중일 때 스크레치 적용
-            else if (touch.phase == TouchPhase.Moved && isScratching)
-            {
-                Scratch(touch.position);
-            }
-            // 터치 종료 시 스크레치 종료
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                isScratching = false;
-            }
+            scratchTexture.Apply();
+            textureNeedsUpdate = false;
         }
-        */
-        #endregion
     }
-
 
     // 터치한 위치의 픽셀을 투명색으로 변경하는 함수
     void Scratch(Vector2 touchPosition)
@@ -103,9 +67,36 @@ public class ScratchSprite : MonoBehaviour
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(touchPosition);
         Vector2 localTouchPosition = spriteRenderer.transform.InverseTransformPoint(worldPos);
 
-        // 터치 위치를 중심으로 한 사각형 영역 내의 픽셀을 투명하게 만들기 
-        int startX = Mathf.RoundToInt((localTouchPosition.x + spriteRenderer.bounds.extents.x) * scratchTexture.width / spriteRenderer.bounds.size.x) - scratchSize / 2;
-        int startY = Mathf.RoundToInt((localTouchPosition.y + spriteRenderer.bounds.extents.y) * scratchTexture.height / spriteRenderer.bounds.size.y) - scratchSize / 2;
+        // 현재 위치와 이전 위치를 이용하여 선을 그리는 함수 호출
+        if (lastMousePosition.HasValue)
+        {
+            DrawLine(lastMousePosition.Value, localTouchPosition);
+        }
+
+        lastMousePosition = localTouchPosition;
+        textureNeedsUpdate = true;
+    }
+
+    // 선형 보간 :  두 점 사이의 선을 그리는 함수
+    // 선 구성하는 모든 점을 처리하기 위해 (끊김 현상 개선)
+    void DrawLine(Vector2 start, Vector2 end)
+    {
+        float distance = Vector2.Distance(start, end); // 시작-끝 점 거리 계산
+        int steps = Mathf.CeilToInt(distance * 5); // 선을 따라 그릴 픽셀 수 계산 
+
+        for (int i = 0; i <= steps; i++)
+        {
+            float t = (float)i / steps;
+            Vector2 point = Vector2.Lerp(start, end, t);
+            DrawCircle(point);
+        }
+    }
+
+    // 특정 위치에 원을 그리는 함수
+    void DrawCircle(Vector2 position)
+    {
+        int startX = Mathf.RoundToInt((position.x + spriteRenderer.bounds.extents.x) * scratchTexture.width / spriteRenderer.bounds.size.x) - scratchSize / 2;
+        int startY = Mathf.RoundToInt((position.y + spriteRenderer.bounds.extents.y) * scratchTexture.height / spriteRenderer.bounds.size.y) - scratchSize / 2;
 
         for (int x = startX; x < startX + scratchSize; x++)
         {
@@ -119,9 +110,6 @@ public class ScratchSprite : MonoBehaviour
                 }
             }
         }
-
-        // 변경된 픽셀 적용
-        scratchTexture.Apply();
     }
 
     // 스프라이트에서 텍스처를 추출하는 함수
@@ -130,7 +118,6 @@ public class ScratchSprite : MonoBehaviour
         // 스프라이트의 크기와 텍스처의 크기가 다르면 새로운 텍스처 생성
         if (sprite.rect.width != sprite.texture.width)
         {
-            print("스프라이트와 텍스처 크기가 다릅니다. 새로운 텍스처 생성합니다.");
             Texture2D newText = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
             Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
                                                          (int)sprite.textureRect.y,
