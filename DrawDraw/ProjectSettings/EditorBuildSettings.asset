@@ -9,17 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/DrawTestScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/LineScene.unity
-    guid: a4208ad5e83d4774a8be5c38f19a2157
-  - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: e05aafca8c947cd429f50c5fa7b7b5c2
   - enabled: 1
     path: Assets/Scenes/DotLineScene.unity
     guid: e53cdd9fa2ab71840b93b26e5eac7198
   - enabled: 1
-    path: Assets/Scenes/TangramScene.unity
-    guid: 8ead4bf68a3c78d4597e50744ca4afbf
+    path: Assets/Scenes/LineScene.unity
+    guid: a4208ad5e83d4774a8be5c38f19a2157
   - enabled: 1
     path: Assets/Scenes/FigureCombinationScene/WaterDropScene.unity
     guid: a9616b153cd0fd649b05bc104e1c350e
@@ -29,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FigureCombinationScene/FigureSelectionScene.unity
     guid: 1b834c4381ed30341a49e0dad8e30893
+  - enabled: 1
+    path: Assets/Scenes/TangramScene.unity
+    guid: 8ead4bf68a3c78d4597e50744ca4afbf
   m_configObjects: {}
