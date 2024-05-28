@@ -20,6 +20,10 @@ public class ScratchDraw: MonoBehaviour
 
     public ScratchManager Scratch;
 
+    private GameObject previousButton; // 이전에 클릭된 버튼을 추적하기 위한 변수
+    private Vector3 previousButtonOriginalPosition; // 이전 버튼의 원래 위치를 저장
+    private int CrayonMove = 90;
+
     private void Start()
     {
         lineRenderer = brush.GetComponent<LineRenderer>();
@@ -121,45 +125,150 @@ public class ScratchDraw: MonoBehaviour
 
     //// 그림 도구 선택 → 브러시 프리팹의 색상 변경
     
-    public void ColorRedButton()
+    public void ColorRedButton(GameObject RedCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = Color.red;
         SetLineColor();
+
+        RectTransform rt = RedCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = RedCrayon;
     }
 
-    public void ColorOrangeButton()
+    public void ColorOrangeButton(GameObject OrangeCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = new Color(1f, 0.5f, 0f);
         SetLineColor();
+
+        RectTransform rt = OrangeCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = OrangeCrayon;
     }
 
-    public void ColorYellowButton()
+    public void ColorYellowButton(GameObject YellowCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = Color.yellow;
         SetLineColor();
+
+        RectTransform rt = YellowCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = YellowCrayon;
     }
 
-    public void ColorGreenButton()
+    public void ColorGreenButton(GameObject GreenCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = new Color(0f, 0.392f, 0f);
         SetLineColor();
+
+        RectTransform rt = GreenCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = GreenCrayon;
     }
 
-    public void ColorSkyBlueButton()
+    public void ColorSkyBlueButton(GameObject SkyBlueCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = new Color(0.529f, 0.808f, 0.922f); 
         SetLineColor();
+
+        RectTransform rt = SkyBlueCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = SkyBlueCrayon;
     }
 
-    public void ColorBlueButton()
+    public void ColorBlueButton(GameObject BlueCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = Color.blue;
         SetLineColor();
+
+        RectTransform rt = BlueCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = BlueCrayon;
     }
 
-    public void ColorPurpleButton()
+    public void ColorPurpleButton(GameObject PurpleCrayon)
     {
+        // 이전 버튼이 있다면 원래 위치로 되돌리기
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        // 현재 클릭된 버튼 처리
         lineColor = new Color(0.859f, 0.439f, 0.576f);
         SetLineColor();
+
+        RectTransform rt = PurpleCrayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        // 이전 버튼을 현재 버튼으로 업데이트
+        previousButton = PurpleCrayon;
     }
 }

@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 389490903}
   - component: {fileID: 389490902}
   m_Layer: 5
-  m_Name: Crayon3
+  m_Name: Crayon3_yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,10 +618,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorYellowButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 389490900}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 512452249}
   - component: {fileID: 512452248}
   m_Layer: 5
-  m_Name: Crayon6
+  m_Name: Crayon6_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -792,10 +792,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorBlueButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 512452246}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 894077431}
   - component: {fileID: 894077430}
   m_Layer: 5
-  m_Name: Crayon4
+  m_Name: Crayon4_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1282,10 +1282,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorGreenButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 894077428}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 1104965748}
   - component: {fileID: 1104965747}
   m_Layer: 5
-  m_Name: Crayon7
+  m_Name: Crayon7_purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1558,10 +1558,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorPurpleButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1104965745}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1938,7 +1938,7 @@ GameObject:
   - component: {fileID: 1389183861}
   - component: {fileID: 1389183860}
   m_Layer: 5
-  m_Name: Crayon2
+  m_Name: Crayon2_orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2010,10 +2010,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorOrangeButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1389183858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2083,7 +2083,7 @@ Transform:
   m_GameObject: {fileID: 1427371029}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.08, y: -1.0205, z: 10.022534}
+  m_LocalPosition: {x: 4.01, y: -1.0205, z: 10.022534}
   m_LocalScale: {x: 5, y: 11.339041, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2238,7 +2238,7 @@ GameObject:
   - component: {fileID: 1537354474}
   - component: {fileID: 1537354473}
   m_Layer: 5
-  m_Name: Crayon5
+  m_Name: Crayon5_skyblue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2310,10 +2310,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorSkyBlueButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1537354471}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2666,7 +2666,7 @@ Transform:
   m_GameObject: {fileID: 1835538179}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.31, y: -3.4085, z: 9.890119}
+  m_LocalPosition: {x: 6.24, y: -3.4085, z: 9.890119}
   m_LocalScale: {x: 0.03, y: 8.124259, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3170,10 +3170,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2139480532}
         m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
         m_MethodName: ColorRedButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2054881045}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
