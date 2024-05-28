@@ -24,6 +24,8 @@ public class ScratchDraw: MonoBehaviour
     private Vector3 previousButtonOriginalPosition; // 이전 버튼의 원래 위치를 저장
     private int CrayonMove = 90;
 
+    public List<GameObject> lineRenderers = new List<GameObject>(); // 생성된 LineRenderer를 추적하기 위한 리스트
+
     private void Start()
     {
         lineRenderer = brush.GetComponent<LineRenderer>();
@@ -35,6 +37,12 @@ public class ScratchDraw: MonoBehaviour
 
     private void Update()
     {
+        // 아직 색상 선택을 하지 않았으면 그리기 차단
+        if (previousButton == null)
+        {
+            return;
+        }
+
         Drawing();
     }
 
@@ -71,6 +79,8 @@ public class ScratchDraw: MonoBehaviour
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
 
+        // 생성된 LineRenderer 객체를 리스트에 추가
+        lineRenderers.Add(brushInstance);
     }
 
     // 선에 새로운 점 추가 : 선의 positionCount 증가시키고 새로운 점 위치 설정 
@@ -98,6 +108,7 @@ public class ScratchDraw: MonoBehaviour
 
     public bool iscurrentLineRenderer()
     {
+        /*
         bool isLineRanderer;
         if(currentLineRenderer)
         {
@@ -108,6 +119,8 @@ public class ScratchDraw: MonoBehaviour
             isLineRanderer = false;
         }
         return isLineRanderer;
+        */
+        return currentLineRenderer != null;
     }
 
     public void FinishLineRenderer()
@@ -123,8 +136,18 @@ public class ScratchDraw: MonoBehaviour
     }
 
 
+    // 처음부터 버튼 클릭 시 생성된 모든 LineRenderer 객체를 삭제하는 메서드
+    public void ClearAllLineRenderers()
+    {
+        foreach (GameObject lineRendererObject in lineRenderers)
+        {
+            Destroy(lineRendererObject);
+        }
+        lineRenderers.Clear(); // 리스트 초기화
+    }
+
     //// 그림 도구 선택 → 브러시 프리팹의 색상 변경
-    
+
     public void ColorRedButton(GameObject RedCrayon)
     {
         // 이전 버튼이 있다면 원래 위치로 되돌리기
