@@ -155,4 +155,49 @@ public class ScratchBlack : MonoBehaviour
         }
         
     }
+
+    // 회색 부분이 모두 투명하게 변했는지 확인하는 함수
+    bool CheckIfGrayPartsCleared(out float percentage)
+    {
+        Color[] currentColors = scratchTexture.GetPixels();
+        int totalNonBlackPixels = 0; 
+        int clearedNonBlackPixels = 0; 
+
+        // 검은색을 제외한 모든 색상을 투명하게 만들었는지 확인
+        for (int i = 0; i < currentColors.Length; i++)
+        {
+            if (currentColors[i] != Color.black)
+            {
+                totalNonBlackPixels++;
+                if (currentColors[i].a == 0)
+                {
+                    clearedNonBlackPixels++;
+                }
+            }
+        }
+
+        if (totalNonBlackPixels > 0)
+        {
+            percentage = (float)clearedNonBlackPixels / totalNonBlackPixels * 100f;
+            return clearedNonBlackPixels == totalNonBlackPixels;
+        }
+        else
+        {
+            percentage = 0;
+            return false;
+        }
+    }
+
+    // 회색 부분의 투명도를 확인하는 함수
+    public void CheckGrayPercentage()
+    {
+        // scratchBlack이 활성화 되어있을 때만 계산  
+        if (scratchBlack.activeSelf)
+        {
+            float percentage;
+            bool allGrayCleared = CheckIfGrayPartsCleared(out percentage);
+            Debug.Log("회색 부분이 투명해진 퍼센트: " + percentage + "%");
+        }
+            
+    }
 }
