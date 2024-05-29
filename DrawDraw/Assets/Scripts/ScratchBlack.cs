@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScratchBlack : MonoBehaviour
 {
@@ -6,9 +7,13 @@ public class ScratchBlack : MonoBehaviour
     private Texture2D scratchTexture; // 스크레치 텍스처
     private bool isScratching = false; // 스크레치 중인지 여부
 
-    private int scratchSize = 10; // 스크레치 영역 크기
+    private int scratchSize = 20; // 스크레치 영역 크기
     private Vector2? lastMousePosition = null; // 마지막 마우스 위치 저장 : null도 허용
     private bool textureNeedsUpdate = false; // 텍스처 업데이트 플래그
+
+    private Color[] originalColors; // 원래 색상 배열
+
+    public GameObject scratchBlack; // 자기자신 
 
     void Start()
     {
@@ -23,8 +28,12 @@ public class ScratchBlack : MonoBehaviour
         // 스프라이트로 부터 읽기 가능한 직접 변경할 텍스처 생성 
         scratchTexture = textureFromSprite(spriteRenderer.sprite);
 
+        // 원래 색상을 저장
+        originalColors = scratchTexture.GetPixels();
+
         // 새롭게 생성한 텍스처를 이용해 새로운 스프라이트를 생성하고 설정
         spriteRenderer.sprite = Sprite.Create(scratchTexture, new Rect(0, 0, scratchTexture.width, scratchTexture.height), Vector2.one * 0.5f);
+
     }
 
     void Update()
@@ -131,5 +140,19 @@ public class ScratchBlack : MonoBehaviour
         {
             return sprite.texture;
         }
+    }
+
+    // 스크래치 효과를 리셋하는 함수
+    // 스크래치 모든 게임 끝난 후 한번 더 실행시켜서 초기화 시켜 놓아야 함 
+    public void ResetScratch()
+    {
+        // scratchBlack이 활성화 되어있을 때만 스크래치 리셋 
+        if (scratchBlack.activeSelf)
+        {
+            // 원래 색상으로 텍스처를 복원
+            scratchTexture.SetPixels(originalColors);
+            scratchTexture.Apply();
+        }
+        
     }
 }

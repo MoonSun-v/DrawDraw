@@ -26,6 +26,8 @@ public class ScratchDraw: MonoBehaviour
 
     public List<GameObject> lineRenderers = new List<GameObject>(); // 생성된 LineRenderer를 추적하기 위한 리스트
 
+    public GameObject ScratchBlack;
+
     private void Start()
     {
         lineRenderer = brush.GetComponent<LineRenderer>();
@@ -108,18 +110,6 @@ public class ScratchDraw: MonoBehaviour
 
     public bool iscurrentLineRenderer()
     {
-        /*
-        bool isLineRanderer;
-        if(currentLineRenderer)
-        {
-            isLineRanderer = true;
-        }
-        else
-        {
-            isLineRanderer = false;
-        }
-        return isLineRanderer;
-        */
         return currentLineRenderer != null;
     }
 
@@ -139,11 +129,16 @@ public class ScratchDraw: MonoBehaviour
     // 처음부터 버튼 클릭 시 생성된 모든 LineRenderer 객체를 삭제하는 메서드
     public void ClearAllLineRenderers()
     {
-        foreach (GameObject lineRendererObject in lineRenderers)
+        // ScratchBlack이 비활성화일 때만 삭제 가능
+        if (!ScratchBlack.activeSelf)
         {
-            Destroy(lineRendererObject);
+            foreach (GameObject lineRendererObject in lineRenderers)
+            {
+                Destroy(lineRendererObject);
+            }
+            lineRenderers.Clear(); // 리스트 초기화
         }
-        lineRenderers.Clear(); // 리스트 초기화
+        
     }
 
     //// 그림 도구 선택 → 브러시 프리팹의 색상 변경
