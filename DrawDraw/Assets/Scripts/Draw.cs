@@ -65,7 +65,7 @@ public class Draw : MonoBehaviour
     void PointToMousePos()
     {
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-        if (lastPos != mousePos)
+        if ((lastPos - mousePos).magnitude > 0.1f)
         {
             AddAPoint(mousePos);
             lastPos = mousePos;
