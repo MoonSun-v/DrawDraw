@@ -10,7 +10,7 @@ public class CollisionCounter : MonoBehaviour
     private bool isDragging = false;
     private Vector3 lastPosition;
 
-    //private bool[] hasCollided;
+    private bool[] hasCollided;
 
     public Text scoreText;
 
@@ -18,7 +18,7 @@ public class CollisionCounter : MonoBehaviour
     private void Start()
     {
         // 콜라이더 수만큼 배열 초기화
-        //hasCollided = new bool[2]; //2는 콜라이더의 개수
+        hasCollided = new bool[2]; //2는 콜라이더의 개수
     }
 
     private void Update()
@@ -30,10 +30,10 @@ public class CollisionCounter : MonoBehaviour
             lastPosition = GetInputWorldPosition();
 
             // 충돌 여부 초기화
-            //for (int i = 0; i < hasCollided.Length; i++)
-            //{
-            //    hasCollided[i] = false;
-            //}
+            for (int i = 0; i < hasCollided.Length; i++)
+            {
+                hasCollided[i] = false;
+            }
         }
 
         if ((Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && isDragging)
@@ -49,11 +49,33 @@ public class CollisionCounter : MonoBehaviour
             if (currentPosition != lastPosition)
             {
                 RaycastHit2D hit = Physics2D.Linecast(lastPosition, currentPosition);
-                if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
+                if (hit.collider != null && (hit.collider.CompareTag("baseSquare_inside") || hit.collider.CompareTag("baseSquare_outside")))
                 {
-                    collisionCount++;                    
-                    scoreText.text = collisionCount.ToString();
-                    //Debug.Log("Collision Count: " + collisionCount);
+                    // 충돌한 콜라이더의 인덱스 가져오기
+                    int colliderIndex_in = hit.collider.CompareTag("baseSquare_inside") ? 0 : 1;
+
+                    // 이미 충돌한 상태인지 확인
+                    if (!hasCollided[colliderIndex_in])
+                    {
+                        hasCollided[colliderIndex_in] = true; // 해당 콜라이더에 충돌했음을 표시
+
+                        // 두 콜라이더 모두 충돌한 경우가 아니라면 충돌 횟수 증가
+                        if (!(hasCollided[0] && hasCollided[1]))
+                        {
+                            collisionCount++;
+                            scoreText.text = collisionCount.ToString();
+
+                            Debug.Log("Collision Count: " + collisionCount);
+                        }
+                        else // 두 콜라이더 모두 충돌한 경우
+                        {
+                            // 충돌 여부 초기화
+                            for (int i = 0; i < hasCollided.Length; i++)
+                            {
+                                hasCollided[i] = false;
+                            }
+                        }
+                    }
 
                 }
                 lastPosition = currentPosition;
