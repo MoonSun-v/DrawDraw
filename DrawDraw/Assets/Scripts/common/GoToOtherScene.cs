@@ -34,4 +34,9 @@ public class GoToOtherScene : MonoBehaviour
     {
         SceneManager.LoadScene("FigureSelectionScene");
     }
+
+    public void GoToPuzzle()
+    {
+        SceneManager.LoadScene("PuzzleScene");
+    }
 }
