@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dot
   - baseSquare
+  - baseSquare_inside
+  - baseSquare_outside
   layers:
   - Default
   - TransparentFX
