@@ -13,11 +13,13 @@ public class Tangram : MonoBehaviour
     private Vector3 correctPosition;
     private Vector3 correctScale;
 
+    private Vector3 initialPosition;
+
     void Start()
     {
-        // 정해진 위치를 correctForm의 위치와 크기로 설정합니다.
         correctPosition = correctForm.transform.position;
         correctScale = correctForm.transform.localScale * 1.0f;
+        initialPosition = this.transform.position;
     }
 
     void Update()
@@ -58,10 +60,14 @@ public class Tangram : MonoBehaviour
         float halfWidth = correctScale.x / 2f;
         float halfHeight = correctScale.y / 2f;
 
-        // 퍼즐 조각이 정해진 위치의 범위 안에 있는지 확인합니다.
         bool withinX = currentPos.x >= correctPosition.x - halfWidth && currentPos.x <= correctPosition.x + halfWidth;
         bool withinY = currentPos.y >= correctPosition.y - halfHeight && currentPos.y <= correctPosition.y + halfHeight;
 
         return withinX && withinY;
+    }
+
+    public void ResetPosition()
+    {
+        this.transform.position = initialPosition;
     }
 }
