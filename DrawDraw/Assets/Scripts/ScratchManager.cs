@@ -14,6 +14,8 @@ public class ScratchManager : MonoBehaviour
 
     [SerializeField]
     private ScratchDraw scratchdraw;
+    [SerializeField]
+    private ScratchBlack scratchblack;
 
     public GameObject ScratchDraw;
 
@@ -24,6 +26,8 @@ public class ScratchManager : MonoBehaviour
     // RaycastTarget 비활성화 버튼
     public GameObject ReturnButton; // 처음부터
     public GameObject EraserButton; // 지우개 
+
+    public GameObject CheckPopup; // 팝업 
 
     private bool isReturn;
     private bool isEraser;
@@ -75,15 +79,31 @@ public class ScratchManager : MonoBehaviour
         {
             ScratchDraw.SetActive(false);
 
+            if (CheckPopup.activeSelf)
+            {
+                scratchblack.enabled = false;
+            }
+            else
+            {
+                scratchblack.enabled = true;
+            }
+
             // 지우개 RaycastTarget 활성화
             EraserButton.GetComponent<Image>().raycastTarget = true;
 
             // GUI 완성 시, 시각화도 시켜주기
 
         }
+        // 팝업 활성화 되어있으면
+        else if(CheckPopup.activeSelf)
+        {
+            ScratchDraw.SetActive(false);
+
+        }
         else
         {
             ScratchDraw.SetActive(true);
+            
             EraserButton.GetComponent<Image>().raycastTarget = false;
         }
 
@@ -105,9 +125,53 @@ public class ScratchManager : MonoBehaviour
         {
             scratchdraw.enabled = true;
         }
-        
 
     }
 
+    // 도안 4개 띄우고
+    // 검은색 스크래치 시작 
+    public void StartBlack()
+    {
+        if (!ScratchBlack.activeSelf)
+        {
+
+        }
+    }
     
+    // 완료 확인 팝업
+    public void CheckPopUp()
+    {
+        CheckPopup.SetActive(true);
+
+    }
+
+    // 팝업 : 아직이야
+    public void PreviousBtn()
+    {
+        // 팝업 비활성화
+        CheckPopup.SetActive(false);
+    }
+
+    // 팝업 : 완성이야 
+    public void NextBtn()
+    {
+        if(ScratchBlack.activeSelf)
+        {
+            // 점수 계산
+            scratchblack.CheckGrayPercentage();
+
+            // 결과 화면으로 넘어가기 
+        }
+        else
+        {
+            // 팝업 비활성화
+            CheckPopup.SetActive(false);
+
+            // 검은색 도안 활성화
+            ScratchBlack.SetActive(true);
+        }
+        
+    }
+
+
 }
