@@ -34,7 +34,8 @@ public class ScratchManager : MonoBehaviour
     public GameObject CheckPopup; // 팝업 
     public GameObject SelectDraw; // 도안 선택 팝업 
 
-
+    public Sprite[] BlackSprite = new Sprite[4]; // 도안 4개 
+    // private SpriteRenderer spriteRenderer;
 
     private bool isReturn;
     private bool isEraser;
@@ -139,7 +140,7 @@ public class ScratchManager : MonoBehaviour
     public void CheckPopUp()
     {
         CheckPopup.SetActive(true);
-
+        OnBlocker();
     }
 
     // 팝업 : 아직이야
@@ -147,6 +148,7 @@ public class ScratchManager : MonoBehaviour
     {
         // 팝업 비활성화
         CheckPopup.SetActive(false);
+        OffBlocker();
     }
 
     // 팝업 : 완성이야 
@@ -164,20 +166,15 @@ public class ScratchManager : MonoBehaviour
             // 팝업 비활성화
             CheckPopup.SetActive(false);
 
-            // 검정색으로 덮는 애니메이션
-            OnBlocker();
+            //OnBlocker();
 
+            // 검정색으로 덮는 애니메이션
             BlackBase.SetActive(true); // 추후 다시 비활성화 필요 
             BaseAnim.SetBool("isBlackBase",true);
 
             // 랜덤 도안 4개 띄우기 : 애니메이션 재생 후 띄워야 하므로 코루틴 적용
             StartCoroutine(SelectDrawDelay());
 
-
-            // 선택한 검은색 도안 활성화
-
-
-            // ScratchBlack.SetActive(true); // 기존 코드 
         }
         
     }
@@ -190,8 +187,39 @@ public class ScratchManager : MonoBehaviour
         // 랜덤 도안 띄우고
         SelectDraw.SetActive(true);
 
+    }
+
+    // 도안 선택 시, 알맞은 도안 띄워주기
+    public void SelectDrawing(int number)
+    {
+        if(number == 0)
+        {
+            spriteRenderer.sprite = BlackSprite[0];
+        }
+        else if(number == 1)
+        {
+            spriteRenderer.sprite = BlackSprite[1];
+        }
+        else if (number == 2)
+        {
+            spriteRenderer.sprite = BlackSprite[2];
+        }
+        else if (number == 3)
+        {
+            spriteRenderer.sprite = BlackSprite[3];
+        }
+        else
+        {
+            print("Number Error!!");
+        }
+
+        SelectDraw.SetActive(false);
+        BlackBase.SetActive(false);
         // 도안 버튼 선택 시, 선택된 도안 활성화 : 코드 이동 필요 !!
         ScratchBlack.SetActive(true);
+
+        OffBlocker();
+
     }
 
     private void OnBlocker()
