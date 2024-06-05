@@ -198,7 +198,8 @@ public class ScratchBlack : MonoBehaviour
             bool allGrayCleared = CheckIfGrayPartsCleared(out percentage);
             Debug.Log("회색 부분이 투명해진 퍼센트: " + percentage + "%");
 
-
+            // 점수 산출 시, 재사용 위해 이미지 복구 하기 
+            ResetScratch();
         }
             
     }
