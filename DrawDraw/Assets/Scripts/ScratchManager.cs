@@ -7,6 +7,9 @@ public class ScratchManager : MonoBehaviour
 {
     private Camera mainCamera;
 
+    public GameObject BlackBase;
+    private Animator BaseAnim;
+
     public Transform Limit_l;
     public Transform Limit_R;
     public Transform Limit_T;
@@ -27,7 +30,11 @@ public class ScratchManager : MonoBehaviour
     public GameObject ReturnButton; // 처음부터
     public GameObject EraserButton; // 지우개 
 
+    public GameObject Blocker; // 팝업 활성화 시, 다른 오브젝트 터치 막아주기 
     public GameObject CheckPopup; // 팝업 
+    public GameObject SelectDraw; // 도안 선택 팝업 
+
+
 
     private bool isReturn;
     private bool isEraser;
@@ -39,7 +46,7 @@ public class ScratchManager : MonoBehaviour
 
     void Start()
     {
-        
+        BaseAnim = BlackBase.GetComponent<Animator>();
     }
 
 
@@ -128,16 +135,6 @@ public class ScratchManager : MonoBehaviour
 
     }
 
-    // 도안 4개 띄우고
-    // 검은색 스크래치 시작 
-    public void StartBlack()
-    {
-        if (!ScratchBlack.activeSelf)
-        {
-
-        }
-    }
-    
     // 완료 확인 팝업
     public void CheckPopUp()
     {
@@ -167,11 +164,45 @@ public class ScratchManager : MonoBehaviour
             // 팝업 비활성화
             CheckPopup.SetActive(false);
 
-            // 검은색 도안 활성화
-            ScratchBlack.SetActive(true);
+            // 검정색으로 덮는 애니메이션
+            OnBlocker();
+
+            BlackBase.SetActive(true); // 추후 다시 비활성화 필요 
+            BaseAnim.SetBool("isBlackBase",true);
+
+            // 랜덤 도안 4개 띄우기 : 애니메이션 재생 후 띄워야 하므로 코루틴 적용
+            StartCoroutine(SelectDrawDelay());
+
+
+            // 선택한 검은색 도안 활성화
+
+
+            // ScratchBlack.SetActive(true); // 기존 코드 
         }
         
     }
 
+    IEnumerator SelectDrawDelay()
+    {
+        // 5 초 후 실행
+        yield return new WaitForSeconds(5);
 
+        // 랜덤 도안 띄우고
+        SelectDraw.SetActive(true);
+
+        // 도안 버튼 선택 시, 선택된 도안 활성화 : 코드 이동 필요 !!
+        ScratchBlack.SetActive(true);
+    }
+
+    private void OnBlocker()
+    {
+        Blocker.SetActive(true);
+        print("Blocker 활성화!");
+    }
+
+    private void OffBlocker()
+    {
+        Blocker.SetActive(false);
+        print("Blocker 비활성화");
+    }
 }
