@@ -34,8 +34,7 @@ public class ScratchManager : MonoBehaviour
     public GameObject CheckPopup; // 팝업 
     public GameObject SelectDraw; // 도안 선택 팝업 
 
-    public Sprite[] BlackSprite = new Sprite[4]; // 도안 4개 
-    // private SpriteRenderer spriteRenderer;
+    public GameObject[] ImageButton = new GameObject[4]; // 버튼 4개 
 
     private bool isReturn;
     private bool isEraser;
@@ -194,19 +193,20 @@ public class ScratchManager : MonoBehaviour
     {
         if(number == 0)
         {
-            spriteRenderer.sprite = BlackSprite[0];
+            // 버튼의 스프라이트를 오브젝트의 스프라이트로 변경
+            spriteRenderer.sprite = ImageButton[0].GetComponent<Image>().sprite;
         }
         else if(number == 1)
         {
-            spriteRenderer.sprite = BlackSprite[1];
+            spriteRenderer.sprite = ImageButton[1].GetComponent<Image>().sprite;
         }
         else if (number == 2)
         {
-            spriteRenderer.sprite = BlackSprite[2];
+            spriteRenderer.sprite = ImageButton[2].GetComponent<Image>().sprite;
         }
         else if (number == 3)
         {
-            spriteRenderer.sprite = BlackSprite[3];
+            spriteRenderer.sprite = ImageButton[3].GetComponent<Image>().sprite;
         }
         else
         {

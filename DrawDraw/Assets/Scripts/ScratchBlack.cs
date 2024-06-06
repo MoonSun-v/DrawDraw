@@ -7,7 +7,7 @@ public class ScratchBlack : MonoBehaviour
     private Texture2D scratchTexture; // 스크레치 텍스처
     private bool isScratching = false; // 스크레치 중인지 여부
 
-    private int scratchSize = 15; // 스크레치 영역 크기
+    private int scratchSize = 20; // 스크레치 영역 크기
     private Vector2? lastMousePosition = null; // 마지막 마우스 위치 저장 : null도 허용
     private bool textureNeedsUpdate = false; // 텍스처 업데이트 플래그
 
