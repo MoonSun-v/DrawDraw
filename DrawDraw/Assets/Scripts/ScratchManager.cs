@@ -8,6 +8,7 @@ public class ScratchManager : MonoBehaviour
     private Camera mainCamera;
 
     public GameObject BlackBase;
+    public GameObject BlackLine;
     private Animator BaseAnim;
 
     public Transform Limit_l;
@@ -168,7 +169,9 @@ public class ScratchManager : MonoBehaviour
             //OnBlocker();
 
             // 검정색으로 덮는 애니메이션
-            BlackBase.SetActive(true); // 추후 다시 비활성화 필요 
+            BlackBase.SetActive(true); 
+            BlackLine.SetActive(true); // 추후 다시 비활성화 필요 
+
             BaseAnim.SetBool("isBlackBase",true);
 
             // 랜덤 도안 4개 띄우기 : 애니메이션 재생 후 띄워야 하므로 코루틴 적용
@@ -215,7 +218,8 @@ public class ScratchManager : MonoBehaviour
 
         SelectDraw.SetActive(false);
         BlackBase.SetActive(false);
-        // 도안 버튼 선택 시, 선택된 도안 활성화 : 코드 이동 필요 !!
+        BlackLine.SetActive(false);
+
         ScratchBlack.SetActive(true);
 
         OffBlocker();
