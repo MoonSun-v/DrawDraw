@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tangram : MonoBehaviour
 {
@@ -14,52 +15,49 @@ public class Tangram : MonoBehaviour
     private Vector3 correctScale;
 
     private Vector3 initialPosition;
-
-    public Vector2 startAreaMin;
-    public Vector2 startAreaMax;
-    public GameObject excludedAreaObject;
-    private Rect excludedArea;
+    /*
+    public RectInt startArea1 = new RectInt(-1, -3, 1, 5);
+    public RectInt startArea2 = new RectInt(6, -3, 1, 5);
 
     private static List<Rect> placedPieces = new List<Rect>();
     public float minDistance = 1.0f;
-
+    
     private Vector3 GetRandomStartPosition()
     {
-        /*
-        float randomX = Random.Range(startAreaMin.x, startAreaMax.x);
-        float randomY = Random.Range(startAreaMin.y, startAreaMax.y);
-        return new Vector3(randomX, randomY, this.transform.position.z);
-        */
         Vector3 randomPosition;
         Rect pieceRect;
 
+        float pieceWidth = this.transform.localScale.x;
+        float pieceHeight = this.transform.localScale.y;
+
         do
         {
-            float randomX = Random.Range(startAreaMin.x, startAreaMax.x);
-            float randomY = Random.Range(startAreaMin.y, startAreaMax.y);
+            bool useFirstArea = Random.Range(0, 2) == 0;
+            int randomX = useFirstArea
+                ? Random.Range(startArea1.xMin, startArea1.xMax + 1)
+                : Random.Range(startArea2.xMin, startArea2.xMax + 1);
+            int randomY = useFirstArea
+                ? Random.Range(startArea1.yMin, startArea1.yMax + 1)
+                : Random.Range(startArea2.yMin, startArea2.yMax + 1);
+
             randomPosition = new Vector3(randomX, randomY, this.transform.position.z);
-            pieceRect = new Rect(randomPosition.x, randomPosition.y, this.transform.localScale.x, this.transform.localScale.y);
-        } while (IsOverlapping(pieceRect) || excludedArea.Overlaps(pieceRect));
+            pieceRect = new Rect(randomPosition.x, randomPosition.y, pieceWidth, pieceHeight);
+
+        } while (IsOverlapping(pieceRect)) ;
 
         return randomPosition;
     }
+    */
 
     void Start()
     {
         correctPosition = correctForm.transform.position;
-        correctScale = correctForm.transform.localScale * 1.0f;
+        correctScale = correctForm.transform.localScale;
 
-        if (excludedAreaObject != null)
-        {
-            Vector3 excludedPosition = excludedAreaObject.transform.position;
-            Vector3 excludedScale = excludedAreaObject.transform.localScale;
-            excludedArea = new Rect(excludedPosition.x - excludedScale.x / 2, excludedPosition.y - excludedScale.y / 2, excludedScale.x, excludedScale.y);
-        }
-
-        initialPosition = GetRandomStartPosition();
-        this.transform.position = initialPosition;
+        //initialPosition = GetRandomStartPosition();
+        //this.transform.position = initialPosition;
         
-        placedPieces.Add(new Rect(this.transform.position.x, this.transform.position.y, this.transform.localScale.x, this.transform.localScale.y));
+        //placedPieces.Add(new Rect(this.transform.position.x, this.transform.position.y, this.transform.localScale.x, this.transform.localScale.y));
     }
 
     void Update()
@@ -110,7 +108,7 @@ public class Tangram : MonoBehaviour
     {
         this.transform.position = initialPosition;
     }
-
+    /*
     private bool IsOverlapping(Rect pieceRect)
     {
         foreach (Rect placedPiece in placedPieces)
@@ -130,4 +128,5 @@ public class Tangram : MonoBehaviour
 
         return false;
     }
+    */
 }
