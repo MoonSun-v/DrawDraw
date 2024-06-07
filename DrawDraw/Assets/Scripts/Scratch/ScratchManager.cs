@@ -43,6 +43,8 @@ public class ScratchManager : MonoBehaviour
     private bool isReturn;
     private bool isEraser;
 
+    public GameResultSO gameResult;
+
     void Awake()
     {
         mainCamera = Camera.main;
@@ -159,8 +161,44 @@ public class ScratchManager : MonoBehaviour
     {
         if(ScratchBlack.activeSelf)
         {
-            // 결과 화면으로 넘어가기 
-            StartCoroutine(ResultSceneDelay());
+            // 점수 계산
+            float percentage = scratchblack.CheckGrayPercentage();
+            if(percentage == -1f)
+            {
+                print("에러입니다~");
+            }
+            else
+            {
+                print("회색 부분이 투명해진 퍼센트: " + percentage + "%");
+
+                // 프로토타입 : 임시로 점수 보여주기
+                int Score = (int)percentage;
+                if(Score<100)
+                {
+                    Score += 1;
+                }
+                ScoreText.text = Score + "점";
+
+                gameResult.score = Score; // 점수 저장 
+                gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
+
+                // 60 % 미만: 게임 실패
+                // 60 % 이상 80 % 미만 : 경험치 5
+                // 80 % 이상 : 경험치 10
+                /*
+                if (Score < 60) // 게임 실패
+                {
+
+                }
+                else // 게임 성공 
+                {
+
+                }
+                */
+                // 결과 화면으로 넘어가기 
+                StartCoroutine(ResultSceneDelay()); // StartCoroutine( "메소드이름", 매개변수 );
+            }
+
         }
         else
         {

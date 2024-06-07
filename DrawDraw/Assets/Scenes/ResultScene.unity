@@ -506,6 +506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e740fcd6e723714cbdb34313aa4d750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
+  scoreText: {fileID: 1254608888}
 --- !u!4 &1350399497
 Transform:
   m_ObjectHideFlags: 0
@@ -826,7 +828,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785878093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1350399496}
+        m_TargetAssemblyTypeName: ResultManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1785878093
 MonoBehaviour:
   m_ObjectHideFlags: 0
