@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class Tangram : MonoBehaviour
 {
+    private Vector3 correctPosition;
+    private Vector3 correctScale;
+    private Vector3 initialPosition;
+
     public GameObject correctForm;
     private bool isMoving;
 
     private float startPosX;
     private float startPosY;
-
-    private Vector3 correctPosition;
-    private Vector3 correctScale;
-
-    private Vector3 initialPosition;
     /*
     public RectInt startArea1 = new RectInt(-1, -3, 1, 5);
     public RectInt startArea2 = new RectInt(6, -3, 1, 5);
@@ -52,11 +51,12 @@ public class Tangram : MonoBehaviour
     void Start()
     {
         correctPosition = correctForm.transform.position;
-        correctScale = correctForm.transform.localScale;
+        correctScale = correctForm.transform.localScale * 1.0f;
 
         //initialPosition = GetRandomStartPosition();
         //this.transform.position = initialPosition;
-        
+        initialPosition = transform.position;
+
         //placedPieces.Add(new Rect(this.transform.position.x, this.transform.position.y, this.transform.localScale.x, this.transform.localScale.y));
     }
 
@@ -106,7 +106,7 @@ public class Tangram : MonoBehaviour
 
     public void ResetPosition()
     {
-        this.transform.position = initialPosition;
+        transform.position = initialPosition;
     }
     /*
     private bool IsOverlapping(Rect pieceRect)
