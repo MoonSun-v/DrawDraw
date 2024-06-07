@@ -31,6 +31,7 @@ public class ScratchManager : MonoBehaviour
     // RaycastTarget 비활성화 버튼
     public GameObject ReturnButton; // 처음부터
     public GameObject EraserButton; // 지우개 
+    public GameObject Crayon; // 크레용 부모 
 
     public GameObject Blocker; // 팝업 활성화 시, 다른 오브젝트 터치 막아주기 
     public GameObject CheckPopup; // 팝업 
@@ -103,6 +104,8 @@ public class ScratchManager : MonoBehaviour
 
             // 지우개 RaycastTarget 활성화
             EraserButton.GetComponent<Image>().raycastTarget = true;
+
+            
 
             // GUI 완성 시, 시각화도 시켜주기
 
@@ -182,19 +185,7 @@ public class ScratchManager : MonoBehaviour
                 gameResult.score = Score; // 점수 저장 
                 gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
 
-                // 60 % 미만: 게임 실패
-                // 60 % 이상 80 % 미만 : 경험치 5
-                // 80 % 이상 : 경험치 10
-                /*
-                if (Score < 60) // 게임 실패
-                {
-
-                }
-                else // 게임 성공 
-                {
-
-                }
-                */
+                
                 // 결과 화면으로 넘어가기 
                 StartCoroutine(ResultSceneDelay()); // StartCoroutine( "메소드이름", 매개변수 );
             }
@@ -202,6 +193,35 @@ public class ScratchManager : MonoBehaviour
         }
         else
         {
+            // 크레용 RaycastTarget 비활성화 및 안쪽으로 넣기
+
+            // 부모 오브젝트의 자식 오브젝트들을 가져옴
+            Transform[] children = Crayon.GetComponentsInChildren<Transform>();
+
+            // 모든 자식 오브젝트들의 RaycastTarget 비활성화
+            foreach (Transform child in children)
+            {
+                if (child != Crayon.transform) // 자기 자신 제외
+                {
+                    Image image = child.GetComponent<Image>();
+                    if (image != null)
+                    {
+                        image.raycastTarget = false;
+                    }
+
+                    // x 위치를 1000으로 통일
+                    Vector3 CrayonPosition = child.localPosition;
+                    CrayonPosition.x = 1000;
+                    child.localPosition = CrayonPosition;
+                }
+            }
+
+            // 지우개 버튼 바깥쪽으로 밀어주기
+            Transform EraserTransform = EraserButton.GetComponent<Transform>();
+            Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
+            EraserTransform.position = EraserPosition;
+            print("지우개 나옵니다.");
+
             // 팝업 비활성화
             CheckPopup.SetActive(false);
 
@@ -272,6 +292,8 @@ public class ScratchManager : MonoBehaviour
         OffBlocker();
 
     }
+
+
 
     private void OnBlocker()
     {
