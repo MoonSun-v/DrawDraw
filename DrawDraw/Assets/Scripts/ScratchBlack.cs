@@ -189,18 +189,21 @@ public class ScratchBlack : MonoBehaviour
     }
 
     // 회색 부분의 투명도를 확인하는 함수
-    public void CheckGrayPercentage()
+    public float CheckGrayPercentage()
     {
         // scratchBlack이 활성화 되어있을 때만 계산  
         if (scratchBlack.activeSelf)
         {
             float percentage;
             bool allGrayCleared = CheckIfGrayPartsCleared(out percentage);
-            Debug.Log("회색 부분이 투명해진 퍼센트: " + percentage + "%");
+            // print("회색 부분이 투명해진 퍼센트: " + percentage + "%");
 
             // 점수 산출 시, 재사용 위해 이미지 복구 하기 
             ResetScratch();
+
+            return percentage;
         }
-            
+
+        return -1f;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScratchManager : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class ScratchManager : MonoBehaviour
     public GameObject SelectDraw; // 도안 선택 팝업 
 
     public GameObject[] ImageButton = new GameObject[4]; // 버튼 4개 
+
+    public Text ScoreText; // 임시 점수 표시용 텍스트
 
     private bool isReturn;
     private bool isEraser;
@@ -156,10 +159,8 @@ public class ScratchManager : MonoBehaviour
     {
         if(ScratchBlack.activeSelf)
         {
-            // 점수 계산
-            scratchblack.CheckGrayPercentage();
-
             // 결과 화면으로 넘어가기 
+            StartCoroutine(ResultSceneDelay());
         }
         else
         {
@@ -186,9 +187,17 @@ public class ScratchManager : MonoBehaviour
         // 5 초 후 실행
         yield return new WaitForSeconds(5);
 
-        // 랜덤 도안 띄우고
+        // 랜덤 도안 띄우기
         SelectDraw.SetActive(true);
 
+    }
+
+    IEnumerator ResultSceneDelay()
+    {
+        // 2 초 후 실행
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("ResultScene");
     }
 
     // 도안 선택 시, 알맞은 도안 띄워주기
