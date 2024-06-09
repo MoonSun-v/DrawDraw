@@ -7,7 +7,9 @@ public class ScratchExplain : MonoBehaviour
 {
     public Text Explain; // 설명 텍스트 
 
-    // public GameObject ScratchBlack; // 검은도안 
+    public GameObject BlackLineAnim; // 검은선 색칠하는 오브젝트 
+    public GameObject SelectDraw; // 도안선택 창
+    public GameObject BlackScratch; // 도안 활성화 
 
     [SerializeField]
     private ScratchDraw scratchdraw;
@@ -17,9 +19,17 @@ public class ScratchExplain : MonoBehaviour
     public Camera cameraToCapture; // 캡처할 카메라
     public GameObject targetObject; // 캡처할 영역의 오브젝트
     public bool stopCalculating = false; // 계산 중단 플래그
+    float whitePixelRatio;
 
     private bool isSelectCryon; // 색연필을 선택 했는가?
     private bool isStart; // 색칠을 시작했는가?
+    private bool isDrawing; // 색칠을 하고 있는가?
+    private bool isBlackLine; // 검은색 칠해지는 애니메이션?
+    private bool isSelect; // 도안 선택 창 띄워졌는가?
+    private bool isBlackAct; // 도안 활성화 되었는가?
+    private bool isStartSratch; // 검은 도안 긁어졌는가?
+    private bool isPlaying; // 검은 도안 긁고 있는가?
+    private bool isGray; // 회색을 절반 정도 긁었는가?
 
     void Start()
     {
@@ -41,16 +51,73 @@ public class ScratchExplain : MonoBehaviour
 
         // 처음 색을 칠하고 5초 정도 후에 
         // -> 색연필의 색깔은 언제나 마음대로 바꿀 수 있어
-        else if(scratchdraw.isStartDraw && !isStart)
+        else if(scratchdraw.isStartDraw && (!isStart))
         {
             StartCoroutine(ExplainColorChangeOK(8f));
 
             isStart = true;
         }
 
+        // -> 열심히 흰 도화지를 모두 색칠해보자! 
+        else if(isStart && (!isDrawing) && (!isBlackLine))
+        {
+            StartCoroutine(ExplainDrawing(18f));
+
+            isDrawing = true;
+        }
+
         // 흰 도화지의 50퍼 이상이 칠해졌다면
         // -> 색칠을 모두 끝냈다면 완성 버튼을 클릭해보자
+        else if(whitePixelRatio < 0.5f && (!stopCalculating))
+        {
+            Explain.text = "색칠을 모두 끝냈다면 완성 버튼을 클릭해보자";
 
+            stopCalculating = true;
+        }
+
+        // 완성 버튼이 클릭 되고, 검은색 덮이는 애니메이션 재생 중
+        // -> 도화지가 검은색으로 덮이고 있어
+        else if(BlackLineAnim.activeSelf && (!isBlackLine))
+        {
+            Explain.text = "도화지가 검은색으로 덮이고 있어!";
+            stopCalculating = true;
+            isBlackLine = true;
+        }
+
+        // 도안 선택 창이 활성화 되면
+        // -> 4가지 그림 중 마음에 드는 그림을 골라볼까?
+        else if(SelectDraw.activeSelf && (!isSelect))
+        {
+            Explain.text = "4가지 그림 중 마음에 드는 그림을 골라볼까?";
+            isSelect = true;
+        }
+
+        // 도안이 활성화 되면
+        // -> 검은색과 회색 중에서 회색 부분을 펜으로 그어볼래?
+        else if(BlackScratch.activeSelf && (!isBlackAct))
+        {
+            Explain.text = "검은색과 회색 중에서 회색 부분을 펜으로 그어볼래?";
+            isBlackAct = true;
+        }
+
+        // 한번 긁어낸 후
+        // -> 회색을 긁어내니까 아까 우리가 색칠한 도화지가 보이네!
+        // -> 회색부분만 모두 긁어내볼까? 
+        else if(scratchblack.isScratching && (!isStartSratch) && (!isGray))
+        {
+            Explain.text = "회색을 긁어내니까 아까 우리가 색칠한 도화지가 보이네!";
+            StartCoroutine(ExplainScratching(5f));
+            isStartSratch = true;
+        }
+
+        // 스크래치 입력이 있고 난 후 
+        // -> 잘하고 있어! 회색을 모두 긁어내면 완성 버튼을 눌러줘!
+        else if (isPlaying && (!isGray))
+        {
+            print("잘하고 있어! 회색을 모두 긁어내면 완성 버튼을 눌러줘!");
+            StartCoroutine(ExplainFinish(20f));
+            isGray = true;
+        }
 
     }
 
@@ -59,6 +126,28 @@ public class ScratchExplain : MonoBehaviour
         yield return new WaitForSeconds(interval);
 
         Explain.text = "색연필의 색깔은 언제나 마음대로 바꿀 수 있어";
+    }
+
+    IEnumerator ExplainDrawing(float interval)
+    {
+        yield return new WaitForSeconds(interval);
+
+        Explain.text = "열심히 흰 부분을 모두 색칠해보자!";
+    }
+
+    IEnumerator ExplainScratching(float interval)
+    {
+        yield return new WaitForSeconds(interval);
+
+        Explain.text = "회색부분만 모두 긁어내볼까?";
+        isPlaying = true;
+    }
+
+    IEnumerator ExplainFinish(float interval)
+    {
+        yield return new WaitForSeconds(interval);
+
+        Explain.text = "잘하고 있어! 회색을 모두 긁어내면 완성 버튼을 눌러줘!";
     }
 
     // 특정 간격으로 흰색 픽셀 비율을 계산 : 코루틴 
@@ -71,7 +160,7 @@ public class ScratchExplain : MonoBehaviour
 
             // 스크린샷을 캡처 -> 흰색 픽셀 비율을 계산
             Texture2D screenShot = CaptureScreenshot(cameraToCapture, captureRect);
-            float whitePixelRatio = CalculateWhitePixelRatio(screenShot);
+            whitePixelRatio = CalculateWhitePixelRatio(screenShot);
             print("흰색 픽셀의 비율: " + whitePixelRatio);
 
             // 대기

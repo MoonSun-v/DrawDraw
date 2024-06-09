@@ -1511,6 +1511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explain: {fileID: 301035429}
+  BlackLineAnim: {fileID: 429054412}
+  SelectDraw: {fileID: 1864851352}
+  BlackScratch: {fileID: 723190836}
   scratchdraw: {fileID: 2139480532}
   scratchblack: {fileID: 723190840}
   cameraToCapture: {fileID: 519420031}
@@ -2100,6 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26a354f0b818ce41857db59b3fa8050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScratching: 0
   scratchBlack: {fileID: 723190836}
 --- !u!1 &783119987
 GameObject:
@@ -5375,6 +5379,8 @@ MonoBehaviour:
   Scratch: {fileID: 684673041}
   lineRenderers: []
   ScratchBlack: {fileID: 723190836}
+  isSelectColor: 0
+  isStartDraw: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
