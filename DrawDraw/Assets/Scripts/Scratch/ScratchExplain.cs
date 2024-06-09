@@ -31,6 +31,9 @@ public class ScratchExplain : MonoBehaviour
     private bool isPlaying; // 검은 도안 긁고 있는가?
     private bool isGray; // 회색을 절반 정도 긁었는가?
 
+    private Coroutine ColorChangeCoroutine;
+    private Coroutine DrawingCoroutine;
+
     void Start()
     {
         // 코루틴 시작
@@ -53,15 +56,15 @@ public class ScratchExplain : MonoBehaviour
         // -> 색연필의 색깔은 언제나 마음대로 바꿀 수 있어
         else if(scratchdraw.isStartDraw && (!isStart))
         {
-            StartCoroutine(ExplainColorChangeOK(8f));
+            ColorChangeCoroutine = StartCoroutine(ExplainColorChangeOK(8f));
 
             isStart = true;
         }
 
         // -> 열심히 흰 도화지를 모두 색칠해보자! 
-        else if(isStart && (!isDrawing) && (!isBlackLine))
+        else if(isStart && (!isDrawing) && (!isBlackLine) && (!stopCalculating))
         {
-            StartCoroutine(ExplainDrawing(18f));
+            DrawingCoroutine = StartCoroutine(ExplainDrawing(18f));
 
             isDrawing = true;
         }
@@ -70,6 +73,17 @@ public class ScratchExplain : MonoBehaviour
         // -> 색칠을 모두 끝냈다면 완성 버튼을 클릭해보자
         else if(whitePixelRatio < 0.5f && (!stopCalculating))
         {
+            if (ColorChangeCoroutine != null)
+            {
+                StopCoroutine(ColorChangeCoroutine);
+                print("ColorChange 코루틴이 중단되었습니다.");
+            }
+            if (DrawingCoroutine != null)
+            {
+                StopCoroutine(DrawingCoroutine);
+                print("Drawing 코루틴이 중단되었습니다.");
+            }
+
             Explain.text = "색칠을 모두 끝냈다면 완성 버튼을 클릭해보자";
 
             stopCalculating = true;
@@ -79,6 +93,17 @@ public class ScratchExplain : MonoBehaviour
         // -> 도화지가 검은색으로 덮이고 있어
         else if(BlackLineAnim.activeSelf && (!isBlackLine))
         {
+            if (ColorChangeCoroutine != null)
+            {
+                StopCoroutine(ColorChangeCoroutine);
+                print("ColorChange 코루틴이 중단되었습니다.");
+            }
+            if (DrawingCoroutine != null)
+            {
+                StopCoroutine(DrawingCoroutine);
+                print("Drawing 코루틴이 중단되었습니다.");
+            }
+
             Explain.text = "도화지가 검은색으로 덮이고 있어!";
             stopCalculating = true;
             isBlackLine = true;

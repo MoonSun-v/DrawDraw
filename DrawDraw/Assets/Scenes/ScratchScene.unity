@@ -2103,6 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26a354f0b818ce41857db59b3fa8050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scratchManager: {fileID: 684673041}
   isScratching: 0
   scratchBlack: {fileID: 723190836}
 --- !u!1 &783119987

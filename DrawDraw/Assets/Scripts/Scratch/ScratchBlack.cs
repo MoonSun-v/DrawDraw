@@ -3,6 +3,11 @@ using UnityEngine.UI;
 
 public class ScratchBlack : MonoBehaviour
 {
+    private Camera mainCamera;
+
+    [SerializeField]
+    private ScratchManager scratchManager;
+
     private SpriteRenderer spriteRenderer; // 스프라이트 렌더러 컴포넌트
     private Texture2D scratchTexture; // 스크레치 텍스처
     public bool isScratching = false; // 스크레치 중인지 여부
@@ -14,7 +19,10 @@ public class ScratchBlack : MonoBehaviour
     private Color[] originalColors; // 원래 색상 배열
 
     public GameObject scratchBlack; // 자기자신 
-
+    void Awake()
+    {
+        mainCamera = Camera.main;
+    }
     void Start()
     {
         // 스프라이트 렌더러 컴포넌트 가져오기
@@ -41,8 +49,21 @@ public class ScratchBlack : MonoBehaviour
         // 마우스 입력 감지
         if (Input.GetMouseButtonDown(0))
         {
-            isScratching = true;
-            lastMousePosition = null; // 마우스를 처음 누를 때 이전 위치 초기화
+            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            // 입력 마우스의 x, y 좌표가 범위 밖으로 벗어나면 X
+            if (mousePos.x < scratchManager.Limit_l.position.x || 
+                mousePos.x > scratchManager.Limit_R.position.x || 
+                mousePos.y < scratchManager.Limit_B.position.y || 
+                mousePos.y > scratchManager.Limit_T.position.y)
+            {
+                return;
+            }
+            else
+            {
+                isScratching = true;
+                lastMousePosition = null; // 마우스를 처음 누를 때 이전 위치 초기화
+            }
+            
         }
         else if (Input.GetMouseButton(0) && isScratching)
         {
