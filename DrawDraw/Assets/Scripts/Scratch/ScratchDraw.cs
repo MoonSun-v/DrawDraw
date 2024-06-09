@@ -28,13 +28,16 @@ public class ScratchDraw: MonoBehaviour
 
     public GameObject ScratchBlack;
 
+    public bool isSelectColor;
+    public bool isStartDraw;
+
     private void Start()
     {
         lineRenderer = brush.GetComponent<LineRenderer>();
 
         // 기본 색상은 그레이
-        lineColor = Color.gray;
-        SetLineColor();
+        // lineColor = Color.gray;
+        // SetLineColor();
     }
 
     private void Update()
@@ -105,6 +108,7 @@ public class ScratchDraw: MonoBehaviour
             AddAPoint(mousePos);
             lastPos = mousePos;
         }
+
         
     }
 
@@ -116,6 +120,12 @@ public class ScratchDraw: MonoBehaviour
     public void FinishLineRenderer()
     {
         currentLineRenderer = null; // 현재 그리는 선 종료
+
+        if (!isStartDraw) // 첫 색칠이 시작되면 
+        {
+            isStartDraw = true;
+            print("isStartDraw가 true가 되었습니다");
+        }
     }
 
     public void SetLineColor()
@@ -123,6 +133,12 @@ public class ScratchDraw: MonoBehaviour
         // LineRenderer의 색상을 설정합니다.
         lineRenderer.startColor = lineColor;
         lineRenderer.endColor = lineColor;
+
+        if(!isSelectColor)
+        {
+            isSelectColor = true;
+            print("isSelectColor가 true가 되었습니다");
+        }
     }
 
 

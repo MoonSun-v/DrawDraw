@@ -40,7 +40,7 @@ public class ScratchManager : MonoBehaviour
     public GameObject[] ImageButton = new GameObject[4]; // 버튼 4개 
 
     public Text ScoreText; // 임시 점수 표시용 텍스트
-
+    
     private bool isReturn;
     private bool isEraser;
 
