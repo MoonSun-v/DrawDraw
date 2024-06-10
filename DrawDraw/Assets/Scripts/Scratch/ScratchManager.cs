@@ -120,7 +120,8 @@ public class ScratchManager : MonoBehaviour
         else
         {
             ScratchDraw.SetActive(true);
-            
+            scratchblack.enabled = false;
+
             EraserButton.GetComponent<Image>().raycastTarget = false;
         }
 

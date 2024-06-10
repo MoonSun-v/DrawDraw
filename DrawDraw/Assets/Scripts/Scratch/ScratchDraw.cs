@@ -67,6 +67,7 @@ public class ScratchDraw: MonoBehaviour
             // currentLineRenderer = null; // 현재 그리는 선 종료
             FinishLineRenderer();
         }
+
     }
 
     // 브러시를 생성, 초기화

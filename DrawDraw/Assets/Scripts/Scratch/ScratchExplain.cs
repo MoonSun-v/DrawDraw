@@ -186,7 +186,7 @@ public class ScratchExplain : MonoBehaviour
             // 스크린샷을 캡처 -> 흰색 픽셀 비율을 계산
             Texture2D screenShot = CaptureScreenshot(cameraToCapture, captureRect);
             whitePixelRatio = CalculateWhitePixelRatio(screenShot);
-            print("흰색 픽셀의 비율: " + whitePixelRatio);
+            // print("흰색 픽셀의 비율: " + whitePixelRatio);
 
             // 대기
             yield return new WaitForSeconds(interval);
