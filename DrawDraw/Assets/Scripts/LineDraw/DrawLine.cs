@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class DrawLine : MonoBehaviour
 {
@@ -14,6 +14,10 @@ public class DrawLine : MonoBehaviour
 
     [SerializeField]
     private MonoBehaviour LineDrawManager; // 활성화를 판단할 스크립트
+
+    public GameObject finishButton;
+    //public Sprite defaultSprite;
+    public Sprite activeSprite;
 
     void Update()
     {
@@ -36,6 +40,17 @@ public class DrawLine : MonoBehaviour
                         CreateNewLine();
                     }
                     AddPointToLine(currentPosition);
+
+                    // 선이 그려지면 버튼 이미지 변경
+                    finishButton.GetComponent<Image>().sprite = activeSprite;
+                    finishButton.GetComponent<Image>().preserveAspect = true; // 비율 유지
+                                                                              // 버튼 이미지의 부모 UI 오브젝트의 RectTransform을 가져옵니다.
+                    RectTransform buttonRectTransform = finishButton.GetComponent<RectTransform>();
+
+                    // 원하는 스케일로 버튼 이미지의 크기를 조절합니다.
+                    float desiredScaleX = 1.67f; // x축 스케일
+                    float desiredScaleY = 1.67f; // y축 스케일
+                    buttonRectTransform.localScale = new Vector2(desiredScaleX, desiredScaleY);
                 }
             }
             // 마우스 클릭 또는 터치가 끝나면 현재 선을 비운다.
