@@ -14,7 +14,6 @@ public class CollisionCounter : MonoBehaviour
 
     public Text scoreText;
 
-
     private void Start()
     {
         // 콜라이더 수만큼 배열 초기화
@@ -76,7 +75,6 @@ public class CollisionCounter : MonoBehaviour
                             }
                         }
                     }
-
                 }
                 lastPosition = currentPosition;
             }

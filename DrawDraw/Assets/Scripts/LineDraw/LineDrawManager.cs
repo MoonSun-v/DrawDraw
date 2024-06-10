@@ -11,9 +11,12 @@ public class LineDrawManager : MonoBehaviour
     //Vector2[] vertices = new Vector2[4]; // 그리기 사각형 영역의 꼭짓점
     public bool DrawActivate=true; // 활성화 여부
 
-    private PopupManager popup;
+    //private PopupManager popup;
     private SpriteRenderer spriteRenderer;
     private Vector2[] corners;
+
+    public GameObject GameResult; // 게임의 결과 팝업
+
 
     void Awake()
     {
@@ -57,7 +60,7 @@ public class LineDrawManager : MonoBehaviour
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         // 입력 마우스의 x, y 좌표가 범위 밖으로 벗어나면 Draw 비활성화 
-        if (mousePos.x < corners[0].x || mousePos.x > corners[1].x || mousePos.y < corners[0].y || mousePos.y > corners[2].y)
+        if (mousePos.x < corners[0].x || mousePos.x > corners[1].x || mousePos.y < corners[0].y || mousePos.y > corners[2].y || GameResult.activeSelf == true)
         {
             SetDrawActivate(false);
         }

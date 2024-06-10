@@ -1582,6 +1582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DrawArea: {fileID: 603973058}
   DrawActivate: 1
+  GameResult: {fileID: 182548433}
 --- !u!4 &1271192401
 Transform:
   m_ObjectHideFlags: 0

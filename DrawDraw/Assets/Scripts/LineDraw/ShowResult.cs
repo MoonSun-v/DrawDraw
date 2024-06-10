@@ -8,7 +8,7 @@ public class ShowResult : MonoBehaviour
 
     public void ShowResultPopup()
     {
-        //Debug.Log("결과 보기");
+        Debug.Log("결과 보기");
         popupManager.Show(); // 결과 팝업 띄우기
     }
 }
