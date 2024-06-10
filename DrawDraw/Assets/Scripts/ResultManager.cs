@@ -33,9 +33,24 @@ public class ResultManager : MonoBehaviour
             
         }
 
+        // 점선 그리기 
         if (gameResult.previousScene == "DotLineScene")
         {
             if (gameResult.score < 60) // 게임 오버
+            {
+                isClear = false;
+            }
+            else // 게임 클리어
+            {
+                isClear = true;
+            }
+        }
+
+        // 선 그리기
+        // 6번 이상의 충돌 : 게임 오버
+        if (gameResult.previousScene == "LineScene")
+        {
+            if (gameResult.score >= 6) // 게임 오버
             {
                 isClear = false;
             }
