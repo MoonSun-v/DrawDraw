@@ -9,6 +9,7 @@ public class ScratchManager : MonoBehaviour
     private Camera mainCamera;
 
     public GameObject BlackBase;
+    public GameObject BlackAnim;
     public GameObject BlackLine;
     private Animator BaseAnim;
 
@@ -228,8 +229,8 @@ public class ScratchManager : MonoBehaviour
             //OnBlocker();
 
             // 검정색으로 덮는 애니메이션
-            BlackBase.SetActive(true); 
-            BlackLine.SetActive(true); // 추후 다시 비활성화 필요 
+            BlackBase.SetActive(true);
+            BlackAnim.SetActive(true); // 추후 다시 비활성화 필요 
 
             BaseAnim.SetBool("isBlackBase",true);
 
@@ -285,6 +286,7 @@ public class ScratchManager : MonoBehaviour
 
         SelectDraw.SetActive(false);
         BlackBase.SetActive(false);
+        BlackAnim.SetActive(false);
         BlackLine.SetActive(false);
 
         ScratchBlack.SetActive(true);
