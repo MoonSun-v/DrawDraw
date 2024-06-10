@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explain: {fileID: 301035429}
-  BlackLineAnim: {fileID: 0}
+  BlackLineAnim: {fileID: 380744853}
   SelectDraw: {fileID: 1864851352}
   BlackScratch: {fileID: 723190836}
   scratchdraw: {fileID: 2139480532}
