@@ -32,8 +32,20 @@ public class ResultManager : MonoBehaviour
             }
             
         }
-        
-        if(isClear)
+
+        if (gameResult.previousScene == "DotLineScene")
+        {
+            if (gameResult.score < 60) // 게임 오버
+            {
+                isClear = false;
+            }
+            else // 게임 클리어
+            {
+                isClear = true;
+            }
+        }
+
+        if (isClear)
         {
             scoreText.text = "축하하고 있는 캐릭터";
         }
