@@ -12,6 +12,8 @@ public class ScratchManager : MonoBehaviour
     public GameObject BlackAnim;
     public GameObject BlackLine;
     private Animator BaseAnim;
+    private Animator CrayonAnim;
+    private Animator EraserAnim;
 
     public Transform Limit_l;
     public Transform Limit_R;
@@ -55,6 +57,8 @@ public class ScratchManager : MonoBehaviour
     void Start()
     {
         BaseAnim = BlackBase.GetComponent<Animator>();
+        CrayonAnim = Crayon.GetComponent<Animator>();
+        EraserAnim = EraserButton.GetComponent<Animator>();
     }
 
 
@@ -211,25 +215,37 @@ public class ScratchManager : MonoBehaviour
                         image.raycastTarget = false;
                     }
 
-                    
+
                     // 크레용 집어넣기
+                    // 이전 버튼이 있다면 원래 위치로 되돌리기고 애니메이션 실행 
+                    if (scratchdraw.previousButton != null)
+                    {
+                        RectTransform prevRt = scratchdraw.previousButton.GetComponent<RectTransform>();
+                        prevRt.localPosition = scratchdraw.previousButtonOriginalPosition;
+                    }
+                    CrayonAnim.SetBool("isCrayonBack", true);
+
+                    /*
                     Vector3 CrayonPosition = child.localPosition;
                     CrayonPosition.x = 1300;
                     child.localPosition = CrayonPosition;
                     print("크레용 들어갑니다.");
-
+                    */
                 }
             }
 
             // 지우개 내보내기
+            EraserAnim.SetBool("isEraserFront", true);
+            /*
             Transform EraserTransform = EraserButton.GetComponent<Transform>();
-            //Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
-            //EraserTransform.position = EraserPosition;
             Vector3 EraserPosition = EraserTransform.position;
             EraserPosition.x = 1950;
             EraserTransform.position = EraserPosition;
+            //Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
+            //EraserTransform.position = EraserPosition;
+
             print("지우개 나옵니다.");
-            
+            */
 
             // 팝업 비활성화
             CheckPopup.SetActive(false);

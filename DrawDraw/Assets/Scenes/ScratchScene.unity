@@ -2089,6 +2089,7 @@ GameObject:
   - component: {fileID: 642980237}
   - component: {fileID: 642980236}
   - component: {fileID: 642980235}
+  - component: {fileID: 642980238}
   m_Layer: 5
   m_Name: EraserButton
   m_TagString: Untagged
@@ -2197,6 +2198,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642980233}
   m_CullTransparentMesh: 1
+--- !u!95 &642980238
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642980233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 294c5893a40550c47b5d5d0558688e0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &666027141
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,6 +6354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112446344}
+  - component: {fileID: 2112446345}
   m_Layer: 5
   m_Name: Crayon
   m_TagString: Untagged
@@ -6365,6 +6388,27 @@ RectTransform:
   m_AnchoredPosition: {x: 74, y: -266}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2112446345
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112446343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a45927771d3715947a5c1c5bfcdf47f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2131795171
 GameObject:
   m_ObjectHideFlags: 0

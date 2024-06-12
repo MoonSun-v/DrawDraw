@@ -20,8 +20,8 @@ public class ScratchDraw: MonoBehaviour
 
     public ScratchManager Scratch;
 
-    private GameObject previousButton; // 이전에 클릭된 버튼을 추적하기 위한 변수
-    private Vector3 previousButtonOriginalPosition; // 이전 버튼의 원래 위치를 저장
+    public GameObject previousButton; // 이전에 클릭된 버튼을 추적하기 위한 변수
+    public Vector3 previousButtonOriginalPosition; // 이전 버튼의 원래 위치를 저장
     private int CrayonMove = 90;
 
     public List<GameObject> lineRenderers = new List<GameObject>(); // 생성된 LineRenderer를 추적하기 위한 리스트
