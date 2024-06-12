@@ -211,18 +211,25 @@ public class ScratchManager : MonoBehaviour
                         image.raycastTarget = false;
                     }
 
-                    // x 위치를 1000으로 통일
+                    
+                    // 크레용 집어넣기
                     Vector3 CrayonPosition = child.localPosition;
-                    CrayonPosition.x = 1000;
+                    CrayonPosition.x = 1300;
                     child.localPosition = CrayonPosition;
+                    print("크레용 들어갑니다.");
+
                 }
             }
 
-            // 지우개 버튼 바깥쪽으로 밀어주기
+            // 지우개 내보내기
             Transform EraserTransform = EraserButton.GetComponent<Transform>();
-            Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
+            //Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
+            //EraserTransform.position = EraserPosition;
+            Vector3 EraserPosition = EraserTransform.position;
+            EraserPosition.x = 1950;
             EraserTransform.position = EraserPosition;
             print("지우개 나옵니다.");
+            
 
             // 팝업 비활성화
             CheckPopup.SetActive(false);
