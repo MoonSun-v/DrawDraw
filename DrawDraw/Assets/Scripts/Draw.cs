@@ -14,6 +14,9 @@ public class Draw : MonoBehaviour
     [SerializeField, Range(0.0f, 2.0f)]
     private float width; // 선 굵기 조절 
 
+    public List<GameObject> lineRenderers = new List<GameObject>(); // 생성된 LineRenderer를 추적하기 위한 리스트
+
+
     private void Update()
     {
         Drawing();
@@ -51,6 +54,8 @@ public class Draw : MonoBehaviour
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
 
+        // 생성된 LineRenderer 객체를 리스트에 추가
+        lineRenderers.Add(brushInstance);
     }
 
     // 선에 새로운 점 추가 : 선의 positionCount 증가시키고 새로운 점 위치 설정 
@@ -70,5 +75,16 @@ public class Draw : MonoBehaviour
             AddAPoint(mousePos);
             lastPos = mousePos;
         }
+    }
+
+    // 생성된 모든 LineRenderer 객체를 삭제하는 메서드
+    public void ClearAllLineRenderers()
+    {
+        foreach (GameObject lineRendererObject in lineRenderers)
+        {
+            Destroy(lineRendererObject);
+        }
+        lineRenderers.Clear(); // 리스트 초기화
+
     }
 }
