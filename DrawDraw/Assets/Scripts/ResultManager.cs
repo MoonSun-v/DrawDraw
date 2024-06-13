@@ -36,7 +36,7 @@ public class ResultManager : MonoBehaviour
         // 점선 그리기 
         if (gameResult.previousScene == "DotLineScene")
         {
-            if (gameResult.score < 60) // 게임 오버
+            if (gameResult.score < 50) // 게임 오버
             {
                 isClear = false;
             }
