@@ -680,7 +680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0265, y: 12.1806}
+  m_AnchoredPosition: {x: -0.0265, y: 13.3}
   m_SizeDelta: {x: 13.1014, y: 34.4653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &140010555
@@ -1170,6 +1170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 528608406}
   - component: {fileID: 528608405}
+  - component: {fileID: 528608407}
   m_Layer: 0
   m_Name: map background
   m_TagString: Untagged
@@ -1218,7 +1219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e61092598189b4f47a045524dc1c9f87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4212e2fc278dda4b8f7cdd8458803f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1238,12 +1239,25 @@ Transform:
   m_GameObject: {fileID: 528608404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.06, z: 0}
+  m_LocalPosition: {x: 0, y: 11.3, z: 0}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528608407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528608404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762b80d6fe906d2409142954b2a73c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSprite: {fileID: 21300000, guid: f4212e2fc278dda4b8f7cdd8458803f6, type: 3}
 --- !u!1 &608506987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,7 +2943,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1389706795}
   - component: {fileID: 1389706794}
-  - component: {fileID: 1389706796}
   m_Layer: 0
   m_Name: "\uB9F5\uD654\uBA74"
   m_TagString: Untagged
@@ -3004,19 +3017,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1389706796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389706793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762b80d6fe906d2409142954b2a73c85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newSprite: {fileID: 21300000, guid: 9975377f6519a714e8378a17735c6098, type: 3}
 --- !u!1 &1410545449
 GameObject:
   m_ObjectHideFlags: 0
