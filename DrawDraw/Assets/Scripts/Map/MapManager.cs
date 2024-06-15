@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
     public Sprite newSprite;   // 변경할 스프라이트를 참조할 변수
 
-    private SpriteRenderer spriteRenderer;
+    // private SpriteRenderer spriteRenderer;
+
+    private Image Background;
 
     void Start()
     {
@@ -19,7 +22,10 @@ public class MapManager : MonoBehaviour
         Debug.Log("현재 시간: " + currentTime);
 
         // 현재 오브젝트의 SpriteRenderer 컴포넌트를 가져옴
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // 현재 오브젝트의 Image 컴포넌트를 가져옴
+        Background = GetComponent<Image>();
 
         // 시간 확인 및 스프라이트 변경
         CheckAndChangeSprite(currentTime);
@@ -38,7 +44,7 @@ public class MapManager : MonoBehaviour
         if (currentTime.Hour >= 18 || currentTime.Hour < 5)
         {
             // 스프라이트를 변경
-            spriteRenderer.sprite = newSprite;
+            Background.sprite = newSprite;
         }
     }
 }
