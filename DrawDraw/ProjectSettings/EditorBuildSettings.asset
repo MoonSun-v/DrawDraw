@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DotLineScene.unity
     guid: e53cdd9fa2ab71840b93b26e5eac7198
   - enabled: 1
-    path: Assets/Scenes/LineScene.unity
+    path: Assets/Scenes/Line/LineScene.unity
     guid: a4208ad5e83d4774a8be5c38f19a2157
   - enabled: 1
     path: Assets/Scenes/FigureCombinationScene/WaterDropScene.unity
