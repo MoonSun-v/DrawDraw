@@ -26,7 +26,7 @@ public class CurveLine : MonoBehaviour
         edgeCollider = GetComponent<EdgeCollider2D>();
         if (edgeCollider == null)
         {
-            
+            edgeCollider = gameObject.AddComponent<EdgeCollider2D>();
         }
 
         // LineRenderer의 포인트 수를 설정
