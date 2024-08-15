@@ -5,6 +5,7 @@ using UnityEngine;
 public class CurveLine : MonoBehaviour
 {
     public Transform[] controlPoints; // 16개의 제어점을 담을 배열
+    public int points = 0;
     public int segmentCount = 50; // 곡선의 세밀함을 결정하는 세그먼트 수
     private LineRenderer lineRenderer; // LineRenderer 컴포넌트
 
@@ -13,9 +14,9 @@ public class CurveLine : MonoBehaviour
     void Start()
     {
         // 제어점이 16개인지 확인
-        if (controlPoints.Length != 16)
+        if (controlPoints.Length != points)
         {
-            Debug.LogError("You must assign exactly 16 control points.");
+            Debug.LogError("You must assign exactly control points.");
             return;
         }
 
@@ -96,12 +97,13 @@ public class CurveLine : MonoBehaviour
     // 에디터 모드에서 Bezier 곡선을 Gizmos로 그리는 메서드
     void OnDrawGizmos()
     {
-        if (controlPoints.Length == 16)
+        if (controlPoints.Length == points)
         {
             Gizmos.color = Color.red;
 
             // 4개의 Bezier 곡선을 그리기 위해 루프
-            for (int i = 0; i < 4; i++)
+            int count = points / 4;
+            for (int i = 0; i < count; i++)
             {
                 Vector3 p0 = controlPoints[i * 4].position;
                 Vector3 p1 = controlPoints[i * 4 + 1].position;
