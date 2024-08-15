@@ -22,8 +22,32 @@ public class DrawLine : MonoBehaviour
     //public Sprite defaultSprite;
     public Sprite activeSprite;
 
+    private bool isDrawing = false;
+    private float timer = 0f;
+    public float timeLimit = 5f; // 선이 그려지지 않을 때 게임 오버가 되는 시간 (초 단위)
+
+    public GameObject timeChar;
+
     void Update()
     {
+        // 타이머 업데이트
+        if (!isDrawing)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= timeLimit)
+            {
+                Debug.Log("5초 지남");
+                timeChar.SetActive(true);
+                Invoke("timeEffect", 3f);
+            }
+        }
+        else
+        {
+            // 선이 그려지고 있을 때는 타이머를 초기화
+            timer = 0f;
+        }
+
         // 그리기 영역 안에 있어야 그리기 가능
         if (LineDrawManager.GetComponent<LineDrawManager>().DrawActivate)
         { // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
@@ -60,6 +84,7 @@ public class DrawLine : MonoBehaviour
             else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
                 currentLineRenderer = null; // 현재 그리는 선 종료
+                isDrawing = false;
             }
         }
 
@@ -72,6 +97,8 @@ public class DrawLine : MonoBehaviour
 
     void CreateNewLine()
     {
+        isDrawing = true;
+
         // 새로운 선을 그릴 GameObject 생성
         GameObject newLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
         currentLineRenderer = newLine.GetComponent<LineRenderer>();
@@ -127,5 +154,11 @@ public class DrawLine : MonoBehaviour
         }
 
         return Camera.main.ScreenToWorldPoint(inputPosition);
+    }
+
+    private void timeEffect()
+    {
+        timeChar.SetActive(false);
+        timer = 0f;
     }
 }
