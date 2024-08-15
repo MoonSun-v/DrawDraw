@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class resultPopupManager : MonoBehaviour
 {
     public Text Text_GameResult; // 게임의 결과를 표시해줄 Text Ui
-    public Text ScoreText; // 게임의 결과를 가져올 Text Ui\
+    public Text ScoreText; // 게임의 결과를 가져올 Text Ui
 
-    public GameResultSO gameResult; // 게임 결과화면 관리 SO
-
+    private GameResultSO gameResult; // 게임 결과화면 관리 SO
     public void Show()
     {
-        Text_GameResult.text = ScoreText.text+"번 벗어났습니다."; // 팝업의 점수 창에 현재 점수를 표시한다.
+        Text_GameResult.text = ScoreText.text + "번 벗어났습니다."; // 팝업의 점수 창에 현재 점수를 표시한다.
         transform.gameObject.SetActive(true); // 결과 팝업 창을 화면에 표시
     }
 
@@ -38,8 +37,8 @@ public class resultPopupManager : MonoBehaviour
 
     IEnumerator ResultSceneDelay()
     {
-       // 2 초 후 실행
-       yield return new WaitForSeconds(2);
+        // 2 초 후 실행
+        yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene("ResultScene");
     }

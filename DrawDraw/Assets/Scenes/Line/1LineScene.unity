@@ -2756,7 +2756,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Text_GameResult: {fileID: 1268536602}
   ScoreText: {fileID: 1112826246}
-  gameResult: {fileID: 0}
 --- !u!114 &1224907511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3342,7 +3341,6 @@ GameObject:
   - component: {fileID: 1524773002}
   - component: {fileID: 1524773001}
   - component: {fileID: 1524773000}
-  - component: {fileID: 1524773003}
   m_Layer: 5
   m_Name: Button_next
   m_TagString: Untagged
@@ -3414,9 +3412,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1524773003}
+      - m_Target: {fileID: 11500000, guid: 5d0b2b20149fba54bb89e2df407e6a12, type: 3}
         m_TargetAssemblyTypeName: resultPopupManager, Assembly-CSharp
-        m_MethodName: OnClick_finish
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3464,21 +3462,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524772997}
   m_CullTransparentMesh: 1
---- !u!114 &1524773003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524772997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0b2b20149fba54bb89e2df407e6a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text_GameResult: {fileID: 1268536602}
-  ScoreText: {fileID: 1112826246}
-  gameResult: {fileID: 0}
 --- !u!1 &1529134682
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,6 +3642,8 @@ MonoBehaviour:
   DrawArea: {fileID: 1068187147}
   DrawActivate: 1
   check: {fileID: 2108219558}
+  finish: {fileID: 1224907509}
+  CollisionCounter: {fileID: 687646372}
 --- !u!4 &1614019418
 Transform:
   m_ObjectHideFlags: 0

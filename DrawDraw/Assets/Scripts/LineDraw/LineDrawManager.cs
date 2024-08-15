@@ -16,7 +16,10 @@ public class LineDrawManager : MonoBehaviour
     private Vector2[] corners;
 
     public GameObject check; // 게임의 확인창 팝업
+    public GameObject finish; // 게임의 결과창 팝업
 
+    // 비활성화할 스크립트에 대한 참조
+    public MonoBehaviour CollisionCounter;
 
     void Awake()
     {
@@ -43,7 +46,7 @@ public class LineDrawManager : MonoBehaviour
         {
             SetDrawActivate(false);
         }
-        else if (check.activeSelf == true)
+        else if (check.activeSelf == true || finish.activeSelf == true)
         {
             SetDrawActivate(false);
         }
@@ -56,6 +59,7 @@ public class LineDrawManager : MonoBehaviour
     public void SetDrawActivate(bool isActivate)
     {
         DrawActivate = isActivate;
+        CollisionCounter.enabled = isActivate;
     }
 
     Vector2[] GetSpriteCorners(SpriteRenderer spriteRenderer)
