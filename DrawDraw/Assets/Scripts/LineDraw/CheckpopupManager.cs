@@ -11,6 +11,7 @@ public class CheckpopupManager : MonoBehaviour
 
     public GameObject line1;
     public GameObject line2;
+    public GameObject line3;
 
     public GameObject curveline1;
     public GameObject curveline2;
@@ -29,6 +30,7 @@ public class CheckpopupManager : MonoBehaviour
             // 직선 비활성화
             line1.SetActive(false);
             line2.SetActive(false);
+            line3.SetActive(false);
 
             //곡선 활성화
             curveline1.SetActive(true);
@@ -41,6 +43,7 @@ public class CheckpopupManager : MonoBehaviour
         }
         else if (curveline1.activeSelf)
         {
+            checkPopup.SetActive(false);
             result_popup.Show(); // 결과 팝업 띄우기
         }
 
