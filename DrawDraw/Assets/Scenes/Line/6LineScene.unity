@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 968909526}
   - component: {fileID: 968909528}
   m_Layer: 0
-  m_Name: dogImage
+  m_Name: kidImage
   m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,7 +1215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 63ad68a719dd49648b107da014631ba2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44104db71af5e1643b4e526e79572cee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.34117648}
   m_FlipX: 0
   m_FlipY: 0
@@ -1236,7 +1236,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1277,7 +1277,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.29, y: 20.510326}
+    oldSize: {x: 8.51, y: 17.77}
     newSize: {x: 19.87, y: 19.88}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1802,7 +1802,7 @@ GameObject:
   - component: {fileID: 1275955634}
   - component: {fileID: 1275955633}
   m_Layer: 0
-  m_Name: dogLine
+  m_Name: kidLine
   m_TagString: imageLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1844,7 +1844,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.29, y: 20.510326}
+    oldSize: {x: 8.49, y: 17.77}
     newSize: {x: 20.29, y: 20.510326}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4565,7 +4565,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 10cfc2b7a262e4c41b664c06301caa7a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 91ccb6ba5e9bf1f4cb1288bd41820da1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4586,7 +4586,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.8, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -4812,7 +4812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8959228130682616192, guid: 6cdf55d0a6d22994b8fe2550de53aa56, type: 3}
-  lineWidth: 0.1
+  lineWidth: 0.05
   LineDrawManager: {fileID: 1271192400}
   finishButton: {fileID: 492966418}
   activeSprite: {fileID: 21300000, guid: 4b4b034cbc4347b4aa533e11a22a5ae1, type: 3}
