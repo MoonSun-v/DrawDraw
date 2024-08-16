@@ -17,6 +17,10 @@ public class CheckpopupManager : MonoBehaviour
     public GameObject curveline2;
     public GameObject curveline3;
 
+    public GameObject Shapes1;
+    public GameObject Shapes2;
+    public GameObject Shapes3;
+
     public void OnClick_result() // 확인창 완성 버튼을 클릭 -> 결과 보여주기
     {
 
@@ -36,7 +40,26 @@ public class CheckpopupManager : MonoBehaviour
             ClearAllLines();
 
         }
-        else if (curveline1.activeSelf)
+        else if (curveline1.activeSelf && Shapes1 == null) // 밑그림 2개
+        {
+            result_popup.Show(); // 결과 팝업 띄우기
+        }
+        else if (curveline1.activeSelf && Shapes1 != null) // 밑그림 3개
+        {
+            // 직선 비활성화
+            curveline1.SetActive(false);
+            curveline2.SetActive(false);
+            curveline3.SetActive(false);
+
+            //곡선 활성화
+            Shapes1.SetActive(true);
+            Shapes2.SetActive(true);
+            Shapes3.SetActive(true);
+
+            //그려진 선 모두 지우기
+            ClearAllLines();
+        }
+        else if (Shapes1.activeSelf)
         {
             result_popup.Show(); // 결과 팝업 띄우기
         }
