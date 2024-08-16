@@ -8,6 +8,7 @@ TagManager:
   - baseSquare
   - baseSquare_inside
   - baseSquare_outside
+  - imageLine
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -14,6 +15,7 @@ public class CollisionCounter : MonoBehaviour
     private bool[] hasCollided;
 
     public Text scoreText;
+    int temp = 0;
 
     private void Start()
     {
@@ -77,11 +79,21 @@ public class CollisionCounter : MonoBehaviour
                         }
                     }
                 }
+                else if (hit.collider != null && hit.collider.CompareTag("imageLine"))
+                {
+
+                    collisionCount++;
+                    temp = Mathf.RoundToInt(collisionCount / 4); // 충돌 기준 완화 -> 일정 충돌 횟수를 넘지 않으면 게임 오버
+                    scoreText.text = temp.ToString(); 
+                    Debug.Log("Collision Count: " + temp);
+                }
+
                 if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
                 {
                     // 선이 Base 태그와 충돌하면 게임 오버 방지 신호 전송
                     SetIsSafe(true);
                 }
+
 
                 lastPosition = currentPosition;
             }
