@@ -27,19 +27,29 @@ public class DrawLine : MonoBehaviour
     public float timeLimit = 5f; // 선이 그려지지 않을 때 게임 오버가 되는 시간 (초 단위)
 
     public GameObject timeChar;
+    public GameObject check; // 게임의 확인창 팝업
+    public GameObject finish; // 게임의 결과창 팝업
+
 
     void Update()
     {
         // 타이머 업데이트
+        timer += Time.deltaTime;
         if (!isDrawing)
         {
-            timer += Time.deltaTime;
-
             if (timer >= timeLimit)
             {
-                Debug.Log("5초 지남");
-                timeChar.SetActive(true);
-                Invoke("timeEffect", 3f);
+                //Debug.Log("5초 지남");
+                if (check.activeSelf == true || finish.activeSelf == true)
+                {
+                    timeChar.SetActive(false);
+                    timer = 0f;
+                }
+                else
+                {
+                    timeChar.SetActive(true);
+                    Invoke("timeEffect", 3f);
+                }
             }
         }
         else
@@ -47,6 +57,7 @@ public class DrawLine : MonoBehaviour
             // 선이 그려지고 있을 때는 타이머를 초기화
             timer = 0f;
         }
+
 
         // 그리기 영역 안에 있어야 그리기 가능
         if (LineDrawManager.GetComponent<LineDrawManager>().DrawActivate)

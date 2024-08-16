@@ -17,14 +17,9 @@ public class CheckpopupManager : MonoBehaviour
     public GameObject curveline2;
     public GameObject curveline3;
 
-    public void check()
-    {
-        transform.gameObject.SetActive(true); // 확인 팝업 창을 화면에 표시
-    }
-
     public void OnClick_result() // 확인창 완성 버튼을 클릭 -> 결과 보여주기
     {
-        checkPopup.SetActive(false);
+
         if (line1.activeSelf)
         {
             // 직선 비활성화
@@ -43,10 +38,9 @@ public class CheckpopupManager : MonoBehaviour
         }
         else if (curveline1.activeSelf)
         {
-            checkPopup.SetActive(false);
             result_popup.Show(); // 결과 팝업 띄우기
         }
-
+        checkPopup.SetActive(false);
     }
 
     void ClearAllLines()
