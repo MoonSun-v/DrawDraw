@@ -6,33 +6,24 @@ using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
-    public Sprite newSprite;   // 변경할 스프라이트를 참조할 변수
-    // private SpriteRenderer spriteRenderer;
+    // 배경 변경 관련 변수
+    public GameObject Background;
+    private Image BackgroundImg;
+    public Sprite newSprite;       // 변경할 스프라이트를 참조할 변수
 
-    private Image Background;
+
+    // 프로필 팝업 관련 변수
+    public GameObject Profile;
 
 
     void Start()
     {
-        
-        DateTime currentTime = DateTime.Now;     // 현재 시간 가져오기
+        DateTime currentTime = DateTime.Now;                   // 현재 시간 가져오기
+        Debug.Log("현재 시간: " + currentTime);
 
-        Debug.Log("현재 시간: " + currentTime);  // 시간 출력
+        BackgroundImg = Background.GetComponent<Image>();      // 배경의 Image 컴포넌트 가져옴
 
-        // 현재 오브젝트의 SpriteRenderer 컴포넌트를 가져옴
-        // spriteRenderer = GetComponent<SpriteRenderer>();
-
-        Background = GetComponent<Image>();      // 현재 오브젝트의 Image 컴포넌트를 가져옴
-
-        CheckAndChangeSprite(currentTime);       // 시간 확인 및 스프라이트 변경
-    }
-
-
-    void Update()
-    {
-        //// 매 프레임마다 현재 시간 업데이트 및 출력
-        // DateTime currentTime = DateTime.Now;
-        // Debug.Log("현재 시간: " + currentTime);
+        CheckAndChangeSprite(currentTime);                     // 시간 확인 및 스프라이트 변경
     }
 
 
@@ -40,7 +31,20 @@ public class MapManager : MonoBehaviour
     {
         if (currentTime.Hour >= 18 || currentTime.Hour < 5)     // 오후 6시부터 다음날 오전 5시 사이인지 확인
         {
-            Background.sprite = newSprite;                      // 스프라이트 변경
+            BackgroundImg.sprite = newSprite;                   // 스프라이트 변경
         }
     }
+
+
+    
+    // 프로필 팝업 
+    public void OnProfilePopup()
+    {
+        Profile.SetActive(true);
+    }
+    public void OffProfilePopup()
+    {
+        Profile.SetActive(false);
+    }
+
 }
