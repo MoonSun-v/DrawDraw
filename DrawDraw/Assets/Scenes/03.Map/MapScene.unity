@@ -228,9 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0350c14f986198f4aa0f841bdd3eff03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.5
-  minY: 0
-  maxY: 22
 --- !u!1 &83071731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1752,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1184099107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1206417086}
+        m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
+        m_MethodName: GoToSelectSceneButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1184099107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,9 +2008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762b80d6fe906d2409142954b2a73c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 616462726}
-  newSprite: {fileID: 21300000, guid: 5887fd9106296334eb8feb8fbdb70af8, type: 3}
-  Profile: {fileID: 778185453}
 --- !u!4 &1287071227
 Transform:
   m_ObjectHideFlags: 0
