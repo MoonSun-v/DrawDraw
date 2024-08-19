@@ -16,7 +16,7 @@ public class TouchToStart : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("SelectGameScene");
+            SceneManager.LoadScene("Profile");
         }
     }
 }

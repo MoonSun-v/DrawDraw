@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 public class ProfileManager : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class ProfileManager : MonoBehaviour
 
         if (isDog) { print("플레이어 캐릭터 = 강아지"); }
         if (isCat) { print("플레이어 캐릭터 = 고양이"); }
+        SceneManager.LoadScene("MapScene");
 
     }
 
