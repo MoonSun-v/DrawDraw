@@ -60,7 +60,7 @@ public class ProfileManager : MonoBehaviour
 
         if (isDog) { print("플레이어 캐릭터 = 강아지"); }
         if (isCat) { print("플레이어 캐릭터 = 고양이"); }
-        SceneManager.LoadScene("MapScene");
+        SceneManager.LoadScene("SelectScene");
 
     }
 
