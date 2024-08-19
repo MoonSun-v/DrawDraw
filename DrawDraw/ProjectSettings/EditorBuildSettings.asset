@@ -5,18 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/99.Unused/DrawTestScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/00.Start/StartScene.unity
     guid: c1c3bf05e7678dd4b92dd05e41db9ea2
   - enabled: 1
-    path: Assets/Scenes/02.Select/SelectGameScene.unity
+    path: Assets/Scenes/01.Prologue/Profile.unity
+    guid: 80463e82b00634d42a7f3d0137cc27a7
+  - enabled: 1
+    path: Assets/Scenes/02.Select/SelectScene.unity
     guid: a88a9dbc9f8454048877b745a96724ea
   - enabled: 1
     path: Assets/Scenes/03.Map/MapScene.unity
     guid: e05aafca8c947cd429f50c5fa7b7b5c2
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_DotLineScene.unity
+    guid: a99f795ad0d8c8343a788235129b11e7
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/DotLineScene.unity
     guid: e53cdd9fa2ab71840b93b26e5eac7198

@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToLineButton
         m_Mode: 1
@@ -978,7 +978,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToScratchButton
         m_Mode: 1
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToPuzzle
         m_Mode: 1
@@ -1803,7 +1803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206417085}
-  - component: {fileID: 1206417084}
+  - component: {fileID: 1206417086}
   m_Layer: 0
   m_Name: GoToOtherScene
   m_TagString: Untagged
@@ -1811,18 +1811,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1206417084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206417083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26f6e86ed1cb0842b1bbf22c0eee70d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1206417085
 Transform:
   m_ObjectHideFlags: 0
@@ -1838,6 +1826,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206417086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206417083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2614080ec89fbc4bb88d0e487651a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1277343155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +1920,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToDotLineButton
         m_Mode: 1
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToTangramButton
         m_Mode: 1
@@ -2576,7 +2576,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206417084}
+      - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
         m_MethodName: GoToFigureCombinationButton
         m_Mode: 1
