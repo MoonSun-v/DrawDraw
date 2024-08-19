@@ -208,8 +208,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 208443384}
-        m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
-        m_MethodName: GoToMapButton
+        m_TargetAssemblyTypeName: SelectSceneScipt, Assembly-CSharp
+        m_MethodName: ChangeScene_TrainingGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 208443379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26f6e86ed1cb0842b1bbf22c0eee70d, type: 3}
+  m_Script: {fileID: 11500000, guid: f4f8703afff4c2140809a81fe85e4a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &306420674
@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 822328487}
   - component: {fileID: 822328486}
   - component: {fileID: 822328485}
+  - component: {fileID: 822328488}
   m_Layer: 5
   m_Name: ParentBtn
   m_TagString: Untagged
@@ -577,7 +578,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 822328486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 822328488}
+        m_TargetAssemblyTypeName: SelectSceneScipt, Assembly-CSharp
+        m_MethodName: ChangeScene_Parents
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &822328486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,6 +629,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822328483}
   m_CullTransparentMesh: 1
+--- !u!114 &822328488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822328483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f8703afff4c2140809a81fe85e4a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &953765377
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +732,7 @@ GameObject:
   - component: {fileID: 1383933180}
   - component: {fileID: 1383933179}
   - component: {fileID: 1383933178}
+  - component: {fileID: 1383933181}
   m_Layer: 5
   m_Name: GoToTestBtn
   m_TagString: Untagged
@@ -777,7 +803,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1383933179}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383933181}
+        m_TargetAssemblyTypeName: SelectSceneScipt, Assembly-CSharp
+        m_MethodName: ChangeScene_TestGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1383933179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +854,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383933176}
   m_CullTransparentMesh: 1
+--- !u!114 &1383933181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383933176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f8703afff4c2140809a81fe85e4a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467044306
 GameObject:
   m_ObjectHideFlags: 0
