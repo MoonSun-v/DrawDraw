@@ -2005,9 +2005,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1287071225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762b80d6fe906d2409142954b2a73c85, type: 3}
+  m_Script: {fileID: 11500000, guid: ef489c16164994341a234f55eb0f9933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeed: 0.5
+  minY: 0
+  maxY: 22
 --- !u!4 &1287071227
 Transform:
   m_ObjectHideFlags: 0
