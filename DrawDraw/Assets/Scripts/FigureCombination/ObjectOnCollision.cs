@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class ObjectOnCollision : MonoBehaviour
 {
     public string baseTag = "baseSquare";  // "base" 태그를 가진 오브젝트를 찾기 위해 사용할 태그 이름
-    public string reverseTag = "reverse";  // "reverse" 태그를 가진 오브젝트를 찾기 위해 사용할 태그 이름
 
     void Update()
     {
@@ -15,24 +14,13 @@ public class ObjectOnCollision : MonoBehaviour
         {
             // Scale 원상복구
             Vector3 scale = transform.localScale;
-            if (scale.y<0)
+            if (scale.y < 0)
             {
                 scale.y = -Mathf.Abs(scale.y);  // y 값 음수x음수 -> 양수
                 transform.localScale = scale;
             }
             // 도형1을 가장 가까운 "base" 태그를 가진 오브젝트의 위치로 이동
             MoveObjectAToClosestBaseObject(baseTag);
-        }
-
-        if (IsObjectAOnAnyReverseObject())
-        {
-            // 도형1의 스케일 y 값을 음수로 변경
-            ReverseObjectScaleY(); // 충돌 시 y 값을 음수로 변경
-            MoveObjectAToClosestBaseObject(reverseTag);
-        }
-        else
-        {
-            ResetObjectScaleY();  // 충돌하지 않으면 y 값을 양수로 복구
         }
     }
 
@@ -91,41 +79,4 @@ public class ObjectOnCollision : MonoBehaviour
             transform.position = closestBaseObject.position;
         }
     }
-
-    // 도형1이 "reverse" 태그를 가진 오브젝트와 충돌했는지 확인하는 메서드
-    bool IsObjectAOnAnyReverseObject()
-    {
-
-        Collider2D colliderA = GetComponent<Collider2D>();
-        GameObject[] reverseObjects = GameObject.FindGameObjectsWithTag(reverseTag);
-
-        foreach (GameObject reverseObject in reverseObjects)
-        {
-            Collider2D colliderB = reverseObject.GetComponent<Collider2D>();
-            if (colliderA != null && colliderB != null && colliderA.IsTouching(colliderB))
-            {
-                Debug.Log("도형1이 'reverse' 태그를 가진 오브젝트와 충돌했습니다: " + reverseObject.name);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    // 도형1의 스케일 y 값을 음수로 만드는 메서드
-    void ReverseObjectScaleY()
-    {
-        Vector3 scale = transform.localScale;
-        scale.y = -Mathf.Abs(scale.y);  // y 값이 음수로 변경되도록 설정
-        transform.localScale = scale;
-    }
-
-    // 도형1의 스케일 y 값을 양수로 복구하는 메서드 (reverse 태그 오브젝트와 충돌하지 않을 시)
-    void ResetObjectScaleY()
-    {
-        Vector3 scale = transform.localScale;
-        scale.y = Mathf.Abs(scale.y);  // y 값이 양수로 변경되도록 설정
-        transform.localScale = scale;
-    }
-
 }

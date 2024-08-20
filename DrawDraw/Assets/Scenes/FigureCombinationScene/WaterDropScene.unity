@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 427190657}
   m_Layer: 0
   m_Name: Triangle (3)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1140,7 +1140,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.3743279, g: 1, b: 0.15566039, a: 1}
+  m_Color: {r: 0.15686274, g: 0.24872427, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1859,8 +1859,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 839, y: -46}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 850, y: -40}
+  m_SizeDelta: {x: 64, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606733765
 MonoBehaviour:
@@ -2947,8 +2947,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 839, y: -312}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 850, y: -306}
+  m_SizeDelta: {x: 41.3749, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127847646
 MonoBehaviour:
@@ -3805,7 +3805,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.3743279, g: 1, b: 0.15566039, a: 1}
+  m_Color: {r: 0.077830195, g: 0.31132078, b: 0.2842905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4494,8 +4494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 839, y: 205}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 850, y: 210}
+  m_SizeDelta: {x: 42.0161, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1905731617
 MonoBehaviour:
