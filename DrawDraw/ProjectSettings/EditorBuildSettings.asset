@@ -29,12 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FigureCombinationScene/WaterDropScene.unity
     guid: a9616b153cd0fd649b05bc104e1c350e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FigureCombinationScene/SnailScene.unity
     guid: fbe463208d276bd4f8ae7c296e3baacb
   - enabled: 1
     path: Assets/Scenes/FigureCombinationScene/FigureSelectionScene.unity
-    guid: 1b834c4381ed30341a49e0dad8e30893
+    guid: 943eb7c16c729c44984807a14118fe0b
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/TangramScene.unity
     guid: 8ead4bf68a3c78d4597e50744ca4afbf
