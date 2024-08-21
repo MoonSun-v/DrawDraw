@@ -55,11 +55,12 @@ public class ProfileManager : MonoBehaviour
         }
 
 
-        // 플레이어 정보 출력
+        // 플레이어 정보 출력 (임시)
         print("플레이어 이름 = " + PlayerName);
 
         if (isDog) { print("플레이어 캐릭터 = 강아지"); }
         if (isCat) { print("플레이어 캐릭터 = 고양이"); }
+
         SceneManager.LoadScene("SelectScene");
 
     }

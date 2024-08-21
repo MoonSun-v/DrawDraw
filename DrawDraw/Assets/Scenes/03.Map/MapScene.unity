@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 73388248}
   - component: {fileID: 73388247}
   - component: {fileID: 73388246}
-  - component: {fileID: 73388249}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -216,18 +215,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &73388249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73388245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0350c14f986198f4aa0f841bdd3eff03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &83071731
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +687,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287071226}
+      - m_Target: {fileID: 1287071228}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: OffProfilePopup
         m_Mode: 1
@@ -1545,7 +1532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287071226}
+      - m_Target: {fileID: 1287071228}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: OnProfilePopup
         m_Mode: 1
@@ -1989,6 +1976,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287071227}
   - component: {fileID: 1287071226}
+  - component: {fileID: 1287071228}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -2026,6 +2014,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287071228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287071225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e565e75c6f0ba428f9bf12d4a70e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Background: {fileID: 616462726}
+  newSprite: {fileID: 21300000, guid: 5887fd9106296334eb8feb8fbdb70af8, type: 3}
+  Profile: {fileID: 778185453}
 --- !u!1 &1370443343
 GameObject:
   m_ObjectHideFlags: 0
