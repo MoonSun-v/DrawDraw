@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Draggable : MonoBehaviour
+public class ParallelogramMovement : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset; // 드래그 시 마우스/터치와 도형 간의 위치 차이
@@ -42,6 +41,7 @@ public class Draggable : MonoBehaviour
         // 마우스 클릭 또는 터치 입력이 있는지 확인
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
+            Debug.Log("마우스 클릭");
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
 
             // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
@@ -51,20 +51,39 @@ public class Draggable : MonoBehaviour
 
             // Scene 뷰에서 Ray를 시각적으로 보여줌 (길이 100의 선을 그리도록 설정)
             //Debug.DrawRay(rayOrigin, Vector3.forward * 100, Color.red, 1.0f);
-
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject);
+                GameObject hitObject = hit.collider.gameObject;
 
-                // 입력을 확인하여 더블 클릭 또는 더블 터치 처리
-                float currentTime = Time.time;
-                if (currentTime - lastTapTime < doubleTapThreshold)
+                // 부모 오브젝트를 가져옴
+                GameObject parentObject = hitObject.transform.parent?.gameObject;
+
+                if (parentObject != null)
                 {
-                    ToggleScale();
+                    // 부모 오브젝트의 이름을 변경
+                    //parentObject.name = "NewParentName"; // 원하는 이름으로 변경
+                    Debug.Log("Parent object renamed to: " + parentObject.name);
+
+                    // 추가적인 작업 (부모 오브젝트와 관련된 다른 작업 수행 가능)
                 }
-                lastTapTime = currentTime;
-                isDragging = true; // 드래그 상태로 전환
-                offset = transform.position - mouseOrTouchPosition; // 마우스/터치와 도형 간의 위치 차이 계산
+
+                // 이 조건에 따라 드래그 가능 여부 결정
+                if (parentObject == gameObject)
+                {
+                    float currentTime = Time.time;
+                    if (currentTime - lastTapTime < doubleTapThreshold)
+                    {
+                        ToggleScale();
+                    }
+                    lastTapTime = currentTime;
+                    isDragging = true;
+                    offset = transform.position - GetInputWorldPosition();
+                }
+
+            }
+            else 
+            {
+                Debug.Log(hit.collider);
             }
         }
 
