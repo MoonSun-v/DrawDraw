@@ -13,31 +13,28 @@ public class ProfileManager : MonoBehaviour
     private bool isDog;
     private bool isCat;
 
+
+    // - ÀÌ¸§ ÀÔ·Â¶õÀÇ ±ÛÀÚ ¼ö¸¦ 6ÀÚ·Î Á¦ÇÑ
+    // - Æ¯¼ö¹®ÀÚ, °ø¹é ÇÊÅÍ¸µ
     void Start()
     {
-        // ÀÌ¸§ ÀÔ·Â¶õÀÇ ±ÛÀÚ ¼ö¸¦ 6ÀÚ·Î Á¦ÇÑ
         NameInput.characterLimit = 6;
-
-        // Æ¯¼ö¹®ÀÚ, °ø¹é ÇÊÅÍ¸µ
         NameInput.onValueChanged.AddListener(ValidateInput);
     }
 
-    // °­¾ÆÁö ¼±ÅÃ
-    public void SelectDog()
-    {
-        isDog = true; isCat = false;
-    }
 
-    // °í¾çÀÌ ¼±ÅÃ
-    public void SelectCat()
-    {
-        isDog = false; isCat = true;
-    }
+    // [ °­¾ÆÁö / °í¾çÀÌ ¼±ÅÃ ¸Ş¼Òµå ]
+    public void SelectDog(){ isDog = true; isCat = false; }
+    public void SelectCat(){ isDog = false; isCat = true; }
 
-    // ¿Ï·á ¹öÆ° Å¬¸¯
+
+    // [ ¿Ï·á ¹öÆ° Å¬¸¯ ]
+    // PlayerName ¾÷µ¥ÀÌÆ®
+    // Ä³¸¯ÅÍ¿Í ÀÌ¸§ Á¤º¸ ÀÔ·Â Çß´ÂÁö È®ÀÎÇÏ´Â Á¶°Ç¹®
+    // ÇÃ·¹ÀÌ¾î Á¤º¸ Ãâ·Â (ÀÓ½Ã, ÃßÈÄ GUI¿Ï¼º ½Ã º¯°æ ÇÊ¿ä)
     public void Finish()
     {
-        // PlayerName ¾÷µ¥ÀÌÆ®
+
         PlayerName = NameInput.GetComponent<InputField>().text;
 
 
@@ -47,7 +44,6 @@ public class ProfileManager : MonoBehaviour
             print(isDog || isCat ? "ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä" : "Ä³¸¯ÅÍ¸¦ ¼±ÅÃÇÏ°í ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä");
             return;
         }
-
         if (!isDog && !isCat)
         {
             print("Ä³¸¯ÅÍ¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä");
@@ -66,14 +62,15 @@ public class ProfileManager : MonoBehaviour
     }
 
 
-    // Æ¯¼ö¹®ÀÚ ÇÊÅÍ¸µ ¸Ş¼­µå
+    // [ Æ¯¼ö¹®ÀÚ ÇÊÅÍ¸µ ¸Ş¼­µå ]
+    // ¼ıÀÚ, ¾ËÆÄºª, ÇÑ±Û Çã¿ë, Æ¯¼ö¹®ÀÚ¿Í °ø¹éÀº Á¦°Å
     void ValidateInput(string input)
     {
-        // ¼ıÀÚ, ¾ËÆÄºª, ÇÑ±Û Çã¿ë, Æ¯¼ö¹®ÀÚ¿Í °ø¹éÀº Á¦°Å
         string filtered = Regex.Replace(input, @"[^a-zA-Z0-9°¡-ÆR]", "");
         if (input != filtered)
         {
             NameInput.text = filtered;
         }
     }
+
 }

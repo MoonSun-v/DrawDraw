@@ -25,8 +25,8 @@ using UnityEngine;
 
 
 //// ★ 플레이어 관련 데이터 ------------------------------------------------------------------------------------
-///
-// PlayerCharacter : 플레이어 캐릭터 ( Dog or Cat )
+///은
+// PlayerCharacter : 플레이어 캐릭터 ( Dog 는 0 or Cat 은 1 ) 
 // PlayerName      : 플레이어 이름
 // PlayerExp       : 플레이어 경험치 
 //                   40 -> 80 -> 120 -> 160 -> 190(엔딩) : '스테이지 단계 오픈' 및 '테스트 +1회'
@@ -35,7 +35,7 @@ using UnityEngine;
 
 public class PlayerData
 {
-    public int PlayerCharacter;
+    public bool PlayerCharacter;
     public string PlayerName;
     public int PlayerExp;
 
@@ -183,7 +183,7 @@ public class GameData : MonoBehaviour
         }
         else
         {
-            SavePlayerData();
+            SaveTrainingData();
             print("기본 훈련 데이터 생성 완료");
         }
     }
