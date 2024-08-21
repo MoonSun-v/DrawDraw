@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 8547202448449034252}
   - component: {fileID: 3070830531149776514}
   - component: {fileID: 433675413866833545}
-  - component: {fileID: 8882132537592797895}
   m_Layer: 0
   m_Name: parallelogram
   m_TagString: Untagged
@@ -280,16 +279,3 @@ PolygonCollider2D:
       - {x: -0.7625432, y: 0.3793372}
       - {x: 0.74506754, y: 0.36186147}
   m_UseDelaunayMesh: 0
---- !u!114 &8882132537592797895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5551957451583598961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa7951a771aae345abfd5fd264e0dbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squareObject: {fileID: 0}

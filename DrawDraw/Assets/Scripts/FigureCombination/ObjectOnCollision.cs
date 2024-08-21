@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,15 +13,9 @@ public class ObjectOnCollision : MonoBehaviour
         // 도형1이 "base" 태그를 가진 오브젝트와 충돌했는지 확인
         if (IsObjectAOnAnyBaseObject())
         {
-            // Scale 원상복구
-            Vector3 scale = transform.localScale;
-            if (scale.y < 0)
-            {
-                scale.y = -Mathf.Abs(scale.y);  // y 값 음수x음수 -> 양수
-                transform.localScale = scale;
-            }
             // 도형1을 가장 가까운 "base" 태그를 가진 오브젝트의 위치로 이동
             MoveObjectAToClosestBaseObject(baseTag);
+
         }
     }
 
@@ -48,8 +43,8 @@ public class ObjectOnCollision : MonoBehaviour
         return false;
     }
 
-        // 충돌한 "base" 태그 오브젝트 중 가장 가까운 오브젝트의 위치로 도형1을 이동하는 메서드
-        void MoveObjectAToClosestBaseObject(string tag)
+    // 충돌한 "base" 태그 오브젝트 중 가장 가까운 오브젝트의 위치로 도형1을 이동하는 메서드
+    void MoveObjectAToClosestBaseObject(string tag)
     {
         Collider2D colliderA = GetComponent<Collider2D>();
         Transform closestBaseObject = null;

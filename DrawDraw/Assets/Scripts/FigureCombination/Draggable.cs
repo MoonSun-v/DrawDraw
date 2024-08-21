@@ -39,30 +39,32 @@ public class Draggable : MonoBehaviour
 
     void Update()
     {
-       // 마우스 클릭 또는 터치 입력이 있는지 확인
+        // 마우스 클릭 또는 터치 입력이 있는지 확인
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
 
-            // Raycast를 통해 오브젝트 감지
-            RaycastHit2D hit = Physics2D.Raycast(mouseOrTouchPosition, Vector3.forward, Mathf.Infinity);
-            
+            // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
+            Vector3 rayOrigin = mainCamera.ScreenToWorldPoint(Input.mousePosition); // Ray가 시작될 위치
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero); // Raycast를 발사하여 충돌 체크
+
+            // Scene 뷰에서 Ray를 시각적으로 보여줌 (길이 100의 선을 그리도록 설정)
+            Debug.DrawRay(rayOrigin, Vector3.forward * 100, Color.red, 1.0f);
+
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
-                Debug.Log("마우스 클릭"+hit.collider.name);
                 // 입력을 확인하여 더블 클릭 또는 더블 터치 처리
                 float currentTime = Time.time;
                 if (currentTime - lastTapTime < doubleTapThreshold)
                 {
-                    // 더블 클릭/터치로 간주
-                    Debug.Log("마우스 더블클릭" + hit.collider.name);
                     ToggleScale();
                 }
-
                 lastTapTime = currentTime;
                 isDragging = true; // 드래그 상태로 전환
                 offset = transform.position - mouseOrTouchPosition; // 마우스/터치와 도형 간의 위치 차이 계산
+
             }
+
         }
 
         // 드래그 중일 때 도형 위치 업데이트
@@ -71,21 +73,19 @@ public class Draggable : MonoBehaviour
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
             Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
 
-            RaycastHit2D hit = Physics2D.Raycast(mouseOrTouchPosition, Vector3.forward, Mathf.Infinity);
-            // squareCollider의 경계 내에서만 이동 가능하도록 제한
+            //squareCollider의 경계 내에서만 이동 가능하도록 제한
             Bounds bounds = squareCollider.bounds;
             targetPosition.x = Mathf.Clamp(targetPosition.x, bounds.min.x, bounds.max.x); // x 좌표 제한
             targetPosition.y = Mathf.Clamp(targetPosition.y, bounds.min.y, bounds.max.y); // y 좌표 제한
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
-            {
-                //Debug.Log("마우스 드래그" + hit.collider.name);
-                rb2D.MovePosition(targetPosition); // Rigidbody2D를 사용하여 도형의 위치를 이동
-            }   
+
+            rb2D.MovePosition(targetPosition); // Rigidbody2D를 사용하여 도형의 위치를 이동
+
         }
 
         // 드래그 종료
         else if (Input.GetMouseButtonUp(0) || (Input.touchCount == 0))
         {
+            // 드래그 상태를 종료하고 선택된 오브젝트를 초기화
             isDragging = false; // 드래그 상태를 종료
         }
     }
