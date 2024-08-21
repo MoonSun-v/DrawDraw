@@ -40,7 +40,7 @@ public class ObjectOnCollision : MonoBehaviour
             if (colliderA != null && colliderB != null && colliderA.IsTouching(colliderB))
             {
                 // 충돌한 경우 콘솔에 메시지 출력
-                Debug.Log("도형1이 'base' 태그를 가진 오브젝트와 충돌했습니다: " + baseObject.name);
+                //Debug.Log("도형1이 'base' 태그를 가진 오브젝트와 충돌했습니다: " + baseObject.name);
                 return true;
             }
         }

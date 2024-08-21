@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 8880414}
   m_Layer: 0
   m_Name: Triangle (10)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1211,7 +1211,7 @@ GameObject:
   - component: {fileID: 494965362}
   m_Layer: 0
   m_Name: Triangle (6)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2116,7 +2116,7 @@ GameObject:
   - component: {fileID: 769749413}
   m_Layer: 0
   m_Name: Triangle (14)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3071,7 +3071,7 @@ GameObject:
   - component: {fileID: 1289950537}
   m_Layer: 0
   m_Name: Triangle (12)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4116,7 +4116,7 @@ GameObject:
   - component: {fileID: 1811169399}
   m_Layer: 0
   m_Name: Triangle (8)
-  m_TagString: reverse
+  m_TagString: baseSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4451,7 +4451,7 @@ Transform:
   m_GameObject: {fileID: 1857845083}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
