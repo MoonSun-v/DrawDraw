@@ -17,9 +17,7 @@ public class MapManager : MonoBehaviour
 
 
 
-    // - 현재 시간 가져오기
-    // - 배경의 Image 컴포넌트 가져오기
-    // - 시간 확인 및 스프라이트 변경 
+    // 현재 시간, 배경 Image 가져와서 특정 시간대에 알맞게 배경 변경 
     void Start()
     {
         DateTime currentTime = DateTime.Now;                   
@@ -32,7 +30,7 @@ public class MapManager : MonoBehaviour
 
 
 
-    // [ 시간대별(오전/오후) 배경 변경 메소드 ]
+    // ★ [ 시간대별(오전/오후) 배경 변경 메소드 ]
     // 오후 6시부터 다음날 오전 5시 사이인지 확인한 후 Sprite 변경
     void CheckAndChangeSprite(DateTime currentTime)
     {
@@ -44,7 +42,7 @@ public class MapManager : MonoBehaviour
 
 
 
-    // [ 프로필 팝업 관련 버튼 메소드 ]
+    // ★ [ 프로필 팝업 관련 버튼 메소드 ]
     public void OnProfilePopup()
     {
         Profile.SetActive(true);

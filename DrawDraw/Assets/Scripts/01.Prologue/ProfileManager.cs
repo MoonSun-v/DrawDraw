@@ -63,7 +63,7 @@ public class ProfileManager : MonoBehaviour
 
         // --------------------------------------------------------------------------------------
 
-        // ProfileDataSetting(); // 플레이어 프로필 작성 정보 저장 
+        // ProfileSetting(); // 플레이어 프로필 작성 정보 저장 
 
         // --------------------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ public class ProfileManager : MonoBehaviour
     // 
     // PlayerCharacter : 플레이어 캐릭터 ( Dog 는 0 or Cat 은 1 ) 
     // PlayerName      : 플레이어 이름
-    void ProfileDataSetting()
+    void ProfileSetting()
     {
         if (isDog) { GameData.instance.playerdata.PlayerCharacter = false; }
         else if (isCat) { GameData.instance.playerdata.PlayerCharacter = true; }

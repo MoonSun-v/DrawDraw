@@ -17,12 +17,7 @@ public class StartDataSetting : MonoBehaviour
 
 
         // ★ [ 데이터 추가 하는 코드 모음집 ] ★ -----------------------------------------------------------------
-
-
-        #region 
         
-        #endregion
-
 
 
 
@@ -30,6 +25,7 @@ public class StartDataSetting : MonoBehaviour
 
         // 새로운 데이터 추가 저장 후, 반드시 Load도 같이 진행 해주어야함
         // ( 새로 업데이트된 데이터를 가져와야하기 때문 )
+
         /*
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();
