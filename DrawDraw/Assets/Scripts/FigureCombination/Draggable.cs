@@ -14,6 +14,14 @@ public class Draggable : MonoBehaviour
     public GameObject squareObject;
     private Collider2D squareCollider;
 
+    // Y 스케일이 양수일 때 사용할 offset과 size 값
+    private Vector2 positiveOffset = new Vector2(0f, (float)-0.3460994);
+    private Vector2 positiveSize = new Vector2(10, (float)9.707803);
+
+    // Y 스케일이 음수일 때 사용할 offset과 size 값
+    private Vector2 negativeOffset = new Vector2(0f, (float)0.3096588);
+    private Vector2 negativeSize = new Vector2(10, (float)9.862097);
+
     private float lastTapTime; // 마지막 입력 시간
     private const float doubleTapThreshold = 0.3f; // 더블 클릭/터치 간의 시간 간격 (초)
 
@@ -54,7 +62,7 @@ public class Draggable : MonoBehaviour
 
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
-                Debug.Log(hit.collider.gameObject);
+                //Debug.Log(hit.collider.gameObject);
 
                 // 입력을 확인하여 더블 클릭 또는 더블 터치 처리
                 float currentTime = Time.time;
@@ -73,6 +81,8 @@ public class Draggable : MonoBehaviour
         {
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
             Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
+            // 현재 오브젝트의 Y 스케일 값을 확인하고 Collider2D 설정을 업데이트
+            UpdateCollider();
 
             //squareCollider의 경계 내에서만 이동 가능하도록 제한
             Bounds bounds = squareCollider.bounds;
@@ -117,15 +127,40 @@ public class Draggable : MonoBehaviour
         // 현재 스케일 값을 가져옴
         Vector3 currentScale = transform.localScale;
 
+        // 현재 위치를 저장
+        Vector3 originalPosition = transform.position;
+
+        // 스케일 변경
         if (currentScale.y > 0)
         {
             // y 스케일 값을 음수로 변경
             transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+
         }
         else
         {
             // y 스케일 값을 원상 복구
             transform.localScale = new Vector3(currentScale.x, Mathf.Abs(currentScale.y), currentScale.z);
+        }
+
+        // 위치 보정: 스케일 변경 전의 위치로 되돌림
+        transform.position = originalPosition;
+    }
+
+    void UpdateCollider()
+    {
+        // 현재 오브젝트의 Y 스케일 값을 확인
+        if (transform.localScale.y > 0)
+        {
+            // Y 스케일이 양수일 때, positiveOffset과 positiveSize를 적용
+            squareCollider.GetComponent<BoxCollider2D>().offset = positiveOffset;
+            squareCollider.GetComponent<BoxCollider2D>().size = positiveSize;
+        }
+        else
+        {
+            // Y 스케일이 음수일 때, negativeOffset과 negativeSize를 적용
+            squareCollider.GetComponent<BoxCollider2D>().offset = negativeOffset;
+            squareCollider.GetComponent<BoxCollider2D>().size = negativeSize;
         }
     }
 }

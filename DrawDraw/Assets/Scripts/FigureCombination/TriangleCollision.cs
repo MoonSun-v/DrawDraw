@@ -4,54 +4,57 @@ using UnityEngine;
 
 public class TriangleCollision : MonoBehaviour
 {
-    public GameObject parallelogram; // 평행사변형 오브젝트
-
-    private Vector3 initialTriangle1Position; // 첫 번째 삼각형의 초기 위치
-    private Vector3 initialTriangle2Position; // 두 번째 삼각형의 초기 위치
-    private Vector3 parallelogramOffset;      // 평행사변형의 중심과 삼각형의 위치 차이
+    public Transform otherTriangle;  // 함께 움직일 다른 삼각형 오브젝트
+    private Vector3 initialOffset;   // 처음 삼각형들 간의 오프셋
 
     void Start()
     {
-        // parallelogram 변수가 인스펙터에서 할당되지 않은 경우 자동으로 할당
-        if (parallelogram == null)
-        {
-            parallelogram = transform.parent.gameObject;
-        }
-
-        // 평행사변형 내의 두 삼각형의 초기 위치를 기록
-        Transform triangle1 = parallelogram.transform.Find("Triangle (1)");
-        Transform triangle2 = parallelogram.transform.Find("Triangle (2)");
-
-        if (triangle1 != null && triangle2 != null)
-        {
-            initialTriangle1Position = triangle1.localPosition;
-            initialTriangle2Position = triangle2.localPosition;
-
-            parallelogramOffset = (initialTriangle1Position + initialTriangle2Position) / 2;
-        }
-        else
-        {
-            Debug.LogError("Triangle objects not found in Parallelogram.");
-        }
+        // 다른 삼각형과의 초기 오프셋 계산
+        initialOffset = otherTriangle.position - transform.position;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        // 충돌한 오브젝트가 base 태그를 가지고 있는지 확인합니다.
+        // "baseSquare" 태그를 가진 오브젝트와 충돌을 감지
         if (collision.CompareTag("baseSquare"))
         {
-            Debug.Log("collision");
-            // 충돌한 오브젝트의 위치로 평행사변형을 이동합니다.
-            Vector3 targetPosition = collision.transform.position;
-            MoveParallelogram(targetPosition);
+            // 가장 가까운 "baseSquare" 오브젝트를 찾음
+            GameObject nearestBaseSquare = FindNearestBaseSquare();
+
+            if (nearestBaseSquare != null)
+            {
+                // 가장 가까운 baseSquare의 위치로 이동
+                Vector3 newPosition = nearestBaseSquare.transform.position;
+                Vector3 displacement = newPosition - transform.position;
+
+                // 현재 삼각형을 가장 가까운 baseSquare 위치로 이동
+                transform.position = newPosition;
+
+                // 다른 삼각형도 동일한 변위로 이동하여 평행사변형의 모양을 유지
+                otherTriangle.position += displacement;
+
+                //Debug.Log(gameObject.name + " moved to " + newPosition + " and " + otherTriangle.name + " moved to " + otherTriangle.position);
+            }
         }
     }
 
-    void MoveParallelogram(Vector3 targetPosition)
+    GameObject FindNearestBaseSquare()
     {
-        // 평행사변형의 중심 위치를 설정합니다.
-        Vector3 centerPosition = targetPosition - parallelogramOffset;
-        parallelogram.transform.position = centerPosition;
+        GameObject[] baseSquares = GameObject.FindGameObjectsWithTag("baseSquare");
+        GameObject nearest = null;
+        float minDistance = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (GameObject baseSquare in baseSquares)
+        {
+            float distance = Vector3.Distance(currentPosition, baseSquare.transform.position);
+            if (distance < minDistance)
+            {
+                nearest = baseSquare;
+                minDistance = distance;
+            }
+        }
+
+        return nearest;
     }
 }

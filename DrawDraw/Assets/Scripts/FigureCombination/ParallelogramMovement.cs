@@ -13,13 +13,30 @@ public class ParallelogramMovement : MonoBehaviour
     public GameObject squareObject;
     private Collider2D squareCollider;
 
+    // Y 스케일이 양수일 때 사용할 offset과 size 값
+    private Vector2 positiveOffset = new Vector2((float)0.5593252, (float)-0.3471658);
+    private Vector2 positiveSize = new Vector2((float)8.91976, (float)9.83415);
+
+    // Y 스케일이 음수일 때 사용할 offset과 size 값
+    private Vector2 negativeOffset = new Vector2((float)0.5593252, (float)0.3278804);
+    private Vector2 negativeSize = new Vector2((float)8.91976, (float)9.872724);
+
     private float lastTapTime; // 마지막 입력 시간
     private const float doubleTapThreshold = 0.3f; // 더블 클릭/터치 간의 시간 간격 (초)
+
+    private Collider2D col2D;
 
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main; // 카메라를 설정
+
+        col2D = GetComponent<Collider2D>();
+
+        if (col2D == null)
+        {
+            Debug.LogError("Collider2D is not attached to the game object.");
+        }
 
         if (squareObject != null)
         {
@@ -38,11 +55,11 @@ public class ParallelogramMovement : MonoBehaviour
 
     void Update()
     {
+
         // 마우스 클릭 또는 터치 입력이 있는지 확인
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
-            Debug.Log("마우스 클릭");
-            Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
+            //Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
 
             // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
             Vector3 rayOrigin = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -51,24 +68,12 @@ public class ParallelogramMovement : MonoBehaviour
 
             // Scene 뷰에서 Ray를 시각적으로 보여줌 (길이 100의 선을 그리도록 설정)
             //Debug.DrawRay(rayOrigin, Vector3.forward * 100, Color.red, 1.0f);
+
             if (hit.collider != null)
             {
                 GameObject hitObject = hit.collider.gameObject;
-
-                // 부모 오브젝트를 가져옴
-                GameObject parentObject = hitObject.transform.parent?.gameObject;
-
-                if (parentObject != null)
-                {
-                    // 부모 오브젝트의 이름을 변경
-                    //parentObject.name = "NewParentName"; // 원하는 이름으로 변경
-                    Debug.Log("Parent object renamed to: " + parentObject.name);
-
-                    // 추가적인 작업 (부모 오브젝트와 관련된 다른 작업 수행 가능)
-                }
-
-                // 이 조건에 따라 드래그 가능 여부 결정
-                if (parentObject == gameObject)
+                // hitObject가 현재 스크립트가 적용된 gameObject와 같은지 확인
+                if (hitObject == gameObject)
                 {
                     float currentTime = Time.time;
                     if (currentTime - lastTapTime < doubleTapThreshold)
@@ -79,11 +84,23 @@ public class ParallelogramMovement : MonoBehaviour
                     isDragging = true;
                     offset = transform.position - GetInputWorldPosition();
                 }
+                else
+                {
+                    //부모 오브젝트를 가져옴
+                    GameObject parentObject = hitObject.transform.parent?.gameObject;
 
-            }
-            else 
-            {
-                Debug.Log(hit.collider);
+                    if (parentObject == gameObject)
+                    {
+                        float currentTime = Time.time;
+                        if (currentTime - lastTapTime < doubleTapThreshold)
+                        {
+                            ToggleScale();
+                        }
+                        lastTapTime = currentTime;
+                        isDragging = true;
+                        offset = transform.position - GetInputWorldPosition();
+                    }
+                }
             }
         }
 
@@ -92,6 +109,9 @@ public class ParallelogramMovement : MonoBehaviour
         {
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
             Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
+            
+            // 현재 오브젝트의 Y 스케일 값을 확인하고 Collider2D 설정을 업데이트
+            UpdateCollider();
 
             //squareCollider의 경계 내에서만 이동 가능하도록 제한
             Bounds bounds = squareCollider.bounds;
@@ -136,15 +156,43 @@ public class ParallelogramMovement : MonoBehaviour
         // 현재 스케일 값을 가져옴
         Vector3 currentScale = transform.localScale;
 
-        if (currentScale.y > 0)
+        // 현재 Collider2D의 bounds 중심 계산
+        Vector3 originalCenter = col2D.bounds.center;
+
+        // 스케일 변경
+        if (currentScale.x > 0)
         {
-            // y 스케일 값을 음수로 변경
-            transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+            // x 스케일 값을 음수로 변경
+            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
         }
         else
         {
-            // y 스케일 값을 원상 복구
-            transform.localScale = new Vector3(currentScale.x, Mathf.Abs(currentScale.y), currentScale.z);
+            // x 스케일 값을 원상 복구
+            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+        }
+
+        // 스케일 변경 후 Collider2D의 새로운 bounds 중심 계산
+        Vector3 newCenter = col2D.bounds.center;
+
+        // 중심이 이동한 만큼 위치를 보정하여 오브젝트가 화면상에서 이동하지 않도록 함
+        Vector3 centerOffset = newCenter - originalCenter;
+        transform.position -= centerOffset;
+    }
+
+    void UpdateCollider()
+    {
+        // 현재 오브젝트의 Y 스케일 값을 확인
+        if (transform.localScale.x > 0)
+        {
+            // Y 스케일이 양수일 때, positiveOffset과 positiveSize를 적용
+            squareCollider.GetComponent<BoxCollider2D>().offset = positiveOffset;
+            squareCollider.GetComponent<BoxCollider2D>().size = positiveSize;
+        }
+        else
+        {
+            // Y 스케일이 음수일 때, negativeOffset과 negativeSize를 적용
+            squareCollider.GetComponent<BoxCollider2D>().offset = negativeOffset;
+            squareCollider.GetComponent<BoxCollider2D>().size = negativeSize;
         }
     }
 }
