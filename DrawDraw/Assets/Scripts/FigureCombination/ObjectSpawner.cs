@@ -94,4 +94,41 @@ public class ObjectSpawner : MonoBehaviour
             Debug.LogError("Prefab to spawn is not assigned.");
         }
     }
+
+    public void SpawnObject_Hexagon()
+    {
+        Vector3 spawnPos = new Vector3((float)1.021548, (float)1.377955); // 생성위치
+
+        if (prefabToSpawn != null && objectCount < 5)
+        {
+            // 프리팹을 인스턴스화하여 새로운 오브젝트 생성
+            GameObject newObject = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+
+            // 생성된 오브젝트의 이름을 고유하게 설정
+            objectCount++; // 오브젝트 수 증가
+            newObject.name = prefabToSpawn.name + "_Clone" + objectCount;
+
+            // 생성된 오브젝트의 Rigidbody2D 컴포넌트를 가져와서 비활성화
+            Rigidbody2D rb2D = newObject.GetComponent<Rigidbody2D>();
+            if (rb2D != null)
+            {
+                rb2D.bodyType = RigidbodyType2D.Kinematic;  // 물리가 적용되지 않도록 설정                                        
+            }
+
+            // Draggable 스크립트 가져오기
+            //Draggable draggable = newObject.GetComponent<Draggable>();
+            //ObjectOnCollision collision = newObject.GetComponent<ObjectOnCollision>();
+            // 각 오브젝트가 독립적으로 드래그할 수 있도록 개별 인스턴스로 설정
+            HexagonMove hexagonMove = newObject.AddComponent<HexagonMove>();  // 필요한 경우 추가적인 Draggable 스크립트 인스턴스 생성;
+
+            if (hexagonMove != null)
+            {
+                hexagonMove.squareObject = squareObject; // squareObject를 설정
+            }
+            else
+            {
+                Debug.LogWarning("Draggable component not found on the instantiated object.");
+            }
+        }
+    }
 }
