@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3742468941670685071}
   - component: {fileID: 3187109008943010158}
   - component: {fileID: 4503870135169579704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Triangle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 1158320529856826283}
   - component: {fileID: 3936117211942896916}
   - component: {fileID: 3417019679656923074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: parallelogram
   m_TagString: Untagged
   m_Icon: {fileID: 0}

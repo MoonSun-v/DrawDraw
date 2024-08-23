@@ -60,14 +60,17 @@ public class ParallelogramMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             //Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
-
             // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
             Vector3 rayOrigin = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             rayOrigin.z = 0f; // 2D에서는 z 값을 0으로 설정 (z 축을 고려하지 않음)
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero);
 
-            // Scene 뷰에서 Ray를 시각적으로 보여줌 (길이 100의 선을 그리도록 설정)
-            //Debug.DrawRay(rayOrigin, Vector3.forward * 100, Color.red, 1.0f);
+            // "shape" 레이어에 해당하는 레이어 마스크 생성
+            int layerMask = 1 << LayerMask.NameToLayer("shape");
+
+            // Raycast를 특정 레이어에만 적용
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
+
+            Debug.Log(hit.collider);
 
             if (hit.collider != null)
             {
