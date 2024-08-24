@@ -10,12 +10,15 @@ public class ResultManager : MonoBehaviour
     // gameResult : 게임 결과 가져오는 스크립터블오브젝트
     // StageNum   : 플레이한 스테이지 정보를 숫자로 표기하는 변수 
     //              스테이지 순서대로 0번~18번의 숫자를 가진다. 
+    //
     public GameResultSO gameResult;
     private int StageNum = 30; 
+
 
     // ( 임시 변수들 )
     public Text scoreText;  // 프로토타입에서만 사용 
     private bool isClear;   // 게임 클리어했는가? 
+
 
 
 
@@ -95,7 +98,7 @@ public class ResultManager : MonoBehaviour
 
     // ★ [ 훈련게임 결과 정보 저장하는 메소드 ] ★ -------------------------------------------------
     //
-    // 1. FailSetting()    : 경험치 X,  게임 실패
+    // 1. FailSetting()    : 경험치 X,  게임 실패 -> 3회 이상 실패 시, 힌트 이벤트 작동 
     // 2. SuccessSetting() : 경험치 5,  게임 성공 
     // 3. ClearSetting()   : 경험치 10, 게임 성공  
     // => 각 함수는 지정된 스테이지의 숫자를 받아온다.=(int stagenum) 

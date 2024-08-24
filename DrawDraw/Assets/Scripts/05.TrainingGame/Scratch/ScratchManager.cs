@@ -8,6 +8,7 @@ public class ScratchManager : MonoBehaviour
 {
     private Camera mainCamera;
 
+    // [ 애니메이터 참조 ]
     public GameObject BlackBase;
     public GameObject BlackAnim;
     public GameObject BlackLine;
@@ -15,6 +16,18 @@ public class ScratchManager : MonoBehaviour
     private Animator CrayonAnim;
     private Animator EraserAnim;
 
+    // [ 팝업 오브젝트 ]
+    public GameObject CheckPopup;          // 완료 확인 팝업 
+    public GameObject SelectDraw;          // 도안 선택 팝업 
+
+    // [ RaycastTarget 비활성화 위한 변수]
+    public GameObject ReturnButton;        // 처음부터 버튼
+    public GameObject EraserButton;        // 지우개 버튼
+    public GameObject Crayon;              // 크레용 부모 오브젝트
+
+    public GameObject Blocker;             // 팝업 활성화 시, 다른 오브젝트 터치 막아주기
+
+    // [ 그리기 영역 제한을 위한 한계 위치 ]
     public Transform Limit_l;
     public Transform Limit_R;
     public Transform Limit_T;
@@ -26,38 +39,33 @@ public class ScratchManager : MonoBehaviour
     private ScratchBlack scratchblack;
 
     public GameObject ScratchDraw;
-
-    public SpriteRenderer spriteRenderer;   // 스프라이트 렌더러
-
     public GameObject ScratchBlack;         // 검은도안 
 
+    // [ 도안 선택 버튼 ]
+    public GameObject[] ImageButton = new GameObject[4];  
 
-    // RaycastTarget 비활성화 버튼
-    public GameObject ReturnButton;        // 처음부터
-    public GameObject EraserButton;        // 지우개 
-    public GameObject Crayon;              // 크레용 부모 
+    // [ 기타 참조 ]
+    public GameResultSO gameResult;         // 게임 결과 저장용 SO
+    public SpriteRenderer spriteRenderer;   // 스프라이트 렌더러
+    public Text ScoreText;                  // 임시 점수 표시용 텍스트
 
-    public GameObject Blocker;             // 팝업 활성화 시, 다른 오브젝트 터치 막아주기 
-    public GameObject CheckPopup;          // 팝업 
-    public GameObject SelectDraw;          // 도안 선택 팝업 
-
-    public GameObject[] ImageButton = new GameObject[4];    // 버튼 4개 
-
-    public Text ScoreText;                 // 임시 점수 표시용 텍스트
-    
     private bool isReturn;
     private bool isEraser;
 
-    public GameResultSO gameResult;
 
 
+    // ---------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
 
+
+    // [ 카메라 초기화 ]
     void Awake()
     {
         mainCamera = Camera.main;
     }
 
 
+    // [ 애니메이터 초기화 ]
     void Start()
     {
         BaseAnim = BlackBase.GetComponent<Animator>();
@@ -69,279 +77,254 @@ public class ScratchManager : MonoBehaviour
 
     void Update()
     {
-        
-        isReturn = scratchdraw.lineRenderers.Count > 0;                    // 리스트에 요소가 있는가?
-
-        // 리스트에 요소가 없으면
-        if (!isReturn)
-        {
-            ReturnButton.GetComponent<Image>().raycastTarget = false;      // '처음부터' 버튼 RaycastTarget 비활성화
-
-
-            if (ReturnButton.transform.childCount == 1)                    // 자식 텍스트 오브젝트가 있는지 확인하고 자식의 raycastTarget 비활성화
-            {
-                var childText = ReturnButton.transform.GetChild(0).GetComponent<Text>();
-                if (childText != null)
-                {
-                    childText.raycastTarget = false;
-                }
-            }
-
-            // GUI 완성 시, 시각화도 시켜주기 
-
-        }
-        else
-        {
-            ReturnButton.GetComponent<Image>().raycastTarget = true;      // '처음부터' 버튼 RaycastTarget 활성화
-        }
+        ReturnButtonState();  // '처음부터' 버튼            상태 처리
+        ScratchDrawState();   // ScratchDraw와 ScratchBlack 상태 처리
+        DrawingAreaLimits();  // 그리기 영역 제한   
+    }
 
 
 
-        // 검은색 도안이 활성화 되었다면 
-        if(ScratchBlack.activeSelf)
+    // ★ [ 라인이 그려져 있는지 확인하고, 없으면 '처음부터'버튼의 Raycast를 비활성화 ]
+    // 
+    private void ReturnButtonState()
+    {
+        isReturn = scratchdraw.lineRenderers.Count > 0;
+
+        if (!isReturn) { SetButtonRaycastState(ReturnButton, false); }
+        else           { SetButtonRaycastState(ReturnButton, true);  }
+
+    }
+
+
+
+    // ★ [ ScratchDraw와 ScratchBlack 오브젝트의 활성화 관리 ]
+    // 
+    private void ScratchDrawState()
+    {
+        if (ScratchBlack.activeSelf)
         {
             ScratchDraw.SetActive(false);
 
-            if (CheckPopup.activeSelf)
-            {
-                scratchblack.enabled = false;
-            }
-            else
-            {
-                scratchblack.enabled = true;
-            }
-
-            EraserButton.GetComponent<Image>().raycastTarget = true;    // 지우개 RaycastTarget 활성화
-
-            // GUI 완성 시, 시각화도 시켜주기
-
+            scratchblack.enabled = !CheckPopup.activeSelf;   
+            SetButtonRaycastState(EraserButton, true);       
         }
-        // 팝업 활성화 되어있으면
-        else if(CheckPopup.activeSelf)
+        else if (CheckPopup.activeSelf)
         {
             ScratchDraw.SetActive(false);
-
         }
         else
         {
             ScratchDraw.SetActive(true);
             scratchblack.enabled = false;
-
-            EraserButton.GetComponent<Image>().raycastTarget = false;
+            SetButtonRaycastState(EraserButton, false);       
         }
+    }
 
 
 
-
-        // 그리기 영역 제한 -----------------------------------------------------------------------------------------------------------------------
-
-
+    // ★ [ 그리기 영역 제한 ]
+    // 
+    private void DrawingAreaLimits()
+    {
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        // 입력 마우스의 x, y 좌표가 범위 밖으로 벗어나면 Draw 비활성화 
-        if (mousePos.x < Limit_l.position.x || mousePos.x > Limit_R.position.x || mousePos.y < Limit_B.position.y || mousePos.y > Limit_T.position.y)
+        if (mousePos.x < Limit_l.position.x || mousePos.x > Limit_R.position.x ||
+            mousePos.y < Limit_B.position.y || mousePos.y > Limit_T.position.y)
         {
-            if(scratchdraw.iscurrentLineRenderer())
+            if (scratchdraw.iscurrentLineRenderer())
             {
-                scratchdraw.FinishLineRenderer();    // 현재 그리는 선 종료
+                scratchdraw.FinishLineRenderer();  // 현재 그리는 선 종료
             }
-
-            scratchdraw.enabled = false;
+            scratchdraw.enabled = false;           
         }
         else
         {
-            scratchdraw.enabled = true;
+            scratchdraw.enabled = true;           
         }
-
     }
 
 
 
-    // 완료 확인 팝업
-    public void CheckPopUp()
-    {
-        CheckPopup.SetActive(true);
-        OnBlocker();
-    }
+    // ★ [ 완료 확인 팝업 ]
+    public void CheckPopUp() { CheckPopup.SetActive(true);  OnBlocker(); }
+    
+
+    // ★ [ 팝업: '아직이야' ]
+    public void PreviousBtn() { CheckPopup.SetActive(false); OffBlocker(); }
 
 
-    // 팝업 : 아직이야
-    public void PreviousBtn()
-    {
-        // 팝업 비활성화
-        CheckPopup.SetActive(false);
-        OffBlocker();
-    }
-
-
-    // 팝업 : 완성이야 
+    // ★ [ 팝업: '완성이야' ]
+    //
+    // 2. 스크래치 완료 -> 점수 화면 이동
+    // 1. 밑그림 색칠 완료 -> 스크래치 시작 
+    //
     public void NextBtn()
     {
-
-        // [ 스크래치 완료 -> 점수 화면 이동 ]
-        if(ScratchBlack.activeSelf)
+        if (ScratchBlack.activeSelf)     // 2
         {
-            
-            float percentage = scratchblack.CheckGrayPercentage();    // 점수 계산
+            float percentage = scratchblack.CheckGrayPercentage();
             if (percentage == -1f)
             {
-                print("에러입니다~");
+                Debug.LogError("점수 계산 중 오류 발생");
             }
             else
             {
-                print("회색 부분이 투명해진 퍼센트: " + percentage + "%");
-
-                // 프로토타입 : 임시로 점수 보여주기
-                int Score = (int)percentage;
-                if(Score<100)
-                {
-                    Score += 1;
-                }
-                ScoreText.text = Score + "점";
-
-                gameResult.score = Score;                                         // 점수 저장 
-                gameResult.previousScene = SceneManager.GetActiveScene().name;    // 현재 씬 이름 저장
-
-                StartCoroutine(ResultSceneDelay());             // 결과 화면으로 넘어가기 
+                DisplayScoreAndProceed((int)percentage);
             }
-
         }
-
-        // [ 밑그림 색칠 완료 -> 스크래치 시작 ]
-        else
+        else                             // 1
         {
-            // 크레용 RaycastTarget 비활성화 및 안쪽으로 넣기
-
-
-            // 부모 오브젝트의 자식 오브젝트들을 가져옴
-            Transform[] children = Crayon.GetComponentsInChildren<Transform>();
-
-            // 모든 자식 오브젝트들의 RaycastTarget 비활성화
-            foreach (Transform child in children)
-            {
-                if (child != Crayon.transform)                      // 자기 자신 제외
-                {
-                    Image image = child.GetComponent<Image>();
-                    if (image != null)
-                    {
-                        image.raycastTarget = false;
-                    }
-
-
-                    // 크레용 집어넣기 : 이전 버튼이 있다면 원래 위치로 되돌리기고 애니메이션 실행 
-                    if (scratchdraw.previousButton != null)
-                    {
-                        RectTransform prevRt = scratchdraw.previousButton.GetComponent<RectTransform>();
-                        prevRt.localPosition = scratchdraw.previousButtonOriginalPosition;
-                    }
-                    CrayonAnim.SetBool("isCrayonBack", true);
-
-                    /*
-                    Vector3 CrayonPosition = child.localPosition;
-                    CrayonPosition.x = 1300;
-                    child.localPosition = CrayonPosition;
-                    print("크레용 들어갑니다.");
-                    */
-                }
-            }
-
-            // 지우개 내보내기
-            EraserAnim.SetBool("isEraserFront", true);
-            /*
-            Transform EraserTransform = EraserButton.GetComponent<Transform>();
-            Vector3 EraserPosition = EraserTransform.position;
-            EraserPosition.x = 1950;
-            EraserTransform.position = EraserPosition;
-            //Vector3 EraserPosition = EraserTransform.position + new Vector3(-120, 0f, 0f);
-            //EraserTransform.position = EraserPosition;
-
-            print("지우개 나옵니다.");
-            */
-
-            
-            CheckPopup.SetActive(false);         // 팝업 비활성화
-
-            //OnBlocker();
-
-            BlackBase.SetActive(true);           // 검정색으로 덮는 애니메이션 : 추후 다시 비활성화 필요 
-            BlackAnim.SetActive(true); 
-
-            BaseAnim.SetBool("isBlackBase",true);
-
-            
-            StartCoroutine(SelectDrawDelay());   // 랜덤 도안 4개 띄우기 : 애니메이션 재생 후 띄워야 하므로 코루틴 적용
-
+            StartScratchPhase();
         }
-        
     }
 
 
+
+    // ★ [ 결과 화면으로 전환 ]
+    //
+    // ( 결과 화면 전환 시 필요한 데이터 )
+    // - score         : 스크래치 완료로 계산된 점수
+    // - previousScene : 현재 씬 이름 
+    //
+    private void DisplayScoreAndProceed(int score)
+    {
+        if (score < 100) {  score += 1; } // 최대 점수는 100점
+        ScoreText.text = $"{score} 점";
+
+        gameResult.score = score;
+        gameResult.previousScene = SceneManager.GetActiveScene().name; 
+
+        StartCoroutine(ResultSceneDelay());
+    }
+
+
+
+    // ★ [ 스크래치 단계 시작 ] 
+    //
+    // 1. 크레용 숨기고 -> 지우개 표시
+    // 2. 검정색으로 덮는 애니메이션 시작
+    // 
+    private void StartScratchPhase()
+    {
+        SetRaycastForCrayonChildren(false);
+        CrayonAnim.SetBool("isCrayonBack", true);  
+        EraserAnim.SetBool("isEraserFront", true); 
+
+        CheckPopup.SetActive(false); 
+        BlackBase.SetActive(true);
+        BlackAnim.SetActive(true);
+        BaseAnim.SetBool("isBlackBase", true); 
+
+        StartCoroutine(SelectDrawDelay());
+    }
+
+
+
+    // ★ [ RaycastTarget 상태 설정 ]
+    //
+    // - button : RaycastTarget 상태를 설정할 버튼 오브젝트
+    // - state  : RaycastTarget의 활성화 여부
+    // 
+    private void SetButtonRaycastState(GameObject button, bool state)
+    {
+        var image = button.GetComponent<Image>();
+        if (image != null)
+        {
+            image.raycastTarget = state;
+        }
+
+        if (button.transform.childCount == 1)
+        {
+            var childText = button.transform.GetChild(0).GetComponent<Text>();
+            if (childText != null)
+            {
+                childText.raycastTarget = state;
+            }
+        }
+    }
+
+
+
+    // ★ [ Crayon 모든 자식의 RaycastTarget을 비활성화 ]
+    // 
+    // - state : RaycastTarget의 활성화 여부
+    // 
+    private void SetRaycastForCrayonChildren(bool state)
+    {
+        Transform[] children = Crayon.GetComponentsInChildren<Transform>();
+
+        foreach (Transform child in children)
+        {
+            if (child != Crayon.transform)
+            {
+                var image = child.GetComponent<Image>();
+                if (image != null)
+                {
+                    image.raycastTarget = state;
+                }
+
+                if (!state && scratchdraw.previousButton != null)
+                {
+                    RectTransform prevRt = scratchdraw.previousButton.GetComponent<RectTransform>();
+                    prevRt.localPosition = scratchdraw.previousButtonOriginalPosition; // 이전 버튼의 위치 복원
+                }
+            }
+        }
+    }
+
+
+
+    // ★ 5초 후 도안 선택 팝업 활성화
+    //
     IEnumerator SelectDrawDelay()
     {
-        yield return new WaitForSeconds(5);   // 5 초 후 실행
-
-        SelectDraw.SetActive(true);          // 랜덤 도안 띄우기
-
+        yield return new WaitForSeconds(5);
+        SelectDraw.SetActive(true);
     }
 
 
+
+    // ★ 2초 후 결과 화면으로 전환
+    //
     IEnumerator ResultSceneDelay()
     {
-        // 2 초 후 실행
         yield return new WaitForSeconds(2);
-
         SceneManager.LoadScene("ResultScene");
     }
 
 
-    // 도안 선택 시, 알맞은 도안 띄워주기
+
+    // ★ [ 선택된 도안 적용 ]
+    //
+    // - number : 선택한 도안 번호
+    //
     public void SelectDrawing(int number)
     {
-        if(number == 0)
+        if (number >= 0 && number < ImageButton.Length)
         {
-            // 버튼의 스프라이트를 오브젝트의 스프라이트로 변경
-
-            spriteRenderer.sprite = ImageButton[0].GetComponent<Image>().sprite;
-        }
-        else if(number == 1)
-        {
-            spriteRenderer.sprite = ImageButton[1].GetComponent<Image>().sprite;
-        }
-        else if (number == 2)
-        {
-            spriteRenderer.sprite = ImageButton[2].GetComponent<Image>().sprite;
-        }
-        else if (number == 3)
-        {
-            spriteRenderer.sprite = ImageButton[3].GetComponent<Image>().sprite;
+            spriteRenderer.sprite = ImageButton[number].GetComponent<Image>().sprite;
         }
         else
         {
-            print("Number Error!!");
+            Debug.LogError("잘못된 도안 번호 선택");
         }
 
         SelectDraw.SetActive(false);
         BlackBase.SetActive(false);
         BlackAnim.SetActive(false);
         BlackLine.SetActive(false);
-
         ScratchBlack.SetActive(true);
-
         OffBlocker();
-
     }
 
 
 
-    private void OnBlocker()
-    {
-        Blocker.SetActive(true);
-        print("Blocker 활성화!");
-    }
+    // ★ 블로커 활성화
+    private void OnBlocker() { Blocker.SetActive(true);  Debug.Log("Blocker 활성화"); }
 
-    private void OffBlocker()
-    {
-        Blocker.SetActive(false);
-        print("Blocker 비활성화");
-    }
+
+    // ★ 블로커 비활성화 
+    private void OffBlocker() {  Blocker.SetActive(false);  Debug.Log("Blocker 비활성화"); }
+
+
 }

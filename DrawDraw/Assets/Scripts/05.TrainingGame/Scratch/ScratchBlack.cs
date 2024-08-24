@@ -18,7 +18,7 @@ public class ScratchBlack : MonoBehaviour
 
     private Color[] originalColors;                   // 원래 색상 배열
 
-    public GameObject scratchBlack;                   // 자기자신 
+    public GameObject scratchBlack;                   // 자기 자신 참조
 
 
 
@@ -29,90 +29,110 @@ public class ScratchBlack : MonoBehaviour
     }
 
 
+
+    // ★ [ Sprite를 읽기/쓰기 가능하도록 변경 ] ★
+    // 
+    // 1. scratchTexture  :  스프라이트를 읽기 및 쓰기 가능한 Texture2D 객체로 변환
+    //                       ( 기본 spriteRenderer.sprite 는 읽기 전용 )
+    // 2. originalColors  :  원래 색상 저장 ( 추후 되돌려놓기 위해 )
+    // 3. 텍스처(scratchTexture) 를 기반으로 새로운 스프라이트 생성 -> spriteRenderer에 다시 할당
+    // 
     void Start()
     {
-         
-        spriteRenderer = GetComponent<SpriteRenderer>();            // 스프라이트 렌더러 컴포넌트 가져오기
+        spriteRenderer = GetComponent<SpriteRenderer>();          
+        if (spriteRenderer == null) { Debug.LogWarning("spriteRenderer가 null 입니다."); }
 
-        if (spriteRenderer == null)
-        {
-            Debug.LogWarning("spriteRenderer가 null 입니다.");
-        }
+        scratchTexture = textureFromSprite(spriteRenderer.sprite);   // 1
 
-       
-        scratchTexture = textureFromSprite(spriteRenderer.sprite);   // 스프라이트로 부터 읽기 가능한 직접 변경할 텍스처 생성 
+        originalColors = scratchTexture.GetPixels();                 // 2
 
-        
-        originalColors = scratchTexture.GetPixels();                 // 원래 색상을 저장
-
-
-        // 새롭게 생성한 텍스처를 이용해 새로운 스프라이트를 생성하고 설정
-        spriteRenderer.sprite = Sprite.Create(scratchTexture, new Rect(0, 0, scratchTexture.width, scratchTexture.height), Vector2.one * 0.5f);
+        spriteRenderer.sprite = Sprite.Create(                       // 3
+            scratchTexture, 
+            new Rect(0, 0, scratchTexture.width, scratchTexture.height), 
+            Vector2.one * 0.5f);
 
     }
 
+
+
+    // ★ [ 스크래치 작업 로직 처리 ]
+    // 
+    // - 마우스 입력 처리
+    // - 마우스 버튼이 눌려있는 동안 일정 프레임마다 텍스처를 업데이트
+    // 
     void Update()
     {
-        // 마우스 입력 감지
+        MouseInput();
+
+        if (textureNeedsUpdate && Time.frameCount % 5 == 0)
+        {
+            ApplyTextureUpdate();
+        }
+    }
+
+
+
+    // ★ [ 마우스 입력 처리 ] ★
+    // 
+    // 1. 처음 눌렀을 때 : 화면 좌표 -> 월드좌표
+    //                     스크래치 가능한 영역 내에 있는지 확인
+    //                     ( 스크래칭 시작 , 이전 위치 초기화 )
+    // 2. 누른 상태      : 스크래치 진행
+    // 3. 떼었을 때      : ( 스크래칭 종료 , 이전 위치 초기화 )
+    //                   : 텍스처가 업데이트될 필요 있으면 적용
+    // 
+    private void MouseInput()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            // 입력 마우스의 x, y 좌표가 범위 밖으로 벗어나면 X
-            if (mousePos.x < scratchManager.Limit_l.position.x || 
-                mousePos.x > scratchManager.Limit_R.position.x || 
-                mousePos.y < scratchManager.Limit_B.position.y || 
-                mousePos.y > scratchManager.Limit_T.position.y)
+            if (IsWithinBounds(mousePos))
             {
-                return;
+                isScratching = true;  
+                lastMousePosition = null; 
             }
-            else
-            {
-                isScratching = true;
-                lastMousePosition = null;     // 마우스를 처음 누를 때 이전 위치 초기화
-            }
-            
         }
         else if (Input.GetMouseButton(0) && isScratching)
         {
             Scratch(Input.mousePosition);
-
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            isScratching = false;  
+            lastMousePosition = null;  
 
-            isScratching = false;
-            lastMousePosition = null;        // 마우스를 뗄 때 이전 위치 초기화
-
-            
-            if (textureNeedsUpdate)          // 마우스 버튼을 뗄 때 텍스처를 적용
-            {
-                scratchTexture.Apply();
-                textureNeedsUpdate = false;
-            }
+            ApplyTextureUpdate();
         }
-
-
-        // 마우스 버튼이 눌려있는 동안 주기적으로 텍스처 적용
-        if (textureNeedsUpdate && Time.frameCount % 5 == 0)
-        {
-            scratchTexture.Apply();
-            textureNeedsUpdate = false;
-        }
-
     }
 
 
 
-    // 터치한 위치의 픽셀을 투명색으로 변경하는 함수
+    // ★ [ 텍스처 업데이트 ]
+    // 
+    // - 텍스처에 변경 사항 적용 , 업데이트 플래그 초기화
+    private void ApplyTextureUpdate()
+    {
+        if (textureNeedsUpdate)
+        {
+            scratchTexture.Apply();  
+            textureNeedsUpdate = false;
+        }
+    }
+
+
+
+    // ★ [ 픽셀을 투명색으로 변경하는 함수 ]
+    //
+    // - 스프라이트의 로컬 좌표를 터치 좌표로 변환
+    // - 현재 위치와 이전 위치를 이용하여 선을 그리는 함수 호출
+    // 
     void Scratch(Vector2 touchPosition)
     {
-       
-        Vector2 worldPos = Camera.main.ScreenToWorldPoint(touchPosition);                         // 스프라이트의 로컬 좌표를 터치 좌표로 변환
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(touchPosition);                        
         Vector2 localTouchPosition = spriteRenderer.transform.InverseTransformPoint(worldPos);
 
-        
-        if (lastMousePosition.HasValue)          // 현재 위치와 이전 위치를 이용하여 선을 그리는 함수 호출
+        if (lastMousePosition.HasValue)          
         {
             DrawLine(lastMousePosition.Value, localTouchPosition);
         }
@@ -123,7 +143,10 @@ public class ScratchBlack : MonoBehaviour
 
 
 
-    // 선형 보간 :  두 점 사이의 선을 그리는 함수 -> 선 구성하는 모든 점을 처리하기 위해 (끊김 현상 개선)
+    // ★ [ 선형 보간 ]
+    //
+    // 두 점 사이의 선을 그리는 함수 -> 선 구성하는 모든 점을 처리하기 위해 (끊김 현상 개선)
+    //
     void DrawLine(Vector2 start, Vector2 end)
     {
         float distance = Vector2.Distance(start, end);    // 시작-끝 점 거리 계산
@@ -139,7 +162,8 @@ public class ScratchBlack : MonoBehaviour
 
 
 
-    // 특정 위치에 원을 그리는 함수
+    // ★ [ 특정 위치에 원을 그리는 함수 ]
+    // 
     void DrawCircle(Vector2 position)
     {
         int startX = Mathf.RoundToInt((position.x + spriteRenderer.bounds.extents.x) * scratchTexture.width / spriteRenderer.bounds.size.x) - scratchSize / 2;
@@ -152,7 +176,6 @@ public class ScratchBlack : MonoBehaviour
                 
                 if (x >= 0 && x < scratchTexture.width && y >= 0 && y < scratchTexture.height)  // 픽셀 좌표가 유효한 범위 내에 있는지 확인
                 {
-                    
                     scratchTexture.SetPixel(x, y, Color.clear);                                 // 픽셀 색상을 투명색(알파값 0)으로 변경
                 }
             }
@@ -161,7 +184,8 @@ public class ScratchBlack : MonoBehaviour
 
 
 
-    // 스프라이트에서 텍스처를 추출하는 함수
+    // ★ [ 스프라이트에서 텍스처를 추출하는 함수 ]
+    // 
     public static Texture2D textureFromSprite(Sprite sprite)
     {
         if (sprite.rect.width != sprite.texture.width)    // 스프라이트의 크기와 텍스처의 크기가 다르면 새로운 텍스처 생성
@@ -183,8 +207,10 @@ public class ScratchBlack : MonoBehaviour
 
 
 
-    // 스크래치 효과를 리셋하는 함수
+    // ★ [ 스크래치 효과를 리셋하는 함수 ]
+    // 
     // (스크래치 끝난 후 한번 더 실행시켜서 돌려놓아야 함 !!!!) : 이미지 파일 자체의 픽셀을 변경 시키는 것이므로...
+    //
     public void ResetScratch()
     {
         if (scratchBlack.activeSelf)                        // scratchBlack이 활성화 되어있을 때만 스크래치 리셋 
@@ -192,12 +218,12 @@ public class ScratchBlack : MonoBehaviour
             scratchTexture.SetPixels(originalColors);       // 원래 색상으로 텍스처를 복원
             scratchTexture.Apply();
         }
-        
     }
 
 
 
-    // 회색 부분이 모두 투명하게 변했는지 확인하는 함수
+    // ★ [ 회색 부분이 모두 투명하게 변했는지 확인하는 함수 ]
+    // 
     bool CheckIfGrayPartsCleared(out float percentage)
     {
         Color[] currentColors = scratchTexture.GetPixels();
@@ -230,21 +256,34 @@ public class ScratchBlack : MonoBehaviour
 
 
 
-    // 회색 부분의 투명도를 확인하는 함수
+    // ★ [ 회색 부분의 투명도를 확인하는 함수 ]
+    //
+    // ResetScratch() : 점수 산출 시, 재사용 위해 이미지 복구 하기
+    // 
     public float CheckGrayPercentage()
     {
-        
-        if (scratchBlack.activeSelf)    // scratchBlack이 활성화 되어있을 때만 계산  
+        if (scratchBlack.activeSelf)    
         {
             float percentage;
-            bool allGrayCleared = CheckIfGrayPartsCleared(out percentage);
+            CheckIfGrayPartsCleared(out percentage);
             // print("회색 부분이 투명해진 퍼센트: " + percentage + "%");
 
-            ResetScratch();            // 점수 산출 시, 재사용 위해 이미지 복구 하기 
+            ResetScratch();       
 
             return percentage;
         }
-
         return -1f;
+    }
+
+
+
+    // ★ [ 입력 좌표가 스크래치 영역 내에 있는지 확인하는 함수 ]
+    //
+    private bool IsWithinBounds(Vector2 position)
+    {
+        return position.x >= scratchManager.Limit_l.position.x &&
+               position.x <= scratchManager.Limit_R.position.x &&
+               position.y >= scratchManager.Limit_B.position.y &&
+               position.y <= scratchManager.Limit_T.position.y;
     }
 }
