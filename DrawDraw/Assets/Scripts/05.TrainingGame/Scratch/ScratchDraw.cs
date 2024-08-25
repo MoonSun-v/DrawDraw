@@ -6,30 +6,30 @@ public class ScratchDraw: MonoBehaviour
 {
     public Camera m_camera;
 
-    //// 그림도구 관련 변수 
-    public GameObject brush;              // 브러시 프리팹 
-    private LineRenderer lineRenderer;
+    // [ 그림도구 관련 변수 ]
+    public GameObject brush;                      // 브러시 프리팹 
     private Color lineColor;
+    private LineRenderer lineRenderer;
+    private LineRenderer currentLineRenderer;     // 현재 선 그리기용 LineRenderer
 
-    LineRenderer currentLineRenderer;     // 현재 선 그리는 데 사용되는 LineRenderer 컴포넌트 저장
+    private Vector2 lastPos;                      // 마지막으로 그려진 점의 위치를 저장 
 
-    Vector2 lastPos;                      // 마지막으로 그려진 점의 위치를 저장 
-
+    // [ 그리기 관련 변수 ]
     [SerializeField, Range(0.0f, 2.0f)]
-    private float width;                  // 선 굵기 조절 
-
+    private float width = 0.66f;                  // 선 굵기 조절 
+    
     public ScratchManager Scratch;
 
+    // [ 색상 선택 관련 변수 ]
     public GameObject previousButton;                 // 이전에 클릭된 버튼을 추적하기 위한 변수
     public Vector3 previousButtonOriginalPosition;    // 이전 버튼의 원래 위치를 저장
-    private int CrayonMove = 90;
+    private const int CrayonMove = 90;                // 버튼 이동 거리
 
+    // [ 그려진 선 추적 및 관리 ]
     public List<GameObject> lineRenderers = new List<GameObject>();     // 생성된 LineRenderer를 추적하기 위한 리스트
-
     public GameObject ScratchBlack;
-
-    public bool isSelectColor;
     public bool isStartDraw;
+    public bool isSelectColor;
 
 
 
@@ -45,17 +45,18 @@ public class ScratchDraw: MonoBehaviour
 
     private void Update()
     {
-        Drawing();
+        if (previousButton != null)
+        {
+            Drawing();
+        }  
     }
 
 
+    // ★ [ 그리기 작업 수행 ] ★
+    // 
     void Drawing()
     {
-        if (previousButton == null)    // 아직 색상 선택을 하지 않았으면 그리기 차단
-        {
-            return;
-        }
-        else if (Input.GetMouseButtonDown(0))     // 눌렀을 때 한번만 (누르고 있어도 한번..!)
+        if (Input.GetMouseButtonDown(0))     // 눌렀을 때 한번만 (누르고 있어도 한번..!)
         {
             CreateBrush();
         }
@@ -63,39 +64,65 @@ public class ScratchDraw: MonoBehaviour
         {
             PointToMousePos();
         }
-        else if (Input.GetMouseButtonUp(0))  // 떼었을 때
+        else if (Input.GetMouseButtonUp(0))  
         {
-            // currentLineRenderer = null;   // 현재 그리는 선 종료
             FinishLineRenderer();
         }
 
     }
 
 
-    // 브러시를 생성, 초기화
+    // ★ [ 브러시 생성, 초기화 ]
+    // 
+    // - 선 굵기 항상 동일하게 설정
+    // - 마우스 위치를 이용해 브러시 LineRenderer의 시작과 끝 지점 설정
+    //   ( 라인 렌더러를 시작하려면 2개 점이 있어야 하니까 )
+    // - 생성된 LineRenderer 객체를 리스트에 추가
+    // 
     void CreateBrush()
     {
-        // 마우스 위치를 이용해 브러시의 LineRenderer의 시작과 끝 지점 설정
-
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
-        currentLineRenderer.startWidth = currentLineRenderer.endWidth = width;      // 선 굵기 항상 동일하게 
 
-        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);        // 라인 렌더러를 시작하려면 2개 점이 있어야 하니까
+        currentLineRenderer.startWidth = currentLineRenderer.endWidth = width;     
 
+        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);        
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
 
-        
-        lineRenderers.Add(brushInstance);    // 생성된 LineRenderer 객체를 리스트에 추가
+        lineRenderers.Add(brushInstance);    
     }
 
 
 
-    // 선에 새로운 점 추가 : 선의 positionCount 증가시키고 새로운 점 위치 설정 
+    // ★ [ 마우스 위치 따라 선 그리기 ]
+    //
+    // ( 마우스 위치가 변경되었을 때만 새로운 점 추가 )
+    // 
+    void PointToMousePos()
+    {
+        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Vector2.Distance(lastPos, mousePos) > 0.1f)
+        {
+            AddAPoint(mousePos);
+            lastPos = mousePos;
+        }
+    }
+
+
+
+    // ★ [ 선에 새로운 점 추가 ]
+    //
+    // 선의 positionCount 증가시키고 새로운 점 위치 설정 
+    // 
     void AddAPoint(Vector2 pointPos)
     {
-        if (!currentLineRenderer) return;
+        if (!currentLineRenderer)
+        {
+            print("currentLineRenderer가 null 입니다.");
+            return;
+        }
 
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
@@ -103,31 +130,15 @@ public class ScratchDraw: MonoBehaviour
     }
 
 
-
-    // 마우스 위치 따라 선 그리기 (마우스 위치가 변경되었을 때만 새로운 점을 추가)
-    void PointToMousePos()
-    {
-        Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-
-        if ((lastPos - mousePos).magnitude > 0.1f)
-        {
-            AddAPoint(mousePos);
-            lastPos = mousePos;
-        }
-
-    }
-
-    public bool iscurrentLineRenderer()
-    {
-        return currentLineRenderer != null;
-    }
-
-
+    // ★ [ 현재 선 그리기 종료 ] 
+    //
+    // isStartDraw : 설명 문구 업데이트 위한 작업
+    //
     public void FinishLineRenderer()
     {
-        currentLineRenderer = null;    // 현재 그리는 선 종료
+        currentLineRenderer = null;    
 
-        if (!isStartDraw)              // 첫 색칠이 시작되면 
+        if (!isStartDraw)              
         {
             isStartDraw = true;
             print("isStartDraw가 true가 되었습니다");
@@ -135,13 +146,16 @@ public class ScratchDraw: MonoBehaviour
     }
 
 
-    // LineRenderer 색상 설정
+    // ★ [ LineRenderer 색상 설정 ]
+    //
+    // isSelectColor : 설명 문구 업데이트 위한 작업
+    //
     public void SetLineColor()
     {
         lineRenderer.startColor = lineColor;
         lineRenderer.endColor = lineColor;
 
-        if(!isSelectColor)
+        if(!isSelectColor)             
         {
             isSelectColor = true;
             print("isSelectColor가 true가 되었습니다");
@@ -149,154 +163,89 @@ public class ScratchDraw: MonoBehaviour
     }
 
 
-    // 처음부터 버튼 클릭 시 생성된 모든 LineRenderer 객체를 삭제하는 메서드
+    // ★ [ 생성된 모든 LineRenderer 객체를 삭제 ] : '처음부터' 버튼 클릭
+    // 
     public void ClearAllLineRenderers()
     {
-        if (!ScratchBlack.activeSelf)        // ScratchBlack이 비활성화일 때만 삭제 가능
+        if (!ScratchBlack.activeSelf)        
         {
             foreach (GameObject lineRendererObject in lineRenderers)
             {
                 Destroy(lineRendererObject);
             }
-            lineRenderers.Clear();           // 리스트 초기화
+            lineRenderers.Clear();           
         }
         
     }
 
 
+    public bool iscurrentLineRenderer()
+    {
+        return currentLineRenderer != null;
+    }
 
-    // 그림 도구 선택 → 브러시 프리팹의 색상 변경 ----------------------------------------------------------------------------
+
+    // ★ [ 브러시 프리팹 색상 변경 ]
+    //
+    // 1. 이전 색상 버튼 원위치
+    // 2. 색상 적용
+    // 3. 현재 색상 버튼의 원래 위치 저장
+    // 4. 이전 버튼을 현재 버튼으로 업데이트
+    //
+    public void SelectColorButton(GameObject crayon, Color color)
+    {
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;
+        }
+
+        lineColor = color;
+        SetLineColor();
+
+        RectTransform rt = crayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition; 
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        previousButton = crayon;
+    }
+
 
     #region 브러시 색상 변경 메서드 모음
 
     public void ColorRedButton(GameObject RedCrayon)
     {
-        // 이전 버튼이 있다면 원래 위치로 되돌리기
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        // 현재 클릭된 버튼 처리
-        lineColor = Color.red;
-        SetLineColor();
-
-        RectTransform rt = RedCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        // 이전 버튼을 현재 버튼으로 업데이트
-        previousButton = RedCrayon;
+        SelectColorButton(RedCrayon, Color.red);
     }
 
     public void ColorOrangeButton(GameObject OrangeCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = new Color(1f, 0.5f, 0f);
-        SetLineColor();
-
-        RectTransform rt = OrangeCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        previousButton = OrangeCrayon;
+        SelectColorButton(OrangeCrayon, new Color(1f, 0.5f, 0f));
     }
 
     public void ColorYellowButton(GameObject YellowCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = Color.yellow;
-        SetLineColor();
-
-        RectTransform rt = YellowCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        previousButton = YellowCrayon;
+        SelectColorButton(YellowCrayon, Color.yellow);
     }
 
     public void ColorGreenButton(GameObject GreenCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = new Color(0f, 0.392f, 0f);
-        SetLineColor();
-
-        RectTransform rt = GreenCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        previousButton = GreenCrayon;
+        SelectColorButton(GreenCrayon, new Color(0f, 0.392f, 0f));
     }
 
     public void ColorSkyBlueButton(GameObject SkyBlueCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = new Color(0.529f, 0.808f, 0.922f); 
-        SetLineColor();
-
-        RectTransform rt = SkyBlueCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        previousButton = SkyBlueCrayon;
+        SelectColorButton(SkyBlueCrayon, new Color(0.529f, 0.808f, 0.922f));
     }
 
     public void ColorBlueButton(GameObject BlueCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = Color.blue;
-        SetLineColor();
-
-        RectTransform rt = BlueCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        previousButton = BlueCrayon;
+        SelectColorButton(BlueCrayon, Color.blue);
     }
 
     public void ColorPurpleButton(GameObject PurpleCrayon)
     {
-        if (previousButton != null)
-        {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;
-        }
-
-        lineColor = new Color(0.859f, 0.439f, 0.576f);
-        SetLineColor();
-
-        RectTransform rt = PurpleCrayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition; 
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
-
-        
-        previousButton = PurpleCrayon;
+        SelectColorButton(PurpleCrayon, new Color(0.859f, 0.439f, 0.576f));
     }
 
     #endregion
