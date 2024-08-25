@@ -12,7 +12,7 @@ public class ResultManager : MonoBehaviour
     //              스테이지 순서대로 0번~18번의 숫자를 가진다. 
     //
     public GameResultSO gameResult;
-    private int StageNum = 30; 
+    // private int StageNum = 30; 
 
 
     // ( 임시 변수들 )
@@ -33,7 +33,7 @@ public class ResultManager : MonoBehaviour
         // 60 % 이상           : 경험치 10 ,게임 성공
         if (gameResult.previousScene == "DotLineScene")
         {
-            StageNum = 0;
+            // StageNum = 0;
 
             if      (gameResult.score < 50)  { isClear = false; /*FailSetting(StageNum);*/ }    
             else if (gameResult.score < 60)  { isClear = true;  /*SuccessSetting(StageNum);*/ }  

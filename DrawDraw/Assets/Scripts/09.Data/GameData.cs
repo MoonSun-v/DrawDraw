@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -66,22 +67,25 @@ public class TrainingData
 //               key의 int는 TestNum이다.
 //               TestResultData 클래스 => 테스트 결과 데이터를 저장하는 형태
 
+[Serializable]
 public class TestData
 {
     public Dictionary<int, TestResultData> TestResults; // = new Dictionary<int, TestResultData>();
 }
+
+[Serializable]
 public class TestResultData
 {
-    public string Game1Img; // 이미지 경로를 문자열로 저장 : 더 구상 필요함 !!!! 
-    public string Game2Img;
-    public string Game3Img;
-    public string Game4Img;
-    public string Game5Img;
-    public string Game6Img; 
-    public int Game7Score;
-    public int Game8Score;
-    public int Game9Score;
-    public int Game10Score;
+    public string Game1Img ; // 이미지 경로를 문자열로 저장 : 더 구상 필요함 !!!! 
+    // public string Game2Img = "";
+    // public string Game3Img = "";
+    // public string Game4Img = "";
+    // public string Game5Img = "";
+    // public string Game6Img = ""; 
+    // public int Game7Score;
+    // public int Game8Score;
+    // public int Game9Score;
+    // public int Game10Score;
 }
 
 
@@ -128,6 +132,7 @@ public class GameData : MonoBehaviour
 
         testdata.TestResults = new Dictionary<int, TestResultData>();   // 초기화
     }
+
 
 
 
@@ -212,4 +217,70 @@ public class GameData : MonoBehaviour
             print("기본 테스트 데이터 생성 완료");
         }
     }
+
+
+
+
+
+
+
+    // --------------------------------------------------------------------------------------------------------
+    //// ★ 이미지 캡쳐 및 저장 관련 메소드 모음 ★ -----------------------------------------------------------
+    //                                               * 이미지 불러오는 메소드는 다른 스크립트에 있음 
+    //
+    // Base64 인코딩을 사용해 이미지를 문자열로 변환한 후 -> JSON에 포함 하는 방식 사용
+    //
+    // 1. 화면 일정 부분 캡쳐
+    // 2. 이미지 인코딩 (텍스처 -> Base64)
+    // 3. 이미지 디코딩 (Base64 -> 텍스처)
+    //
+
+
+
+    // ★ [특정 영역을 캡처해 Base64 문자열로 변환 ]
+    //
+    // - cam         : 캡처할 화면을 렌더링할 카메라
+    // - captureRect : 캡처할 영역을 정의하는 사각형 (화면의 왼쪽 아래 기준)
+    //
+    // 1. RenderTexture 설정 : RenderTexture(캡처 영역의 너비, 높이, 깊이 버퍼)
+    //                         - 깊이 버퍼 : 비트 깊이 = 이미지 품질 영향 (16 : 가장 저화질)
+    //                         카메라의 렌더링 결과를 RenderTexture에 출력
+    // 2. cam.Render()       : 카메라가 즉시 씬을 렌더링. 렌더링된 결과는 RenderTexture(rt)에 담김
+    // 3. RenderTexture- > Texture2D로 복사
+    // 4. 메모리 해제
+    // 5. Texture2D를 Base64 문자열로 변환
+    //
+    public string CaptureScreenArea(Camera cam, Rect captureRect)
+    {
+        RenderTexture rt = new RenderTexture((int)captureRect.width, (int)captureRect.height, 16);
+        cam.targetTexture = rt;  
+        
+        cam.Render();
+
+        RenderTexture.active = rt;
+        Texture2D screenShot = new Texture2D((int)captureRect.width, (int)captureRect.height, TextureFormat.RGB24, false);
+        screenShot.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
+        screenShot.Apply();
+
+        cam.targetTexture = null;
+        RenderTexture.active = null;
+        Destroy(rt);
+
+        return TextureToBase64(screenShot);
+    }
+
+
+    // ★ [ Texture2D를 Base64 문자열로 변환 ]
+    // 
+    // - PNG로 인코딩
+    // 
+    public string TextureToBase64(Texture2D texture)
+    {
+        byte[] imageBytes = texture.EncodeToPNG();
+        return Convert.ToBase64String(imageBytes);
+    }
+
+
+
+
 }
