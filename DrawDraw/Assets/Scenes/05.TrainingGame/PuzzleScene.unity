@@ -380,7 +380,6 @@ RectTransform:
   - {fileID: 648175672}
   - {fileID: 1100144228}
   - {fileID: 1816817976}
-  - {fileID: 1559341801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -447,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 359261422}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8410232, y: -1.9018683, z: 0.02629725}
+  m_LocalPosition: {x: -3.8410232, y: -1.9018683, z: -1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -531,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 404374775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33897668, y: -1.9018683, z: 0.02629725}
+  m_LocalPosition: {x: 0.33897668, y: -1.9018683, z: -1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -738,7 +737,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553163328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: FinishColoringBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553163328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +800,6 @@ GameObject:
   - component: {fileID: 591003621}
   - component: {fileID: 591003620}
   - component: {fileID: 591003619}
-  - component: {fileID: 591003622}
   m_Layer: 5
   m_Name: Crayon1_red
   m_TagString: Untagged
@@ -860,9 +870,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 591003617}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: ColorRedButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 591003617}
@@ -910,18 +920,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591003617}
   m_CullTransparentMesh: 1
---- !u!114 &591003622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591003617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb8960073b6e314a91214614cf1faa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &648175671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,9 +1081,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorBlueButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorBluebutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 754384537}
@@ -1206,7 +1204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 653d42a64955de74186ec5923a240735, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b2ca5c5954d6a44fbc60192706604dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1327,7 +1325,7 @@ Transform:
   m_GameObject: {fileID: 945843965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33897668, y: 1.7981315, z: 0.02629725}
+  m_LocalPosition: {x: 0.33897668, y: 1.7981315, z: -1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1415,6 +1413,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1520776777}
+  - {fileID: 2081390139}
   - {fileID: 859651517}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1724,9 +1723,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorPurpleButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorPurplebutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1116299912}
@@ -1856,9 +1855,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorGreenButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorGreenbutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1123932734}
@@ -1988,9 +1987,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorYellowButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorYellowbutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1273593291}
@@ -2064,7 +2063,7 @@ Transform:
   m_GameObject: {fileID: 1315652758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8410232, y: 1.7981315, z: 0.02629725}
+  m_LocalPosition: {x: -3.8410232, y: 1.7981315, z: -1}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2204,9 +2203,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorOrangeButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorOrangebutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1357922329}
@@ -2506,7 +2505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1559341799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: Eraserbutton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1559341796}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1559341799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,11 +2568,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 248143783}
+  m_Father: {fileID: 1816817976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 932, y: -628}
+  m_AnchoredPosition: {x: 858, y: -362}
   m_SizeDelta: {x: 316.6071, y: 127.7766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1775321891
@@ -2705,6 +2716,7 @@ RectTransform:
   - {fileID: 2097268586}
   - {fileID: 754384538}
   - {fileID: 1116299913}
+  - {fileID: 1559341801}
   m_Father: {fileID: 248143783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2712,6 +2724,62 @@ RectTransform:
   m_AnchoredPosition: {x: 74, y: -266}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1817531132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817531134}
+  - component: {fileID: 1817531133}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1817531133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817531132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593f57e17b3515f49ad025e6cd2b1304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crayonColor: {r: 0, g: 0, b: 0, a: 0}
+  Pieces:
+  - {fileID: 1315652758}
+  - {fileID: 945843965}
+  - {fileID: 359261422}
+  - {fileID: 404374775}
+  Puzzles:
+  - {fileID: 1873156212}
+  - {fileID: 1775321891}
+  - {fileID: 1457966597}
+  - {fileID: 910022371}
+  correctForm: {fileID: 0}
+--- !u!4 &1817531134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817531132}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04102332, y: -0.9481315, z: -0.02629725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873156212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,7 +2858,7 @@ Transform:
   m_GameObject: {fileID: 1873156212}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8410232, y: 1.7981315, z: 0.02629725}
+  m_LocalPosition: {x: -3.8410232, y: 1.7981315, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2829,6 +2897,90 @@ Transform:
   - {fileID: 1775321893}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2081390138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081390139}
+  - component: {fileID: 2081390140}
+  m_Layer: 0
+  m_Name: Rectangle 35
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081390139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081390138}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3152, y: -0.7245, z: 1}
+  m_LocalScale: {x: 0.65907496, y: 0.65907496, z: 0.65907496}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1069399909}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2081390140
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081390138}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4369d02b0f09b6a4b9728f604a5983ec, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 16.43, y: 13.02}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2097268585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,9 +3063,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScratchDraw, Assembly-CSharp
-        m_MethodName: ColorSkyBlueButton
+      - m_Target: {fileID: 1817531133}
+        m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
+        m_MethodName: colorSkybluebutton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2097268585}
@@ -2973,3 +3125,4 @@ SceneRoots:
   - {fileID: 117798597}
   - {fileID: 128718506}
   - {fileID: 544624738}
+  - {fileID: 1817531134}

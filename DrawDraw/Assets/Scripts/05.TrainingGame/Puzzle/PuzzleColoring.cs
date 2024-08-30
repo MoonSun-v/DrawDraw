@@ -1,125 +1,198 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class PuzzleColoring : MonoBehaviour
-//{
-//    public GameObject PuzzlePiece;
-//    private Color selectedColor; // 현재 선택된 색상
+public class PuzzleColoring : MonoBehaviour
+{
+    public Color crayonColor; // 크레용 버튼의 색상
+    private static Color selectedColor = Color.white; // 선택된 색상, 기본은 흰색
+    public GameObject[] Pieces; 
+    public GameObject[] Puzzles;
 
-//    public GameObject previousButton;                 // 이전에 클릭된 버튼을 추적하기 위한 변수
-//    public Vector3 previousButtonOriginalPosition;    // 이전 버튼의 원래 위치를 저장
-//    private int crayonMove = 90;
+    private Color[] pieceColors;
 
-//    public bool isSelectColor;
+    private int status = 0; //0:색칠,1:맞추기
 
-//    private void Start()
-//    {
-//        // 초기화 작업이 필요한 경우 여기에 추가
-//    }
+    private Vector3[] initialPositions;
 
-//    private void Update()
-//    {
-//        // 퍼즐 조각을 색칠하는 로직이 여기에 포함될 수 있습니다.
-//        Coloring();
-//    }
+    public GameObject correctForm;
+    private bool isMoving;
 
-//    private void Coloring()
-//    {
-//        if (!isSelectColor || previousButton == null)
-//        {
-//            return;
-//        }
+    private float startPosX;
+    private float startPosY;
 
-//        if (Input.GetMouseButtonDown(0))
-//        {
-//            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-//            if (hit.collider != null)
-//            {
-//                PuzzlePiece piece = hit.collider.GetComponent<PuzzlePiece>();
-//                if (piece != null)
-//                {
-//                    piece.SetColor(selectedColor);
-//                }
-//            }
-//        }
-//    }
+    void Start()
+    {
+        initialPositions = new Vector3[Pieces.Length];
 
-//    public void SetColor(Color color)
-//    {
-//        selectedColor = color;
+        if (status == 0)
+        {
+            pieceColors = new Color[Pieces.Length];
 
-//        if (!isSelectColor)
-//        {
-//            isSelectColor = true;
-//            Debug.Log("Color selected: " + color);
-//        }
-//    }
+            foreach (GameObject piece in Pieces)
+            {
+                if (piece.GetComponent<Collider2D>() == null)
+                {
+                    piece.AddComponent<PolygonCollider2D>();
+                }
+            }
+        }
 
-//    private void UpdateButtonPosition(GameObject selectedButton)
-//    {
-//        // 이전 버튼이 있다면 원래 위치로 되돌리기
-//        if (previousButton != null)
-//        {
-//            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-//            prevRt.localPosition = previousButtonOriginalPosition;
-//        }
+        if (status == 1)
+        {
+            for (int i = 0; i < Pieces.Length; i++)
+            {
+                initialPositions[i] = Pieces[i].transform.position;
+            }
+        }
+    }
 
-//        // 현재 클릭된 버튼의 위치 조정
-//        RectTransform rt = selectedButton.GetComponent<RectTransform>();
-//        previousButtonOriginalPosition = rt.localPosition; // 현재 버튼의 원래 위치 저장
-//        rt.localPosition = new Vector3(rt.localPosition.x - crayonMove, rt.localPosition.y, rt.localPosition.z);
+    void Update()
+    {
+        if (status == 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-//        // 이전 버튼을 현재 버튼으로 업데이트
-//        previousButton = selectedButton;
-//    }
+                if (hit.collider != null)
+                {
+                    foreach (GameObject piece in Pieces)
+                    {
+                        if (hit.collider.gameObject == piece)
+                        {
+                            SpriteRenderer spriteRenderer = piece.GetComponent<SpriteRenderer>();
+                            if (spriteRenderer != null)
+                            {
+                                spriteRenderer.color = crayonColor;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
-//    public void ColorRedButton(GameObject redCrayon)
-//    {
-//        SetColor(Color.red);
-//        UpdateButtonPosition(redCrayon);
-//    }
+        if (status == 1)
+        {
+            if (isMoving)
+            {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-//    public void ColorOrangeButton(GameObject orangeCrayon)
-//    {
-//        SetColor(new Color(1f, 0.5f, 0f)); // Orange color
-//        UpdateButtonPosition(orangeCrayon);
-//    }
+                for (int i = 0; i < Pieces.Length; i++)
+                {
+                    Pieces[i].transform.position = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, Pieces[i].transform.position.z);
+                    Puzzles[i].transform.position = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, Puzzles[i].transform.position.z);
+                }
+            }
+        }
+    }
 
-//    public void ColorYellowButton(GameObject yellowCrayon)
-//    {
-//        SetColor(Color.yellow);
-//        UpdateButtonPosition(yellowCrayon);
-//    }
+    public void FinishColoringBtn()
+    {
+        if (status == 0)
+        {
+            for (int i = 0; i < Pieces.Length; i++)
+            {
+                SpriteRenderer spriteRenderer = Pieces[i].GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    pieceColors[i] = spriteRenderer.color;
+                }
+                //Pieces[i].gameObject.SetActive(false);
+            }
 
-//    public void ColorGreenButton(GameObject greenCrayon)
-//    {
-//        SetColor(new Color(0f, 0.392f, 0f)); // Dark green color
-//        UpdateButtonPosition(greenCrayon);
-//    }
+            Debug.Log("Colors saved:");
 
-//    public void ColorSkyBlueButton(GameObject skyBlueCrayon)
-//    {
-//        SetColor(new Color(0.529f, 0.808f, 0.922f)); // Sky blue color
-//        UpdateButtonPosition(skyBlueCrayon);
-//    }
+            for (int i = 0; i < pieceColors.Length; i++)
+            {
+                Debug.Log($"Piece {i}: {pieceColors[i]}");
+            }
 
-//    public void ColorBlueButton(GameObject blueCrayon)
-//    {
-//        SetColor(Color.blue);
-//        UpdateButtonPosition(blueCrayon);
-//    }
+            status = 1;
+        }
 
-//    public void ColorPurpleButton(GameObject purpleCrayon)
-//    {
-//        SetColor(new Color(0.859f, 0.439f, 0.576f)); // Purple color
-//        UpdateButtonPosition(purpleCrayon);
-//    }
+        if (status == 1)
+        {
+            // 퍼즐 맞추기 로직
+        }
+    }
 
-//    public void EraserButton(GameObject Eraser)
-//    {
-//        SetColor(color.white);
-//        UpdateButtonPosition(Eraser);
-//    }
-//}
+    private void OnMouseDown()
+    {
+        if (status == 1 && Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            startPosX = mousePos.x - this.transform.position.x;
+            startPosY = mousePos.y - this.transform.position.y;
+
+            isMoving = true;
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if (status == 1)
+        {
+            isMoving = false;
+        }
+    }
+
+    public void ResetPosition()
+    {
+        for (int i = 0; i < Pieces.Length; i++)
+        {
+            Pieces[i].transform.position = initialPositions[i];
+        }
+    }
+
+    public void ColorRedButton(GameObject redCrayon)
+    {
+        crayonColor = Color.red;
+        //updatebuttonposition(redcrayon);
+    }
+
+    public void colorOrangebutton(GameObject orangecrayon)
+    {
+        crayonColor = new Color(1f, 0.5f, 0f); // orange color
+        //updatebuttonposition(orangecrayon);
+    }
+
+    public void colorYellowbutton(GameObject yellowcrayon)
+    {
+        crayonColor = Color.yellow;
+        //updatebuttonposition(yellowcrayon);
+    }
+
+    public void colorGreenbutton(GameObject greencrayon)
+    {
+        crayonColor = new Color(0f, 0.392f, 0f); // dark green color
+        //updatebuttonposition(greencrayon);
+    }
+
+    public void colorSkybluebutton(GameObject skybluecrayon)
+    {
+        crayonColor = new Color(0.529f, 0.808f, 0.922f); // sky blue color
+        //updatebuttonposition(skybluecrayon);
+    }
+
+    public void colorBluebutton(GameObject bluecrayon)
+    {
+        crayonColor = Color.blue;
+        //updatebuttonposition(bluecrayon);
+    }
+
+    public void colorPurplebutton(GameObject purplecrayon)
+    {
+        crayonColor = new Color(0.859f, 0.439f, 0.576f); // purple color
+        //updatebuttonposition(purplecrayon);
+    }
+
+    public void Eraserbutton(GameObject eraser)
+    {
+        crayonColor = Color.white;
+        //updatebuttonposition(eraser);
+    }
+}
