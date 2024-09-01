@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1444685035}
   - component: {fileID: 1444685034}
   m_Layer: 0
-  m_Name: ImgCapture
+  m_Name: ImageCapture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
