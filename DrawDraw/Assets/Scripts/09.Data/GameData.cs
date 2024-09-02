@@ -76,7 +76,7 @@ public class TestData
 [Serializable]
 public class TestResultData
 {
-    public string Game1Img ; // 이미지 경로를 문자열로 저장 : 더 구상 필요함 !!!! 
+    public string Game1Img ; // 이미지 경로를 문자열로 저장 
     // public string Game2Img = "";
     // public string Game3Img = "";
     // public string Game4Img = "";

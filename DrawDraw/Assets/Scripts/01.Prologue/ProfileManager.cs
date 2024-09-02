@@ -39,6 +39,7 @@ public class ProfileManager : MonoBehaviour
     //  ProfileDataSetting() : 플레이어 프로필 작성 정보 저장 
     // -----------
     //  다음 씬으로 이동 
+    // 
     public void Finish()
     {
 
