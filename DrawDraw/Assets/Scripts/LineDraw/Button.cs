@@ -15,6 +15,7 @@ public class Button : MonoBehaviour
     public Text ScoreText; // 게임의 결과를 가져올 Text Ui
 
     public GameResultSO gameResult; // 게임 결과화면 관리 SO
+    internal object onClick;
 
     public void OnClick_close() // '창 닫기' 버튼을 클릭하며 호출 되어질 함수
     {

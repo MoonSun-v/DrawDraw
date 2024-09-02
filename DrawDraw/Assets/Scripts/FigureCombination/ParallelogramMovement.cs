@@ -70,8 +70,6 @@ public class ParallelogramMovement : MonoBehaviour
             // Raycast를 특정 레이어에만 적용
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
 
-            Debug.Log(hit.collider);
-
             if (hit.collider != null)
             {
                 GameObject hitObject = hit.collider.gameObject;
