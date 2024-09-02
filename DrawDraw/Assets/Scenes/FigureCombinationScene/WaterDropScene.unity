@@ -748,6 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 5
 --- !u!1 &283046115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1703,6 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapeButtonGroup: {fileID: 715088162}
   colorButtonGroup: {fileID: 633086930}
+  prefabsToDisable: []
 --- !u!1 &565395483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,6 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 2
 --- !u!1 &715088160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,6 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 3
 --- !u!1 &769749410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,6 +3443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 6
 --- !u!1 &1072229401
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,6 +4028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 1
 --- !u!1 &1289950534
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,6 +5238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapeButtonGroup: {fileID: 715088162}
   colorButtonGroup: {fileID: 633086930}
+  prefabsToDisable:
+  - {fileID: 6606970092816815687, guid: 4c729b87fb2f41344930b753c26f3739, type: 3}
+  - {fileID: 2841023290875641597, guid: 65ccaff6fc1c3fc4485aca0a258e6a4b, type: 3}
+  - {fileID: 1016546349821710638, guid: 24542562752b0824ab1cc6d41ec95c8d, type: 3}
 --- !u!4 &1840468802
 Transform:
   m_ObjectHideFlags: 0
@@ -5949,6 +5959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 7
 --- !u!1 &2111527493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,6 +6105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonID: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
