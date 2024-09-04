@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 7745188809563754730}
   m_Layer: 8
   m_Name: Hexagon
-  m_TagString: Untagged
+  m_TagString: shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

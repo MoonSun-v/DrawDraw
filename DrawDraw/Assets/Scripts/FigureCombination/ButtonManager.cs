@@ -45,7 +45,6 @@ public class ButtonManager : MonoBehaviour
     {
         // 특정 프리팹의 모든 인스턴스를 찾습니다.
         GameObject[] allInstances = GameObject.FindGameObjectsWithTag(prefab.tag);
-
         foreach (GameObject instance in allInstances)
         {
             // 해당 인스턴스에 붙어 있는 모든 MonoBehaviour 스크립트를 비활성화합니다.
@@ -53,7 +52,7 @@ public class ButtonManager : MonoBehaviour
             foreach (MonoBehaviour script in scripts)
             {
                 script.enabled = false;
-                Debug.Log($"{instance.name}의 {script.GetType().Name} 스크립트가 비활성화되었습니다.");
+                //Debug.Log($"{instance.name}의 {script.GetType().Name} 스크립트가 비활성화되었습니다.");
             }
         }
     }
