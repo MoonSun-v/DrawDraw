@@ -15,6 +15,8 @@ public class ButtonManager : MonoBehaviour
     private Color selectedColor; // 선택된 색상
     private int shapeLayer; // "Shape" 레이어의 인덱스를 저장
 
+    private bool isButtonClicked = false; // 버튼이 눌렸는지 여부
+
     void Start()
     {
         // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
@@ -39,6 +41,8 @@ public class ButtonManager : MonoBehaviour
         {
             DisableScriptsOnPrefabInstances(prefab);
         }
+
+        isButtonClicked = true;  // 버튼이 눌렸음을 표시
     }
 
     private void DisableScriptsOnPrefabInstances(GameObject prefab)
@@ -122,30 +126,60 @@ public class ButtonManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 버튼이 클릭된 후에만 이 코드가 실행됨
+        if (isButtonClicked && Input.GetMouseButtonDown(0))
         {
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Vector3 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //RaycastHit hit;
+            ExecuteRaycast();
+        }
+    }
 
-            // 레이어 마스크를 사용하여 Raycast가 "Shape" 레이어에만 적용되도록 설정
-            int layerMask = 1 << shapeLayer;
-            // Raycast를 특정 레이어에만 적용
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
+    // Raycast 관련 로직을 이 함수로 분리
+    void ExecuteRaycast()
+    {
+        Vector3 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        rayOrigin.z = 0f; // 2D에서는 z 값을 0으로 설정 (z 축을 고려하지 않음)
 
-            //if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+        // "shape" 레이어에 해당하는 레이어 마스크 생성
+        int layerMask = 1 << LayerMask.NameToLayer("shape");
+
+        // Raycast를 특정 레이어에만 적용
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
+
+        if (hit.collider != null)
+        {
+            Debug.Log($"선택된 도형의 이름: {hit.transform.name}");
+
+            // 부모 오브젝트 가져오기 (자신이 최상위면 부모가 null일 수 있음)
+            Transform parent = hit.transform.parent;
+
+            if (parent != null) // 부모가 있는 경우
             {
-                // 충돌된 오브젝트의 이름을 출력합니다.
-                Debug.Log($"선택된 도형의 이름: {hit.transform.name}");
-
-                Renderer renderer = hit.transform.GetComponent<Renderer>();
-                if (renderer != null)
+                // 부모 아래의 모든 자식 오브젝트 순회
+                foreach (Transform sibling in parent)
                 {
-                    renderer.material.color = selectedColor;
+                    SpriteRenderer siblingRenderer = sibling.GetComponent<SpriteRenderer>();
+                    Debug.Log(sibling.name);
+                    // 자식에 SpriteRenderer가 있으면 색상 변경
+                    if (siblingRenderer != null)
+                    {
+                        siblingRenderer.color = selectedColor;
+                        Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 변경되었습니다.");
+                    }
+                }
+            }
+            else // 부모가 없는 경우 (최상위 오브젝트)
+            {
+                SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.color = selectedColor;
                     Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 변경되었습니다.");
                 }
             }
+        }
+        else
+        {
+            Debug.Log("충돌된 오브젝트가 없습니다.");
         }
     }
 
