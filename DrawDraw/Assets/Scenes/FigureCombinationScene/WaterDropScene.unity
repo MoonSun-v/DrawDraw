@@ -1704,7 +1704,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapeButtonGroup: {fileID: 715088162}
   colorButtonGroup: {fileID: 633086930}
-  prefabsToDisable: []
+  prefabsToDisable:
+  - {fileID: 6606970092816815687, guid: 4c729b87fb2f41344930b753c26f3739, type: 3}
+  - {fileID: 2841023290875641597, guid: 65ccaff6fc1c3fc4485aca0a258e6a4b, type: 3}
+  - {fileID: 1016546349821710638, guid: 24542562752b0824ab1cc6d41ec95c8d, type: 3}
 --- !u!1 &565395483
 GameObject:
   m_ObjectHideFlags: 0
