@@ -22,12 +22,6 @@ public class FinishButtonManager : MonoBehaviour
         CalculateMatches();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
     public void OnFinishButtonClick()
     {
         Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
