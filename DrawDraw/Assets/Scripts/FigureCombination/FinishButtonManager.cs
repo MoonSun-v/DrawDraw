@@ -17,14 +17,24 @@ public class FinishButtonManager : MonoBehaviour
     // 일치한 퍼즐 조각 개수
     private int matchingPieceCount = 0;
 
+    private ColorButtonManager shapeColorChanger;
+
     void Start()
     {
         CalculateMatches();
+
+        // ShapeColorChanger 스크립트를 가진 오브젝트를 찾음
+        GameObject colorChangerObject = GameObject.Find("ColorManager"); // "ColorManager"는 ColorButtonManager 붙어 있는 오브젝트 이름
+        if (colorChangerObject != null)
+        {
+            shapeColorChanger = colorChangerObject.GetComponent<ColorButtonManager>();
+        }
     }
 
     public void OnFinishButtonClick()
     {
-        Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
+        //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
+        DisplayColorPieceCounts();
     }
 
     // 버튼 클릭 시 호출되는 함수
@@ -88,4 +98,22 @@ public class FinishButtonManager : MonoBehaviour
             matchingPieceCount++;
         }
     }
+
+    // 전체 퍼즐 조각 클론 개수와 색상이 변경된 도형 개수를 출력하는 함수
+    void DisplayColorPieceCounts()
+    {
+        /// 태그로 퍼즐 조각 클론들을 자동으로 찾기
+        GameObject[] puzzlePieceClones = GameObject.FindGameObjectsWithTag(puzzlePieceTag);
+
+        // 퍼즐 조각 개수 및 밑그림 조각 개수 출력
+        int totalPieces = puzzlePieceClones.Length;
+
+        // 변경된 도형 개수를 가져옴 (ShapeColorChanger 스크립트에서)
+        int changedPieces = shapeColorChanger != null ? shapeColorChanger.GetChangedShapeCount() : 0;
+
+        // 콘솔에 출력
+        Debug.Log($"전체 퍼즐 조각 개수: {totalPieces}");
+        Debug.Log($"색상이 변경된 도형 개수: {changedPieces}");
+    }
+      
 }

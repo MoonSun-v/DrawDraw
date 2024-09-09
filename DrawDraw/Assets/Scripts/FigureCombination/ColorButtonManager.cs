@@ -10,6 +10,12 @@ public class ColorButtonManager : MonoBehaviour
 
     private bool isActive = false; // 활성화 여부
 
+    // 색상을 변경한 도형 개수를 저장할 변수
+    private int changedShapeCount = 0;
+
+    // 색상 변경 여부를 추적하는 Dictionary
+    private Dictionary<GameObject, bool> colorChangedMap = new Dictionary<GameObject, bool>();
+
     void Start()
     {
         // 모든 ColorButtonMover를 찾습니다.
@@ -18,6 +24,9 @@ public class ColorButtonManager : MonoBehaviour
         // "Shape" 레이어의 인덱스를 가져옵니다.
         shapeLayer = LayerMask.NameToLayer("shape");
         isActive = true;  // 버튼이 눌렸음을 표시
+
+        // Dictionary 초기화
+        //colorChangedMap = new System.Collections.Generic.Dictionary<GameObject, bool>();
 
     }
 
@@ -56,12 +65,26 @@ public class ColorButtonManager : MonoBehaviour
                 foreach (Transform sibling in parent)
                 {
                     SpriteRenderer siblingRenderer = sibling.GetComponent<SpriteRenderer>();
-                    Debug.Log(sibling.name);
+
                     // 자식에 SpriteRenderer가 있으면 색상 변경
-                    if (siblingRenderer != null)
+                    if (siblingRenderer != null && selectedColor != new Color(0, 0, 0, 0))
                     {
-                        siblingRenderer.color = selectedColor;
-                        Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 변경되었습니다.");
+                        // 색상이 한 번이라도 변경된 적이 있는지 확인
+                        if (!colorChangedMap.ContainsKey(sibling.gameObject) || !colorChangedMap[sibling.gameObject])
+                        {
+                            // 색상이 한 번도 변경되지 않았다면 색상을 변경
+                            siblingRenderer.color = selectedColor;
+                            Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 변경되었습니다.");
+
+                            // 변경한 도형으로 표시하고 카운터 증가
+                            colorChangedMap[sibling.gameObject] = true;
+                            changedShapeCount++;
+                            Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
+                        }
+                        else
+                        {
+                            Debug.Log($"{sibling.name}의 색상은 이미 변경된 적이 있습니다.");
+                        }
                     }
                 }
             }
@@ -70,9 +93,21 @@ public class ColorButtonManager : MonoBehaviour
                 SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
                 if (spriteRenderer != null && selectedColor != new Color(0, 0, 0, 0))
                 {
-                    spriteRenderer.color = selectedColor;
-                    //Debug.Log(selectedColor);
-                    //Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 변경되었습니다.");
+                    // 색상이 한 번도 변경되지 않았다면 색상을 변경
+                    if (!colorChangedMap.ContainsKey(hit.transform.gameObject) || !colorChangedMap[hit.transform.gameObject])
+                    {
+                        spriteRenderer.color = selectedColor;
+                        Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 변경되었습니다.");
+
+                        // 변경한 도형으로 표시하고 카운터 증가
+                        colorChangedMap[hit.transform.gameObject] = true;
+                        changedShapeCount++;
+                        Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
+                    }
+                    else
+                    {
+                        Debug.Log($"{hit.transform.name}의 색상은 이미 변경된 적이 있습니다.");
+                    }
 
                 }
             }
@@ -138,5 +173,11 @@ public class ColorButtonManager : MonoBehaviour
         {
             Debug.LogError("색상 코드 변환에 실패했습니다.");
         }
+    }
+
+    // Getter 메서드: changedShapeCount 값을 다른 스크립트에서 가져올 수 있음
+    public int GetChangedShapeCount()
+    {
+        return changedShapeCount;
     }
 }
