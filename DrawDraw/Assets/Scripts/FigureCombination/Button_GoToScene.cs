@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Button_GoToScene : MonoBehaviour
 {
-    public void ChangeScene_waterDrop()
+    public void ChangeScene_Sun()
     {
-        SceneManager.LoadScene("WaterDropScene");
-        Debug.Log("물방울 도형 조합을 진행합니다.");
+        SceneManager.LoadScene("1Sun");
+        Debug.Log("해 도형 조합을 진행합니다.");
     }
 
-    public void ChangeScene_snail()
+    public void ChangeScene_Pinwheel()
     {
-        SceneManager.LoadScene("SnailScene");
-        Debug.Log("달팽이 도형 조합을 진행합니다.");
+        SceneManager.LoadScene("1Pinwheel");
+        Debug.Log("바람개비 도형 조합을 진행합니다.");
     }
 
     public void ChangeScene_map()
