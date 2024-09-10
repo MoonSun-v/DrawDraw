@@ -31,8 +31,11 @@ public class ResultManager : MonoBehaviour
         // 50 % 미만           : 경험치 X  ,게임 실패
         // 50 % 이상 60 % 미만 : 경험치 5  ,게임 성공
         // 60 % 이상           : 경험치 10 ,게임 성공
-        if (gameResult.previousScene == "DotLineScene1" || gameResult.previousScene == "DotLineScene2")
-        {
+
+        // 점선 따라 그리기의 씬 이름들 
+        List<string> dotLineScenes = new List<string> { "DotLineScene1", "DotLineScene2", "DotLineScene3" }; 
+        if (dotLineScenes.Contains(gameResult.previousScene))
+        { 
             // StageNum = 0;
 
             if      (gameResult.score < 50)  { isClear = false; /*FailSetting(StageNum);*/ }    

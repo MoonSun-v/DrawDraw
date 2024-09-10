@@ -11,9 +11,6 @@ public class DotLineManager : MonoBehaviour
 
     DotScore dotscore = new DotScore();
 
-    private int dotscore_Circle;          // 원     모양 점수
-    private int dotscore_Square;          // 사각형 모양 점수 
-
     private int dotscore_Final;           // 최종 점수
 
     public GameObject CheckPopup;         // 확인 팝업 창
@@ -21,16 +18,26 @@ public class DotLineManager : MonoBehaviour
 
     public GameResultSO gameResult;
 
-    public GameObject Dot1;               // 첫번째 모양 밑그림 
-    public GameObject Dot2;               // 두번째 모양 밑그림 
+    // [ 밑그림 관련 변수 ]
+    public GameObject[] DotPrefabs;    // 밑그림 배열 
+    private int currentDotIndex = 0;   // 현재 밑그림의 인덱스
 
     public Draw draw;
 
 
 
+    // [ 밑그림 초기 설정 ]
+    // 밑그림의 개수에 맞게 초기화
+    // 첫 번째 밑그림만 활성화, 나머지는 비활성화
+    // 
     void Awake()
     {
-        mainCamera = Camera.main;    
+        mainCamera = Camera.main;
+
+        for (int i = 1; i < DotPrefabs.Length; i++)
+        {
+            DotPrefabs[i].SetActive(false); 
+        }
     }
 
 
@@ -56,7 +63,7 @@ public class DotLineManager : MonoBehaviour
 
 
     // -------------------------------------------------------------------------------------------
-    // [ 버튼 클릭 관련 메소드 모음 ] ------------------------------------------------------------
+    //   버튼 클릭 관련 메소드 모음   ------------------------------------------------------------
 
 
     // [ 완료 확인 팝업 ]
@@ -71,70 +78,78 @@ public class DotLineManager : MonoBehaviour
         CheckPopup.SetActive(false);   
     }
 
+
     // [ 팝업 : 완성이야 ] 
     //
-    // 1. 첫     모양 단계 :  점수 계산 -> 화면 초기화 작업 (그렸던 선 없애기, 점수 초기화)
-    //                        -> 다음 도안으로 넘어가기
-    // 2. 두번째 모양 단계 :  점수 계산 -> 2개의 평균 점수 계산 -> gameResult (점수, 씬이름 저장)
-    //                        -> 결과 화면으로 이동
+    // 1. 마지막 밑그림이 아닐 때  :  점수 계산 -> 화면 초기화 작업 (그렸던 선 없애기, 점수 초기화)
+    //                                -> 다음 도안으로 넘어가기
+    // 2. 마지막 밑그림일 때       :  점수 계산 -> 2개 or 3개의 평균 점수 계산 -> gameResult (점수, 씬이름 저장)
+    //                                -> 결과 화면으로 이동
     // 
     public void NextBtn()
     {
-        if(Dot1.activeSelf)
+        // ★ 마지막 밑그림이 아닐 때 
+        // 
+        if (currentDotIndex < DotPrefabs.Length - 1)  
         {
-            print("충돌한 점의 개수 = " + dotscore.DotCount);
-            dotscore_Circle = (int)((dotscore.DotCount / 30) * 100); // 소수점 이하는 내림 
-            print("퍼센트 = " + dotscore_Circle + "%");
+            int dotScore = (int)((dotscore.DotCount / 30) * 100);  
+            print("충돌한 점의 개수 = " + dotscore.DotCount + " . 퍼센트 = " + dotScore + "%");
 
-            // 프로토타입용 : 임시로 점수 보여주기 (추구 제거 예정)
-            dotscore.Score += dotscore_Circle;
-            ScoreText.text = dotscore_Circle + "점";
+            dotscore.Score += dotScore;
+            ScoreText.text = dotScore + "점";
 
-            draw.ClearAllLineRenderers();                                   
-            dotscore.DotCount = 0;           
-                                             
-            StartCoroutine(NextGameDelay());                                
+            draw.ClearAllLineRenderers();
+            dotscore.DotCount = 0;
 
+            StartCoroutine(NextGameDelay());
         }
-        else
+
+        // ★ 마지막 밑그림일 때
+        else  
         {
-            print("충돌한 점의 개수 = " + dotscore.DotCount);
-            dotscore_Square = (int)((dotscore.DotCount / 30) * 100);  // 소수점 이하는 내림 
-            print("퍼센트 = " + dotscore_Square + "%");
+            int dotScore = (int)((dotscore.DotCount / 30) * 100);
+            print("충돌한 점의 개수 = " + dotscore.DotCount + " . 퍼센트 = " + dotScore + "%");
 
-            // 프로토타입용 : 임시로 점수 보여주기 (추구 제거 예정)
-            dotscore.Score += dotscore_Square;
-            ScoreText.text = dotscore_Square + "점";
+            dotscore.Score += dotScore;
+            ScoreText.text = dotScore + "점";
 
-            dotscore_Final = (int)((dotscore_Square + dotscore_Circle) / 2 );   
-            print("2개 게임의 평균 점수 = " + dotscore_Final);
+            // ------
 
-            gameResult.score = dotscore_Final;                                 
-            gameResult.previousScene = SceneManager.GetActiveScene().name;     
+            dotscore_Final = dotscore.Score / DotPrefabs.Length;  
+            print(DotPrefabs.Length + "개 게임의 평균 점수 = " + dotscore_Final);
 
-            StartCoroutine(ResultSceneDelay());                                
+            gameResult.score = dotscore_Final;
+            gameResult.previousScene = SceneManager.GetActiveScene().name;
+
+            StartCoroutine(ResultSceneDelay());  
         }
     }
 
 
 
-    // [ 코루틴 관련 함수 모음 ]
+    // ---------------------------------------------------------------------------------------------------
+    //   코루틴 관련 함수 모음   -------------------------------------------------------------------------
+    //
+
+
+    // [ 다음 밑그림으로 변경 ]
+    // 현재 밑그림 비활성화 -> 다음 밑그림 활성화
     //
     IEnumerator NextGameDelay()
     {
-        yield return new WaitForSeconds(2);    // 2 초 후 실행
+        yield return new WaitForSeconds(2);  
 
-        Dot1.SetActive(false);
-        Dot2.SetActive(true);
+        DotPrefabs[currentDotIndex].SetActive(false); 
+        currentDotIndex++; 
+        DotPrefabs[currentDotIndex].SetActive(true);  
 
-        CheckPopup.SetActive(false);         
-
+        CheckPopup.SetActive(false);
         ScoreText.text = "";
     }
 
     IEnumerator ResultSceneDelay()
     {
-        yield return new WaitForSeconds(2);    // 2 초 후 실행
+        yield return new WaitForSeconds(2);   
 
         SceneManager.LoadScene("ResultScene");
     }
