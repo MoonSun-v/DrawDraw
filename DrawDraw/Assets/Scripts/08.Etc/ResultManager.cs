@@ -31,7 +31,7 @@ public class ResultManager : MonoBehaviour
         // 50 % 미만           : 경험치 X  ,게임 실패
         // 50 % 이상 60 % 미만 : 경험치 5  ,게임 성공
         // 60 % 이상           : 경험치 10 ,게임 성공
-        if (gameResult.previousScene == "DotLineScene")
+        if (gameResult.previousScene == "DotLineScene1" || gameResult.previousScene == "DotLineScene2")
         {
             // StageNum = 0;
 

@@ -21,8 +21,8 @@ public class DotLineManager : MonoBehaviour
 
     public GameResultSO gameResult;
 
-    public GameObject Dot1;               // 원     모양 밑그림 
-    public GameObject Dot2;               // 사각형 모양 밑그림 
+    public GameObject Dot1;               // 첫번째 모양 밑그림 
+    public GameObject Dot2;               // 두번째 모양 밑그림 
 
     public Draw draw;
 
@@ -73,9 +73,9 @@ public class DotLineManager : MonoBehaviour
 
     // [ 팝업 : 완성이야 ] 
     //
-    // 1. 원     모양 단계 :  점수 계산 -> 화면 초기화 작업 (그렸던 선 없애기, 점수 초기화)
-    //                        -> 사각형 도안으로 넘어가기
-    // 2. 사각형 모양 단계 :  점수 계산 -> 2개의 평균 점수 계산 -> gameResult (점수, 씬이름 저장)
+    // 1. 첫     모양 단계 :  점수 계산 -> 화면 초기화 작업 (그렸던 선 없애기, 점수 초기화)
+    //                        -> 다음 도안으로 넘어가기
+    // 2. 두번째 모양 단계 :  점수 계산 -> 2개의 평균 점수 계산 -> gameResult (점수, 씬이름 저장)
     //                        -> 결과 화면으로 이동
     // 
     public void NextBtn()
