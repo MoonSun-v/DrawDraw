@@ -10,6 +10,7 @@ TagManager:
   - baseSquare_outside
   - imageLine
   - shape
+  - piece
   layers:
   - Default
   - TransparentFX

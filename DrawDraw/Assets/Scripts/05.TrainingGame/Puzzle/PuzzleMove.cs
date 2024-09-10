@@ -4,68 +4,70 @@ using UnityEngine;
 
 public class PuzzleMove : MonoBehaviour
 {
-    public GameObject[] Pieces;
-    public GameObject[] Puzzles;
+    private Vector3 correctPosition;
+    private Vector3 correctScale;
+    private Vector3 initialPosition;
 
-    private Vector3[] initialPositions;
+    public GameObject correctForm;
     private bool isMoving;
+
     private float startPosX;
     private float startPosY;
-    private int selectedPieceIndex = -1;
 
     void Start()
     {
-        initialPositions = new Vector3[Pieces.Length];
+        correctPosition = correctForm.transform.position;
+        correctScale = correctForm.transform.localScale * 1.0f;
 
-        for (int i = 0; i < Pieces.Length; i++)
-        {
-            initialPositions[i] = Pieces[i].transform.position;
-        }
+        initialPosition = transform.position;
     }
 
     void Update()
     {
-        if (isMoving && selectedPieceIndex != -1)
+        if (isMoving)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Pieces[selectedPieceIndex].transform.position = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, Pieces[selectedPieceIndex].transform.position.z);
-            //Puzzles[selectedPieceIndex].transform.position = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, Puzzles[selectedPieceIndex].transform.position.z);
+            Vector2 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
         }
     }
 
     private void OnMouseDown()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-        if (hit.collider != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            for (int i = 0; i < Pieces.Length; i++)
-            {
-                if (hit.collider.gameObject == Pieces[i] || hit.collider.gameObject == Puzzles[i])
-                {
-                    selectedPieceIndex = i;
-                    startPosX = mousePos.x - Pieces[i].transform.position.x;
-                    startPosY = mousePos.y - Pieces[i].transform.position.y;
-                    isMoving = true;
-                    break;
-                }
-            }
+            Vector2 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            startPosX = mousePos.x - this.transform.localPosition.x;
+            startPosY = mousePos.y - this.transform.localPosition.y;
+
+            isMoving = true;
         }
     }
 
     private void OnMouseUp()
     {
         isMoving = false;
-        selectedPieceIndex = -1;
+    }
+
+    public bool IsInCorrectPosition()
+    {
+        Vector3 currentPos = this.transform.position;
+        float halfWidth = correctScale.x / 2.0f;
+        float halfHeight = correctScale.y / 2.0f;
+
+        bool withinX = currentPos.x >= correctPosition.x - halfWidth && currentPos.x <= correctPosition.x + halfWidth;
+        bool withinY = currentPos.y >= correctPosition.y - halfHeight && currentPos.y <= correctPosition.y + halfHeight;
+
+        return withinX && withinY;
     }
 
     public void ResetPosition()
     {
-        for (int i = 0; i < Pieces.Length; i++)
-        {
-            Pieces[i].transform.position = initialPositions[i];
-            //Puzzles[i].transform.position = initialPositions[i];
-        }
+        transform.position = initialPosition;
     }
 }
