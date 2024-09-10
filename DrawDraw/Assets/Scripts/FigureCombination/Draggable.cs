@@ -28,7 +28,7 @@ public class Draggable : MonoBehaviour
     private float lastTapTime; // 마지막 입력 시간
     private const float doubleTapThreshold = 0.3f; // 더블 클릭/터치 간의 시간 간격 (초)
 
-    public bool isRotate = false;
+    public float angle;
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -69,7 +69,6 @@ public class Draggable : MonoBehaviour
             // Raycast를 특정 레이어에만 적용
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
 
-
             if (hit.collider != null && hit.collider.gameObject == gameObject)
             {
                 //Debug.Log(hit.collider.gameObject);
@@ -78,15 +77,17 @@ public class Draggable : MonoBehaviour
                 float currentTime = Time.time;
                 if (currentTime - lastTapTime < doubleTapThreshold)
                 {
-                    Rotate45Degrees();
+                    RotateDegrees(angle);
 
                     //ToggleScale();
-
-
                 }
                 lastTapTime = currentTime;
                 isDragging = true; // 드래그 상태로 전환
                 offset = transform.position - mouseOrTouchPosition; // 마우스/터치와 도형 간의 위치 차이 계산
+            }
+            else
+            {
+                Debug.Log("hit NULL");
             }
         }
 
@@ -164,30 +165,30 @@ public class Draggable : MonoBehaviour
         return mainCamera.ScreenToWorldPoint(inputPosition); // 화면 좌표를 월드 좌표로 변환
     }
 
-    private void ToggleScale()
-    {
-        // 현재 스케일 값을 가져옴
-        Vector3 currentScale = transform.localScale;
+    //private void ToggleScale()
+    //{
+    //    // 현재 스케일 값을 가져옴
+    //    Vector3 currentScale = transform.localScale;
 
-        // 현재 위치를 저장
-        Vector3 originalPosition = transform.position;
+    //    // 현재 위치를 저장
+    //    Vector3 originalPosition = transform.position;
 
-        // 스케일 변경
-        if (currentScale.y > 0)
-        {
-            // y 스케일 값을 음수로 변경
-            transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+    //    // 스케일 변경
+    //    if (currentScale.y > 0)
+    //    {
+    //        // y 스케일 값을 음수로 변경
+    //        transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
 
-        }
-        else
-        {
-            // y 스케일 값을 원상 복구
-            transform.localScale = new Vector3(currentScale.x, Mathf.Abs(currentScale.y), currentScale.z);
-        }
+    //    }
+    //    else
+    //    {
+    //        // y 스케일 값을 원상 복구
+    //        transform.localScale = new Vector3(currentScale.x, Mathf.Abs(currentScale.y), currentScale.z);
+    //    }
 
-        // 위치 보정: 스케일 변경 전의 위치로 되돌림
-        transform.position = originalPosition;
-    }
+    //    // 위치 보정: 스케일 변경 전의 위치로 되돌림
+    //    transform.position = originalPosition;
+    //}
 
     //void UpdateCollider()
     //{
@@ -207,9 +208,9 @@ public class Draggable : MonoBehaviour
     //}
 
     // Z축으로 45도 반시계 방향 회전하는 함수
-    void Rotate45Degrees()
+    void RotateDegrees(float angle)
     {
-        transform.Rotate(0f, 0f, 45f);
+        transform.Rotate(0f, 0f, angle);
     }
 
     
