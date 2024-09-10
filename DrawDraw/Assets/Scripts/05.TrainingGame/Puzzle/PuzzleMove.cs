@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PuzzleMove : MonoBehaviour
 {
+    public GameObject Puzzle;
+
     private Vector3 correctPosition;
     private Vector3 correctScale;
     private Vector3 initialPosition;
@@ -30,7 +32,9 @@ public class PuzzleMove : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            Vector3 newPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            this.gameObject.transform.localPosition = newPosition;
+            Puzzle.transform.localPosition = new Vector3(newPosition.x, newPosition.y, Puzzle.transform.localPosition.z);
         }
     }
 
