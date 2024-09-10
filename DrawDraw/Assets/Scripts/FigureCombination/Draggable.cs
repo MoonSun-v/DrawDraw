@@ -77,9 +77,16 @@ public class Draggable : MonoBehaviour
                 float currentTime = Time.time;
                 if (currentTime - lastTapTime < doubleTapThreshold)
                 {
-                    RotateDegrees(angle);
-
-                    //ToggleScale();
+                   
+                    if(angle<0)
+                    {
+                        ToggleScale();
+                    }
+                    else
+                    {
+                        RotateDegrees(angle);
+                    }
+                    
                 }
                 lastTapTime = currentTime;
                 isDragging = true; // 드래그 상태로 전환
@@ -165,30 +172,33 @@ public class Draggable : MonoBehaviour
         return mainCamera.ScreenToWorldPoint(inputPosition); // 화면 좌표를 월드 좌표로 변환
     }
 
-    //private void ToggleScale()
-    //{
-    //    // 현재 스케일 값을 가져옴
-    //    Vector3 currentScale = transform.localScale;
+    private void ToggleScale()
+    {
+        // 현재 스케일 값을 가져옴
+        Vector3 currentScale = transform.localScale;
 
-    //    // 현재 위치를 저장
-    //    Vector3 originalPosition = transform.position;
+        // 현재 위치를 저장
+        Vector3 originalPosition = transform.position;
 
-    //    // 스케일 변경
-    //    if (currentScale.y > 0)
-    //    {
-    //        // y 스케일 값을 음수로 변경
-    //        transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+        // 스케일 변경
+        if (currentScale.x > 0)
+        {
+            // y 스케일 값을 음수로 변경
+            //transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
 
-    //    }
-    //    else
-    //    {
-    //        // y 스케일 값을 원상 복구
-    //        transform.localScale = new Vector3(currentScale.x, Mathf.Abs(currentScale.y), currentScale.z);
-    //    }
+            // x 스케일 값을 음수로 변경
+            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
 
-    //    // 위치 보정: 스케일 변경 전의 위치로 되돌림
-    //    transform.position = originalPosition;
-    //}
+        }
+        else
+        {
+            // x 스케일 값을 원상 복구
+            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+        }
+
+        // 위치 보정: 스케일 변경 전의 위치로 되돌림
+        transform.position = originalPosition;
+    }
 
     //void UpdateCollider()
     //{
