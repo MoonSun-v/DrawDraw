@@ -92,10 +92,6 @@ public class Draggable : MonoBehaviour
                 isDragging = true; // 드래그 상태로 전환
                 offset = transform.position - mouseOrTouchPosition; // 마우스/터치와 도형 간의 위치 차이 계산
             }
-            else
-            {
-                Debug.Log("hit NULL");
-            }
         }
 
         // 드래그 중일 때 도형 위치 업데이트

@@ -57,41 +57,41 @@ public class ColorButtonManager : MonoBehaviour
             //Debug.Log($"hit: {hit.transform.name}");
 
             // 부모 오브젝트 가져오기 (자신이 최상위면 부모가 null일 수 있음)
-            Transform parent = hit.transform.parent;
+            //Transform parent = hit.transform.parent;
 
-            if (parent != null) // 부모가 있는 경우
-            {
-                // 부모 아래의 모든 자식 오브젝트 순회
-                foreach (Transform sibling in parent)
-                {
-                    SpriteRenderer siblingRenderer = sibling.GetComponent<SpriteRenderer>();
+            //if (parent != null) // 부모가 있는 경우
+            //{
+            //    // 부모 아래의 모든 자식 오브젝트 순회
+            //    foreach (Transform sibling in parent)
+            //    {
+            //        SpriteRenderer siblingRenderer = sibling.GetComponent<SpriteRenderer>();
 
-                    // 자식에 SpriteRenderer가 있으면 색상 변경
-                    if (siblingRenderer != null && selectedColor != new Color(0, 0, 0, 0))
-                    {
-                        // 색상이 한 번이라도 변경된 적이 있는지 확인
-                        if (!colorChangedMap.ContainsKey(sibling.gameObject))
-                        {
-                            // 색상이 한 번도 변경되지 않았다면 색상을 변경하고 카운터 증가
-                            siblingRenderer.color = selectedColor;
-                            Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 변경되었습니다.");
+            //        // 자식에 SpriteRenderer가 있으면 색상 변경
+            //        if (siblingRenderer != null && selectedColor != new Color(0, 0, 0, 0))
+            //        {
+            //            // 색상이 한 번이라도 변경된 적이 있는지 확인
+            //            if (!colorChangedMap.ContainsKey(sibling.gameObject))
+            //            {
+            //                // 색상이 한 번도 변경되지 않았다면 색상을 변경하고 카운터 증가
+            //                siblingRenderer.color = selectedColor;
+            //                Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 변경되었습니다.");
 
-                            // 변경한 도형으로 표시하고 카운터 증가
-                            colorChangedMap[sibling.gameObject] = true;
-                            changedShapeCount++;
-                            Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
-                        }
-                        else
-                        {
-                            // 이미 색상이 변경된 경우에도 색상을 변경하지만 카운터는 증가시키지 않음
-                            siblingRenderer.color = selectedColor;
-                            Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 다시 변경되었습니다.");
-                        }
-                    }
-                }
-            }
-            else // 부모가 없는 경우 (최상위 오브젝트)
-            {
+            //                // 변경한 도형으로 표시하고 카운터 증가
+            //                colorChangedMap[sibling.gameObject] = true;
+            //                changedShapeCount++;
+            //                Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
+            //            }
+            //            else
+            //            {
+            //                // 이미 색상이 변경된 경우에도 색상을 변경하지만 카운터는 증가시키지 않음
+            //                siblingRenderer.color = selectedColor;
+            //                Debug.Log($"{sibling.name}의 색상이 {selectedColor}로 다시 변경되었습니다.");
+            //            }
+            //        }
+            //    }
+            //}
+            //else // 부모가 없는 경우 (최상위 오브젝트)
+            //{
                 SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
                 if (spriteRenderer != null && selectedColor != new Color(0, 0, 0, 0))
                 {
@@ -114,7 +114,7 @@ public class ColorButtonManager : MonoBehaviour
                     }
 
                 }
-            }
+            //}
         }
         else
         {
