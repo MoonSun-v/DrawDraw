@@ -180,7 +180,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector2 spawnPos = new Vector2((float)-2.0, (float)-2.5); // 생성위치
 
-        if (prefabToSpawn != null && objectCount < 15)
+        if (prefabToSpawn != null && objectCount < 10)
         {
             // 프리팹을 인스턴스화하여 새로운 오브젝트 생성
             GameObject newObject = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
@@ -305,4 +305,6 @@ public class ObjectSpawner : MonoBehaviour
             Debug.LogError("Prefab to spawn is not assigned.");
         }
     }
+
+
 }
