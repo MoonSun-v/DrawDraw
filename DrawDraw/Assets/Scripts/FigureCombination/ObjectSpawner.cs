@@ -135,7 +135,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public void SpawnObject_circle()
     {
-        Vector2 spawnPos = new Vector2((float)0.0, (float)-0.55); // 积己困摹
+        Vector2 spawnPos = new Vector2((float)-1.28, (float)-0.82); // 积己困摹
 
         if (prefabToSpawn != null && objectCount < 1)
         {
@@ -178,7 +178,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public void SpawnObject_RightTriangle()
     {
-        Vector2 spawnPos = new Vector2((float)-2.0, (float)-2.5); // 积己困摹
+        Vector2 spawnPos = new Vector2((float)-4.5, (float)-2.5); // 积己困摹
 
         if (prefabToSpawn != null && objectCount < 10)
         {
@@ -222,7 +222,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public void SpawnObject_RightTriangle2()
     {
-        Vector2 spawnPos = new Vector2((float)-3.0, (float)-2.5); // 积己困摹
+        Vector2 spawnPos = new Vector2((float)-5.0, (float)-2.5); // 积己困摹
 
         if (prefabToSpawn != null && objectCount < 15)
         {
