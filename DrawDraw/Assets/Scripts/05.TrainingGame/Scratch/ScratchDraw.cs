@@ -37,9 +37,6 @@ public class ScratchDraw: MonoBehaviour
     {
         lineRenderer = brush.GetComponent<LineRenderer>();
 
-        // 기본 색상은 그레이
-        // lineColor = Color.gray;
-        // SetLineColor();
     }
 
 
@@ -89,6 +86,18 @@ public class ScratchDraw: MonoBehaviour
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);        
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
+
+
+        // --- (09.13 문제 해결 위한 코드) 
+
+        // LineRenderer 초기화 확인
+        Debug.Log("LineRenderer가 생성되었습니다. 색상: " + lineColor.ToString());
+
+        // 새로 생성된 LineRenderer에 색상 적용
+        currentLineRenderer.startColor = lineColor;
+        currentLineRenderer.endColor = lineColor;
+
+        // ---
 
         lineRenderers.Add(brushInstance);    
     }
