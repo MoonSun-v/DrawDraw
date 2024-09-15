@@ -30,16 +30,16 @@ EditorBuildSettings:
     path: Assets/Scenes/05.TrainingGame/DotLine/DotLineScene3.unity
     guid: b07a3c65e69501b4aadc0219b314f6a7
   - enabled: 1
-    path: Assets/Scenes/Line/3LineScene.unity
+    path: Assets/Scenes/05.TrainingGame/Line/3LineScene.unity
     guid: a4208ad5e83d4774a8be5c38f19a2157
   - enabled: 1
-    path: Assets/Scenes/FigureCombinationScene/WaterDropScene.unity
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/WaterDropScene.unity
     guid: a9616b153cd0fd649b05bc104e1c350e
   - enabled: 0
     path: Assets/Scenes/FigureCombinationScene/SnailScene.unity
     guid: fbe463208d276bd4f8ae7c296e3baacb
   - enabled: 1
-    path: Assets/Scenes/FigureCombinationScene/FigureSelectionScene.unity
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/FigureSelectionScene.unity
     guid: 943eb7c16c729c44984807a14118fe0b
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/Tangram/TangramScene.unity
@@ -54,12 +54,12 @@ EditorBuildSettings:
     path: Assets/Scenes/08.Etc/ResultScene.unity
     guid: cc2450f9d2ff6a241ad0979352b56565
   - enabled: 1
-    path: Assets/Scenes/FigureCombinationScene/1FigurSelect.unity
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/1FigurSelect.unity
     guid: ee6015c1509369a42aae49414b23b8f3
   - enabled: 1
-    path: Assets/Scenes/FigureCombinationScene/1Sun.unity
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/1Sun.unity
     guid: 84584c9e8e6bb8b438e5f2fb79ddac0f
   - enabled: 1
-    path: Assets/Scenes/FigureCombinationScene/1Pinwheel.unity
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/1Pinwheel.unity
     guid: a0ec336955f98bd4cbeb4404782ba43d
   m_configObjects: {}
