@@ -22,7 +22,7 @@ public class GoToOtherScene : MonoBehaviour
 
     public void GoToLineButton()
     {
-        SceneManager.LoadScene("LineScene");
+        SceneManager.LoadScene("1LineScene");
     }
 
     public void GoToScratchButton()
@@ -37,7 +37,7 @@ public class GoToOtherScene : MonoBehaviour
 
     public void GoToFigureCombinationButton()
     {
-        SceneManager.LoadScene("FigureSelectionScene");
+        SceneManager.LoadScene("1FigurSelect");
     }
 
     public void GoToPuzzle()
