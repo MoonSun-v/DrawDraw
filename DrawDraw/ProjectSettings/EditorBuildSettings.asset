@@ -32,13 +32,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/Line/3LineScene.unity
     guid: a4208ad5e83d4774a8be5c38f19a2157
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/WaterDropScene.unity
     guid: a9616b153cd0fd649b05bc104e1c350e
   - enabled: 0
     path: Assets/Scenes/FigureCombinationScene/SnailScene.unity
     guid: fbe463208d276bd4f8ae7c296e3baacb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/FigureSelectionScene.unity
     guid: 943eb7c16c729c44984807a14118fe0b
   - enabled: 1
@@ -62,4 +62,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/1Pinwheel.unity
     guid: a0ec336955f98bd4cbeb4404782ba43d
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/2FigurSelect.unity
+    guid: 32e154362814d9140a7c5a5fece58f41
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/2Rocket.unity
+    guid: 3b28c9ce937a7834cac22b3a12b7540b
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/2Ship.unity
+    guid: 7fb7a7a6f7c33c64bb010acc9a90b671
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/3FigurSelect.unity
+    guid: fd05f6f4f4aecce4786b64a9fdf1fc10
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/3Person.unity
+    guid: f41a2db5b82895441875531231f12329
+  - enabled: 1
+    path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/3TheTrain.unity
+    guid: af49d2d400549ab42bbcce046fefb058
   m_configObjects: {}

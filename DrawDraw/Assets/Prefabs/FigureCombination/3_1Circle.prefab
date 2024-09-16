@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6090202435101568203}
   - component: {fileID: 4008448006020755620}
   m_Layer: 8
-  m_Name: 3Circle
+  m_Name: 3_1Circle
   m_TagString: shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

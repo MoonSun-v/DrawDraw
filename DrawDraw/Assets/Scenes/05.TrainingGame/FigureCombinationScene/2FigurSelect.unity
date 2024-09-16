@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 179261662}
   - component: {fileID: 179261661}
   m_Layer: 5
-  m_Name: Button_sun
+  m_Name: Button_rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 179261661}
         m_TargetAssemblyTypeName: Button_GoToScene, Assembly-CSharp
-        m_MethodName: ChangeScene_Sun
+        m_MethodName: ChangeScene_Rocket
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7bff268a3afbd1b46902d99967b1f947, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c33befb0eccf7e947bd6b5499ef2ff0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 186130604}
   - component: {fileID: 186130607}
   m_Layer: 5
-  m_Name: Button_Pinwheel
+  m_Name: Button_ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 186130607}
         m_TargetAssemblyTypeName: Button_GoToScene, Assembly-CSharp
-        m_MethodName: ChangeScene_Pinwheel
+        m_MethodName: ChangeScene_Ship
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7196385909ddd2c4ca201ed6989fc456, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f803e038255de874ea54bad92f7ba061, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
