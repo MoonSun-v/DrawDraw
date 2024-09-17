@@ -101,7 +101,8 @@ public class DotLineManager : MonoBehaviour
             draw.ClearAllLineRenderers();
             dotscore.DotCount = 0;
 
-            StartCoroutine(NextGameDelay());
+            // StartCoroutine(NextGameDelay());
+            NextGameDelay_();
         }
 
         // ★ 마지막 밑그림일 때
@@ -121,7 +122,8 @@ public class DotLineManager : MonoBehaviour
             gameResult.score = dotscore_Final;
             gameResult.previousScene = SceneManager.GetActiveScene().name;
 
-            StartCoroutine(ResultSceneDelay());  
+            // StartCoroutine(ResultSceneDelay());
+            ResultSceneDelay_();
         }
     }
 
@@ -135,9 +137,10 @@ public class DotLineManager : MonoBehaviour
     // [ 다음 밑그림으로 변경 ]
     // 현재 밑그림 비활성화 -> 다음 밑그림 활성화
     //
+    /*
     IEnumerator NextGameDelay()
     {
-        yield return new WaitForSeconds(2);  
+        yield return new WaitForSeconds(1);  
 
         DotPrefabs[currentDotIndex].SetActive(false); 
         currentDotIndex++; 
@@ -149,8 +152,26 @@ public class DotLineManager : MonoBehaviour
 
     IEnumerator ResultSceneDelay()
     {
-        yield return new WaitForSeconds(2);   
+        yield return new WaitForSeconds(1);   
 
+        SceneManager.LoadScene("ResultScene");
+    }
+    */
+
+    // 씬 이동 관련 함수 모음    -------------------------------------------------------------------------
+
+    void NextGameDelay_()
+    {
+        DotPrefabs[currentDotIndex].SetActive(false);
+        currentDotIndex++;
+        DotPrefabs[currentDotIndex].SetActive(true);
+
+        CheckPopup.SetActive(false);
+        ScoreText.text = "";
+    }
+
+    void ResultSceneDelay_()
+    {
         SceneManager.LoadScene("ResultScene");
     }
 }

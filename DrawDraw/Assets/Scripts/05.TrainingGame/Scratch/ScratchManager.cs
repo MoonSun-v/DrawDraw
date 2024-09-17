@@ -79,7 +79,7 @@ public class ScratchManager : MonoBehaviour
     {
         ReturnButtonState();  // '처음부터' 버튼            상태 처리
         ScratchDrawState();   // ScratchDraw와 ScratchBlack 상태 처리
-        DrawingAreaLimits();  // 그리기 영역 제한   
+        // DrawingAreaLimits();  // 그리기 영역 제한   
     }
 
 
@@ -124,6 +124,7 @@ public class ScratchManager : MonoBehaviour
 
     // ★ [ 그리기 영역 제한 ]
     // 
+    /*
     private void DrawingAreaLimits()
     {
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -142,7 +143,7 @@ public class ScratchManager : MonoBehaviour
             scratchdraw.enabled = true;           
         }
     }
-
+    */
 
 
     // ★ [ 완료 확인 팝업 ]
@@ -194,7 +195,8 @@ public class ScratchManager : MonoBehaviour
         gameResult.score = score;
         gameResult.previousScene = SceneManager.GetActiveScene().name; 
 
-        StartCoroutine(ResultSceneDelay());
+        // StartCoroutine(ResultSceneDelay());
+        ResultSceneDelay_();
     }
 
 
@@ -216,6 +218,7 @@ public class ScratchManager : MonoBehaviour
         BaseAnim.SetBool("isBlackBase", true); 
 
         StartCoroutine(SelectDrawDelay());
+        // SelectDrawDelay_();
     }
 
 
@@ -273,7 +276,7 @@ public class ScratchManager : MonoBehaviour
     }
 
 
-
+    
     // ★ 5초 후 도안 선택 팝업 활성화
     //
     IEnumerator SelectDrawDelay()
@@ -282,16 +285,20 @@ public class ScratchManager : MonoBehaviour
         SelectDraw.SetActive(true);
     }
 
-
-
-    // ★ 2초 후 결과 화면으로 전환
+    /*
+    // ★ 1초 후 결과 화면으로 전환
     //
     IEnumerator ResultSceneDelay()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("ResultScene");
     }
+    */
 
+    void ResultSceneDelay_()
+    {
+        SceneManager.LoadScene("ResultScene");
+    }
 
 
     // ★ [ 선택된 도안 적용 ]
