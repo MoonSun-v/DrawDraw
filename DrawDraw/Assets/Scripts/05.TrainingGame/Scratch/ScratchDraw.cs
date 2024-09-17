@@ -44,9 +44,45 @@ public class ScratchDraw: MonoBehaviour
     {
         if (previousButton != null)
         {
-            Drawing();
+            // 1. ★ [ 모바일 터치 처리 ]
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                // 터치 시작 시 ( GetMouseButtonDown )
+                if (touch.phase == TouchPhase.Began)
+                {
+                    if (currentLineRenderer == null)
+                    {
+                        CreateBrush();
+                    }
+                }
+
+                // 터치 이동 시 ( GetMouseButton )
+                if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+                {
+                    Drawing();
+                }
+
+                // 터치 종료 시 ( GetMouseButtonUp )
+                if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    if (currentLineRenderer != null)
+                    {
+                        FinishLineRenderer();
+                    }
+                }
+            }
+            // 2. ★ [ 마우스 처리 ]
+            else
+            {
+                Drawing();
+            }
+            
         }  
     }
+
 
 
     // ★ [ 그리기 작업 수행 ] ★
@@ -99,8 +135,14 @@ public class ScratchDraw: MonoBehaviour
     void PointToMousePos()
     {
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-
+        /*
         if (Vector2.Distance(lastPos, mousePos) > 0.1f)
+        {
+            AddAPoint(mousePos);
+            lastPos = mousePos;
+        }
+        */
+        if ((lastPos - mousePos).magnitude > 0.1f)
         {
             AddAPoint(mousePos);
             lastPos = mousePos;
@@ -205,6 +247,9 @@ public class ScratchDraw: MonoBehaviour
         rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
 
         previousButton = crayon;
+
+        // ＊* 빌드 시, 색상 선택 후 두번 터치 문제 알아보기 위한 코드 
+        currentLineRenderer = null;  // 색상 변경 후 currentLineRenderer 초기화
     }
 
 
