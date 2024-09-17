@@ -16,6 +16,8 @@ public class resultPopupManager : MonoBehaviour
 
     public void Show()
     {
+        transform.gameObject.SetActive(true); // 결과 팝업 창을 화면에 표시
+
         if (CollisionCounter.Instance.IsSafe())
         {
             Text_GameResult.text = ScoreText.text + "번 벗어났습니다."; // 팝업의 점수 창에 현재 점수를 표시한다.
@@ -24,7 +26,5 @@ public class resultPopupManager : MonoBehaviour
         {
             Text_GameResult.text = "밑그림밖에서 그려졌습니다.";
         }
-
-        transform.gameObject.SetActive(true); // 결과 팝업 창을 화면에 표시
     }
 }
