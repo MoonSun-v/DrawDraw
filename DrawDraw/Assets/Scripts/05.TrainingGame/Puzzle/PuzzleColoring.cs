@@ -6,6 +6,7 @@ public class PuzzleColoring : MonoBehaviour
 {
     public Color crayonColor; // 크레용 버튼의 색상
     public GameObject[] Pieces;
+    public GameObject[] Puzzles;
 
     private Color[] pieceColors;
 
@@ -55,20 +56,46 @@ public class PuzzleColoring : MonoBehaviour
 
     public void FinishBtn()
     {
-        for (int i = 0; i < Pieces.Length; i++)
+        if (PuzzleManager.status == 0)
         {
-            SpriteRenderer spriteRenderer = Pieces[i].GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null)
+            for (int i = 0; i < Pieces.Length; i++)
             {
-                pieceColors[i] = spriteRenderer.color;
+                SpriteRenderer spriteRenderer = Pieces[i].GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    pieceColors[i] = spriteRenderer.color;
+                }
             }
+
+            float m = 1.7f;
+
+            for (int i = 0; i < Pieces.Length; i++)
+            {
+                Pieces[i].transform.localScale *= 0.5f;
+
+                Pieces[i].transform.position = new Vector3(5.4f, m, Pieces[i].transform.position.z);
+
+                m -= 1.7f;
+            }
+
+            float n = 1.7f;
+
+            for (int i = 0; i < Puzzles.Length; i++)
+            {
+                Puzzles[i].transform.localScale *= 0.5f;
+
+                Puzzles[i].transform.position = new Vector3(5.4f, n, Puzzles[i].transform.position.z);
+
+
+                n -= 1.7f;
+            }
+
+            colorboard.gameObject.SetActive(false);
+            crayons.gameObject.SetActive(false);
+            puzzleboard.gameObject.SetActive(true);
+
+            PuzzleManager.status = 1;
         }
-
-        colorboard.gameObject.SetActive(false);
-        crayons.gameObject.SetActive(false);
-        puzzleboard.gameObject.SetActive(true);
-
-        PuzzleManager.status = 1;
     }
 
     public void ColorRedButton(GameObject redCrayon)
