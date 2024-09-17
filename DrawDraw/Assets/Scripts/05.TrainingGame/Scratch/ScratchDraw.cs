@@ -175,12 +175,12 @@ public class ScratchDraw: MonoBehaviour
         
     }
 
-
+    /*
     public bool iscurrentLineRenderer()
     {
         return currentLineRenderer != null;
     }
-
+    */
 
     // ★ [ 브러시 프리팹 색상 변경 ]
     //

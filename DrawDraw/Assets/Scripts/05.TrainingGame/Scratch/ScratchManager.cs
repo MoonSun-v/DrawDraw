@@ -79,7 +79,7 @@ public class ScratchManager : MonoBehaviour
     {
         ReturnButtonState();  // '처음부터' 버튼            상태 처리
         ScratchDrawState();   // ScratchDraw와 ScratchBlack 상태 처리
-        DrawingAreaLimits();  // 그리기 영역 제한   
+        // DrawingAreaLimits();  // 그리기 영역 제한   
     }
 
 
@@ -124,6 +124,7 @@ public class ScratchManager : MonoBehaviour
 
     // ★ [ 그리기 영역 제한 ]
     // 
+    /*
     private void DrawingAreaLimits()
     {
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -142,7 +143,7 @@ public class ScratchManager : MonoBehaviour
             scratchdraw.enabled = true;           
         }
     }
-
+    */
 
 
     // ★ [ 완료 확인 팝업 ]
