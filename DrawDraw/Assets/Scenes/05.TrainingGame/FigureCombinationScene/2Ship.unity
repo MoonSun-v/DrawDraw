@@ -1737,7 +1737,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 588019431}
         m_TargetAssemblyTypeName: ObjectSpawner, Assembly-CSharp
-        m_MethodName: SpawnObject_circle2
+        m_MethodName: SpawnObject_RightTriangle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
