@@ -81,7 +81,7 @@ EditorBuildSettings:
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/3TheTrain.unity
     guid: af49d2d400549ab42bbcce046fefb058
   - enabled: 1
-    path: Assets/Scenes/05.TrainingGame/Tangram/TangramScene.unity
+    path: Assets/Scenes/05.TrainingGame/Tangram/TangramScene_Lv1.unity
     guid: 8ead4bf68a3c78d4597e50744ca4afbf
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/PuzzleScene.unity
