@@ -858,7 +858,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1779542970}
-        m_TargetAssemblyTypeName: TangramGameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: TangramGameManager_LV1, Assembly-CSharp
         m_MethodName: SelectPattern
         m_Mode: 3
         m_Arguments:
@@ -3808,7 +3808,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1779542970}
-        m_TargetAssemblyTypeName: TangramGameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: TangramGameManager_LV1, Assembly-CSharp
         m_MethodName: SelectPattern
         m_Mode: 3
         m_Arguments:
@@ -5691,7 +5691,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779542967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fbd986a1bb261409ab318807d0bb0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b0f524e81f11be42b9edd9aac51b48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   patternSelectPanel: {fileID: 998836162}

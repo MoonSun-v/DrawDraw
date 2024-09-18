@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TangramGameManager : MonoBehaviour
+public class TangramGameManager_LV2 : MonoBehaviour
 {
     public GameObject patternSelectPanel;
     public GameObject patternbutton;
