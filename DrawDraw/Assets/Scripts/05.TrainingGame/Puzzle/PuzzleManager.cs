@@ -9,6 +9,8 @@ public class PuzzleManager : MonoBehaviour
     public PuzzleColoring PuzzleColoring;
     public PuzzleMove[] puzzleMoves;
 
+    public GameObject[] button;
+
     void Start()
     {
         
@@ -20,16 +22,25 @@ public class PuzzleManager : MonoBehaviour
         {
             PuzzleColoring.enabled = true;
             SetPuzzleMoveEnabled(false);
+
+            button[0].SetActive(true);
+            button[1].SetActive(false);
         }
         else if (status == 1)
         {
             PuzzleColoring.enabled = false;
             SetPuzzleMoveEnabled(true);
+
+            button[0].SetActive(false);
+            button[1].SetActive(true);
         }
         else
         {
             PuzzleColoring.enabled = false;
             SetPuzzleMoveEnabled(false);
+
+            button[0].SetActive(false);
+            button[1].SetActive(false);
         }
     }
 

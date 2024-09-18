@@ -15,6 +15,9 @@ public class PuzzleColoring : MonoBehaviour
     public GameObject crayons;
 
     public PuzzleManager PuzzleManager;
+    public Color puzzleColor = new Color(0.8f, 0.8f, 0.8f);
+
+    public GameObject CheckPopup;
 
     void Start()
     {
@@ -25,6 +28,15 @@ public class PuzzleColoring : MonoBehaviour
             if (piece.GetComponent<Collider2D>() == null)
             {
                 piece.AddComponent<PolygonCollider2D>();
+            }
+        }
+
+        for (int i = 0; i < Puzzles.Length; i++)
+        {
+            SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
+            if (puzzleRenderer != null)
+            {
+                puzzleRenderer.color = puzzleColor;
             }
         }
     }
@@ -45,7 +57,9 @@ public class PuzzleColoring : MonoBehaviour
                         SpriteRenderer spriteRenderer = piece.GetComponent<SpriteRenderer>();
                         if (spriteRenderer != null)
                         {
-                            spriteRenderer.color = crayonColor;
+                            Color newColor = crayonColor;
+                            newColor.a = 1f;
+                            spriteRenderer.color = newColor;
                         }
                         break;
                     }
@@ -54,8 +68,26 @@ public class PuzzleColoring : MonoBehaviour
         }
     }
 
-    public void FinishBtn()
+
+
+    // 완료 확인 팝업
+    public void CheckPopUp()
     {
+        CheckPopup.SetActive(true);
+    }
+
+    // 팝업 : 아직이야
+    public void PreviousBtn()
+    {
+        // 팝업 비활성화
+        CheckPopup.SetActive(false);
+    }
+
+    // 팝업 : 완성이야 
+    public void NextBtn()
+    {
+        CheckPopup.SetActive(false);
+
         if (PuzzleManager.status == 0)
         {
             for (int i = 0; i < Pieces.Length; i++)
@@ -86,9 +118,15 @@ public class PuzzleColoring : MonoBehaviour
 
                 Puzzles[i].transform.position = new Vector3(5.4f, n, Puzzles[i].transform.position.z);
 
+                SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
+                if (puzzleRenderer != null)
+                {
+                    puzzleRenderer.color = Color.white;
+                }
 
                 n -= 1.7f;
             }
+
 
             colorboard.gameObject.SetActive(false);
             crayons.gameObject.SetActive(false);
@@ -97,6 +135,8 @@ public class PuzzleColoring : MonoBehaviour
             PuzzleManager.status = 1;
         }
     }
+
+
 
     public void ColorRedButton(GameObject redCrayon)
     {
