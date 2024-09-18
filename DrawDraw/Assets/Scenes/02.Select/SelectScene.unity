@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 30948892}
   - component: {fileID: 30948891}
   - component: {fileID: 30948890}
-  - component: {fileID: 30948889}
   m_Layer: 5
   m_Name: 0
   m_TagString: Untagged
@@ -163,29 +162,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -474}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30948889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30948887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &30948890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,16 +206,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30948889}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &30948891
@@ -371,7 +347,6 @@ GameObject:
   - component: {fileID: 199571035}
   - component: {fileID: 199571034}
   - component: {fileID: 199571033}
-  - component: {fileID: 199571032}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -399,29 +374,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 138}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &199571032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199571030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &199571033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,16 +418,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 199571032}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &199571034
@@ -1044,7 +996,6 @@ GameObject:
   - component: {fileID: 399900355}
   - component: {fileID: 399900354}
   - component: {fileID: 399900353}
-  - component: {fileID: 399900352}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -1072,29 +1023,6 @@ RectTransform:
   m_AnchoredPosition: {x: -205, y: -64}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &399900352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399900350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &399900353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,16 +1067,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 399900352}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &399900354
@@ -1977,7 +1905,6 @@ GameObject:
   - component: {fileID: 819589910}
   - component: {fileID: 819589909}
   - component: {fileID: 819589908}
-  - component: {fileID: 819589907}
   m_Layer: 5
   m_Name: 9
   m_TagString: Untagged
@@ -2005,29 +1932,6 @@ RectTransform:
   m_AnchoredPosition: {x: 203, y: -263}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &819589907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819589905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &819589908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,16 +1976,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 819589907}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 9
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &819589909
@@ -2269,6 +2173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuizCanvas: {fileID: 1623501134}
+  answerText: {fileID: 0}
+  answer: 
 --- !u!1 &863837833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,7 +2503,6 @@ GameObject:
   - component: {fileID: 1228382149}
   - component: {fileID: 1228382148}
   - component: {fileID: 1228382147}
-  - component: {fileID: 1228382146}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -2625,29 +2530,6 @@ RectTransform:
   m_AnchoredPosition: {x: 203, y: 138}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1228382146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228382144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1228382147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2692,16 +2574,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1228382146}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1228382148
@@ -2742,6 +2624,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228382144}
   m_CullTransparentMesh: 1
+--- !u!1 &1345424552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345424554}
+  - component: {fileID: 1345424553}
+  m_Layer: 0
+  m_Name: ButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1345424553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345424552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fc0ab558faae644b137635b43a7dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuizCanvas: {fileID: 0}
+  answerText: {fileID: 97129284}
+  answer: 7
+--- !u!4 &1345424554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345424552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1023.99506, y: 768, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360177817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,7 +2683,6 @@ GameObject:
   - component: {fileID: 1360177822}
   - component: {fileID: 1360177821}
   - component: {fileID: 1360177820}
-  - component: {fileID: 1360177819}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -2782,29 +2710,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -64}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1360177819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360177817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1360177820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2849,16 +2754,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1360177819}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1360177821
@@ -3220,7 +3125,6 @@ GameObject:
   - component: {fileID: 1525657860}
   - component: {fileID: 1525657859}
   - component: {fileID: 1525657858}
-  - component: {fileID: 1525657857}
   m_Layer: 5
   m_Name: 7
   m_TagString: Untagged
@@ -3248,29 +3152,6 @@ RectTransform:
   m_AnchoredPosition: {x: -205, y: -263}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1525657857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525657855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1525657858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,16 +3196,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1525657857}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 7
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1525657859
@@ -3377,7 +3258,6 @@ GameObject:
   - component: {fileID: 1587070803}
   - component: {fileID: 1587070802}
   - component: {fileID: 1587070801}
-  - component: {fileID: 1587070800}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -3405,29 +3285,6 @@ RectTransform:
   m_AnchoredPosition: {x: -205, y: 138}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1587070800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587070798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1587070801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3472,16 +3329,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1587070800}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1587070802
@@ -3534,7 +3391,6 @@ GameObject:
   - component: {fileID: 1607748043}
   - component: {fileID: 1607748042}
   - component: {fileID: 1607748041}
-  - component: {fileID: 1607748040}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -3562,29 +3418,6 @@ RectTransform:
   m_AnchoredPosition: {x: 203, y: -64}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1607748040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607748038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1607748041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3629,16 +3462,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1607748040}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1607748042
@@ -3795,7 +3628,6 @@ GameObject:
   - component: {fileID: 1653720329}
   - component: {fileID: 1653720328}
   - component: {fileID: 1653720327}
-  - component: {fileID: 1653720326}
   m_Layer: 5
   m_Name: 8
   m_TagString: Untagged
@@ -3823,29 +3655,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -263}
   m_SizeDelta: {x: 177, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1653720326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653720324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e3b8788163fcf447a532342c71d44e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  CheckPopup: {fileID: 683109765}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1653720327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,16 +3699,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1653720326}
-        m_TargetAssemblyTypeName: TangramChecker, Assembly-CSharp
-        m_MethodName: NextBtn
-        m_Mode: 1
+      - m_Target: {fileID: 1345424553}
+        m_TargetAssemblyTypeName: ParentsQuiz, Assembly-CSharp
+        m_MethodName: OnNumberButtonClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 8
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1653720328
@@ -4089,7 +3898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3X4+1=
+  m_Text: 3X2+1=
 --- !u!222 &1911701852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4382,3 +4191,4 @@ SceneRoots:
   - {fileID: 1623501138}
   - {fileID: 431442582}
   - {fileID: 1467044308}
+  - {fileID: 1345424554}
