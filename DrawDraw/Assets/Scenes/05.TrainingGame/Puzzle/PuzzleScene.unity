@@ -1889,7 +1889,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorBluebutton
+        m_MethodName: ColorBlueButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 754384537}
@@ -2139,11 +2139,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c217e018ece7175439d2e797867b1273, type: 3}
-    m_FontSize: 50
+    m_FontSize: 100
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 5
-    m_MaxSize: 50
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3075,7 +3075,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorPurplebutton
+        m_MethodName: ColorPurpleButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1116299912}
@@ -3207,7 +3207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorGreenbutton
+        m_MethodName: ColorGreenButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1123932734}
@@ -3417,7 +3417,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorYellowbutton
+        m_MethodName: ColorYellowButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1273593291}
@@ -3829,7 +3829,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorOrangebutton
+        m_MethodName: ColorOrangeButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1357922329}
@@ -4103,7 +4103,6 @@ GameObject:
   - component: {fileID: 1559341800}
   - component: {fileID: 1559341799}
   - component: {fileID: 1559341798}
-  - component: {fileID: 1559341797}
   m_Layer: 5
   m_Name: EraserButton
   m_TagString: Untagged
@@ -4111,27 +4110,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1559341797
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559341796}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 294c5893a40550c47b5d5d0558688e0b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1559341798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4178,7 +4156,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: Eraserbutton
+        m_MethodName: EraserButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1559341796}
@@ -4242,7 +4220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 858, y: -362}
+  m_AnchoredPosition: {x: 888, y: -362}
   m_SizeDelta: {x: 316.6071, y: 127.7766}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1565303129
@@ -5022,6 +5000,8 @@ MonoBehaviour:
   PuzzleManager: {fileID: 1817531135}
   puzzleColor: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
   CheckPopup: {fileID: 2016017672}
+  previousButton: {fileID: 0}
+  previousButtonOriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1817531134
 Transform:
   m_ObjectHideFlags: 0
@@ -5434,7 +5414,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1817531133}
         m_TargetAssemblyTypeName: PuzzleColoring, Assembly-CSharp
-        m_MethodName: colorSkybluebutton
+        m_MethodName: ColorSkyBlueButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2097268585}

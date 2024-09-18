@@ -19,6 +19,13 @@ public class PuzzleColoring : MonoBehaviour
 
     public GameObject CheckPopup;
 
+    // [ 색상 선택 관련 변수 ]
+    public GameObject previousButton;                 // 이전에 클릭된 버튼을 추적하기 위한 변수
+    public Vector3 previousButtonOriginalPosition;    // 이전 버튼의 원래 위치를 저장
+    private const int CrayonMove = 90;                // 버튼 이동 거리
+
+    private GameObject currentCrayon;                 // 현재 선택된 크레용
+
     void Start()
     {
         pieceColors = new Color[Pieces.Length];
@@ -57,6 +64,7 @@ public class PuzzleColoring : MonoBehaviour
                         SpriteRenderer spriteRenderer = piece.GetComponent<SpriteRenderer>();
                         if (spriteRenderer != null)
                         {
+                            // 선택한 크레용 색상 적용
                             Color newColor = crayonColor;
                             newColor.a = 1f;
                             spriteRenderer.color = newColor;
@@ -68,8 +76,6 @@ public class PuzzleColoring : MonoBehaviour
         }
     }
 
-
-
     // 완료 확인 팝업
     public void CheckPopUp()
     {
@@ -79,17 +85,17 @@ public class PuzzleColoring : MonoBehaviour
     // 팝업 : 아직이야
     public void PreviousBtn()
     {
-        // 팝업 비활성화
         CheckPopup.SetActive(false);
     }
 
-    // 팝업 : 완성이야 
+    // 팝업 : 완성이야
     public void NextBtn()
     {
         CheckPopup.SetActive(false);
 
         if (PuzzleManager.status == 0)
         {
+            // 퍼즐 조각 색상 저장
             for (int i = 0; i < Pieces.Length; i++)
             {
                 SpriteRenderer spriteRenderer = Pieces[i].GetComponent<SpriteRenderer>();
@@ -101,12 +107,11 @@ public class PuzzleColoring : MonoBehaviour
 
             float m = 1.7f;
 
+            // 퍼즐 조각 위치와 크기 변경
             for (int i = 0; i < Pieces.Length; i++)
             {
                 Pieces[i].transform.localScale *= 0.5f;
-
                 Pieces[i].transform.position = new Vector3(5.4f, m, Pieces[i].transform.position.z);
-
                 m -= 1.7f;
             }
 
@@ -115,7 +120,6 @@ public class PuzzleColoring : MonoBehaviour
             for (int i = 0; i < Puzzles.Length; i++)
             {
                 Puzzles[i].transform.localScale *= 0.5f;
-
                 Puzzles[i].transform.position = new Vector3(5.4f, n, Puzzles[i].transform.position.z);
 
                 SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
@@ -127,54 +131,70 @@ public class PuzzleColoring : MonoBehaviour
                 n -= 1.7f;
             }
 
-
-            colorboard.gameObject.SetActive(false);
-            crayons.gameObject.SetActive(false);
-            puzzleboard.gameObject.SetActive(true);
+            colorboard.SetActive(false);
+            crayons.SetActive(false);
+            puzzleboard.SetActive(true);
 
             PuzzleManager.status = 1;
         }
     }
 
+    // 색상 버튼 클릭 함수 (모든 버튼에 대해 공통적으로 사용 가능)
+    public void SelectColor(GameObject crayon, Color selectedColor)
+    {
+        crayonColor = selectedColor;
 
+        if (previousButton != null)
+        {
+            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
+            prevRt.localPosition = previousButtonOriginalPosition;  // 이전 버튼 위치 복구
+        }
 
+        RectTransform rt = crayon.GetComponent<RectTransform>();
+        previousButtonOriginalPosition = rt.localPosition;
+        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+
+        previousButton = crayon;
+    }
+
+    // 개별 색상 버튼 클릭 이벤트
     public void ColorRedButton(GameObject redCrayon)
     {
-        crayonColor = Color.red;
+        SelectColor(redCrayon, Color.red);
     }
 
-    public void colorOrangebutton(GameObject orangecrayon)
+    public void ColorOrangeButton(GameObject orangeCrayon)
     {
-        crayonColor = new Color(1f, 0.5f, 0f); // orange color
+        SelectColor(orangeCrayon, new Color(1f, 0.5f, 0f)); // 주황색
     }
 
-    public void colorYellowbutton(GameObject yellowcrayon)
+    public void ColorYellowButton(GameObject yellowCrayon)
     {
-        crayonColor = Color.yellow;
+        SelectColor(yellowCrayon, Color.yellow);
     }
 
-    public void colorGreenbutton(GameObject greencrayon)
+    public void ColorGreenButton(GameObject greenCrayon)
     {
-        crayonColor = new Color(0f, 0.392f, 0f); // dark green color
+        SelectColor(greenCrayon, new Color(0f, 0.392f, 0f)); // 짙은 초록색
     }
 
-    public void colorSkybluebutton(GameObject skybluecrayon)
+    public void ColorSkyBlueButton(GameObject skyBlueCrayon)
     {
-        crayonColor = new Color(0.529f, 0.808f, 0.922f); // sky blue color
+        SelectColor(skyBlueCrayon, new Color(0.529f, 0.808f, 0.922f)); // 하늘색
     }
 
-    public void colorBluebutton(GameObject bluecrayon)
+    public void ColorBlueButton(GameObject blueCrayon)
     {
-        crayonColor = Color.blue;
+        SelectColor(blueCrayon, Color.blue);
     }
 
-    public void colorPurplebutton(GameObject purplecrayon)
+    public void ColorPurpleButton(GameObject purpleCrayon)
     {
-        crayonColor = new Color(0.859f, 0.439f, 0.576f); // purple color
+        SelectColor(purpleCrayon, new Color(0.859f, 0.439f, 0.576f)); // 보라색
     }
 
-    public void Eraserbutton(GameObject eraser)
+    public void EraserButton(GameObject eraser)
     {
-        crayonColor = Color.white;
+        SelectColor(eraser, Color.white); // 지우개는 흰색
     }
 }
