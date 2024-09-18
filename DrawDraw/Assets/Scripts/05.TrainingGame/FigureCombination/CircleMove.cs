@@ -46,12 +46,21 @@ public class CircleMove : MonoBehaviour
     {
 
         // 마우스 클릭 또는 터치 입력이 있는지 확인
-        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
             //Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
 
             // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
-            Vector3 rayOrigin = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 rayOrigin;
+            // 마우스 클릭 위치에서 Raycast를 발사하여 Scene에서 Ray를 볼 수 있게 함
+            if (Input.touchCount > 0)
+            {
+                rayOrigin = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+            }
+            else
+            {
+                rayOrigin = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            }
             rayOrigin.z = 0f; // 2D에서는 z 값을 0으로 설정 (z 축을 고려하지 않음)
 
             // "shape" 레이어에 해당하는 레이어 마스크 생성
@@ -85,7 +94,7 @@ public class CircleMove : MonoBehaviour
         }
 
         // 드래그 중일 때 도형 위치 업데이트
-        else if ((Input.GetMouseButton(0) || Input.touchCount > 0) && isDragging)
+        else if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && isDragging)
         {
             Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
             Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
@@ -100,7 +109,7 @@ public class CircleMove : MonoBehaviour
         }
 
         // 드래그 종료
-        else if (Input.GetMouseButtonUp(0) || (Input.touchCount == 0))
+        else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
         {
             // 드래그 상태를 종료하고 선택된 오브젝트를 초기화
             isDragging = false; // 드래그 상태를 종료

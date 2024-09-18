@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using TMPro;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Draggable : MonoBehaviour
+public class HalfCircleMove : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset; // 드래그 시 마우스/터치와 도형 간의 위치 차이
@@ -13,7 +10,7 @@ public class Draggable : MonoBehaviour
     private Camera mainCamera; // 카메라를 참조할 변수
 
     // 드래그 범위를 제한할 square 오브젝트
-    public PolygonCollider2D triangleCollider; // 삼각형 콜라이더
+    public CircleCollider2D Collider; // 삼각형 콜라이더
     public GameObject squareObject;        // 동적으로 할당된 사각형 오브젝트
     private BoxCollider2D squareCollider;  // 사각형 오브젝트의 BoxCollider2D
 
@@ -34,7 +31,7 @@ public class Draggable : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main; // 카메라를 설정
 
-        triangleCollider = GetComponent<PolygonCollider2D>();
+        Collider = GetComponent<CircleCollider2D>();
 
         // 사각형 오브젝트의 BoxCollider2D 가져오기
         if (squareObject != null)
@@ -85,8 +82,8 @@ public class Draggable : MonoBehaviour
                 float currentTime = Time.time;
                 if (currentTime - lastTapTime < doubleTapThreshold)
                 {
-                   
-                    if(angle<0)
+
+                    if (angle < 0)
                     {
                         ToggleScale();
                     }
@@ -94,7 +91,7 @@ public class Draggable : MonoBehaviour
                     {
                         RotateDegrees(angle);
                     }
-                    
+
                 }
                 lastTapTime = currentTime;
                 isDragging = true; // 드래그 상태로 전환
@@ -113,34 +110,34 @@ public class Draggable : MonoBehaviour
             Bounds bounds = squareCollider.bounds; // 사각형 콜라이더의 경계 가져오기
 
             // 삼각형의 꼭짓점 가져오기
-            Vector2[] vertices = triangleCollider.points;
+            //Vector2[] vertices = Collider.points;
 
             // 삼각형의 꼭짓점 위치를 고려하여 이동 가능 범위를 설정
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                // 삼각형 꼭짓점을 월드 좌표로 변환
-                Vector3 worldVertex = targetPosition + (Vector3)vertices[i];
+            //for (int i = 0; i < vertices.Length; i++)
+            //{
+            //    // 삼각형 꼭짓점을 월드 좌표로 변환
+            //    Vector3 worldVertex = targetPosition + (Vector3)vertices[i];
 
-                // X축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
-                if (worldVertex.x < bounds.min.x)
-                {
-                    targetPosition.x += bounds.min.x - worldVertex.x; // 왼쪽 경계를 넘지 않도록 이동
-                }
-                else if (worldVertex.x > bounds.max.x)
-                {
-                    targetPosition.x -= worldVertex.x - bounds.max.x; // 오른쪽 경계를 넘지 않도록 이동
-                }
+            //    // X축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
+            //    if (worldVertex.x < bounds.min.x)
+            //    {
+            //        targetPosition.x += bounds.min.x - worldVertex.x; // 왼쪽 경계를 넘지 않도록 이동
+            //    }
+            //    else if (worldVertex.x > bounds.max.x)
+            //    {
+            //        targetPosition.x -= worldVertex.x - bounds.max.x; // 오른쪽 경계를 넘지 않도록 이동
+            //    }
 
-                // Y축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
-                if (worldVertex.y < bounds.min.y)
-                {
-                    targetPosition.y += bounds.min.y - worldVertex.y; // 아래쪽 경계를 넘지 않도록 이동
-                }
-                else if (worldVertex.y > bounds.max.y)
-                {
-                    targetPosition.y -= worldVertex.y - bounds.max.y; // 위쪽 경계를 넘지 않도록 이동
-                }
-            }
+            //    // Y축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
+            //    if (worldVertex.y < bounds.min.y)
+            //    {
+            //        targetPosition.y += bounds.min.y - worldVertex.y; // 아래쪽 경계를 넘지 않도록 이동
+            //    }
+            //    else if (worldVertex.y > bounds.max.y)
+            //    {
+            //        targetPosition.y -= worldVertex.y - bounds.max.y; // 위쪽 경계를 넘지 않도록 이동
+            //    }
+            //}
 
             // Rigidbody2D를 사용하여 도형의 위치를 이동
             rb2D.MovePosition(targetPosition);
@@ -227,5 +224,5 @@ public class Draggable : MonoBehaviour
         transform.Rotate(0f, 0f, angle);
     }
 
-    
+
 }

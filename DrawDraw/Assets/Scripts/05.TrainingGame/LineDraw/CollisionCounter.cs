@@ -67,7 +67,11 @@ public class CollisionCounter : MonoBehaviour
                         {
                             collisionCount++;
                             scoreText.text = collisionCount.ToString();
+                            
                             Debug.Log("Collision Count: " + collisionCount);
+
+                            // 선이 Base 태그와 충돌하면 게임 오버 방지 신호 전송
+                            //SetIsSafe(true);
                         }
                         else // 두 콜라이더 모두 충돌한 경우
                         {
@@ -88,7 +92,7 @@ public class CollisionCounter : MonoBehaviour
                     Debug.Log("Collision Count: " + temp);
                 }
 
-                if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
+                if (hit.collider != null && (hit.collider.CompareTag("baseSquare_inside") || hit.collider.CompareTag("baseSquare_outside")))
                 {
                     // 선이 Base 태그와 충돌하면 게임 오버 방지 신호 전송
                     SetIsSafe(true);
