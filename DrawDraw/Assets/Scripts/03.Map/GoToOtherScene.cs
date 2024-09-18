@@ -35,8 +35,10 @@ public class GoToOtherScene : MonoBehaviour
     public void GoToScratchButton_2() { SceneManager.LoadScene("ScratchScene2"); }
 
 
-    // Ä¥±³ -> ¾À Ãß°¡ ÇÊ¿ä
-    public void GoToTangramButton_1() { SceneManager.LoadScene("TangramScene"); }
+    // Ä¥±³
+    public void GoToTangramButton_1() { SceneManager.LoadScene("TangramScene_Lv1"); }
+    public void GoToTangramButton_2() { SceneManager.LoadScene("TangramScene_Lv2"); }
+    public void GoToTangramButton_3() { SceneManager.LoadScene("TangramScene_Lv3"); }
 
 
     // µµÇü Á¶ÇÕ
