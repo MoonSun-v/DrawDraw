@@ -35,6 +35,9 @@ public class FinishButtonManager : MonoBehaviour
     {
         //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
         DisplayColorPieceCounts();
+        
+        // 확인창 띄우기
+
     }
 
     // 버튼 클릭 시 호출되는 함수

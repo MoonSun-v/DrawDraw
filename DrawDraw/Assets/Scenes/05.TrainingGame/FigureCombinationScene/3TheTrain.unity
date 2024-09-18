@@ -4145,10 +4145,12 @@ MonoBehaviour:
   shapeButtonGroup: {fileID: 2127442221}
   colorButtonGroup: {fileID: 2033223188}
   prefabsToDisable:
-  - {fileID: 3426288886273853810, guid: 89c22622f3004244d948f6e4b95ca9c4, type: 3}
-  - {fileID: 72026374015221184, guid: d652ba07e35b8cb49b3f5a5a7b0c2533, type: 3}
-  - {fileID: 3706083577938189824, guid: f1a55d39096d0cd4e821851f00bca7a2, type: 3}
+  - {fileID: 6803745476337500027, guid: 187c779a1fe7aa34d84b42f5c768d856, type: 3}
+  - {fileID: 2303275733738927580, guid: 1e916ec00460aa049b45ca503cacf136, type: 3}
+  - {fileID: 5662186781551565964, guid: 0d92d993facfc2441ab1ee41e313e69c, type: 3}
+  - {fileID: 6556081676078171651, guid: b3348aba3b426724aa498239e0a2a6ad, type: 3}
   completeButtonObject: {fileID: 1048709675}
+  check_popup: {fileID: 55836930}
 --- !u!114 &1050153097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4194,8 +4196,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1050153096}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: OnNextButtonClick
+        m_TargetAssemblyTypeName: NextButtonManager, Assembly-CSharp
+        m_MethodName: onCheckPop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5698,7 +5700,7 @@ GameObject:
   - component: {fileID: 1636758641}
   - component: {fileID: 1636758640}
   - component: {fileID: 1636758639}
-  - component: {fileID: 1636758638}
+  - component: {fileID: 1636758642}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -5726,30 +5728,6 @@ RectTransform:
   m_AnchoredPosition: {x: 279, y: -146}
   m_SizeDelta: {x: 354.6029, y: 118.8404}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1636758638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636758636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83005c7051fba234caa2b8db3ec4683a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkPopup: {fileID: 55836930}
-  result_popup: {fileID: 1404764733}
-  DrawLine: {fileID: 0}
-  line1: {fileID: 0}
-  line2: {fileID: 0}
-  line3: {fileID: 0}
-  curveline1: {fileID: 0}
-  curveline2: {fileID: 0}
-  curveline3: {fileID: 0}
-  Shapes1: {fileID: 0}
-  Shapes2: {fileID: 0}
-  Shapes3: {fileID: 0}
 --- !u!114 &1636758639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5794,9 +5772,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636758638}
-        m_TargetAssemblyTypeName: CheckpopupManager, Assembly-CSharp
-        m_MethodName: OnClick_result
+      - m_Target: {fileID: 1636758642}
+        m_TargetAssemblyTypeName: NextButtonManager, Assembly-CSharp
+        m_MethodName: OnNextButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5844,6 +5822,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636758636}
   m_CullTransparentMesh: 1
+--- !u!114 &1636758642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636758636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3002f2e36ef4546843f9158286e904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapeButtonGroup: {fileID: 2127442221}
+  colorButtonGroup: {fileID: 2033223188}
+  prefabsToDisable:
+  - {fileID: 6556081676078171651, guid: b3348aba3b426724aa498239e0a2a6ad, type: 3}
+  - {fileID: 2303275733738927580, guid: 1e916ec00460aa049b45ca503cacf136, type: 3}
+  - {fileID: 5662186781551565964, guid: 0d92d993facfc2441ab1ee41e313e69c, type: 3}
+  - {fileID: 6803745476337500027, guid: 187c779a1fe7aa34d84b42f5c768d856, type: 3}
+  completeButtonObject: {fileID: 1048709675}
+  check_popup: {fileID: 55836930}
 --- !u!1 &1650430734
 GameObject:
   m_ObjectHideFlags: 0
