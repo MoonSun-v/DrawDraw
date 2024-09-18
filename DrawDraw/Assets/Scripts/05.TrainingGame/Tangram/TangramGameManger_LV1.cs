@@ -67,15 +67,6 @@ public class TangramGameManager_LV1 : MonoBehaviour
             patternSilhouettes[patternIndex].SetActive(true);
             patternPieces[patternIndex].SetActive(true);
             button[patternIndex].gameObject.SetActive(true);
-
-            StartCoroutine(HidePatternImageAfterDelay(3.0f));
         }
-    }
-
-    private IEnumerator HidePatternImageAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        patternImage.gameObject.SetActive(false);
     }
 }
