@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/04.TestGame/Test_DotLineScene.unity
     guid: a99f795ad0d8c8343a788235129b11e7
   - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_ColoringScene.unity
+    guid: 47050d9717f287d45a21610d545226a1
+  - enabled: 1
     path: Assets/Scenes/05.TrainingGame/DotLine/DotLineScene1.unity
     guid: 3d7c39509a19c1c408fa44ce56870118
   - enabled: 1
