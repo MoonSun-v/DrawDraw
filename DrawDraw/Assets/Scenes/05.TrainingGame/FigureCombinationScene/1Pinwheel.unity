@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 266425332}
   - component: {fileID: 266425331}
   - component: {fileID: 266425330}
+  - component: {fileID: 266425333}
   m_Layer: 0
   m_Name: Triangle (1)
   m_TagString: baseSquare
@@ -917,6 +918,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042625469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &266425333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266425329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &270104037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,6 +1088,7 @@ GameObject:
   - component: {fileID: 273658323}
   - component: {fileID: 273658322}
   - component: {fileID: 273658324}
+  - component: {fileID: 273658325}
   m_Layer: 0
   m_Name: Square
   m_TagString: baseSquare
@@ -1197,6 +1212,19 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &273658325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273658321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &295654300
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +3890,7 @@ GameObject:
   - component: {fileID: 1113971244}
   - component: {fileID: 1113971243}
   - component: {fileID: 1113971245}
+  - component: {fileID: 1113971246}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: baseSquare
@@ -3985,6 +4014,19 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &1113971246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113971242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1145059974
 GameObject:
   m_ObjectHideFlags: 0
@@ -5026,6 +5068,7 @@ GameObject:
   - component: {fileID: 1673093417}
   - component: {fileID: 1673093416}
   - component: {fileID: 1673093415}
+  - component: {fileID: 1673093418}
   m_Layer: 0
   m_Name: Triangle (2)
   m_TagString: baseSquare
@@ -5153,6 +5196,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042625469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1673093418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673093414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1737246979
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,6 +5299,7 @@ GameObject:
   - component: {fileID: 1758728410}
   - component: {fileID: 1758728409}
   - component: {fileID: 1758728408}
+  - component: {fileID: 1758728411}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: baseSquare
@@ -5370,6 +5427,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042625469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1758728411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758728407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1893590810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5606,6 +5676,7 @@ GameObject:
   - component: {fileID: 1904672259}
   - component: {fileID: 1904672258}
   - component: {fileID: 1904672257}
+  - component: {fileID: 1904672260}
   m_Layer: 0
   m_Name: Triangle (3)
   m_TagString: baseSquare
@@ -5733,6 +5804,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042625469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &1904672260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904672256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1973591076
 GameObject:
   m_ObjectHideFlags: 0

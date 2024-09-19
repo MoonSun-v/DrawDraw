@@ -15,7 +15,8 @@ public class TestDraw : MonoBehaviour
     private Vector2 previousPosition2; // 이전전 위치
 
     private List<GameObject> lines = new List<GameObject>();
-    private bool isDrawing = false;
+
+    private bool isDrawing = false; 
 
     public void Update()
     {

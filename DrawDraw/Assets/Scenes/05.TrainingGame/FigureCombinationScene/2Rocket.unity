@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 148291760}
   - component: {fileID: 148291762}
   - component: {fileID: 148291761}
+  - component: {fileID: 148291763}
   m_Layer: 0
   m_Name: RightTriangle (5)
   m_TagString: baseSquare
@@ -485,6 +486,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &148291763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148291759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &178088792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1158,7 @@ GameObject:
   - component: {fileID: 273658323}
   - component: {fileID: 273658322}
   - component: {fileID: 273658324}
+  - component: {fileID: 273658325}
   m_Layer: 0
   m_Name: Square
   m_TagString: baseSquare
@@ -1267,6 +1282,19 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &273658325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273658321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &319650108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2736,7 @@ GameObject:
   - component: {fileID: 833888225}
   - component: {fileID: 833888227}
   - component: {fileID: 833888226}
+  - component: {fileID: 833888228}
   m_Layer: 0
   m_Name: RightTriangle (2)
   m_TagString: baseSquare
@@ -2835,6 +2864,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &833888228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833888224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &835330640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,6 +3051,7 @@ GameObject:
   - component: {fileID: 918445283}
   - component: {fileID: 918445285}
   - component: {fileID: 918445284}
+  - component: {fileID: 918445286}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: baseSquare
@@ -3118,6 +3161,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &918445286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918445282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &936279132
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,6 +4366,7 @@ GameObject:
   - component: {fileID: 1159363494}
   - component: {fileID: 1159363496}
   - component: {fileID: 1159363495}
+  - component: {fileID: 1159363497}
   m_Layer: 0
   m_Name: RightTriangle (3)
   m_TagString: baseSquare
@@ -4437,6 +4494,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1159363497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159363493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1233763089
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,6 +4743,7 @@ GameObject:
   - component: {fileID: 1272771764}
   - component: {fileID: 1272771766}
   - component: {fileID: 1272771765}
+  - component: {fileID: 1272771767}
   m_Layer: 0
   m_Name: RightTriangle (4)
   m_TagString: baseSquare
@@ -4800,6 +4871,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1272771767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272771763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1300937521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4811,6 +4895,7 @@ GameObject:
   - component: {fileID: 1300937522}
   - component: {fileID: 1300937524}
   - component: {fileID: 1300937523}
+  - component: {fileID: 1300937525}
   m_Layer: 0
   m_Name: Circle
   m_TagString: baseSquare
@@ -4920,6 +5005,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1300937525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300937521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1340446436
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,6 +5221,7 @@ GameObject:
   - component: {fileID: 1476420788}
   - component: {fileID: 1476420790}
   - component: {fileID: 1476420789}
+  - component: {fileID: 1476420791}
   m_Layer: 0
   m_Name: RightTriangle (1)
   m_TagString: baseSquare
@@ -5250,6 +5349,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1476420791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476420787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1499558127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5875,6 +5987,7 @@ GameObject:
   - component: {fileID: 1758728410}
   - component: {fileID: 1758728409}
   - component: {fileID: 1758728408}
+  - component: {fileID: 1758728411}
   m_Layer: 0
   m_Name: RightTriangle
   m_TagString: baseSquare
@@ -6002,6 +6115,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1042625469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1758728411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758728407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4d095d3ccf60d45b08be2b919dbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 0.5
 --- !u!1 &1805827199
 GameObject:
   m_ObjectHideFlags: 0
