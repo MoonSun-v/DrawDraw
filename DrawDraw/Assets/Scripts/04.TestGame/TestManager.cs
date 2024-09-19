@@ -31,6 +31,6 @@ public class TestManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         countText.text = "시작!";
 
-        SceneManager.LoadScene("Test_ColoringScene"); //선 그리기 씬으로 추후 변경 필요
+        SceneManager.LoadScene("Test_1Line"); //선 그리기 씬으로 추후 변경 필요 -> 변경 완료!
     }
 }
