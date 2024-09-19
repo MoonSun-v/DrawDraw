@@ -12,6 +12,6 @@ public class SelectSceneScipt : MonoBehaviour
 
     public void ChangeScene_TestGame()
     {
-        SceneManager.LoadScene("TestGameScene");
+        SceneManager.LoadScene("TestStartScene");
     }
 }

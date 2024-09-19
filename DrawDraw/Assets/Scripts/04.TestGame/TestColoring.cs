@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestColoring : MonoBehaviour
 {
@@ -78,6 +79,7 @@ public class TestColoring : MonoBehaviour
     {
         CheckPopup.SetActive(false);
         CheckAnswer();
+        SceneManager.LoadScene("Test_DotLineScene");
     }
 
     private void CheckAnswer()

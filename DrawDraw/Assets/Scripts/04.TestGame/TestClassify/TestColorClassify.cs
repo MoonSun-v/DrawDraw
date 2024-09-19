@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TestShapesClassify : MonoBehaviour
+public class TestColorClassify : MonoBehaviour
 {
     public GameObject[] Shapes;
     public GameObject[] AnswerShapes;
@@ -38,6 +39,7 @@ public class TestShapesClassify : MonoBehaviour
     {
         CheckPopup.SetActive(false);
         CheckAnswer();
+        SceneManager.LoadScene("SelectScene");
     }
 
     private void CheckAnswer()

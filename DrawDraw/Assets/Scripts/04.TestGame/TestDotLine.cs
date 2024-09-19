@@ -78,7 +78,7 @@ public class TestDotLine : MonoBehaviour
         yield return new WaitForSeconds(2);    // 2 초 후 실행
 
         print("점선 따라 그리기 테스트 완료. 다음 테스트로 이동 필요합니다 ");
-        // SceneManager.LoadScene(" ");
+        SceneManager.LoadScene("Test_ShapesClassifyScene");
 
     }
 
