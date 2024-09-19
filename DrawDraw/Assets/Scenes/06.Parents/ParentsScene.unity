@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &490128045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +416,10 @@ MonoBehaviour:
   StatisticsCanvas: {fileID: 490128044}
   SoundCanvas: {fileID: 1706339530}
   ExplainCanvas: {fileID: 1618522645}
+  MenuButton:
+  - {fileID: 798277344}
+  - {fileID: 2027179938}
+  - {fileID: 1570159434}
 --- !u!4 &756813799
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +592,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 798277347}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 756813798}
+        m_TargetAssemblyTypeName: ParentsManager, Assembly-CSharp
+        m_MethodName: OnStatisticsButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &798277347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,7 +883,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1570159437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 756813798}
+        m_TargetAssemblyTypeName: ParentsManager, Assembly-CSharp
+        m_MethodName: OnExplainButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1570159437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1618522646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,7 +1159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1706339531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,7 +1548,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2027179941}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 756813798}
+        m_TargetAssemblyTypeName: ParentsManager, Assembly-CSharp
+        m_MethodName: OnSoundButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2027179941
 MonoBehaviour:
   m_ObjectHideFlags: 0
