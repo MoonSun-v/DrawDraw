@@ -93,7 +93,7 @@ EditorBuildSettings:
     path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScene.unity
     guid: 2b90c5ac705d0af43854a31eb7a78968
   - enabled: 1
-    path: Assets/Scenes/06.Parents/Parents.unity
+    path: Assets/Scenes/06.Parents/ParentsScene.unity
     guid: ea2d6cfb7ed742f48a3f0aa7bb8fc378
   - enabled: 1
     path: Assets/Scenes/08.Etc/ResultScene.unity
