@@ -2335,6 +2335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 2737189613260919869, guid: 4bc61314411fa664481502f2018f0dbb, type: 3}
   squareObject: {fileID: 1035895375}
+  objectCount: 0
 --- !u!114 &408441477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4036,6 +4037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 8113727178658214877, guid: 9d78b04fe9e51ed46aca2625eda2e74e, type: 3}
   squareObject: {fileID: 1035895375}
+  objectCount: 0
 --- !u!114 &588019432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5975,6 +5977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 7849174449805159418, guid: 371bd25fe682b194d8c056d16c6d2ca6, type: 3}
   squareObject: {fileID: 1035895375}
+  objectCount: 0
 --- !u!114 &936279135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9313,7 +9316,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.9725491, g: 0.9803922, b: 0.9176471, a: 1}
   m_FlipX: 0
@@ -12985,6 +12988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 6830306970354463251, guid: 46ffc230310ee514381e983af0a51cc1, type: 3}
   squareObject: {fileID: 1035895375}
+  objectCount: 0
 --- !u!114 &2087534823
 MonoBehaviour:
   m_ObjectHideFlags: 0
