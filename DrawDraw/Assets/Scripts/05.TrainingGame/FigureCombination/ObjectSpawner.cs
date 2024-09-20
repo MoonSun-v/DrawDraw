@@ -38,7 +38,7 @@ public class ObjectSpawner : MonoBehaviour
 
             if (draggable != null)
             {
-                draggable.squareObject = squareObject; // squareObject를 설정
+                //draggable.squareObject = squareObject; // squareObject를 설정
                 draggable.angle = 45;
             }
             else
@@ -205,7 +205,7 @@ public class ObjectSpawner : MonoBehaviour
 
             if (draggable != null)
             {
-                draggable.squareObject = squareObject; // squareObject를 설정
+                //draggable.squareObject = squareObject; // squareObject를 설정
                 draggable.angle = 90;
             }
             else
@@ -249,7 +249,7 @@ public class ObjectSpawner : MonoBehaviour
 
             if (draggable != null)
             {
-                draggable.squareObject = squareObject; // squareObject를 설정
+                //draggable.squareObject = squareObject; // squareObject를 설정
                 draggable.angle = -1;
             }
             else

@@ -13,9 +13,11 @@ public class Draggable : MonoBehaviour
     private Camera mainCamera; // 카메라를 참조할 변수
 
     // 드래그 범위를 제한할 square 오브젝트
-    public PolygonCollider2D triangleCollider; // 삼각형 콜라이더
-    public GameObject squareObject;        // 동적으로 할당된 사각형 오브젝트
-    private BoxCollider2D squareCollider;  // 사각형 오브젝트의 BoxCollider2D
+    //public PolygonCollider2D triangleCollider; // 삼각형 콜라이더
+    //public GameObject squareObject;        // 동적으로 할당된 사각형 오브젝트
+
+    public BoxCollider2D DragCollider; // 프리팹이 드래그할 수 있는 제한 영역의 BoxCollider
+    private Collider2D prefabCollider; // 생성된 프리팹의 Collider
 
     //// Y 스케일이 양수일 때 사용할 offset과 size 값
     //private Vector2 positiveOffset = new Vector2(0f, (float)-0.3460994);
@@ -28,28 +30,15 @@ public class Draggable : MonoBehaviour
     private float lastTapTime; // 마지막 입력 시간
     private const float doubleTapThreshold = 0.3f; // 더블 클릭/터치 간의 시간 간격 (초)
 
-    public float angle;
+    public int angle;
+    private bool isRotatedTo90 = false; // 현재 회전 상태를 나타냄
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main; // 카메라를 설정
 
-        triangleCollider = GetComponent<PolygonCollider2D>();
+        prefabCollider = GetComponent<Collider2D>();
 
-        // 사각형 오브젝트의 BoxCollider2D 가져오기
-        if (squareObject != null)
-        {
-            squareCollider = squareObject.GetComponent<BoxCollider2D>();
-
-            if (squareCollider == null)
-            {
-                Debug.LogError("squareObject에 BoxCollider2D가 없습니다.");
-            }
-        }
-        else
-        {
-            Debug.LogError("squareObject가 할당되지 않았습니다.");
-        }
     }
 
     void Update()
@@ -85,16 +74,33 @@ public class Draggable : MonoBehaviour
                 float currentTime = Time.time;
                 if (currentTime - lastTapTime < doubleTapThreshold)
                 {
-                   
-                    if(angle<0)
+
+                    if (angle == -1)
                     {
                         ToggleScale();
+                    }
+                    else if(angle == -2)
+                    {
+                        // 현재 상태에 따라 회전 변경
+                        if (isRotatedTo90)
+                        {
+                            // Z축 회전을 0도로 설정
+                            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        }
+                        else
+                        {
+                            // Z축 회전을 90도로 설정
+                            transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                        }
+
+                        // 회전 상태 토글
+                        isRotatedTo90 = !isRotatedTo90;
                     }
                     else
                     {
                         RotateDegrees(angle);
                     }
-                    
+
                 }
                 lastTapTime = currentTime;
                 isDragging = true; // 드래그 상태로 전환
@@ -106,45 +112,7 @@ public class Draggable : MonoBehaviour
         else if ((Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) && isDragging)
         {
 
-            Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
-            Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
-
-            // squareCollider의 경계 내에서만 이동 가능하도록 제한
-            Bounds bounds = squareCollider.bounds; // 사각형 콜라이더의 경계 가져오기
-
-            // 삼각형의 꼭짓점 가져오기
-            Vector2[] vertices = triangleCollider.points;
-
-            // 삼각형의 꼭짓점 위치를 고려하여 이동 가능 범위를 설정
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                // 삼각형 꼭짓점을 월드 좌표로 변환
-                Vector3 worldVertex = targetPosition + (Vector3)vertices[i];
-
-                // X축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
-                if (worldVertex.x < bounds.min.x)
-                {
-                    targetPosition.x += bounds.min.x - worldVertex.x; // 왼쪽 경계를 넘지 않도록 이동
-                }
-                else if (worldVertex.x > bounds.max.x)
-                {
-                    targetPosition.x -= worldVertex.x - bounds.max.x; // 오른쪽 경계를 넘지 않도록 이동
-                }
-
-                // Y축 이동 제한: 삼각형 꼭짓점이 사각형 경계를 넘지 않도록 제한
-                if (worldVertex.y < bounds.min.y)
-                {
-                    targetPosition.y += bounds.min.y - worldVertex.y; // 아래쪽 경계를 넘지 않도록 이동
-                }
-                else if (worldVertex.y > bounds.max.y)
-                {
-                    targetPosition.y -= worldVertex.y - bounds.max.y; // 위쪽 경계를 넘지 않도록 이동
-                }
-            }
-
-            // Rigidbody2D를 사용하여 도형의 위치를 이동
-            rb2D.MovePosition(targetPosition);
-
+            DragPrefab(); // 프리팹 드래그 함수 호출
         }
 
         // 드래그 종료
@@ -185,21 +153,21 @@ public class Draggable : MonoBehaviour
         Vector3 originalPosition = transform.position;
 
         // 스케일 변경
-        if (currentScale.x > 0)
-        {
-            // y 스케일 값을 음수로 변경
-            //transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
+            if (currentScale.x > 0)
+            {
+                // y 스케일 값을 음수로 변경
+                //transform.localScale = new Vector3(currentScale.x, -Mathf.Abs(currentScale.y), currentScale.z);
 
-            // x 스케일 값을 음수로 변경
-            transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+                // x 스케일 값을 음수로 변경
+                transform.localScale = new Vector3(-Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
 
-        }
-        else
-        {
-            // x 스케일 값을 원상 복구
-            transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
-        }
-
+            }
+            else
+            {
+                // x 스케일 값을 원상 복구
+                transform.localScale = new Vector3(Mathf.Abs(currentScale.x), currentScale.y, currentScale.z);
+            }
+        
         // 위치 보정: 스케일 변경 전의 위치로 되돌림
         transform.position = originalPosition;
     }
@@ -227,5 +195,34 @@ public class Draggable : MonoBehaviour
         transform.Rotate(0f, 0f, angle);
     }
 
-    
+    // 프리팹을 마우스 위치로 드래그
+    private void DragPrefab()
+    {
+        Vector3 mouseOrTouchPosition = GetInputWorldPosition(); // 입력 위치를 월드 좌표로 변환
+        Vector3 targetPosition = mouseOrTouchPosition + offset; // 목표 위치 계산
+
+        // 삼각형의 위치가 squareCollider 안에 있도록 제한
+        targetPosition = ClampPositionToTarget(targetPosition);
+
+        // Rigidbody2D를 사용하여 삼각형의 위치를 이동
+        rb2D.MovePosition(targetPosition);
+    }
+
+    private Vector3 ClampPositionToTarget(Vector3 position)
+    {
+        if (DragCollider != null && prefabCollider != null)
+        {
+            Bounds targetBounds = DragCollider.bounds;
+            Bounds prefabBounds = prefabCollider.bounds;
+
+            // X, Y 좌표를 DragCollider 경계 내로 제한
+            // 프리팹의 콜라이더 크기를 고려하여 벗어나지 않도록 제한
+            float clampedX = Mathf.Clamp(position.x, targetBounds.min.x + prefabBounds.extents.x, targetBounds.max.x - prefabBounds.extents.x);
+            float clampedY = Mathf.Clamp(position.y, targetBounds.min.y + prefabBounds.extents.y, targetBounds.max.y - prefabBounds.extents.y);
+
+            return new Vector3(clampedX, clampedY, position.z);
+        }
+
+        return position; // DragCollider 없으면 제한하지 않음
+    }
 }

@@ -22,8 +22,9 @@ public class NextButtonManager : MonoBehaviour
     public GameObject basePieceGroup;
 
     // 허용 오차 설정
-    public float positionTolerance = 0.1f;
-    public float rotationTolerance = 5f;
+    private float positionTolerance = 0.1f;
+    private float rotationTolerance = 5f;
+    private float localScaleTolerance = 0.2f;
 
     // 일치한 퍼즐 조각 개수
     private int matchingPieceCount = 0;
@@ -31,7 +32,7 @@ public class NextButtonManager : MonoBehaviour
     void Start()
     {
         // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
-        SetCanvasGroupActive(shapeButtonGroup, true);
+        //SetCanvasGroupActive(shapeButtonGroup, true);
         SetCanvasGroupActive(colorButtonGroup, false);
     }
 
@@ -127,12 +128,29 @@ public class NextButtonManager : MonoBehaviour
 
             // 1. 위치 비교
             bool isPositionMatch = Vector3.Distance(puzzlePiece.transform.position, basePiece.transform.position) < positionTolerance;  // 퍼즐 조각과 밑그림 조각의 위치가 허용 오차 내에 있는지 확인
-
+            //Debug.Log(basePiece+" isPositionMatch :" + isPositionMatch);
+            
             // 2. 회전 비교
             bool isRotationMatch = Mathf.Abs(Quaternion.Angle(puzzlePiece.transform.rotation, basePiece.transform.rotation)) < rotationTolerance;  // 퍼즐 조각과 밑그림 조각의 회전 각도가 허용 오차 내에 있는지 확인
-
+            //Debug.Log(basePiece + " isRotationMatch :" + isRotationMatch);
+            
             // 3. 크기 비교
-            bool isScaleMatch = puzzlePiece.transform.localScale == basePiece.transform.localScale;  // 퍼즐 조각과 밑그림 조각의 크기가 같은지 확인
+            //bool isScaleMatch = puzzlePiece.transform.localScale == basePiece.transform.localScale;  // 퍼즐 조각과 밑그림 조각의 크기가 같은지 확인
+            // 두 퍼즐 조각과 기준 조각의 localScale 비교
+            bool isScaleMatch = Mathf.Abs(puzzlePiece.transform.localScale.x - basePiece.transform.localScale.x) < localScaleTolerance &&
+                                Mathf.Abs(puzzlePiece.transform.localScale.y - basePiece.transform.localScale.y) < localScaleTolerance &&
+                                Mathf.Abs(puzzlePiece.transform.localScale.z - basePiece.transform.localScale.z) < localScaleTolerance;
+            //Debug.Log(basePiece + " isScaleMatch :" + isScaleMatch);
+            
+            if (isPositionMatch && isRotationMatch && !isScaleMatch)
+            {
+                Debug.Log("basePiece :" + basePiece);
+                Debug.Log(localScaleTolerance);
+                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.x - basePiece.transform.localScale.x));
+                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.y - basePiece.transform.localScale.y) );
+                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.z - basePiece.transform.localScale.z) );
+            }
+
 
 
             // 4. 모든 조건이 일치하면 매치로 간주
@@ -150,5 +168,4 @@ public class NextButtonManager : MonoBehaviour
         }
     }
 
-    
 }

@@ -44,8 +44,6 @@ public class resizeCollider : MonoBehaviour
             // 수정된 경로를 다시 설정
             polygonCollider.SetPath(i, pathPoints);
         }
-
-        Debug.Log("PolygonCollider2D scaled.");
     }
 
     // CircleCollider2D 크기를 축소하는 함수
@@ -53,7 +51,5 @@ public class resizeCollider : MonoBehaviour
     {
         // CircleCollider2D의 반지름을 scaleFactor에 따라 축소
         circleCollider.radius *= scaleFactor;
-
-        Debug.Log("CircleCollider2D scaled.");
     }
 }
