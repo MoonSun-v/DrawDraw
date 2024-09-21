@@ -834,7 +834,7 @@ SpriteRenderer:
   m_Size: {x: 20.12, y: 20.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &417542415
@@ -1785,7 +1785,7 @@ SpriteRenderer:
   m_Size: {x: 19.87, y: 19.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &968909527
@@ -5135,7 +5135,7 @@ SpriteRenderer:
   m_Size: {x: 20.12, y: 20.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1275955635
@@ -5854,7 +5854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1755298400
 SpriteRenderer:
   m_ObjectHideFlags: 0
