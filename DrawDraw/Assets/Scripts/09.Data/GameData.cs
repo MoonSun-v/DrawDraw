@@ -77,11 +77,11 @@ public class TestData
 public class TestResultData
 {
     public string Game1Img ; // 이미지 경로를 문자열로 저장 
-    // public string Game2Img = "";
-    // public string Game3Img = "";
-    // public string Game4Img = "";
-    // public string Game5Img = "";
-    // public string Game6Img = ""; 
+    public string Game2Img ;
+    public string Game3Img ;
+    public string Game4Img ;
+    public string Game5Img ;
+    public string Game6Img ;
     // public int Game7Score;
     // public int Game8Score;
     // public int Game9Score;

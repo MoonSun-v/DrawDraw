@@ -12,9 +12,10 @@ using UnityEngine.UI;
 
 public class ImageCapture : MonoBehaviour
 {
-    public int testResultId = 1;                         // 예시로 저장할 결과의 ID
-    public Camera targetCamera;                          // 캡처할 카메라 (필요에 따라 인스펙터에서 할당)
-    public Rect captureRect = new Rect(0, 0, 50, 50);    // 캡처할 영역   (인스펙터에서 설정 가능)
+    public int testResultId = 1;                         // 저장할 결과의 ID
+    public int gameIndex = 1;                            // // 게임 이미지 인덱스 (1~6)
+    public Camera targetCamera;                          // 캡처할 카메라
+    public Rect captureRect = new Rect(0, 0, 50, 50);    // 캡처할 영역  
 
 
     // [ 임시 구현 코드 ]
@@ -25,22 +26,45 @@ public class ImageCapture : MonoBehaviour
     //
     void Start()
     {
+        CaptureAndSaveImage();
+    }
+
+    void CaptureAndSaveImage()
+    {
         // targetCamera가 지정되지 않았을 경우 메인 카메라를 사용
         // if (targetCamera == null){ targetCamera = Camera.main; }
 
+
+        // 이미지 캡처
         string base64Image = GameData.instance.CaptureScreenArea(targetCamera, captureRect);
-        print(base64Image);
+        TestResultData testResultData;
 
-        TestResultData testResultData = new TestResultData();
-        testResultData.Game1Img = base64Image;
+        // 테스트 결과 데이터가 없으면 새로 생성
+        if (!GameData.instance.testdata.TestResults.ContainsKey(testResultId))
+        {
+            testResultData = new TestResultData();
+            GameData.instance.testdata.TestResults[testResultId] = testResultData;
+        }
+        else
+        {
+            testResultData = GameData.instance.testdata.TestResults[testResultId];
+        }
 
-        GameData.instance.testdata.TestResults[testResultId] = testResultData;
+        // gameIndex에 따라 각 필드에 이미지 저장
+        switch (gameIndex)
+        {
+            case 1: testResultData.Game1Img = base64Image; break;
+            case 2: testResultData.Game2Img = base64Image; break;
+            case 3: testResultData.Game3Img = base64Image; break;
+            case 4: testResultData.Game4Img = base64Image; break;
+            case 5: testResultData.Game5Img = base64Image; break;
+            case 6: testResultData.Game6Img = base64Image; break;
+        }
 
+        // 데이터 저장
         GameData.instance.SaveTestData();
         GameData.instance.LoadTestData();
 
-       print("화면 캡처 및 저장 완료");
-        
+        print("화면 캡처 및 저장 완료");
     }
-
 }
