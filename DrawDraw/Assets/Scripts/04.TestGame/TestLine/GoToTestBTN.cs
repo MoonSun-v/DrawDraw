@@ -19,4 +19,15 @@ public class GoToTestBTN : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("처음부터 다시 시작합니다.");
     }
+    public GameObject CheckPopUp;
+
+    public void open_CheckPopup()
+    {
+        CheckPopUp.SetActive(true);
+    }
+
+    public void close_CheckPopup()
+    {
+        CheckPopUp.SetActive(false);
+    }
 }
