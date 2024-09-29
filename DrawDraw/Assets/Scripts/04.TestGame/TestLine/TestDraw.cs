@@ -16,59 +16,43 @@ public class TestDraw : MonoBehaviour
 
     private List<GameObject> lines = new List<GameObject>();
 
-    private bool isDrawing = false; 
+    private bool isDrawing = false;
 
     public void Update()
     {
-
         if (TestDrawManager == null)
         {
             Debug.LogError("TestDrawManager is not assigned!");
             return;
         }
-        
+
         // 그리기 영역 안에 있어야 그리기 가능
         if (TestDrawManager.GetComponent<TestDrawManager>().DrawActivate)
-        { // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
+        {
+            // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
             if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 CreateNewLine();
+                isDrawing = true; // 선 그리기 시작
             }
-            // 현재 선을 그리는 중이고 마우스가 클릭되었거나 터치가 이동 중인 경우, 새로운 점을 선에 추가한다.
-            else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+            // 선을 그리는 중일 때 행동
+            else if (isDrawing && (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)))
             {
                 Vector2 currentPosition = GetInputPosition();
 
                 if (Vector2.Distance(currentPosition, previousPosition) > 0.1f) // 선을 그리기 위한 최소한의 거리
                 {
-                    if (currentLineRenderer == null)
-                    {
-                        isDrawing = true;
-                        CreateNewLine();
-                    }
                     AddPointToLine(currentPosition);
-
-                    // 선이 그려지면 버튼 이미지 변경
-                    //finishButton.GetComponent<Image>().sprite = activeSprite;
-                    //finishButton.GetComponent<Image>().preserveAspect = true; // 비율 유지
-                    //                                                          // 버튼 이미지의 부모 UI 오브젝트의 RectTransform을 가져옵니다.
-                    //RectTransform buttonRectTransform = finishButton.GetComponent<RectTransform>();
-
-                    // 원하는 스케일로 버튼 이미지의 크기를 조절합니다.
-                    //float desiredScaleX = 1.67f; // x축 스케일
-                    //float desiredScaleY = 1.67f; // y축 스케일
-                    //buttonRectTransform.localScale = new Vector2(desiredScaleX, desiredScaleY);
                 }
             }
-            // 마우스 클릭 또는 터치가 끝나면 현재 선을 비운다.
+            // 마우스 클릭 또는 터치가 끝나면 그리기 종료
             else if (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
                 currentLineRenderer = null; // 현재 그리는 선 종료
-                isDrawing = false;
+                isDrawing = false; // 선 그리기 종료
             }
         }
-
-        else //영역 밖을 경우
+        else
         {
             previousPosition = previousPosition2; // 이전 위치 초기화
         }
