@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GoToTestBTN : MonoBehaviour
 {
+    public GameObject ImgCapture;
+
     public void GoToTest1Line() { SceneManager.LoadScene("Test_1Line"); }
     public void GoToTest2Line() { SceneManager.LoadScene("Test_2Line"); }
     public void GoToTest3Line() { SceneManager.LoadScene("Test_3Line"); }
@@ -23,6 +25,7 @@ public class GoToTestBTN : MonoBehaviour
 
     public void open_CheckPopup()
     {
+        ImgCapture.SetActive(true); // 이미지 캡처 진행
         CheckPopUp.SetActive(true);
     }
 

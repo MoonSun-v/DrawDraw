@@ -12,10 +12,10 @@ using UnityEngine.UI;
 
 public class ImageCapture : MonoBehaviour
 {
-    public int testResultId = 1;                         // 저장할 결과의 ID
-    public int gameIndex = 1;                            // // 게임 이미지 인덱스 (1~6)
-    public Camera targetCamera;                          // 캡처할 카메라
-    public Rect captureRect = new Rect(0, 0, 50, 50);    // 캡처할 영역  
+    public Camera targetCamera;           // 캡처할 카메라
+    public Rect captureRect = new Rect(0, 0, 50, 50);    // 캡처할 영역
+
+    public int sceneIndex;                // 씬 인덱스 (1부터 6까지 수동 설정)
 
 
     // [ 임시 구현 코드 ]
@@ -26,9 +26,48 @@ public class ImageCapture : MonoBehaviour
     //
     void Start()
     {
-        CaptureAndSaveImage();
+        // 카메라 캡처 실행
+        string base64Image = GameData.instance.CaptureScreenArea(targetCamera, captureRect);
+
+        // TestResultData가 없으면 새로 생성
+        if (!GameData.instance.testdata.TestResults.ContainsKey(0))
+        {
+            GameData.instance.testdata.TestResults[0] = new TestResultData();
+        }
+
+        // 씬 인덱스에 맞춰 이미지 저장
+        switch (sceneIndex)
+        {
+            case 1:
+                GameData.instance.testdata.TestResults[0].Game1Img = base64Image;
+                break;
+            case 2:
+                GameData.instance.testdata.TestResults[0].Game2Img = base64Image;
+                break;
+            case 3:
+                GameData.instance.testdata.TestResults[0].Game3Img = base64Image;
+                break;
+            case 4:
+                GameData.instance.testdata.TestResults[0].Game4Img = base64Image;
+                break;
+            case 5:
+                GameData.instance.testdata.TestResults[0].Game5Img = base64Image;
+                break;
+            case 6:
+                GameData.instance.testdata.TestResults[0].Game6Img = base64Image;
+                break;
+            default:
+                Debug.LogWarning("유효하지 않은 씬 인덱스입니다.");
+                break;
+        }
+
+        // TestData 저장
+        GameData.instance.SaveTestData();
+        GameData.instance.LoadTestData();
+        print("화면 캡처 및 저장 완료");
     }
 
+    /*
     void CaptureAndSaveImage()
     {
         // targetCamera가 지정되지 않았을 경우 메인 카메라를 사용
@@ -67,4 +106,5 @@ public class ImageCapture : MonoBehaviour
 
         print("화면 캡처 및 저장 완료");
     }
+    */
 }
