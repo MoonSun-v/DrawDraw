@@ -343,6 +343,8 @@ MonoBehaviour:
   check_popup: {fileID: 26374704}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
+  maxScore: 100
+  ScoreText: {fileID: 255656938}
 --- !u!114 &128689055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +625,7 @@ MonoBehaviour:
   Text_GameResult: {fileID: 0}
   ScoreText: {fileID: 0}
   gameResult: {fileID: 0}
+  maxScore: 100
 --- !u!114 &158543161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f62767fca88e846ab5511a3060ea46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  isActive: 0
 --- !u!4 &223629234
 Transform:
   m_ObjectHideFlags: 0
@@ -2878,6 +2883,8 @@ MonoBehaviour:
   check_popup: {fileID: 26374704}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
+  maxScore: 100
+  ScoreText: {fileID: 0}
 --- !u!114 &710751145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4925,6 +4932,7 @@ MonoBehaviour:
   Text_GameResult: {fileID: 302366880}
   ScoreText: {fileID: 255656938}
   gameResult: {fileID: 0}
+  maxScore: 100
 --- !u!114 &1196839800
 MonoBehaviour:
   m_ObjectHideFlags: 0

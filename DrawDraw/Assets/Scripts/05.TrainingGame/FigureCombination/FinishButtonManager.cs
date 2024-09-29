@@ -20,6 +20,9 @@ public class FinishButtonManager : MonoBehaviour
     public GameResultSO gameResult; // 게임 결과화면 관리 SO
     internal object onClick;
 
+    // 기본 점수 (100점 만점)
+    public float maxScore = 100f;
+
     void Start()
     {
         // ShapeColorChanger 스크립트를 가진 오브젝트를 찾음
@@ -37,8 +40,6 @@ public class FinishButtonManager : MonoBehaviour
 
     public void OnFinishButtonClick()
     {
-        
-
         // 점수 저장 -> 결과 화면에서 게임클리어/오버 구분 위해서
         gameResult.score = int.Parse(ScoreText.text);
 
@@ -62,7 +63,7 @@ public class FinishButtonManager : MonoBehaviour
     {
         //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
         DisplayColorPieceCounts();
-        Text_GameResult.text = "올바른 위치에 색칠까지 한 조각 개수 : "+ ScoreText.text;
+        Text_GameResult.text = ScoreText.text + "점";
 
         check_popup.SetActive(false); // 확인 팝업 창을 화면에 표시
         result_popup.SetActive(true); // 확인 팝업 창을 화면에 표시 
@@ -80,13 +81,39 @@ public class FinishButtonManager : MonoBehaviour
         int totalPieces = puzzlePieceClones.Length;
 
         // 변경된 도형 개수를 가져옴 (ShapeColorChanger 스크립트에서)
-        int changedPieces = shapeColorChanger != null ? shapeColorChanger.GetChangedShapeCount() : 0;
-
-        ScoreText.text = changedPieces.ToString();  
+        int changedPieces = shapeColorChanger != null ? shapeColorChanger.GetChangedShapeCount() : 0; 
 
         // 콘솔에 출력
-        Debug.Log($"전체 퍼즐 조각 개수: {totalPieces}");
-        Debug.Log($"색상이 변경된 도형 개수: {changedPieces}");
+        //Debug.Log($"전체 퍼즐 조각 개수: {totalPieces}");
+        //Debug.Log($"색상이 변경된 도형 개수: {changedPieces}");
+
+        // 점수 계산: 변경된 퍼즐 조각 수를 전체 퍼즐 조각 수로 나눈 뒤 100점을 기준으로 점수를 부여
+        float score = 0f;
+        if (totalPieces > 0)
+        {
+            score = (changedPieces / (float)totalPieces) * 50f; //100점 기준
+        }
+
+        // 현재 ScoreText.text 값이 숫자로 변환 가능한지 확인
+        float scoreValue;
+
+        // ScoreText.text 값을 float으로 변환 시도
+        if (float.TryParse(ScoreText.text, out scoreValue))
+        {
+            // 변환에 성공한 경우 새로운 score를 더함
+            scoreValue += score;
+        }
+        else
+        {
+            // 변환 실패 시 오류 메시지 출력
+            Debug.LogError("ScoreText의 값이 숫자로 변환될 수 없습니다: " + ScoreText.text);
+        }
+
+        ScoreText.text = scoreValue.ToString("F0");
+
+        // 최종 점수 출력
+        Debug.Log("도형 색칠하기 점수(50점 만점): " + score);
+        Debug.Log("최종 점수: " + ScoreText.text);
     }
 
     public void GotoResultScene()
@@ -94,5 +121,6 @@ public class FinishButtonManager : MonoBehaviour
         Debug.Log("완성 버튼 클릭, 결과 씬으로 이동");
 
     }
+
 
 }

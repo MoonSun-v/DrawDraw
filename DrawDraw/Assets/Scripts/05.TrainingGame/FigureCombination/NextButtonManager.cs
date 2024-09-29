@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NextButtonManager : MonoBehaviour
 {
@@ -88,7 +89,11 @@ public class NextButtonManager : MonoBehaviour
         group.blocksRaycasts = isActive;
     }
 
-    // 버튼 클릭 시 호출되는 함수
+    // 일치 도형 개수 계산
+
+    public float maxScore = 100f;    // 기본 점수 (100점 만점)
+    public Text ScoreText; // 게임의 결과를 가져올 Text Ui
+
     void CalculateMatches()
     {
         /// 태그로 퍼즐 조각 클론들을 자동으로 찾기
@@ -98,8 +103,8 @@ public class NextButtonManager : MonoBehaviour
         int puzzlePieceCount = puzzlePieceClones.Length;  // 현재 씬에 존재하는 퍼즐 조각 클론들의 총 개수 계산
         int basePieceCount = basePieceGroup.transform.childCount;  // 밑그림 조각들의 개수 계산 (basePieceGroup의 자식 개수)
 
-        Debug.Log("퍼즐 조각 개수: " + puzzlePieceCount);  // 퍼즐 조각 개수를 디버그 출력
-        Debug.Log("밑그림 조각 개수: " + basePieceCount);  // 밑그림 조각 개수를 디버그 출력
+        //Debug.Log("퍼즐 조각 개수: " + puzzlePieceCount);  // 퍼즐 조각 개수를 디버그 출력
+        //Debug.Log("밑그림 조각 개수: " + basePieceCount);  // 밑그림 조각 개수를 디버그 출력
 
         // 일치한 퍼즐 조각 개수 초기화
         matchingPieceCount = 0;  // 퍼즐과 밑그림이 일치한 조각의 개수를 저장할 변수를 0으로 초기화
@@ -112,7 +117,40 @@ public class NextButtonManager : MonoBehaviour
         }
 
         // 일치한 퍼즐 조각 개수 출력
-        Debug.Log("일치한 퍼즐 조각 개수: " + matchingPieceCount);  // 일치한 퍼즐 조각의 최종 개수를 디버그 출력
+        //Debug.Log("일치한 퍼즐 조각 개수: " + matchingPieceCount);  // 일치한 퍼즐 조각의 최종 개수를 디버그 출력
+
+        float score;
+        // 도형이 없을 경우 0점 반환
+        if (basePieceCount == 0 || puzzlePieceCount == 0)
+        {
+            //Debug.Log("퍼즐이나 밑그림 조각이 없으므로 0점입니다.");
+            score = 0;
+        }
+        else
+        {
+            // 일치한 퍼즐 조각 개수를 100점 만점으로 환산
+            score = (matchingPieceCount / (float)basePieceCount) * 50f;
+        }
+
+        // 현재 ScoreText.text 값이 숫자로 변환 가능한지 확인
+        float scoreValue;
+
+        // ScoreText.text 값을 float으로 변환 시도
+        if (float.TryParse(ScoreText.text, out scoreValue))
+        {
+            // 변환에 성공한 경우 새로운 score를 더함
+            scoreValue += score;
+        }
+        else
+        {
+            // 변환 실패 시 오류 메시지 출력
+            Debug.LogError("ScoreText의 값이 숫자로 변환될 수 없습니다: " + ScoreText.text);
+        }
+
+        ScoreText.text = scoreValue.ToString("F0");
+
+        // 최종 점수 출력
+        Debug.Log("도형 맞추기 점수(50점 만점): " + ScoreText.text);
     }
 
     // 퍼즐 조각과 여러 밑그림 조각 간의 일치 여부 비교

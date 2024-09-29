@@ -795,6 +795,7 @@ MonoBehaviour:
   Text_GameResult: {fileID: 1712556984}
   ScoreText: {fileID: 201912792}
   gameResult: {fileID: 0}
+  maxScore: 100
 --- !u!114 &200690835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1147,6 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f62767fca88e846ab5511a3060ea46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  isActive: 0
 --- !u!4 &223629234
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,7 +1850,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &507494904
 Canvas:
   m_ObjectHideFlags: 0
@@ -5021,6 +5024,8 @@ MonoBehaviour:
   check_popup: {fileID: 1097614347}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
+  maxScore: 100
+  ScoreText: {fileID: 201912792}
 --- !u!114 &1304537563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5988,6 +5993,7 @@ MonoBehaviour:
   Text_GameResult: {fileID: 0}
   ScoreText: {fileID: 0}
   gameResult: {fileID: 0}
+  maxScore: 100
 --- !u!114 &1617795085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7661,6 +7667,8 @@ MonoBehaviour:
   check_popup: {fileID: 1097614347}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
+  maxScore: 100
+  ScoreText: {fileID: 0}
 --- !u!114 &1987899131
 MonoBehaviour:
   m_ObjectHideFlags: 0
