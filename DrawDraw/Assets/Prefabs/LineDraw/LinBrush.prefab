@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3456849455839302661}
   m_Layer: 9
   m_Name: LinBrush
-  m_TagString: Untagged
+  m_TagString: LineBrush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

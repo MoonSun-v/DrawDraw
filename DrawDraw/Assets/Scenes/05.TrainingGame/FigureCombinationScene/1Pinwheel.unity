@@ -535,6 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f62767fca88e846ab5511a3060ea46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  isActive: 0
 --- !u!4 &223629234
 Transform:
   m_ObjectHideFlags: 0

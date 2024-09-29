@@ -30,6 +30,9 @@ public class DrawLine : MonoBehaviour
     public GameObject check; // 게임의 확인창 팝업
     public GameObject finish; // 게임의 결과창 팝업
 
+    public ColorButtonManager ColorButtonManager; // ColorManager 스크립트 참조 (colorCode 값 가져오기)
+    private Color lineColor;
+
 
     void Update()
     {
@@ -64,7 +67,7 @@ public class DrawLine : MonoBehaviour
         { // 마우스 클릭 또는 터치가 시작되면 새로운 선을 그린다.
             if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                CreateNewLine();
+                CreateNewLine(lineColor);
             }
             // 현재 선을 그리는 중이고 마우스가 클릭되었거나 터치가 이동 중인 경우, 새로운 점을 선에 추가한다.
             else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
@@ -75,7 +78,7 @@ public class DrawLine : MonoBehaviour
                 {
                     if (currentLineRenderer == null)
                     {
-                        CreateNewLine();
+                        CreateNewLine(lineColor);
                     }
                     AddPointToLine(currentPosition);
 
@@ -106,7 +109,7 @@ public class DrawLine : MonoBehaviour
     }
     //*********************************************************************************************************************
 
-    void CreateNewLine()
+    void CreateNewLine(Color newColor)
     {
         isDrawing = true;
 
@@ -118,6 +121,18 @@ public class DrawLine : MonoBehaviour
         lines.Add(newLine);
 
         // 라인 렌더러 설정
+        // colorManager의 colorCode 값을 가져와서 LineRenderer의 색상을 변경
+        if (ColorButtonManager.isActive)
+        {
+            lineColor = ColorButtonManager.selectedColor;
+        }
+        else
+        {
+            lineColor = Color.black;
+        }
+
+        ChangeLineColor(lineColor);
+
         currentLineRenderer.startWidth = lineWidth;
         currentLineRenderer.endWidth = lineWidth;
         currentLineRenderer.positionCount = 0; // 선의 위치를 초기화합니다.
@@ -171,5 +186,30 @@ public class DrawLine : MonoBehaviour
     {
         timeChar.SetActive(false);
         timer = 0f;
+    }
+
+    // LineRenderer의 색상을 변경하는 함수
+    void ChangeLineColor(Color newColor)
+    {
+        if (currentLineRenderer != null)
+        {            
+            // LineRenderer에 색상을 적용
+            currentLineRenderer.startColor = newColor;
+            currentLineRenderer.endColor = newColor;
+
+            // 추가로 LineRenderer의 material 색상도 변경
+            if (currentLineRenderer.material != null)
+            {
+                currentLineRenderer.material.color = newColor;
+            }
+            else
+            {
+                Debug.LogWarning("LineRenderer에 Material이 설정되지 않았습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("LineRenderer가 설정되지 않았습니다.");
+        }
     }
 }

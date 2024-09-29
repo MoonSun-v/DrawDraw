@@ -11,6 +11,7 @@ TagManager:
   - imageLine
   - shape
   - piece
+  - LineBrush
   layers:
   - Default
   - TransparentFX
