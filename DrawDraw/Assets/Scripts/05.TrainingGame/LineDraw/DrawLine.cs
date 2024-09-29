@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +33,6 @@ public class DrawLine : MonoBehaviour
 
     public ColorButtonManager ColorButtonManager; // ColorManager 스크립트 참조 (colorCode 값 가져오기)
     private Color lineColor;
-
 
     void Update()
     {
@@ -122,7 +122,7 @@ public class DrawLine : MonoBehaviour
 
         // 라인 렌더러 설정
         // colorManager의 colorCode 값을 가져와서 LineRenderer의 색상을 변경
-        if (ColorButtonManager.isActive)
+        if (ColorButtonManager.isActive && ColorButtonManager != null)
         {
             lineColor = ColorButtonManager.selectedColor;
         }

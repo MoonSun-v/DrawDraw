@@ -15,7 +15,6 @@ public class CollisionCounter : MonoBehaviour
     private bool[] hasCollided;
 
     public Text scoreText;
-    int temp = 0;
 
     private void Start()
     {
@@ -66,9 +65,11 @@ public class CollisionCounter : MonoBehaviour
                         if (!(hasCollided[0] && hasCollided[1]))
                         {
                             collisionCount++;
-                            scoreText.text = collisionCount.ToString();
-                            
                             Debug.Log("Collision Count: " + collisionCount);
+
+                            scoreText.text = Score(collisionCount);
+                            
+
 
                             // 선이 Base 태그와 충돌하면 게임 오버 방지 신호 전송
                             //SetIsSafe(true);
@@ -82,14 +83,6 @@ public class CollisionCounter : MonoBehaviour
                             }
                         }
                     }
-                }
-                else if (hit.collider != null && hit.collider.CompareTag("imageLine"))
-                {
-
-                    collisionCount++;
-                    temp = Mathf.RoundToInt(collisionCount / 4); // 충돌 기준 완화 -> 일정 충돌 횟수를 넘지 않으면 게임 오버
-                    scoreText.text = temp.ToString(); 
-                    Debug.Log("Collision Count: " + temp);
                 }
 
                 if (hit.collider != null && (hit.collider.CompareTag("baseSquare_inside") || hit.collider.CompareTag("baseSquare_outside")))
@@ -153,5 +146,28 @@ public class CollisionCounter : MonoBehaviour
     {
         Debug.Log("Game Over!");
         //SceneManager.LoadScene("GameOverScene");
+    }
+
+    public int maxCollisions = 20; // 기준 충돌 횟수 (20번 충돌하면 0점)
+    public float maxScore = 100f; // 현재 점수 (최대 100점)
+    private string Score(int collisionCount)
+    {
+        if (IsSafe())
+        {
+            // 충돌 횟수에 따른 점수 계산
+            maxScore = 100 * (float)(maxCollisions - collisionCount) / maxCollisions;
+
+                // 점수가 음수로 내려가는 것을 방지
+                if (maxScore < 0)
+                {
+                    maxScore = 0;
+                }
+            scoreText.text = maxScore.ToString("F0");
+        }
+        else
+        {
+            scoreText.text = "0";
+        }
+        return scoreText.text;
     }
 }
