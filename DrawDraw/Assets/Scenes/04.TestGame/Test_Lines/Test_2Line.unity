@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b095cf2852233c48bdcd84dc0309ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 1129687484}
+  targetCamera: {fileID: 1396469713}
   captureRect:
     serializedVersion: 2
     x: 0

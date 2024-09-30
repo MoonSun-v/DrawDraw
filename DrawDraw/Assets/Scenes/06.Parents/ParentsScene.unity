@@ -1142,7 +1142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240458130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &240458130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4679,7 +4691,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 875419641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &875419641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5291,7 +5315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1031951502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5304,8 +5328,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782d47de0731cd74697e2469b11d1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetImage: {fileID: 0}
-  sceneIndex: 0
+  targetImages:
+  - {fileID: 1317402869}
+  - {fileID: 45496945}
+  - {fileID: 2145600924}
+  - {fileID: 460687064}
+  - {fileID: 1817445753}
 --- !u!4 &1031951503
 Transform:
   m_ObjectHideFlags: 0
@@ -7719,7 +7747,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1440744061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1440744061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8158,7 +8198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1507113914}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1507113914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9277,7 +9329,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1621823320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1621823320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10135,7 +10199,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1776154850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1031951502}
+        m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
+        m_MethodName: ResultIndexClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1776154850
 MonoBehaviour:
   m_ObjectHideFlags: 0

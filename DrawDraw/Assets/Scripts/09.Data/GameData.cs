@@ -86,6 +86,22 @@ public class TestResultData
     // public int Game8Score;
     // public int Game9Score;
     // public int Game10Score;
+
+    /*
+    public string GetImageByIndex(int Index)
+    {
+        switch (Index)
+        {
+            case 1: return Game1Img;
+            case 2: return Game2Img;
+            case 3: return Game3Img;
+            case 4: return Game4Img;
+            case 5: return Game5Img;
+            case 6: return Game6Img;
+            default: return null;
+        }
+    }
+    */
 }
 
 
