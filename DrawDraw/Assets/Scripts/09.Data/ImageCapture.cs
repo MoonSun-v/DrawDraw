@@ -18,93 +18,103 @@ public class ImageCapture : MonoBehaviour
     public int sceneIndex;                // 씬 인덱스 (1부터 6까지 수동 설정)
 
 
-    // [ 임시 구현 코드 ]
+    // [ 게임화면 캡처 진행 ]
     //
     // 1. 게임 화면의 일정 부분을 캡처해 Base64 이미지 문자열로 변환
-    // 2. TestData 인스턴스에 저장할 새로운 TestResultData 객체 생성
+    // 2. 이미지 저장할 적절한 Key값 찾기
+    //    - (키 값이 4를 초과하면 이미지 캡처 중단)
+    //    - TestResultData가 없으면 새로 생성
+    //    - 해당 Key의 TestResultData에 sceneIndex에 따라 이미지 저장
     // 3. 해당 ID에 TestResultData 저장
     //
     void Start()
     {
-        // 카메라 캡처 실행
         string base64Image = GameData.instance.CaptureScreenArea(targetCamera, captureRect);
 
-        // TestResultData가 없으면 새로 생성
-        if (!GameData.instance.testdata.TestResults.ContainsKey(0))
+
+        int currentKey = GetKeyWithIncompleteData();
+        if (currentKey > 4)
         {
-            GameData.instance.testdata.TestResults[0] = new TestResultData();
+            Debug.LogWarning("TestResults에 더 이상 이미지를 저장할 수 없습니다. 최대 키 값은 4입니다.");
+            return;
         }
 
-        // 씬 인덱스에 맞춰 이미지 저장
+        if (!GameData.instance.testdata.TestResults.ContainsKey(currentKey))
+        {
+            GameData.instance.testdata.TestResults[currentKey] = new TestResultData();
+        }
+
+        SaveImageToScene(currentKey, sceneIndex, base64Image);
+
+        GameData.instance.SaveTestData();
+        GameData.instance.LoadTestData();
+
+        print($"TestResults[{currentKey}]의 {sceneIndex}번 이미지 저장 완료");
+    }
+
+
+    // ★ [ 데이터가 덜 채워진 Key 찾기 ]
+    //
+    // - 6개의 이미지가 다 채워지지 않은 Key 반환
+    // - 모든 키가 완전히 채워져 있으면 새로운 Key 반환
+    //
+    private int GetKeyWithIncompleteData()
+    {
+        foreach (var key in GameData.instance.testdata.TestResults.Keys)
+        {
+            TestResultData currentData = GameData.instance.testdata.TestResults[key];
+            if (!IsTestDataComplete(currentData))
+            {
+                return key; 
+            }
+        }
+
+        return GameData.instance.testdata.TestResults.Count;
+    }
+
+
+    // ★ [ TestResultData가 6개의 이미지를 모두 가지고 있는지 확인 ]
+    //
+    private bool IsTestDataComplete(TestResultData data)
+    {
+        return !string.IsNullOrEmpty(data.Game1Img) &&
+               !string.IsNullOrEmpty(data.Game2Img) &&
+               !string.IsNullOrEmpty(data.Game3Img) &&
+               !string.IsNullOrEmpty(data.Game4Img) &&
+               !string.IsNullOrEmpty(data.Game5Img) &&
+               !string.IsNullOrEmpty(data.Game6Img);
+    }
+
+
+    // ★ [ 이미지 저장 ]
+    //
+    private void SaveImageToScene(int key, int sceneIndex, string base64Image)
+    {
+        TestResultData currentData = GameData.instance.testdata.TestResults[key];
+
         switch (sceneIndex)
         {
             case 1:
-                GameData.instance.testdata.TestResults[0].Game1Img = base64Image;
+                currentData.Game1Img = base64Image;
                 break;
             case 2:
-                GameData.instance.testdata.TestResults[0].Game2Img = base64Image;
+                currentData.Game2Img = base64Image;
                 break;
             case 3:
-                GameData.instance.testdata.TestResults[0].Game3Img = base64Image;
+                currentData.Game3Img = base64Image;
                 break;
             case 4:
-                GameData.instance.testdata.TestResults[0].Game4Img = base64Image;
+                currentData.Game4Img = base64Image;
                 break;
             case 5:
-                GameData.instance.testdata.TestResults[0].Game5Img = base64Image;
+                currentData.Game5Img = base64Image;
                 break;
             case 6:
-                GameData.instance.testdata.TestResults[0].Game6Img = base64Image;
+                currentData.Game6Img = base64Image;
                 break;
             default:
                 Debug.LogWarning("유효하지 않은 씬 인덱스입니다.");
                 break;
         }
-
-        // TestData 저장
-        GameData.instance.SaveTestData();
-        GameData.instance.LoadTestData();
-        print("화면 캡처 및 저장 완료");
     }
-
-    /*
-    void CaptureAndSaveImage()
-    {
-        // targetCamera가 지정되지 않았을 경우 메인 카메라를 사용
-        // if (targetCamera == null){ targetCamera = Camera.main; }
-
-
-        // 이미지 캡처
-        string base64Image = GameData.instance.CaptureScreenArea(targetCamera, captureRect);
-        TestResultData testResultData;
-
-        // 테스트 결과 데이터가 없으면 새로 생성
-        if (!GameData.instance.testdata.TestResults.ContainsKey(testResultId))
-        {
-            testResultData = new TestResultData();
-            GameData.instance.testdata.TestResults[testResultId] = testResultData;
-        }
-        else
-        {
-            testResultData = GameData.instance.testdata.TestResults[testResultId];
-        }
-
-        // gameIndex에 따라 각 필드에 이미지 저장
-        switch (gameIndex)
-        {
-            case 1: testResultData.Game1Img = base64Image; break;
-            case 2: testResultData.Game2Img = base64Image; break;
-            case 3: testResultData.Game3Img = base64Image; break;
-            case 4: testResultData.Game4Img = base64Image; break;
-            case 5: testResultData.Game5Img = base64Image; break;
-            case 6: testResultData.Game6Img = base64Image; break;
-        }
-
-        // 데이터 저장
-        GameData.instance.SaveTestData();
-        GameData.instance.LoadTestData();
-
-        print("화면 캡처 및 저장 완료");
-    }
-    */
 }

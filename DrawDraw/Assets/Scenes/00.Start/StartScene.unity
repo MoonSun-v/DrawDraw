@@ -635,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876916917}
   m_Layer: 0
-  m_Name: "====(\uD14C\uC2A4\uD2B8\uC6A9)===="
+  m_Name: '**==========**'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b095cf2852233c48bdcd84dc0309ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testResultId: 1
   targetCamera: {fileID: 310312784}
   captureRect:
     serializedVersion: 2
@@ -772,6 +771,7 @@ MonoBehaviour:
     y: 0
     width: 256
     height: 256
+  sceneIndex: 0
 --- !u!4 &1444685035
 Transform:
   m_ObjectHideFlags: 0
@@ -861,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 229489139}
+  sceneIndex: 0
 --- !u!4 &1824862892
 Transform:
   m_ObjectHideFlags: 0
