@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 115400209}
   - component: {fileID: 115400208}
   m_Layer: 5
-  m_Name: Crayon5_skyblue
+  m_Name: Paint5_skyblue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,8 +238,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: -353}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 975, y: 34.690002}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115400208
 MonoBehaviour:
@@ -253,7 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 8dc727d7066926a4bb337ebabfe005e6, type: 3}
   buttonID: 5
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &115400209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,9 +332,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6f075ab76046da64cb197dcf3a82af73, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86f707be61b601841ab3790bcd14e587, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2601,7 +2603,7 @@ GameObject:
   - component: {fileID: 850886116}
   - component: {fileID: 850886115}
   m_Layer: 5
-  m_Name: Crayon3_yellow
+  m_Name: Paint3_yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2623,8 +2625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: -82}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 798, y: -265}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850886115
 MonoBehaviour:
@@ -2638,7 +2640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 84a3ddb419e7f3d45a4e56dbd0be1397, type: 3}
   buttonID: 3
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &850886116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,9 +2719,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f2c8a055daf419c49abd9590d668a866, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 228297d47867a4b40af61aa17f3f43eb, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2831,7 +2835,7 @@ GameObject:
   - component: {fileID: 880247503}
   - component: {fileID: 880247502}
   m_Layer: 5
-  m_Name: Crayon2_orange
+  m_Name: Paint2_orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2853,8 +2857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: 48}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 798, y: -70}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880247502
 MonoBehaviour:
@@ -2868,7 +2872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 372efa4470d237443ae5342c7e2b4df2, type: 3}
   buttonID: 2
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &880247503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2945,9 +2951,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b98c56dab77790e4fbd0e419cf4d458a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c691f7a4cbffa741a4e9be834ad5a47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2977,7 +2983,7 @@ GameObject:
   - component: {fileID: 887569125}
   - component: {fileID: 887569124}
   m_Layer: 5
-  m_Name: Crayon1_red
+  m_Name: Paint1_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2999,8 +3005,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: 182.94458}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 798, y: 127.88}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &887569124
 MonoBehaviour:
@@ -3014,7 +3020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 11d18cdbfbbcd3a4e89316cc04755848, type: 3}
   buttonID: 1
+  clickedScale: {x: 1.75, y: 1.75, z: 1}
 --- !u!114 &887569125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3091,9 +3099,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 645227bb887d7e54094cb804e42c110a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4557aeee36c45b84fa7af22809cd4c1c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3273,7 +3281,7 @@ GameObject:
   - component: {fileID: 953555686}
   - component: {fileID: 953555685}
   m_Layer: 5
-  m_Name: Crayon7_purple
+  m_Name: Paint7_purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3295,8 +3303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: -618}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 975, y: -363.6}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953555685
 MonoBehaviour:
@@ -3310,7 +3318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: a0a71349d72e60748ba2a5dc11f8d0fc, type: 3}
   buttonID: 7
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &953555686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,9 +3397,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 571d31d37e47c1140afdee1928d08898, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e18a59ac49bf69d4388f68367609cfbe, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3419,7 +3429,7 @@ GameObject:
   - component: {fileID: 985557338}
   - component: {fileID: 985557337}
   m_Layer: 5
-  m_Name: Crayon4_green
+  m_Name: Paint4_green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3441,8 +3451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: -217}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 798, y: -470}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &985557337
 MonoBehaviour:
@@ -3456,7 +3466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 133760206a1cb6c47aeb52b4c10ff2c6, type: 3}
   buttonID: 4
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &985557338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3533,9 +3545,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 896ca60436961874ca482b29a239b8d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8b257b0947348743a98898b645b1e10, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4213,7 +4225,7 @@ GameObject:
   - component: {fileID: 1178079191}
   - component: {fileID: 1178079190}
   m_Layer: 5
-  m_Name: Crayon6_blue
+  m_Name: Paint6_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4235,8 +4247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 954, y: -486}
-  m_SizeDelta: {x: 410, y: 130}
+  m_AnchoredPosition: {x: 975, y: -163.5}
+  m_SizeDelta: {x: 144, y: 208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1178079190
 MonoBehaviour:
@@ -4250,7 +4262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f124e0707a56a364696e4a2211969829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickedImage: {fileID: 21300000, guid: 204341aae3fab3c45a4b2fd8fc091f09, type: 3}
   buttonID: 6
+  clickedScale: {x: 1.77, y: 1.77, z: 1}
 --- !u!114 &1178079191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4327,9 +4341,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 27312f3bf95353a4296d506b9c1cbf12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d75709bcee55d8c4f87f9d64b98af944, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6290,7 +6304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65, y: 25}
+  m_AnchoredPosition: {x: -57, y: 25}
   m_SizeDelta: {x: 2048, y: 1536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &2103052794
@@ -6344,7 +6358,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2103052797
 Canvas:
   m_ObjectHideFlags: 0

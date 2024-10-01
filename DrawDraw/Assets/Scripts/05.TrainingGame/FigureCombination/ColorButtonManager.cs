@@ -86,12 +86,12 @@ public class ColorButtonManager : MonoBehaviour
 
     public void OnButtonClicked(ColorButtonMover clickedButton)
     {
-        // 클릭된 버튼을 제외한 모든 버튼의 위치를 리셋합니다.
+        // 클릭된 버튼을 제외한 모든 버튼의 이미지를 원래 이미지로 되돌립니다.
         foreach (ColorButtonMover buttonMover in colorButtonMovers)
         {
             if (buttonMover != clickedButton)
             {
-                buttonMover.ResetPosition();
+                buttonMover.ResetImage();  // 위치를 리셋하는 대신 이미지를 리셋하는 메서드를 호출합니다.
             }
         }
     }
@@ -111,7 +111,7 @@ public class ColorButtonManager : MonoBehaviour
                 colorCode = "#F0870C";
                 break;
             case 3:
-                colorCode = "#F9DC00";
+                colorCode = "#F1D712";
                 break;
             case 4:
                 colorCode = "#3B9C00";
@@ -123,7 +123,7 @@ public class ColorButtonManager : MonoBehaviour
                 colorCode = "#2E33D7";
                 break;
             case 7:
-                colorCode = "#DB7093";
+                colorCode = "#5A10BB";
                 break;
             // 추가 버튼에 대한 색상을 설정할 수 있습니다.
             default:
