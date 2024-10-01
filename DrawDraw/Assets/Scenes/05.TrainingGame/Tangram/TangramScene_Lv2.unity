@@ -5833,6 +5833,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: efdc0b2f021305749a50406e1c462468, type: 3}
   - {fileID: 21300000, guid: 0771d0213ef1162428e81233fec329ee, type: 3}
   - {fileID: 21300000, guid: 9fe903e8242725649b23f1a62e163195, type: 3}
+  boardImage: {fileID: 999652237}
   patternSilhouettes:
   - {fileID: 1187895576}
   - {fileID: 995834645}

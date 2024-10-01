@@ -5696,6 +5696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternSelectPanel: {fileID: 998836162}
   patternImage: {fileID: 713775912}
+  boardImage: {fileID: 999652237}
   patternImages:
   - {fileID: 21300000, guid: 562bb8a9fb4f380469f19a60b79379d9, type: 3}
   - {fileID: 21300000, guid: b92356107b612414cb992c2f893c5991, type: 3}
