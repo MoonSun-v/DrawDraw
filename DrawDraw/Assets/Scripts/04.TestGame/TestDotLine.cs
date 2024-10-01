@@ -67,11 +67,16 @@ public class TestDotLine : MonoBehaviour
         Score = (int)((DotCount / TotalDot) * 100);         // 소수점 이하는 내림 
         print("퍼센트 = " + Score + "%");
 
-        StartCoroutine(NextGameDelay());                    // 다음 테스트로 넘어가기 
+        // StartCoroutine(NextGameDelay());                 
+        NextGame();
     }
 
+    void NextGame()
+    {
+        SceneManager.LoadScene("Test_ShapesClassifyScene");
+    }
 
-
+    /*
     IEnumerator NextGameDelay()
     {
 
@@ -81,6 +86,6 @@ public class TestDotLine : MonoBehaviour
         SceneManager.LoadScene("Test_ShapesClassifyScene");
 
     }
-
+    */
 
 }
