@@ -11,7 +11,6 @@ public class PuzzleChecker : MonoBehaviour
     public PuzzleManager PuzzleManager;
 
     public GameObject CheckPopup; // 확인 팝업 창
-    public Text ScoreText; // 임시 점수 표시용 텍스트
     public GameResultSO gameResult;
 
     void Start()
@@ -51,14 +50,12 @@ public class PuzzleChecker : MonoBehaviour
         if (allInCorrectPosition)
         {
             print("성공");
-            ScoreText.text = "성공";
             gameResult.score = 100; // 점수 저장 
             gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
         }
         else
         {
             print("실패");
-            ScoreText.text = "실패";
             gameResult.score = 100; // 점수 저장 
             gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
         }
