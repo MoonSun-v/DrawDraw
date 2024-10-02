@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorButtonManager : MonoBehaviour
+public class ColorManger : MonoBehaviour
 {
-    private ColorButtonChange[] colorButtonMovers;  // 모든 색칠 버튼을 관리하기 위한 배열
+    private LineColorBTN[] colorButtonMovers;  // 모든 색칠 버튼을 관리하기 위한 배열
     public Color selectedColor; // 선택된 색상
     private int shapeLayer; // "Shape" 레이어의 인덱스를 저장
 
@@ -19,7 +19,7 @@ public class ColorButtonManager : MonoBehaviour
     void Start()
     {
         // 모든 ColorButtonMover를 찾습니다.
-        colorButtonMovers = FindObjectsOfType<ColorButtonChange>();
+        colorButtonMovers = FindObjectsOfType<LineColorBTN>();
 
         // "Shape" 레이어의 인덱스를 가져옵니다.
         shapeLayer = LayerMask.NameToLayer("shape");
@@ -54,28 +54,28 @@ public class ColorButtonManager : MonoBehaviour
 
         if (hit.collider != null)
         {
-                SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null && selectedColor != new Color(0, 0, 0, 0))
+            SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null && selectedColor != new Color(0, 0, 0, 0))
+            {
+                // 색상이 한 번도 변경되지 않았다면 색상을 변경하고 카운터 증가
+                if (!colorChangedMap.ContainsKey(hit.transform.gameObject))
                 {
-                    // 색상이 한 번도 변경되지 않았다면 색상을 변경하고 카운터 증가
-                    if (!colorChangedMap.ContainsKey(hit.transform.gameObject))
-                    {
-                        // 처음 변경하는 경우
-                        spriteRenderer.color = selectedColor;
+                    // 처음 변경하는 경우
+                    spriteRenderer.color = selectedColor;
 
-                        // 변경한 도형으로 표시하고 카운터 증가
-                        colorChangedMap[hit.transform.gameObject] = true;
-                        changedShapeCount++;
-                        //Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
-                    }
-                    else
-                    {
-                        // 이미 색상이 변경된 적이 있는 경우에도 색상만 변경
-                        spriteRenderer.color = selectedColor;
-                        //Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 다시 변경되었습니다.");
-                    }
-
+                    // 변경한 도형으로 표시하고 카운터 증가
+                    colorChangedMap[hit.transform.gameObject] = true;
+                    changedShapeCount++;
+                    //Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
                 }
+                else
+                {
+                    // 이미 색상이 변경된 적이 있는 경우에도 색상만 변경
+                    spriteRenderer.color = selectedColor;
+                    //Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 다시 변경되었습니다.");
+                }
+
+            }
             //}
         }
         else
@@ -84,14 +84,14 @@ public class ColorButtonManager : MonoBehaviour
         }
     }
 
-    public void OnButtonClicked(ColorButtonChange clickedButton)
+    public void OnButtonClicked(LineColorBTN clickedButton)
     {
         // 클릭된 버튼을 제외한 모든 버튼의 이미지를 원래 이미지로 되돌립니다.
-        foreach (ColorButtonChange buttonMover in colorButtonMovers)
+        foreach (LineColorBTN buttonMover in colorButtonMovers)
         {
             if (buttonMover != clickedButton)
             {
-                buttonMover.ResetImage();  // 위치를 리셋하는 대신 이미지를 리셋하는 메서드를 호출합니다.
+                buttonMover.ResetPosition();  // 위치를 리셋하는 대신 이미지를 리셋하는 메서드를 호출합니다.
             }
         }
     }

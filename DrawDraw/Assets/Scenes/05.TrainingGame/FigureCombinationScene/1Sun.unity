@@ -1733,8 +1733,10 @@ MonoBehaviour:
   audioClip1: {fileID: 0}
   audioClip2: {fileID: 8300000, guid: 8942d4e0d2c45914e8ca7c4ce7c95778, type: 3}
   audioClip3: {fileID: 0}
+  audioClip4: {fileID: 0}
   gameObject2: {fileID: 198590069}
   gameObject3: {fileID: 0}
+  gameObject4: {fileID: 0}
 --- !u!114 &601987246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5078,7 +5080,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1459837830
 Canvas:
   m_ObjectHideFlags: 0

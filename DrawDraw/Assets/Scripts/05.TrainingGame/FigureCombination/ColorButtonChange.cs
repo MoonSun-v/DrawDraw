@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ColorButtonMover : MonoBehaviour
+public class ColorButtonChange : MonoBehaviour
 {
     // 버튼이 클릭되었을 때 변경할 이미지
     public Sprite clickedImage;

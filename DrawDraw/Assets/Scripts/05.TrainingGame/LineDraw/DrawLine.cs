@@ -31,7 +31,7 @@ public class DrawLine : MonoBehaviour
     public GameObject check; // 게임의 확인창 팝업
     public GameObject finish; // 게임의 결과창 팝업
 
-    public ColorButtonManager ColorButtonManager; // ColorManager 스크립트 참조 (colorCode 값 가져오기)
+    public ColorManger ColorButtonManager; // ColorManager 스크립트 참조 (colorCode 값 가져오기)
     private Color lineColor;
 
     void Update()
