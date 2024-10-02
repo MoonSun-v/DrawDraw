@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzleColoring : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class PuzzleColoring : MonoBehaviour
     private const int CrayonMove = 90;                // 버튼 이동 거리
 
     private GameObject currentCrayon;                 // 현재 선택된 크레용
+
+    public Sprite[] selectedSprites; // 선택된 스프라이트를 저장할 배열
+    public Sprite previousButtonOriginalSprite;       // 이전 버튼의 원래 스프라이트를 저장
+
 
     void Start()
     {
@@ -72,6 +77,19 @@ public class PuzzleColoring : MonoBehaviour
                         break;
                     }
                 }
+            }
+        }
+    }
+
+    public void ResetBtn()
+    {
+        // Pieces 배열에 있는 모든 퍼즐 조각들의 색상을 하얀색으로 변경
+        foreach (GameObject piece in Pieces)
+        {
+            SpriteRenderer pieceRenderer = piece.GetComponent<SpriteRenderer>();
+            if (pieceRenderer != null)
+            {
+                pieceRenderer.color = Color.white; // 색상을 하얀색으로 설정
             }
         }
     }
@@ -139,62 +157,60 @@ public class PuzzleColoring : MonoBehaviour
         }
     }
 
-    // 색상 버튼 클릭 함수 (모든 버튼에 대해 공통적으로 사용 가능)
-    public void SelectColor(GameObject crayon, Color selectedColor)
+    public void SelectColor(GameObject crayon, Color selectedColor, int spriteIndex)
     {
         crayonColor = selectedColor;
 
+        // 이전에 선택한 버튼이 있다면 원래 이미지로 복구
         if (previousButton != null)
         {
-            RectTransform prevRt = previousButton.GetComponent<RectTransform>();
-            prevRt.localPosition = previousButtonOriginalPosition;  // 이전 버튼 위치 복구
+            Image prevImage = previousButton.GetComponent<Image>();
+            prevImage.sprite = previousButtonOriginalSprite;  // 이전 버튼 스프라이트 복구
+            prevImage.SetNativeSize(); // 이전 버튼의 크기를 원래 이미지 크기로 복구
         }
 
-        RectTransform rt = crayon.GetComponent<RectTransform>();
-        previousButtonOriginalPosition = rt.localPosition;
-        rt.localPosition = new Vector3(rt.localPosition.x - CrayonMove, rt.localPosition.y, rt.localPosition.z);
+        // 현재 선택된 크레용의 이미지를 변경
+        Image currentImage = crayon.GetComponent<Image>();
+        previousButtonOriginalSprite = currentImage.sprite;  // 현재 스프라이트 저장
+        currentImage.sprite = selectedSprites[spriteIndex];  // 선택된 스프라이트로 변경
+        currentImage.SetNativeSize(); // 선택된 크레용 버튼의 크기를 원래 이미지 크기로 설정
 
-        previousButton = crayon;
+        previousButton = crayon;  // 선택된 버튼을 추적
     }
 
-    // 개별 색상 버튼 클릭 이벤트
+    // 개별 페인트 버튼 클릭 이벤트
     public void ColorRedButton(GameObject redCrayon)
     {
-        SelectColor(redCrayon, Color.red);
+        SelectColor(redCrayon, new Color(0.8901961f, 0.01568628f, 0.01960784f), 0); // 빨간색 스프라이트는 배열의 첫 번째 요소
     }
 
     public void ColorOrangeButton(GameObject orangeCrayon)
     {
-        SelectColor(orangeCrayon, new Color(1f, 0.5f, 0f)); // 주황색
+        SelectColor(orangeCrayon, new Color(0.9411765f, 0.5294118f, 0.04705882f), 1); // 주황색 스프라이트는 배열의 두 번째 요소
     }
 
     public void ColorYellowButton(GameObject yellowCrayon)
     {
-        SelectColor(yellowCrayon, Color.yellow);
+        SelectColor(yellowCrayon, new Color(0.945098f, 0.8431373f, 0.07058824f), 2); // 노란색 스프라이트는 배열의 세 번째 요소
     }
 
     public void ColorGreenButton(GameObject greenCrayon)
     {
-        SelectColor(greenCrayon, new Color(0f, 0.392f, 0f)); // 짙은 초록색
+        SelectColor(greenCrayon, new Color(0.2313726f, 0.6117647f, 0f), 3); // 짙은 초록색 스프라이트는 배열의 네 번째 요소
     }
 
     public void ColorSkyBlueButton(GameObject skyBlueCrayon)
     {
-        SelectColor(skyBlueCrayon, new Color(0.529f, 0.808f, 0.922f)); // 하늘색
+        SelectColor(skyBlueCrayon, new Color(0.007843138f, 0.5215687f, 0.9960784f), 4); // 하늘색 스프라이트는 배열의 다섯 번째 요소
     }
 
     public void ColorBlueButton(GameObject blueCrayon)
     {
-        SelectColor(blueCrayon, Color.blue);
+        SelectColor(blueCrayon, new Color(0.1803922f, 0.2f, 0.8431373f), 5); // 파란색 스프라이트는 배열의 여섯 번째 요소
     }
 
     public void ColorPurpleButton(GameObject purpleCrayon)
     {
-        SelectColor(purpleCrayon, new Color(0.859f, 0.439f, 0.576f)); // 보라색
-    }
-
-    public void EraserButton(GameObject eraser)
-    {
-        SelectColor(eraser, Color.white); // 지우개는 흰색
+        SelectColor(purpleCrayon, new Color(0.3529412f, 0.0627451f, 0.7333333f), 6); // 보라색 스프라이트는 배열의 일곱 번째 요소
     }
 }

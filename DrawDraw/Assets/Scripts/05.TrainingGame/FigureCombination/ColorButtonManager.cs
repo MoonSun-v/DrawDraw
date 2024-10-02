@@ -105,7 +105,7 @@ public class ColorButtonManager : MonoBehaviour
         switch (buttonID)
         {
             case 1:
-                colorCode = "#E30204";
+                colorCode = "#E30405";
                 break;
             case 2:
                 colorCode = "#F0870C";
@@ -117,7 +117,7 @@ public class ColorButtonManager : MonoBehaviour
                 colorCode = "#3B9C00";
                 break;
             case 5:
-                colorCode = "#0085FE";
+                colorCode = "#0285FE";
                 break;
             case 6:
                 colorCode = "#2E33D7";

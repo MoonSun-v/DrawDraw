@@ -191,40 +191,40 @@ public class TestColoring : MonoBehaviour
     }
 
 
-    // 개별 크레용 버튼 클릭 이벤트
+    // 개별 페인트 버튼 클릭 이벤트
     public void ColorRedButton(GameObject redCrayon)
     {
-        SelectColor(redCrayon, Color.red, 0); // 빨간색 스프라이트는 배열의 첫 번째 요소
+        SelectColor(redCrayon, new Color(0.8901961f, 0.01568628f, 0.01960784f), 0); // 빨간색 스프라이트는 배열의 첫 번째 요소
     }
 
     public void ColorOrangeButton(GameObject orangeCrayon)
     {
-        SelectColor(orangeCrayon, new Color(1f, 0.5f, 0f), 1); // 주황색 스프라이트는 배열의 두 번째 요소
+        SelectColor(orangeCrayon, new Color(0.9411765f, 0.5294118f, 0.04705882f), 1); // 주황색 스프라이트는 배열의 두 번째 요소
     }
 
     public void ColorYellowButton(GameObject yellowCrayon)
     {
-        SelectColor(yellowCrayon, Color.yellow, 2); // 노란색 스프라이트는 배열의 세 번째 요소
+        SelectColor(yellowCrayon, new Color(0.945098f, 0.8431373f, 0.07058824f), 2); // 노란색 스프라이트는 배열의 세 번째 요소
     }
 
     public void ColorGreenButton(GameObject greenCrayon)
     {
-        SelectColor(greenCrayon, new Color(0f, 0.392f, 0f), 3); // 짙은 초록색 스프라이트는 배열의 네 번째 요소
+        SelectColor(greenCrayon, new Color(0.2313726f, 0.6117647f, 0f), 3); // 짙은 초록색 스프라이트는 배열의 네 번째 요소
     }
 
     public void ColorSkyBlueButton(GameObject skyBlueCrayon)
     {
-        SelectColor(skyBlueCrayon, new Color(0.529f, 0.808f, 0.922f), 4); // 하늘색 스프라이트는 배열의 다섯 번째 요소
+        SelectColor(skyBlueCrayon, new Color(0.007843138f, 0.5215687f, 0.9960784f), 4); // 하늘색 스프라이트는 배열의 다섯 번째 요소
     }
 
     public void ColorBlueButton(GameObject blueCrayon)
     {
-        SelectColor(blueCrayon, Color.blue, 5); // 파란색 스프라이트는 배열의 여섯 번째 요소
+        SelectColor(blueCrayon, new Color(0.1803922f, 0.2f, 0.8431373f), 5); // 파란색 스프라이트는 배열의 여섯 번째 요소
     }
 
     public void ColorPurpleButton(GameObject purpleCrayon)
     {
-        SelectColor(purpleCrayon, new Color(0.859f, 0.439f, 0.576f), 6); // 보라색 스프라이트는 배열의 일곱 번째 요소
+        SelectColor(purpleCrayon, new Color(0.3529412f, 0.0627451f, 0.7333333f), 6); // 보라색 스프라이트는 배열의 일곱 번째 요소
     }
 }
 

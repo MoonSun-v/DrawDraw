@@ -257,37 +257,37 @@ public class ScratchDraw: MonoBehaviour
 
     public void ColorRedButton(GameObject RedCrayon)
     {
-        SelectColorButton(RedCrayon, Color.red);
+        SelectColorButton(RedCrayon, new Color(0.8901961f, 0.01568628f, 0.01960784f));
     }
 
     public void ColorOrangeButton(GameObject OrangeCrayon)
     {
-        SelectColorButton(OrangeCrayon, new Color(1f, 0.5f, 0f));
+        SelectColorButton(OrangeCrayon, new Color(0.9411765f, 0.5294118f, 0.04705882f));
     }
 
     public void ColorYellowButton(GameObject YellowCrayon)
     {
-        SelectColorButton(YellowCrayon, Color.yellow);
+        SelectColorButton(YellowCrayon, new Color(0.945098f, 0.8431373f, 0.07058824f));
     }
 
     public void ColorGreenButton(GameObject GreenCrayon)
     {
-        SelectColorButton(GreenCrayon, new Color(0f, 0.392f, 0f));
+        SelectColorButton(GreenCrayon, new Color(0.2313726f, 0.6117647f, 0f));
     }
 
     public void ColorSkyBlueButton(GameObject SkyBlueCrayon)
     {
-        SelectColorButton(SkyBlueCrayon, new Color(0.529f, 0.808f, 0.922f));
+        SelectColorButton(SkyBlueCrayon, new Color(0.007843138f, 0.5215687f, 0.9960784f));
     }
 
     public void ColorBlueButton(GameObject BlueCrayon)
     {
-        SelectColorButton(BlueCrayon, Color.blue);
+        SelectColorButton(BlueCrayon, new Color(0.1803922f, 0.2f, 0.8431373f));
     }
 
     public void ColorPurpleButton(GameObject PurpleCrayon)
     {
-        SelectColorButton(PurpleCrayon, new Color(0.859f, 0.439f, 0.576f));
+        SelectColorButton(PurpleCrayon, new Color(0.3529412f, 0.0627451f, 0.7333333f));
     }
 
     #endregion
