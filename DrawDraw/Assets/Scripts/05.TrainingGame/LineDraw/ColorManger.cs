@@ -104,6 +104,7 @@ public class ColorManger : MonoBehaviour
         // 클릭된 버튼의 ID에 따라 색상을 결정합니다.
         switch (buttonID)
         {
+            /*
             case 1:
                 colorCode = "#E30204";
                 break;
@@ -118,6 +119,29 @@ public class ColorManger : MonoBehaviour
                 break;
             case 5:
                 colorCode = "#0085FE";
+                break;
+            case 6:
+                colorCode = "#2E33D7";
+                break;
+            case 7:
+                colorCode = "#5A10BB";
+                break;
+            */
+            //몇 가지 색 달라서 밑에 새로 추가했습니다~
+            case 1:
+                colorCode = "#E30405";
+                break;
+            case 2:
+                colorCode = "#F0870C";
+                break;
+            case 3:
+                colorCode = "#F1D712";
+                break;
+            case 4:
+                colorCode = "#3B9C00";
+                break;
+            case 5:
+                colorCode = "#0285FE";
                 break;
             case 6:
                 colorCode = "#2E33D7";
