@@ -10,7 +10,6 @@ public class ParentsQuiz : MonoBehaviour
 
     public Text answerText;
     public Text quizText;
-    public Text text;
     private string currentText = "";
     public string answer = "";
 
@@ -35,7 +34,8 @@ public class ParentsQuiz : MonoBehaviour
     public void cancelParentsQuiz()
     {
         QuizCanvas.SetActive(false);
-        currentText = "?";
+        currentText = "";
+        answerText.text = "?";
     }
 
     public void QuizRand()
@@ -62,7 +62,12 @@ public class ParentsQuiz : MonoBehaviour
 
     public void OnNumberButtonClick(string number)
     {
-        if (currentText.Length < 2)
+        if (answerText.text == "?" || currentText.Length == 0)
+        {
+            currentText = number;
+            answerText.text = currentText;
+        }
+        else if (currentText.Length == 1)
         {
             currentText += number;
             answerText.text = currentText;
@@ -73,7 +78,7 @@ public class ParentsQuiz : MonoBehaviour
     {
         if (currentText == answer)
         {
-            SceneManager.LoadScene("ParentsScene");
+            StartCoroutine(CorrectAnswerCoroutine());
         }
         else
         {
@@ -81,12 +86,18 @@ public class ParentsQuiz : MonoBehaviour
         }
     }
 
+    private IEnumerator CorrectAnswerCoroutine()
+    {
+        answerText.text = "정답";
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("ParentsScene");
+    }
+
     private IEnumerator WrongAnswerCoroutine()
     {
-        text.text = "답이 아니에요.";
+        answerText.text = "오답";
         yield return new WaitForSeconds(2.0f);
-        ClearText();
-        text.text = "숫자를 입력하세요!";
+        answerText.text = "?";
     }
 
     public void ClearText()
