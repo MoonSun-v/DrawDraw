@@ -14,6 +14,7 @@ public class PuzzleColoring : MonoBehaviour
     public GameObject colorboard;
     public GameObject puzzleboard;
     public GameObject crayons;
+    public GameObject resetBtn;
 
     public PuzzleManager PuzzleManager;
     public Color puzzleColor = new Color(0.8f, 0.8f, 0.8f);
@@ -150,6 +151,7 @@ public class PuzzleColoring : MonoBehaviour
             }
 
             colorboard.SetActive(false);
+            resetBtn.SetActive(false);
             crayons.SetActive(false);
             puzzleboard.SetActive(true);
 
