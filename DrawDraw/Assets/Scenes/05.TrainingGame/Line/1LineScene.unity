@@ -553,13 +553,11 @@ MonoBehaviour:
   linePrefab: {fileID: 8959228130682616192, guid: 6cdf55d0a6d22994b8fe2550de53aa56, type: 3}
   lineWidth: 0.2
   LineDrawManager: {fileID: 1614019417}
-  finishButton: {fileID: 1930546213}
-  activeSprite: {fileID: 21300000, guid: 4b4b034cbc4347b4aa533e11a22a5ae1, type: 3}
   timeLimit: 10
   timeChar: {fileID: 1850125827}
   check: {fileID: 2108219558}
   finish: {fileID: 1529134682}
-  ColorButtonManager: {fileID: 1504587387}
+  ColorButtonManager: {fileID: 1504587389}
 --- !u!4 &265295716
 Transform:
   m_ObjectHideFlags: 0
@@ -3325,7 +3323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1504587388}
-  - component: {fileID: 1504587387}
+  - component: {fileID: 1504587389}
   m_Layer: 0
   m_Name: ColorManager
   m_TagString: Untagged
@@ -3333,20 +3331,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1504587387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504587386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f62767fca88e846ab5511a3060ea46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
-  isActive: 0
 --- !u!4 &1504587388
 Transform:
   m_ObjectHideFlags: 0
@@ -3362,6 +3346,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1504587389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504587386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df92e30a267520f42bf30af2e1178c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  isActive: 0
 --- !u!1 &1529134682
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,8 +4054,10 @@ MonoBehaviour:
   audioClip1: {fileID: 8300000, guid: ec6acae3ba6bbe641a86adca2b93b8d1, type: 3}
   audioClip2: {fileID: 8300000, guid: 62803b554fded25469246cbbb185e8f9, type: 3}
   audioClip3: {fileID: 0}
+  audioClip4: {fileID: 0}
   gameObject2: {fileID: 975011361}
   gameObject3: {fileID: 0}
+  gameObject4: {fileID: 0}
 --- !u!4 &1795242381
 Transform:
   m_ObjectHideFlags: 0
@@ -4369,7 +4369,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

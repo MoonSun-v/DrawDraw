@@ -2391,8 +2391,10 @@ MonoBehaviour:
   audioClip1: {fileID: 8300000, guid: 782e749dda1e0d844903796314607bcf, type: 3}
   audioClip2: {fileID: 0}
   audioClip3: {fileID: 0}
+  audioClip4: {fileID: 0}
   gameObject2: {fileID: 0}
   gameObject3: {fileID: 0}
+  gameObject4: {fileID: 0}
 --- !u!4 &1229095333
 Transform:
   m_ObjectHideFlags: 0
@@ -2677,7 +2679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1433587355}
-  - component: {fileID: 1433587354}
+  - component: {fileID: 1433587356}
   m_Layer: 0
   m_Name: ColorManager
   m_TagString: Untagged
@@ -2685,20 +2687,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1433587354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433587353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44f62767fca88e846ab5511a3060ea46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedColor: {r: 0, g: 0, b: 0, a: 0}
-  isActive: 0
 --- !u!4 &1433587355
 Transform:
   m_ObjectHideFlags: 0
@@ -2714,6 +2702,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433587356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433587353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df92e30a267520f42bf30af2e1178c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {r: 0, g: 0, b: 0, a: 0}
+  isActive: 0
 --- !u!1 &1445092164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,13 +3091,11 @@ MonoBehaviour:
   linePrefab: {fileID: 8959228130682616192, guid: 6cdf55d0a6d22994b8fe2550de53aa56, type: 3}
   lineWidth: 0.2
   LineDrawManager: {fileID: 1271192400}
-  finishButton: {fileID: 492966418}
-  activeSprite: {fileID: 21300000, guid: 4b4b034cbc4347b4aa533e11a22a5ae1, type: 3}
   timeLimit: 5
   timeChar: {fileID: 1445092164}
   check: {fileID: 1808491936}
   finish: {fileID: 182548433}
-  ColorButtonManager: {fileID: 1433587354}
+  ColorButtonManager: {fileID: 1433587356}
 --- !u!4 &1571686940
 Transform:
   m_ObjectHideFlags: 0

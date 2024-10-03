@@ -36,51 +36,7 @@ public class ColorManger : MonoBehaviour
         // 버튼이 클릭된 후에만 이 코드가 실행됨
         if (isActive && Input.GetMouseButtonDown(0))
         {
-            ExecuteRaycast();
-        }
-    }
-
-    // Raycast 관련 로직을 이 함수로 분리
-    void ExecuteRaycast()
-    {
-        Vector3 rayOrigin = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        rayOrigin.z = 0f; // 2D에서는 z 값을 0으로 설정 (z 축을 고려하지 않음)
-
-        // "shape" 레이어에 해당하는 레이어 마스크 생성
-        int layerMask = 1 << LayerMask.NameToLayer("shape");
-
-        // Raycast를 특정 레이어에만 적용
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero, Mathf.Infinity, layerMask);
-
-        if (hit.collider != null)
-        {
-            SpriteRenderer spriteRenderer = hit.transform.GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null && selectedColor != new Color(0, 0, 0, 0))
-            {
-                // 색상이 한 번도 변경되지 않았다면 색상을 변경하고 카운터 증가
-                if (!colorChangedMap.ContainsKey(hit.transform.gameObject))
-                {
-                    // 처음 변경하는 경우
-                    spriteRenderer.color = selectedColor;
-
-                    // 변경한 도형으로 표시하고 카운터 증가
-                    colorChangedMap[hit.transform.gameObject] = true;
-                    changedShapeCount++;
-                    //Debug.Log($"색상이 변경된 도형 개수: {changedShapeCount}");
-                }
-                else
-                {
-                    // 이미 색상이 변경된 적이 있는 경우에도 색상만 변경
-                    spriteRenderer.color = selectedColor;
-                    //Debug.Log($"{hit.transform.name}의 색상이 {selectedColor}로 다시 변경되었습니다.");
-                }
-
-            }
-            //}
-        }
-        else
-        {
-            //Debug.Log("충돌된 오브젝트가 없습니다.");
+            //ExecuteRaycast();
         }
     }
 
@@ -104,29 +60,6 @@ public class ColorManger : MonoBehaviour
         // 클릭된 버튼의 ID에 따라 색상을 결정합니다.
         switch (buttonID)
         {
-            /*
-            case 1:
-                colorCode = "#E30204";
-                break;
-            case 2:
-                colorCode = "#F0870C";
-                break;
-            case 3:
-                colorCode = "#F1D712";
-                break;
-            case 4:
-                colorCode = "#3B9C00";
-                break;
-            case 5:
-                colorCode = "#0085FE";
-                break;
-            case 6:
-                colorCode = "#2E33D7";
-                break;
-            case 7:
-                colorCode = "#5A10BB";
-                break;
-            */
             //몇 가지 색 달라서 밑에 새로 추가했습니다~
             case 1:
                 colorCode = "#E30405";
@@ -157,7 +90,7 @@ public class ColorManger : MonoBehaviour
         // HEX 색상 코드를 Color로 변환합니다.
         if (ColorUtility.TryParseHtmlString(colorCode, out selectedColor))
         {
-
+            //Debug.Log(selectedColor + "로 색상변경");
         }
         else
         {

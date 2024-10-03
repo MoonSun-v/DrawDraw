@@ -9,21 +9,21 @@ public class LineColorBTN : MonoBehaviour
 
     public int buttonID;
 
-    private ColorManger buttonManager;
+    private ColorManger ColorManger;
 
     void Start()
     {
         originalPosition = transform.localPosition;
 
-        buttonManager = FindObjectOfType<ColorManger>();
+        ColorManger = FindObjectOfType<ColorManger>();
 
     }
 
-    public void OnButtonClick()
+    public void OnCyayonClick()
     {
         transform.localPosition = originalPosition + new Vector3(-70, 0, 0);
-
-        buttonManager.OnButtonClicked(this);
+        ColorManger.OnButtonClicked(this);
+        ColorManger.SetSelectedButtonID(buttonID);
     }
 
     public void ResetPosition()
