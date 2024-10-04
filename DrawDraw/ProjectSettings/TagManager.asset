@@ -55,9 +55,24 @@ TagManager:
   - name: Tangram
     uniqueID: 3529168905
     locked: 0
-  - name: PuzzleAnswer
+  - name: 1
     uniqueID: 3401097357
     locked: 0
-  - name: PuzzlePiece
+  - name: 2
     uniqueID: 3000490907
+    locked: 0
+  - name: 3
+    uniqueID: 3190266001
+    locked: 0
+  - name: 4
+    uniqueID: 2174837813
+    locked: 0
+  - name: 5
+    uniqueID: 2105105437
+    locked: 0
+  - name: 6
+    uniqueID: 3189362333
+    locked: 0
+  - name: 0
+    uniqueID: 2451243461
     locked: 0

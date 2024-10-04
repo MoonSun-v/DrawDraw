@@ -102,7 +102,7 @@ EditorBuildSettings:
     path: Assets/Scenes/05.TrainingGame/Tangram/TangramScene_Lv3.unity
     guid: 8430797c283db824cb325c73edffc6cf
   - enabled: 1
-    path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScene.unity
+    path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScen_1.unity
     guid: 2b90c5ac705d0af43854a31eb7a78968
   - enabled: 1
     path: Assets/Scenes/06.Parents/ParentsScene.unity
