@@ -37,7 +37,7 @@ public class MapManager : MonoBehaviour
         BackgroundImg = Background.GetComponent<Image>();      
         CheckAndChangeSprite(currentTime);
 
-        // SettingProfile();                                      // 2
+        SettingProfile();                                      // 2
 
     }
 

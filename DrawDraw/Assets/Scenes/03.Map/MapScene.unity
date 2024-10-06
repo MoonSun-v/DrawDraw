@@ -3028,8 +3028,8 @@ MonoBehaviour:
   Background: {fileID: 616462726}
   newSprite: {fileID: 21300000, guid: 5d681fb7a767a4e479c2d287f2fb4895, type: 3}
   CharacterImg: {fileID: 1809281357}
-  DogSprite: {fileID: 21300000, guid: 63ad68a719dd49648b107da014631ba2, type: 3}
-  CatSprite: {fileID: 21300000, guid: b7712e31f81a8974f8eb47409d423985, type: 3}
+  DogSprite: {fileID: 21300000, guid: 90b010bb4122c8d4f8e3e2866334b90e, type: 3}
+  CatSprite: {fileID: 21300000, guid: b205e45bdda5c4447a55f10f6d200dc2, type: 3}
   Name: {fileID: 2066536588}
   Profile: {fileID: 823157290}
 --- !u!1 &1361138101
