@@ -82,26 +82,11 @@ public class TestResultData
     public string Game4Img ;
     public string Game5Img ;
     public string Game6Img ;
-    // public int Game7Score;
-    // public int Game8Score;
-    // public int Game9Score;
-    // public int Game10Score;
+    public int Game7Score;
+    public int Game8Score;
+    public int Game9Score;
+    public int Game10Score;
 
-    /*
-    public string GetImageByIndex(int Index)
-    {
-        switch (Index)
-        {
-            case 1: return Game1Img;
-            case 2: return Game2Img;
-            case 3: return Game3Img;
-            case 4: return Game4Img;
-            case 5: return Game5Img;
-            case 6: return Game6Img;
-            default: return null;
-        }
-    }
-    */
 }
 
 
@@ -297,6 +282,47 @@ public class GameData : MonoBehaviour
     }
 
 
+
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // 데이터 저장 시 필요한 공통 메소드 모음 --------------------------------------------------------------------------
+
+
+    // ★ [ 데이터가 덜 채워진 Key 찾기 ]
+    //
+    // - 6개의 이미지가 다 채워지지 않은 Key 반환
+    // - 모든 키가 완전히 채워져 있으면 새로운 Key 반환
+    //
+    public int GetKeyWithIncompleteData()
+    {
+        foreach (var key in testdata.TestResults.Keys)
+        {
+            TestResultData currentData = testdata.TestResults[key];
+            if (!IsTestDataComplete(currentData))
+            {
+                return key;
+            }
+        }
+
+        return testdata.TestResults.Count;
+    }
+
+
+    // ★ [ // TestResultData가 6개의 이미지와 4개의 점수를 모두 가지고 있는지 확인 ]
+    //
+    public bool IsTestDataComplete(TestResultData data)
+    {
+        return !string.IsNullOrEmpty(data.Game1Img) &&
+               !string.IsNullOrEmpty(data.Game2Img) &&
+               !string.IsNullOrEmpty(data.Game3Img) &&
+               !string.IsNullOrEmpty(data.Game4Img) &&
+               !string.IsNullOrEmpty(data.Game5Img) &&
+               !string.IsNullOrEmpty(data.Game6Img) &&
+               data.Game7Score != 0 &&
+               data.Game8Score != 0 &&
+               data.Game9Score != 0 &&
+               data.Game10Score != 0 ;
+    }
 
 
 }

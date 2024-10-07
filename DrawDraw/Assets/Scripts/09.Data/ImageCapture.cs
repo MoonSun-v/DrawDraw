@@ -32,7 +32,7 @@ public class ImageCapture : MonoBehaviour
         string base64Image = GameData.instance.CaptureScreenArea(targetCamera, captureRect);
 
 
-        int currentKey = GetKeyWithIncompleteData();
+        int currentKey = GameData.instance.GetKeyWithIncompleteData();
         if (currentKey > 4)
         {
             Debug.LogWarning("TestResults에 더 이상 이미지를 저장할 수 없습니다. 최대 키 값은 4입니다.");
@@ -53,38 +53,7 @@ public class ImageCapture : MonoBehaviour
     }
 
 
-    // ★ [ 데이터가 덜 채워진 Key 찾기 ]
-    //
-    // - 6개의 이미지가 다 채워지지 않은 Key 반환
-    // - 모든 키가 완전히 채워져 있으면 새로운 Key 반환
-    //
-    private int GetKeyWithIncompleteData()
-    {
-        foreach (var key in GameData.instance.testdata.TestResults.Keys)
-        {
-            TestResultData currentData = GameData.instance.testdata.TestResults[key];
-            if (!IsTestDataComplete(currentData))
-            {
-                return key; 
-            }
-        }
-
-        return GameData.instance.testdata.TestResults.Count;
-    }
-
-
-    // ★ [ TestResultData가 6개의 이미지를 모두 가지고 있는지 확인 ]
-    //
-    private bool IsTestDataComplete(TestResultData data)
-    {
-        return !string.IsNullOrEmpty(data.Game1Img) &&
-               !string.IsNullOrEmpty(data.Game2Img) &&
-               !string.IsNullOrEmpty(data.Game3Img) &&
-               !string.IsNullOrEmpty(data.Game4Img) &&
-               !string.IsNullOrEmpty(data.Game5Img) &&
-               !string.IsNullOrEmpty(data.Game6Img);
-    }
-
+    
 
     // ★ [ 이미지 저장 ]
     //
