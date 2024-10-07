@@ -96,6 +96,7 @@ public class TestColoring : MonoBehaviour
     }
 
     // 팝업 : 완성이야
+    // 점수 저장 
     public void NextBtn()
     {
         CheckPopup.SetActive(false);
@@ -167,7 +168,39 @@ public class TestColoring : MonoBehaviour
 
         // 현재 점수 출력
         Debug.Log("Score: " + score);
+
+        // 점수 저장 
+        SaveResults(score);
     }
+
+
+    // [ 점수값 저장 ] : 기존 만점 9점 
+    //
+    void SaveResults(int _score)
+    {
+        _score += 1; _score *= 10; // 만점 100으로 세팅 
+
+        int currentKey = GameData.instance.GetKeyWithIncompleteData();
+        if (currentKey > 4)
+        {
+            Debug.LogWarning("TestResults에 더 이상 저장할 수 없습니다. 최대 키 값은 4입니다.");
+            return;
+        }
+
+        if (!GameData.instance.testdata.TestResults.ContainsKey(currentKey))
+        {
+            GameData.instance.testdata.TestResults[currentKey] = new TestResultData();
+        }
+
+        TestResultData currentData = GameData.instance.testdata.TestResults[currentKey];
+        currentData.Game7Score = _score;
+
+        GameData.instance.SaveTestData();
+        GameData.instance.LoadTestData();
+
+        print($"TestResults[{currentKey}]의 Coloring 점수 = {_score} 저장 완료");
+    }
+
 
     public void SelectColor(GameObject crayon, Color selectedColor, int spriteIndex)
     {

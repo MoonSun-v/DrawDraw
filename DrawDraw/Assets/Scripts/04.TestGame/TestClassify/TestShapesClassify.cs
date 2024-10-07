@@ -73,7 +73,38 @@ public class TestShapesClassify : MonoBehaviour
         }
 
         Debug.Log("최종 점수: " + score);  // 최종 점수 출력
+
+        // 점수 저장 
+        SaveResults(score);
     }
+
+    // [ 점수값 저장 ] : 기존 만점 4점
+    //
+    void SaveResults(int _score)
+    {
+        _score *= 25; // 만점 100으로 세팅 
+
+        int currentKey = GameData.instance.GetKeyWithIncompleteData();
+        if (currentKey > 4)
+        {
+            Debug.LogWarning("TestResults에 더 이상 저장할 수 없습니다. 최대 키 값은 4입니다.");
+            return;
+        }
+
+        if (!GameData.instance.testdata.TestResults.ContainsKey(currentKey))
+        {
+            GameData.instance.testdata.TestResults[currentKey] = new TestResultData();
+        }
+
+        TestResultData currentData = GameData.instance.testdata.TestResults[currentKey];
+        currentData.Game9Score = _score;
+
+        GameData.instance.SaveTestData();
+        GameData.instance.LoadTestData();
+
+        print($"TestResults[{currentKey}]의 ShapesClassify 점수 = {_score} 저장 완료");
+    }
+
 
     private bool IsWithinCollider(GameObject shape, BoxCollider2D collider)
     {

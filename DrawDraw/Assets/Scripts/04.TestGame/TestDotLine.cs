@@ -67,8 +67,33 @@ public class TestDotLine : MonoBehaviour
         Score = (int)((DotCount / TotalDot) * 100);         // 소수점 이하는 내림 
         print("퍼센트 = " + Score + "%");
 
-        // StartCoroutine(NextGameDelay());                 
+        SaveResults(Score);
+
         NextGame();
+    }
+
+    // [ 점수값 저장 ]
+    void SaveResults(int _score)
+    {
+        int currentKey = GameData.instance.GetKeyWithIncompleteData();
+        if (currentKey > 4)
+        {
+            Debug.LogWarning("TestResults에 더 이상 저장할 수 없습니다. 최대 키 값은 4입니다.");
+            return;
+        }
+
+        if (!GameData.instance.testdata.TestResults.ContainsKey(currentKey))
+        {
+            GameData.instance.testdata.TestResults[currentKey] = new TestResultData();
+        }
+
+        TestResultData currentData = GameData.instance.testdata.TestResults[currentKey];
+        currentData.Game8Score = _score;
+
+        GameData.instance.SaveTestData();
+        GameData.instance.LoadTestData();
+
+        print($"TestResults[{currentKey}]의 DotLine 점수 = {_score} 저장 완료");
     }
 
     void NextGame()
@@ -76,16 +101,5 @@ public class TestDotLine : MonoBehaviour
         SceneManager.LoadScene("Test_ShapesClassifyScene");
     }
 
-    /*
-    IEnumerator NextGameDelay()
-    {
-
-        yield return new WaitForSeconds(2);    // 2 초 후 실행
-
-        print("점선 따라 그리기 테스트 완료. 다음 테스트로 이동 필요합니다 ");
-        SceneManager.LoadScene("Test_ShapesClassifyScene");
-
-    }
-    */
 
 }
