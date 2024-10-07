@@ -860,7 +860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782d47de0731cd74697e2469b11d1f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetImages: []
+  targetImages:
+  - {fileID: 229489139}
 --- !u!4 &1824862892
 Transform:
   m_ObjectHideFlags: 0

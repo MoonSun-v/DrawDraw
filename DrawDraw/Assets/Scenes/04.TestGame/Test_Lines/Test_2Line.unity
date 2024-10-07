@@ -1455,7 +1455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1396469714}
   - component: {fileID: 1396469713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaptureCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1471,7 +1471,7 @@ Camera:
   m_GameObject: {fileID: 1396469712}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1497,7 +1497,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.77087
+  orthographic size: 3.8
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2

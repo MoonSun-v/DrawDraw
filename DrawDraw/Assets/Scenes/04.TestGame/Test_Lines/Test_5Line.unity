@@ -2469,7 +2469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975155658}
   - component: {fileID: 1975155657}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaptureCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2511,7 +2511,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.77087
+  orthographic size: 3.8
   m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
