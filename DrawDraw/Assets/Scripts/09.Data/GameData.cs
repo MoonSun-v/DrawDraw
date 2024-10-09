@@ -47,15 +47,15 @@ public class PlayerData
 
 //// ★ 훈련용 게임 관련 데이터 ---------------------------------------------------------------------------------
 //
-// ( 훈련용 게임은 총 19개 스테이지 => 배열의 각 0~18번은 순서대로 각 스테이지를 의미한다. )
+// ( 훈련용 게임은 엔딩 포함 총 20개 스테이지 => 배열의 각 0~19번은 순서대로 각 스테이지를 의미한다. )
 // ClearStage  : 현재 클리어한 훈련용 게임 스테이지 
 // FailNum     : 현재까지 각 스테이지의 실패한 횟수 
 //               각 게임 별 실패 횟수 3번 초과 시 정답 행동 유도 후 다음 게임으로 넘어가야함 
 
 public class TrainingData
 {
-    public bool[] ClearStage = new bool[19];
-    public int[] FailNum = new int[19];
+    public bool[] ClearStage = new bool[20];
+    public int[] FailNum = new int[20];
 }
 
 
