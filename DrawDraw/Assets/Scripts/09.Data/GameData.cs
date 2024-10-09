@@ -153,7 +153,7 @@ public class GameData : MonoBehaviour
     {
         string data = JsonUtility.ToJson(playerdata);     
         File.WriteAllText(Path + PlayerFileName, data);   
-        print("플레이어 데이터 저장 완료");
+        // print("플레이어 데이터 저장 완료");
     }
     public void LoadPlayerData()
     {
@@ -161,12 +161,12 @@ public class GameData : MonoBehaviour
         {                                                             
             string data = File.ReadAllText(Path + PlayerFileName);    
             playerdata = JsonUtility.FromJson<PlayerData>(data);     
-            print("플레이어 데이터 불러오기 완료");
+            // print("플레이어 데이터 불러오기 완료");
         }
         else
         {
             SavePlayerData();                                         
-            print("기본 플레이어 데이터 생성 완료");
+            // print("기본 플레이어 데이터 생성 완료");
         }
     }
 
@@ -177,7 +177,7 @@ public class GameData : MonoBehaviour
     {
         string data = JsonUtility.ToJson(trainingdata);
         File.WriteAllText(Path + TrainingFileName, data);
-        print("훈련 데이터 저장 완료");
+        // print("훈련 데이터 저장 완료");
     }
     public void LoadTrainingData()
     {
@@ -185,12 +185,12 @@ public class GameData : MonoBehaviour
         {
             string data = File.ReadAllText(Path + TrainingFileName);
             trainingdata = JsonUtility.FromJson<TrainingData>(data);
-            print("훈련 데이터 불러오기 완료");
+            // print("훈련 데이터 불러오기 완료");
         }
         else
         {
             SaveTrainingData();
-            print("기본 훈련 데이터 생성 완료");
+            // print("기본 훈련 데이터 생성 완료");
         }
     }
 
@@ -202,7 +202,7 @@ public class GameData : MonoBehaviour
     {
         string data = DictionaryJsonUtility.ToJson(testdata.TestResults, true);
         File.WriteAllText(Path + TestFileName, data);
-        print("테스트 데이터 저장 완료");
+        // print("테스트 데이터 저장 완료");
     }
     public void LoadTestData()
     {
@@ -210,12 +210,12 @@ public class GameData : MonoBehaviour
         {                                                                                             
             string data = File.ReadAllText(Path + TestFileName);
             testdata.TestResults = DictionaryJsonUtility.FromJson<int, TestResultData>(data);     
-            print("테스트 데이터 불러오기 완료");
+            // print("테스트 데이터 불러오기 완료");
         }
         else
         {
             SaveTestData();                                                                       
-            print("기본 테스트 데이터 생성 완료");
+            // print("기본 테스트 데이터 생성 완료");
         }
     }
 

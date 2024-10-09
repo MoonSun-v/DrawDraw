@@ -12,7 +12,7 @@ public class ResultManager : MonoBehaviour
     //              스테이지 순서대로 0번~18번의 숫자를 가진다. 
     //
     public GameResultSO gameResult;
-    // private int StageNum = 30; 
+    private int StageNum = 30; 
 
 
     // ( 임시 변수들 )
@@ -21,8 +21,17 @@ public class ResultManager : MonoBehaviour
 
 
 
+    // ★ [ 각 훈련 게임별 스테이지 이름 ]
+    List<string> dotLineScenes = new List<string> { "DotLineScene1", "DotLineScene2", "DotLineScene3" }; 
+    List<string> LineScenes = new List<string> { "1LineScene", "2LineScene", "3LineScene", "4LineScene", "5LineScene", "6LineScene" };
+    List<string> ScratchScenes = new List<string> { "ScratchScene1", "ScratchScene2" };
+    List<string> FigureCombiScenes = new List<string> { "1Pinwheel", "1Sun", "2Rocket", "2Ship", "3Person", "3TheTrain" };
+    List<string> TangramScenes = new List<string> { "TangramScene_Lv1", "TangramScene_Lv2", "TangramScene_Lv3" };
+    List<string> PuzzleScenes = new List<string> { "PuzzleScene_1", "PuzzleScene_2" };
 
-    // ★ [ 각 훈련 게임별, 결과 세팅 ] ★  -------------------------------------------------------
+
+    // -----------------------------------------------------------------------------------------------------
+    // ★ [ 각 훈련 게임별, 결과 세팅 ] ★  ----------------------------------------------------------------
     //
     void Start()
     {
@@ -31,25 +40,42 @@ public class ResultManager : MonoBehaviour
         // 50 % 미만           : 경험치 X  ,게임 실패
         // 50 % 이상 60 % 미만 : 경험치 5  ,게임 성공
         // 60 % 이상           : 경험치 10 ,게임 성공
-
-        // 점선 따라 그리기의 씬 이름들 
-        List<string> dotLineScenes = new List<string> { "DotLineScene1", "DotLineScene2", "DotLineScene3" }; 
+        
         if (dotLineScenes.Contains(gameResult.previousScene))
-        { 
-            // StageNum = 0;
+        {
+            #region previousScene에 따라 StageNum 할당
 
-            if      (gameResult.score < 50)  { isClear = false; /*FailSetting(StageNum);*/ }    
-            else if (gameResult.score < 60)  { isClear = true;  /*SuccessSetting(StageNum);*/ }  
-            else                             { isClear = true;  /*ClearSetting(StageNum);*/ }    
+            if (gameResult.previousScene == "DotLineScene1") { StageNum = 0; }       
+            else if (gameResult.previousScene == "DotLineScene2") { StageNum = 2; }
+            else if (gameResult.previousScene == "DotLineScene3") { StageNum = 4; }
+
+            #endregion
+
+            if (gameResult.score < 50)       { isClear = false; FailSetting(StageNum); }    
+            else if (gameResult.score < 60)  { isClear = true;  SuccessSetting(StageNum); }  
+            else                             { isClear = true;  ClearSetting(StageNum); }    
         }
+
 
 
         // 2. [ 선 따라 그리기 ]
         // 6번 이상의 충돌 : 게임 오버
-        else if (gameResult.previousScene == "LineScene")
+
+        else if (LineScenes.Contains(gameResult.previousScene))
         {
-            if (gameResult.score >= 6) { isClear = false; } 
-            else                       { isClear = true; }  
+            #region previousScene에 따라 StageNum 할당
+
+            if (gameResult.previousScene == "1LineScene") { StageNum = 1; }
+            else if (gameResult.previousScene == "2LineScene") { StageNum = 3; }
+            else if (gameResult.previousScene == "3LineScene") { StageNum = 5; }
+            else if (gameResult.previousScene == "4LineScene") { StageNum = 6; }
+            else if (gameResult.previousScene == "5LineScene") { StageNum = 10; }
+            else if (gameResult.previousScene == "6LineScene") { StageNum = 16; }
+
+            #endregion
+
+            if (gameResult.score >= 6) { isClear = false; FailSetting(StageNum); } 
+            else                       { isClear = true; ClearSetting(StageNum); }
         }
 
 
@@ -57,10 +83,19 @@ public class ResultManager : MonoBehaviour
         // 60 % 미만           : 경험치X   ,게임 실패
         // 60 % 이상 80 % 미만 : 경험치 5  ,게임 성공
         // 80 % 이상           : 경험치 10 ,게임 성공
-        else if (gameResult.previousScene == "ScratchScene")
+
+        else if (ScratchScenes.Contains(gameResult.previousScene))
         {
-            if (gameResult.score < 60) { isClear = false; } 
-            else                       { isClear = true; }   
+            #region previousScene에 따라 StageNum 할당
+
+            if (gameResult.previousScene == "ScratchScene1")      { StageNum = 7; }
+            else if (gameResult.previousScene == "ScratchScene2") { StageNum = 12; }
+
+            #endregion
+
+            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
+            else                            { isClear = true; ClearSetting(StageNum); }
 
         }
 
@@ -70,17 +105,64 @@ public class ResultManager : MonoBehaviour
         //                       -1개        : 경험치 5  ,게임 성공
         //                       모든 도형   : 경험치 10 ,게임 성공
 
+        // => 점수화 되어있는 듯? 일단 < 60, 80 > 기준으로 세팅해놓음 
+
+        else if (FigureCombiScenes.Contains(gameResult.previousScene))
+        {
+            #region previousScene에 따라 StageNum 할당
+            
+            if (gameResult.previousScene == "1Pinwheel" || gameResult.previousScene == "1Sun") { StageNum = 8; }
+            else if (gameResult.previousScene == "2Rocket" || gameResult.previousScene == "2Ship") { StageNum = 9; }
+            else if (gameResult.previousScene == "3Person" || gameResult.previousScene == "3TheTrain") { StageNum = 13; }
+
+            #endregion
+
+            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
+            else                            { isClear = true; ClearSetting(StageNum); }
+
+        }
+
 
         // 5. [ 칠교 ]
         // 제시된 모양과 일치하는가 )  No  : 경험치X   ,게임 실패
         //                             Yes : 경험치 10 ,게임 성공
 
+        else if (TangramScenes.Contains(gameResult.previousScene))
+        {
+            #region previousScene에 따라 StageNum 할당
+
+            if (gameResult.previousScene == "TangramScene_Lv1")    { StageNum = 11; }
+            else if (gameResult.previousScene == "TangramScene_Lv2") { StageNum = 15; }
+            else if (gameResult.previousScene == "TangramScene_Lv3") { StageNum = 18; }
+
+            #endregion
+
+            if (gameResult.score == 0)        { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score == 100) { isClear = true; ClearSetting(StageNum); }
+            else { Debug.LogWarning("gameResult.score 값이 잘못 할당되었습니다. 0 또는 100을 할당해주세요"); }
+
+        }
 
 
         // 6. [ 퍼즐 ]
         // 모든 퍼즐이 알맞게 맞춰졌는가 )  No  : 경험치X   ,게임 실패
         //                                  Yes : 경험치 10 ,게임 성공
 
+        else if (PuzzleScenes.Contains(gameResult.previousScene))
+        {
+            #region previousScene에 따라 StageNum 할당
+
+            if (gameResult.previousScene == "PuzzleScene_1") { StageNum = 14; }
+            else if (gameResult.previousScene == "PuzzleScene_1") { StageNum = 17; }
+
+            #endregion
+
+            if (gameResult.score == 0)        { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score == 100) { isClear = true; ClearSetting(StageNum); }
+            else { Debug.LogWarning("gameResult.score 값이 잘못 할당되었습니다. 0 또는 100을 할당해주세요"); }
+
+        }
 
 
         // 캐릭터 상태 세팅
@@ -88,12 +170,12 @@ public class ResultManager : MonoBehaviour
         else         { scoreText.text = "아쉬워하는 캐릭터"; }
 
         
-        /*
+        
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();
         GameData.instance.LoadPlayerData();
         GameData.instance.LoadTrainingData();
-        */
+        
      }
 
 
@@ -109,18 +191,23 @@ public class ResultManager : MonoBehaviour
     void FailSetting(int stagenum)
     {
         GameData.instance.trainingdata.FailNum[stagenum] += 1;
+        // print($"{stagenum}번 스테이지의 실패 횟수 저장 완료");
     }
 
     void SuccessSetting(int stagenum)
     {
         GameData.instance.playerdata.PlayerExp += 5;
         GameData.instance.trainingdata.ClearStage[stagenum] = true;
+
+        // print($"{stagenum}번 스테이지의 결과값 저장 완료");
     }
 
     void ClearSetting(int stagenum)
     {
         GameData.instance.playerdata.PlayerExp += 10;
         GameData.instance.trainingdata.ClearStage[stagenum] = true;
+
+        // print($"{stagenum}번 스테이지의 결과값 저장 완료");
     }
 
 

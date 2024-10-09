@@ -91,7 +91,7 @@ public class TangramChecker : MonoBehaviour
         {
             print("실패");
             //ScoreText.text = "실패";
-            gameResult.score = 100; // 점수 저장 
+            gameResult.score = 0; // 점수 저장 
             gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
         }
 
