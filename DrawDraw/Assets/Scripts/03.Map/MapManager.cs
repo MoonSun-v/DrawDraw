@@ -16,8 +16,8 @@ public class MapManager : MonoBehaviour
     public Image CharacterImg; 
     public Sprite DogSprite;   // 강아지 이미지
     public Sprite CatSprite;   // 고양이 이미지
-    public Text Name;          
-
+    public Text Name;
+    public Slider ExpBar; 
 
     // [ 프로필 팝업 관련 변수 ] 
     public GameObject Profile;
@@ -61,6 +61,7 @@ public class MapManager : MonoBehaviour
     // 
     // 1. 이미지 세팅 : PlayerCharacter :  false -> 강아지 , true -> 고양이
     // 2. 이름 세팅 
+    // 3. 경험치바 세팅 
     // 
     void SettingProfile()
     {
@@ -68,6 +69,8 @@ public class MapManager : MonoBehaviour
         else                                              { CharacterImg.sprite = CatSprite; }
 
         Name.text = GameData.instance.playerdata.PlayerName;
+
+        ExpBar.value = GameData.instance.playerdata.PlayerExp;
     }
 
 

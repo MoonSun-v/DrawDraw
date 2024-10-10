@@ -190,7 +190,7 @@ public class ResultManager : MonoBehaviour
 
     void FailSetting(int stagenum)
     {
-        GameData.instance.trainingdata.FailNum[stagenum] += 1;
+        // GameData.instance.trainingdata.FailNum[stagenum] += 1;
         // print($"{stagenum}번 스테이지의 실패 횟수 저장 완료");
     }
 
