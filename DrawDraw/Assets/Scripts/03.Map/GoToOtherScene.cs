@@ -48,6 +48,6 @@ public class GoToOtherScene : MonoBehaviour
 
 
     // ÆÛÁñ -> ¾À Ãß°¡ ÇÊ¿ä 
-    public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene"); }
+    public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene_2"); }
 
 }
