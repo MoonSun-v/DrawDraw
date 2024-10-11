@@ -99,6 +99,8 @@ public class GameData : MonoBehaviour
 
     public static GameData instance;   // 싱글톤
 
+    public Vector3 cameraPosition = new Vector3(0, -36, -10);  // 카메라 위치 저장 (기본 값 추후 변경 가능)
+
     string Path;
     string PlayerFileName = "PlayerDataSave";
     string TrainingFileName = "TrainingDataSave";
@@ -324,5 +326,21 @@ public class GameData : MonoBehaviour
                data.Game10Score != 0 ;
     }
 
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // 맵화면 카메라 위치 고정을 위한 메소드 모음 ----------------------------------------------------------------------
+
+
+    // 카메라 위치 저장 
+    public void SaveCameraPosition(Vector3 position)
+    {
+        cameraPosition = position;
+    }
+
+    // 맵으로 돌아올 때 카메라 위치 설정
+    public void SetCameraPosition(Camera camera)
+    {
+        camera.transform.position = cameraPosition;
+    }
 
 }
