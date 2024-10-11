@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 8959228130682616192, guid: 6cdf55d0a6d22994b8fe2550de53aa56, type: 3}
-  lineWidth: 0.1
+  lineWidth: 0.15
   TestDrawManager: {fileID: 102970777}
 --- !u!1 &1656184144
 GameObject:

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TestDraw : MonoBehaviour
 {
     public GameObject linePrefab; // 선을 그리기 위한 프리팹
-    public float lineWidth = 0.1f; // 선의 너비
+    public float lineWidth = 0.15f; // 선의 너비
 
     public GameObject TestDrawManager;
 

@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class ImageCapture : MonoBehaviour
 {
     public Camera targetCamera;           // 캡처할 카메라
-    public Rect captureRect = new Rect(0, 0, 50, 50);    // 캡처할 영역
+    private Rect captureRect = new Rect(0, 0, 100, 100);    // 캡처 영역
 
     public int sceneIndex;                // 씬 인덱스 (1부터 6까지 수동 설정)
 
