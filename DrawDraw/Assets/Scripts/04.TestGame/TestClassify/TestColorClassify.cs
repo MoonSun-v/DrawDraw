@@ -83,6 +83,7 @@ public class TestColorClassify : MonoBehaviour
     void SaveResults(int _score)
     {
         _score *= 25; // 만점 100으로 세팅 
+        if(_score == 0) { _score += 1; }
 
         int currentKey = GameData.instance.GetKeyWithIncompleteData();
         if (currentKey > 4)

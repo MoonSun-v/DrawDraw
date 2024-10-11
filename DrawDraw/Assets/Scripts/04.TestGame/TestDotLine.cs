@@ -75,6 +75,8 @@ public class TestDotLine : MonoBehaviour
     // [ 점수값 저장 ]
     void SaveResults(int _score)
     {
+        if (_score == 0) { _score += 1; }
+
         int currentKey = GameData.instance.GetKeyWithIncompleteData();
         if (currentKey > 4)
         {

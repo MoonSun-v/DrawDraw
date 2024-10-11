@@ -179,6 +179,7 @@ public class TestColoring : MonoBehaviour
     void SaveResults(int _score)
     {
         _score += 1; _score *= 10; // 만점 100으로 세팅 
+        if (_score == 0) { _score += 1; }
 
         int currentKey = GameData.instance.GetKeyWithIncompleteData();
         if (currentKey > 4)

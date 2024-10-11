@@ -6,24 +6,34 @@ using UnityEngine.SceneManagement;
 public class StartManager : MonoBehaviour
 {
 
-    // 사전 테스트 데이터가 있으면 프롤로그 건너뛰기
-    public void ClickStart()
+    // [ 게임 시작 버튼 클릭 ]
+    // 사전 테스트 데이터가 있으면 프롤로그 건너뛰기 : 키가 0인 테스트의 Game10Score가 존재하는지 확인 
+    // 
+    public void GameStart()
     {
-        // 키가 0인 테스트 결과가 존재하는지 확인
+
         if (GameData.instance.testdata.TestResults.ContainsKey(0))
         {
-            SceneManager.LoadScene("SelectScene");
+            TestResultData resultData = GameData.instance.testdata.TestResults[0];
+
+            if (resultData.Game10Score != 0)
+            {
+                Debug.Log("기존 데이터가 존재합니다");
+                SceneManager.LoadScene("SelectScene");
+            }
+            else
+            {
+                Debug.Log("사전 테스트 정보가 충분하지 않습니다. 프롤로그에 입장합니다.");
+                SceneManager.LoadScene("Profile");
+            }
         }
         else
         {
-            Debug.Log("게임을 처음 시작합니다. 프롤로그에 입장합니다.");
+            Debug.Log("사전 테스트 정보가 없습니다. 프롤로그에 입장합니다.");
             SceneManager.LoadScene("Profile");
         }
 
     }
 
-    public void ClickDataReset()
-    {
-
-    }
+    
 }
