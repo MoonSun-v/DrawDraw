@@ -16,6 +16,8 @@ public class CollisionCounter : MonoBehaviour
 
     public Text scoreText;
 
+    private bool pass=false;
+
     private void Start()
     {
         // 콜라이더 수만큼 배열 초기화
@@ -51,6 +53,11 @@ public class CollisionCounter : MonoBehaviour
             {
                 RaycastHit2D hit = Physics2D.Linecast(lastPosition, currentPosition);
 
+                if (hit.collider != null && hit.collider.CompareTag("baseSquare"))
+                {
+                    pass = true;
+                }
+
                 if (hit.collider != null && (hit.collider.CompareTag("baseSquare_inside") || hit.collider.CompareTag("baseSquare_outside")))
                 {
                     // 충돌한 콜라이더의 인덱스 가져오기
@@ -67,9 +74,7 @@ public class CollisionCounter : MonoBehaviour
                             collisionCount++;
                             Debug.Log("Collision Count: " + collisionCount);
 
-                            scoreText.text = Score(collisionCount);
-                            
-
+                            scoreText.text = Score(collisionCount, pass);
 
                             // 선이 Base 태그와 충돌하면 게임 오버 방지 신호 전송
                             //SetIsSafe(true);
@@ -95,6 +100,7 @@ public class CollisionCounter : MonoBehaviour
                 lastPosition = currentPosition;
             }
         }
+
     }
 
     // 마우스 또는 터치 입력 위치를 월드 좌표로 변환하는 메서드
@@ -150,18 +156,25 @@ public class CollisionCounter : MonoBehaviour
 
     public int maxCollisions = 20; // 기준 충돌 횟수 (20번 충돌하면 0점)
     public float maxScore = 100f; // 현재 점수 (최대 100점)
-    private string Score(int collisionCount)
+    private string Score(int collisionCount, bool pass)
     {
         if (IsSafe())
         {
-            // 충돌 횟수에 따른 점수 계산
-            maxScore = 100 * (float)(maxCollisions - collisionCount) / maxCollisions;
-
+            if(collisionCount < 10 && pass)
+            {
+                maxScore = 100;
+            }
+            else
+            {
+                // 충돌 횟수에 따른 점수 계산
+                maxScore = 100 * (float)(maxCollisions - collisionCount) / maxCollisions;
                 // 점수가 음수로 내려가는 것을 방지
                 if (maxScore < 0)
                 {
                     maxScore = 0;
                 }
+            }
+
             scoreText.text = maxScore.ToString("F0");
         }
         else
