@@ -20,7 +20,7 @@ public class ColorButtonChange : MonoBehaviour
     private ColorButtonManager buttonManager;
 
     // 클릭 시 변경할 scale
-    public Vector3 clickedScale = new Vector3(1.75f, 1.75f, 1);  // 클릭 시 크기를 1.2배로 키움
+    private Vector3 clickedScale = new Vector3(1.6f, 1.6f, 1);  // 클릭 시 크기를 1.2배로 키움
 
     // 원래 scale 저장
     private Vector3 originalScale;

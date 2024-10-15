@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 8dc727d7066926a4bb337ebabfe005e6, type: 3}
   buttonID: 5
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &115400209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,7 +3097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 84a3ddb419e7f3d45a4e56dbd0be1397, type: 3}
   buttonID: 3
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &850886116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3329,7 +3329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 372efa4470d237443ae5342c7e2b4df2, type: 3}
   buttonID: 2
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &880247503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3477,7 +3477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 11d18cdbfbbcd3a4e89316cc04755848, type: 3}
   buttonID: 1
-  clickedScale: {x: 1.75, y: 1.75, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &887569125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: a0a71349d72e60748ba2a5dc11f8d0fc, type: 3}
   buttonID: 7
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &953555686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,7 +3923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 133760206a1cb6c47aeb52b4c10ff2c6, type: 3}
   buttonID: 4
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &985557338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4731,7 +4731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedImage: {fileID: 21300000, guid: 204341aae3fab3c45a4b2fd8fc091f09, type: 3}
   buttonID: 6
-  clickedScale: {x: 1.77, y: 1.77, z: 1}
+  clickedScale: {x: 1.6, y: 1.6, z: 1}
 --- !u!114 &1178079191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7131,7 +7131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2103052793}
   - component: {fileID: 2103052797}
-  - component: {fileID: 2103052796}
   - component: {fileID: 2103052795}
   - component: {fileID: 2103052794}
   m_Layer: 5
@@ -7196,29 +7195,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2103052796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103052792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!223 &2103052797
 Canvas:
   m_ObjectHideFlags: 0
@@ -7344,7 +7320,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2132054173}
   - component: {fileID: 2132054177}
-  - component: {fileID: 2132054176}
   - component: {fileID: 2132054175}
   - component: {fileID: 2132054174}
   m_Layer: 5
@@ -7404,29 +7379,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2132054176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132054172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
 --- !u!223 &2132054177
 Canvas:
   m_ObjectHideFlags: 0
