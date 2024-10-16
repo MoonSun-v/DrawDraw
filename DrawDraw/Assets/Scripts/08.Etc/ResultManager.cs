@@ -19,6 +19,9 @@ public class ResultManager : MonoBehaviour
     public Text scoreText;  // 프로토타입에서만 사용 
     private bool isClear;   // 게임 클리어했는가? 
 
+    //성공 실패 캐릭터 이미지
+    public Sprite[] CharacterImages; 
+    public Image Image;
 
 
     // ★ [ 각 훈련 게임별 스테이지 이름 ]
@@ -169,8 +172,19 @@ public class ResultManager : MonoBehaviour
         if (isClear) { scoreText.text = "축하하고 있는 캐릭터"; }
         else         { scoreText.text = "아쉬워하는 캐릭터"; }
 
-        
-        
+        if (isClear)
+        {
+            Image.sprite = CharacterImages[0];
+
+            ChangeSceneAfterDelay(5f);
+        }
+        else
+        {
+            Image.sprite = CharacterImages[2];
+
+            ChangeSceneAfterDelay(5f);
+        }
+
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();
         GameData.instance.LoadPlayerData();
@@ -221,4 +235,11 @@ public class ResultManager : MonoBehaviour
 
     public void Restart(){ SceneManager.LoadScene(gameResult.previousScene); }
     public void End(){ SceneManager.LoadScene("MapScene"); }
+
+    private IEnumerator ChangeSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        SceneManager.LoadScene("MapScene");
+    }
 }
