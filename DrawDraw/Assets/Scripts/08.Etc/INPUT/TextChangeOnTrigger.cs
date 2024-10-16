@@ -9,7 +9,7 @@ public class TextChangeOnTrigger : MonoBehaviour
     public GameObject catPanel; // 고양이 패널 오브젝트
     public GameObject triggerObject1; // 첫 번째 트리거 오브젝트
     public GameObject triggerObject2; // 두 번째 트리거 오브젝트
-    public string userPreference = "cat"; // 사용자 정보 (dog 또는 cat)
+    private bool userPreference = false; // 사용자 정보를 기반으로 결정 ("dog" 또는 "cat")
     public string text1 = "Text 1"; // 트리거 1이 활성화될 때 표시할 텍스트
     public string text2 = "Text 2"; // 트리거 2가 활성화될 때 표시할 텍스트
 
@@ -19,6 +19,8 @@ public class TextChangeOnTrigger : MonoBehaviour
 
     private bool previousTriggerObject1State = false; // 트리거1 이전 상태
     private bool previousTriggerObject2State = false; // 트리거2 이전 상태
+
+    public int index = 0;
 
     void Start()
     {
@@ -47,12 +49,14 @@ public class TextChangeOnTrigger : MonoBehaviour
         if (isTrigger1Active && !previousTriggerObject1State)
         {
             ChangeText(text1); // 트리거 1 활성화 시 텍스트를 text1으로 변경
+            index = 0;
         }
 
         // 트리거 오브젝트 2가 새롭게 활성화되면 텍스트 변경
         if (isTrigger2Active && !previousTriggerObject2State)
         {
             ChangeText(text2); // 트리거 2 활성화 시 텍스트를 text2로 변경
+            index = 1;
         }
 
         // 이전 트리거 상태 업데이트
@@ -63,15 +67,13 @@ public class TextChangeOnTrigger : MonoBehaviour
     // userPreference에 따라 텍스트 타겟 설정
     void SetTargetTextBasedOnPreference()
     {
-        if (userPreference == "dog" && dogText != null)
+        if (userPreference == false && dogText != null)
         {
             targetText = dogText; // 강아지 패널을 타겟으로 설정
-            Debug.Log("강아지 패널이 선택되었습니다.");
         }
-        else if (userPreference == "cat" && catText != null)
+        else if (userPreference == true && catText != null)
         {
             targetText = catText; // 고양이 패널을 타겟으로 설정
-            Debug.Log("고양이 패널이 선택되었습니다.");
         }
         else
         {
@@ -85,7 +87,6 @@ public class TextChangeOnTrigger : MonoBehaviour
         if (targetText != null)
         {
             targetText.text = newText;
-            Debug.Log($"Text changed to: {newText}");
         }
         else
         {
