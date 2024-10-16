@@ -16,12 +16,16 @@ public class ResultManager : MonoBehaviour
 
 
     // ( 임시 변수들 )
-    public Text scoreText;  // 프로토타입에서만 사용 
+    //public Text scoreText;  // 프로토타입에서만 사용 
     private bool isClear;   // 게임 클리어했는가? 
 
     //성공 실패 캐릭터 이미지
     public Sprite[] CharacterImages; 
     public Image Image;
+
+    // 플레이어 캐릭터 정보 불러오기
+    bool isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
+
 
 
     // ★ [ 각 훈련 게임별 스테이지 이름 ]
@@ -169,20 +173,37 @@ public class ResultManager : MonoBehaviour
 
 
         // 캐릭터 상태 세팅
-        if (isClear) { scoreText.text = "축하하고 있는 캐릭터"; }
-        else         { scoreText.text = "아쉬워하는 캐릭터"; }
+        //if (isClear) { scoreText.text = "축하하고 있는 캐릭터"; }
+        //else         { scoreText.text = "아쉬워하는 캐릭터"; }
 
+        
         if (isClear)
         {
-            Image.sprite = CharacterImages[0];
-
-            ChangeSceneAfterDelay(5f);
+            if (isDog)
+            {
+                Image.sprite = CharacterImages[0];
+                Debug.Log("강아지 성공");
+            }
+            else
+            {
+                Image.sprite = CharacterImages[1];
+                Debug.Log("고양이 성공");
+            }
+            StartCoroutine(ChangeSceneAfterDelay(5f));
         }
         else
         {
-            Image.sprite = CharacterImages[2];
-
-            ChangeSceneAfterDelay(5f);
+            if (isDog)
+            {
+                Image.sprite = CharacterImages[2];
+                Debug.Log("강아지 실패");
+            }
+            else
+            {
+                Image.sprite = CharacterImages[3];
+                Debug.Log("고양이 실패");
+            }
+            StartCoroutine(ChangeSceneAfterDelay(5f));
         }
 
         GameData.instance.SavePlayerData();
@@ -191,7 +212,6 @@ public class ResultManager : MonoBehaviour
         GameData.instance.LoadTrainingData();
         
      }
-
 
 
 
