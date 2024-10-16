@@ -18,8 +18,12 @@ public class IdleEventTrigger : MonoBehaviour
     private int activationCount = 0; // 오브젝트가 활성화된 횟수
     private int maxActivations = 3; // 최대 활성화 횟수
 
-    public string userPreference = "dog"; // 사용자 정보를 기반으로 결정 ("dog" 또는 "cat")
-
+    private bool userPreference = false; // 사용자 정보를 기반으로 결정 ("dog" 또는 "cat")
+    private void Start()
+    {
+        userPreference = GameData.instance.playerdata.PlayerCharacter;
+        Debug.Log(userPreference);
+    }
     void Update()
     {
         // triggerObject가 둘 중 하나라도 null이 아니고 활성화되어 있으면 실행
@@ -63,12 +67,14 @@ public class IdleEventTrigger : MonoBehaviour
     // 사용자 정보에 따라 다른 오브젝트 활성화
     void ActivateObjectBasedOnUserPreference()
     {
-        if (userPreference == "dog" && dogObject != null)
+        // PlayerCharacter: false->강아지 , true->고양이 
+
+        if (userPreference == false && dogObject != null)
         {
             dogObject.SetActive(true);
             Debug.Log("강아지 오브젝트가 활성화되었습니다.");
         }
-        else if (userPreference == "cat" && catObject != null)
+        else if (userPreference == true && catObject != null)
         {
             catObject.SetActive(true);
             Debug.Log("고양이 오브젝트가 활성화되었습니다.");
