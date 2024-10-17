@@ -13,14 +13,19 @@ public class MapManager : MonoBehaviour
 
 
     // [ 프로필 세팅 관련 변수 ]
-    public Image CharacterImg; 
+    public Image CharacterImg;
+    public Image Charater_Move_Img;
     public Sprite DogSprite;   // 강아지 이미지
     public Sprite CatSprite;   // 고양이 이미지
+    public Sprite DogMoveSprite;
+    public Sprite CatMoveSprite;
     public Text Name;
     public Slider ExpBar; 
 
     // [ 프로필 팝업 관련 변수 ] 
     public GameObject Profile;
+
+    public GameObject StageManager;
 
 
 
@@ -65,8 +70,8 @@ public class MapManager : MonoBehaviour
     // 
     void SettingProfile()
     {
-        if(!GameData.instance.playerdata.PlayerCharacter) { CharacterImg.sprite = DogSprite; }
-        else                                              { CharacterImg.sprite = CatSprite; }
+        if(!GameData.instance.playerdata.PlayerCharacter) { CharacterImg.sprite = DogSprite; Charater_Move_Img.sprite = DogMoveSprite; }
+        else                                              { CharacterImg.sprite = CatSprite; Charater_Move_Img.sprite = CatMoveSprite; }
 
         Name.text = GameData.instance.playerdata.PlayerName;
 
@@ -80,6 +85,7 @@ public class MapManager : MonoBehaviour
     public void OnProfilePopup()
     {
         Profile.SetActive(true);
+        StageManager.SetActive(true);
     }
     public void OffProfilePopup()
     {

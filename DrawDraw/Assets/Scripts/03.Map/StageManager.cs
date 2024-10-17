@@ -7,7 +7,8 @@ public class StageManager : MonoBehaviour
 {
     public Image[] stageButtonImages; // 20개의 버튼 이미지 배열 -> 활성화 상태 (기본)
     public Sprite[] deactivateImages; // -> 활성화 되지 않은 상태
-    public Sprite[] completeImages;   // -> 완료한 상태
+    public Sprite[] completeImages_Dog;   // -> 완료한 상태
+    public Sprite[] completeImages_Cat; 
 
 
     private void Start()
@@ -25,7 +26,7 @@ public class StageManager : MonoBehaviour
 
         // [ 버튼 상태 설정 ]
         //
-        // 1. Complete 상태 : ClearStage가 true인 경우 
+        // 1. Complete 상태 : ClearStage가 true인 경우  && ( Dog 는 0 or Cat 은 1 )
         // 2. Activate 상태 : PlayerExp 기준 (기본)
         // 3. Deactivate 상태
         //
@@ -35,7 +36,9 @@ public class StageManager : MonoBehaviour
 
             if (GameData.instance.trainingdata.ClearStage[i])  
             {
-                buttonImage.sprite = completeImages[i]; 
+                if (!GameData.instance.playerdata.PlayerCharacter) { buttonImage.sprite = completeImages_Dog[i]; }
+                else { buttonImage.sprite = completeImages_Cat[i];  }
+                
             }
             else if (i < activateCount) { }
             else
