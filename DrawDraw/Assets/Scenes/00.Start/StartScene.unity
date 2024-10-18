@@ -455,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3643b056f3dc664cab2f00f4a58cc2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPosition: {x: 0, y: -36, z: -10}
 --- !u!4 &560565929
 Transform:
   m_ObjectHideFlags: 0
@@ -1043,7 +1044,7 @@ AudioSource:
   m_GameObject: {fileID: 1982045046}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6086103174672770556, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4a1ff46e1b06aff41b98651f6b525cfa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

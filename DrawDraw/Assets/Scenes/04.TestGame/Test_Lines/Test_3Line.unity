@@ -1059,12 +1059,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 316552251}
-  captureRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 50
-    height: 50
   sceneIndex: 3
 --- !u!4 &632093447
 Transform:
@@ -1266,7 +1260,7 @@ AudioSource:
   m_GameObject: {fileID: 853658289}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 719fc93569e7a724a94f0e1d40da68cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1754,7 +1748,7 @@ AudioSource:
   m_GameObject: {fileID: 1397527454}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 40c347863e055cf4492dda6148b61e5f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

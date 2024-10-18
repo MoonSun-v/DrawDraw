@@ -1429,8 +1429,7 @@ MonoBehaviour:
   dogSounds:
   - {fileID: 8300000, guid: 7c15aeacfaffc594d8450592fea0408f, type: 3}
   audioSource: {fileID: 117183833}
-  triggerObjectIndex1: 0
-  triggerObjectIndex2: 0
+  TextChangeOnTrigger: {fileID: 0}
 --- !u!4 &117183832
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1454,7 @@ AudioSource:
   m_GameObject: {fileID: 117183830}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -7383,7 +7382,7 @@ AudioSource:
   m_GameObject: {fileID: 996091049}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -10708,7 +10707,7 @@ AudioSource:
   m_GameObject: {fileID: 1693663769}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 40c347863e055cf4492dda6148b61e5f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
