@@ -8,7 +8,6 @@ public class LineDrawManager : MonoBehaviour
     private Camera mainCamera;
 
     public GameObject DrawArea; // 그리기 활성화 영역
-    //Vector2[] vertices = new Vector2[4]; // 그리기 사각형 영역의 꼭짓점
     public bool DrawActivate = true; // 활성화 여부
 
     //private PopupManager popup;
@@ -16,8 +15,6 @@ public class LineDrawManager : MonoBehaviour
     private Vector2[] corners;
 
     public GameObject check; // 게임의 확인창 팝업
-    public GameObject finish; // 게임의 결과창 팝업
-
 
     // 비활성화할 스크립트에 대한 참조
     public MonoBehaviour CollisionCounter;
@@ -48,7 +45,7 @@ public class LineDrawManager : MonoBehaviour
         {
             SetDrawActivate(false);
         }
-        else if (check.activeSelf == true || finish.activeSelf == true)
+        else if (check.activeSelf == true)
         {
             SetDrawActivate(false);
 

@@ -13,15 +13,14 @@ public class LineColor : MonoBehaviour
 
     public GameObject checkPopup;
 
-    public resultPopupManager result_popup;
-
     private bool color = false;
+    public CheckpopupManager CheckpopupManager;
 
     public void OnClick_color() // 확인창 완성 버튼을 클릭 -> 결과 보여주기
     {
         if (color)
         {
-            result_popup.Show(); // 결과 팝업 띄우기
+            CheckpopupManager.OnClick_finish();
         }
         else
         {
