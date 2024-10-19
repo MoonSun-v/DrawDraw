@@ -37,8 +37,7 @@ public class StageManager : MonoBehaviour
             if (GameData.instance.trainingdata.ClearStage[i])  
             {
                 if (!GameData.instance.playerdata.PlayerCharacter) { buttonImage.sprite = completeImages_Dog[i]; }
-                else { buttonImage.sprite = completeImages_Cat[i];  }
-                
+                else                                               { buttonImage.sprite = completeImages_Cat[i];  }
             }
             else if (i < activateCount) { }
             else
