@@ -12,9 +12,8 @@ public class FinishButtonManager : MonoBehaviour
     private ColorButtonManager shapeColorChanger;
 
     public GameObject check_popup; // PopupManager 스크립트를 참조할 변수
-    public GameObject result_popup;
 
-    public Text Text_GameResult; // 게임의 결과를 표시해줄 Text Ui
+    //public Text Text_GameResult; // 게임의 결과를 표시해줄 Text Ui
     public Text ScoreText; // 게임의 결과를 가져올 Text Ui
 
     public GameResultSO gameResult; // 게임 결과화면 관리 SO
@@ -63,12 +62,13 @@ public class FinishButtonManager : MonoBehaviour
     {
         //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
         DisplayColorPieceCounts();
-        Text_GameResult.text = ScoreText.text + "점";
+        //Text_GameResult.text = ScoreText.text + "점";
 
         check_popup.SetActive(false); // 확인 팝업 창을 화면에 표시
-        result_popup.SetActive(true); // 확인 팝업 창을 화면에 표시 
         //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
         //DisplayColorPieceCounts();
+
+        SceneManager.LoadScene("ResultScene");
     }
 
     // 전체 퍼즐 조각 클론 개수와 색상이 변경된 도형 개수를 출력하는 함수
@@ -115,12 +115,4 @@ public class FinishButtonManager : MonoBehaviour
         Debug.Log("도형 색칠하기 점수(50점 만점): " + score);
         Debug.Log("최종 점수: " + ScoreText.text);
     }
-
-    public void GotoResultScene()
-    {
-        Debug.Log("완성 버튼 클릭, 결과 씬으로 이동");
-
-    }
-
-
 }
