@@ -40,7 +40,7 @@ public class PlayerData
     public string PlayerName;
     public int PlayerExp;
 
-    public int TestNum;
+    // public int TestNum;
 }
 
 
