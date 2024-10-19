@@ -3704,6 +3704,7 @@ GameObject:
   - component: {fileID: 1127312430}
   - component: {fileID: 1127312429}
   - component: {fileID: 1127312431}
+  - component: {fileID: 1127312432}
   m_Layer: 5
   m_Name: CheckPopUp
   m_TagString: Untagged
@@ -3784,6 +3785,21 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1127312432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127312427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 1127312429}
+  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
+  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &1133032706
 GameObject:
   m_ObjectHideFlags: 0

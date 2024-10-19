@@ -1725,6 +1725,7 @@ GameObject:
   - component: {fileID: 1606306772}
   - component: {fileID: 1606306774}
   - component: {fileID: 1606306773}
+  - component: {fileID: 1606306775}
   m_Layer: 5
   m_Name: BackBtn_CheckPopUp
   m_TagString: Untagged
@@ -1792,6 +1793,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606306771}
   m_CullTransparentMesh: 1
+--- !u!114 &1606306775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606306771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 1606306773}
+  catImage: {fileID: 21300000, guid: 459401f5498119148b0d960acb6d165a, type: 3}
+  dogImage: {fileID: 21300000, guid: db51fbec60b42a04d83ce46a21861d27, type: 3}
 --- !u!1 &1631168423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2336,7 @@ GameObject:
   - component: {fileID: 1837025330}
   - component: {fileID: 1837025332}
   - component: {fileID: 1837025331}
+  - component: {fileID: 1837025333}
   m_Layer: 5
   m_Name: CheckPopUp
   m_TagString: Untagged
@@ -2386,6 +2403,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837025329}
   m_CullTransparentMesh: 1
+--- !u!114 &1837025333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837025329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 1837025331}
+  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
+  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &2060639333
 GameObject:
   m_ObjectHideFlags: 0

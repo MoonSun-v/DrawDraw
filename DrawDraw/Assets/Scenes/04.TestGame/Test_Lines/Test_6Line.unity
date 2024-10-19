@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 820987067}
   - component: {fileID: 820987069}
   - component: {fileID: 820987068}
+  - component: {fileID: 820987070}
   m_Layer: 5
   m_Name: CheckPopUp
   m_TagString: Untagged
@@ -1021,6 +1022,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820987066}
   m_CullTransparentMesh: 1
+--- !u!114 &820987070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820987066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 820987068}
+  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
+  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &895371642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1466,7 @@ GameObject:
   - component: {fileID: 1144766329}
   - component: {fileID: 1144766331}
   - component: {fileID: 1144766330}
+  - component: {fileID: 1144766332}
   m_Layer: 5
   m_Name: BackBtn_CheckPopUp
   m_TagString: Untagged
@@ -1517,6 +1534,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144766328}
   m_CullTransparentMesh: 1
+--- !u!114 &1144766332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144766328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 1144766330}
+  catImage: {fileID: 21300000, guid: 459401f5498119148b0d960acb6d165a, type: 3}
+  dogImage: {fileID: 21300000, guid: db51fbec60b42a04d83ce46a21861d27, type: 3}
 --- !u!1 &1445125307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,8 +2740,8 @@ RectTransform:
   - {fileID: 764607045}
   - {fileID: 1729276041}
   - {fileID: 600595992}
-  - {fileID: 820987067}
   - {fileID: 1144766329}
+  - {fileID: 820987067}
   m_Father: {fileID: 177098224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

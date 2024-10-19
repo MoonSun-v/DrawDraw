@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 35713199}
   - component: {fileID: 35713198}
   - component: {fileID: 35713197}
+  - component: {fileID: 35713200}
   m_Layer: 5
   m_Name: YesBtn
   m_TagString: Untagged
@@ -267,6 +268,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35713195}
   m_CullTransparentMesh: 1
+--- !u!114 &35713200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35713195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 0}
+  catImage: {fileID: 0}
+  dogImage: {fileID: 0}
 --- !u!1 &88221691
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +294,7 @@ GameObject:
   - component: {fileID: 88221692}
   - component: {fileID: 88221694}
   - component: {fileID: 88221693}
+  - component: {fileID: 88221695}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -346,6 +363,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88221691}
   m_CullTransparentMesh: 1
+--- !u!114 &88221695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88221691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 0}
+  catImage: {fileID: 0}
+  dogImage: {fileID: 0}
 --- !u!1 &102746181
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +390,7 @@ GameObject:
   - component: {fileID: 102746185}
   - component: {fileID: 102746184}
   - component: {fileID: 102746183}
+  - component: {fileID: 102746186}
   m_Layer: 5
   m_Name: NoBtn
   m_TagString: Untagged
@@ -490,6 +523,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102746181}
   m_CullTransparentMesh: 1
+--- !u!114 &102746186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102746181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 0}
+  catImage: {fileID: 0}
+  dogImage: {fileID: 0}
 --- !u!1 &102970777
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,6 +1039,7 @@ GameObject:
   - component: {fileID: 299597030}
   - component: {fileID: 299597033}
   - component: {fileID: 299597032}
+  - component: {fileID: 299597034}
   m_Layer: 5
   m_Name: CheckPopUp
   m_TagString: Untagged
@@ -1057,6 +1106,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299597029}
   m_CullTransparentMesh: 1
+--- !u!114 &299597034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299597029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 299597032}
+  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
+  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &309746306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1132,7 @@ GameObject:
   - component: {fileID: 309746307}
   - component: {fileID: 309746309}
   - component: {fileID: 309746308}
+  - component: {fileID: 309746310}
   m_Layer: 5
   m_Name: BackBtn_CheckPopUp
   m_TagString: Untagged
@@ -1135,6 +1200,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309746306}
   m_CullTransparentMesh: 1
+--- !u!114 &309746310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309746306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 309746308}
+  catImage: {fileID: 21300000, guid: 459401f5498119148b0d960acb6d165a, type: 3}
+  dogImage: {fileID: 21300000, guid: db51fbec60b42a04d83ce46a21861d27, type: 3}
 --- !u!1 &443636925
 GameObject:
   m_ObjectHideFlags: 0
