@@ -796,7 +796,6 @@ GameObject:
   - component: {fileID: 339678404}
   - component: {fileID: 339678403}
   - component: {fileID: 339678402}
-  - component: {fileID: 339678401}
   m_Layer: 5
   m_Name: PreviousBtn
   m_TagString: Untagged
@@ -823,18 +822,6 @@ RectTransform:
   m_AnchoredPosition: {x: -296, y: -260}
   m_SizeDelta: {x: 300, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &339678401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339678399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6cabb81a9f8fed43b4932a101515ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &339678402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,9 +866,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 339678401}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnClick_close
+      - m_Target: {fileID: 653910842}
+        m_TargetAssemblyTypeName: CheckPop, Assembly-CSharp
+        m_MethodName: CloseCheckPop1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2062,6 +2049,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &653910841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653910843}
+  - component: {fileID: 653910842}
+  m_Layer: 0
+  m_Name: CheckPopupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &653910842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653910841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561f1a6b4b6f74348955a49e5c3d164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check_popup: {fileID: 1145335527}
+  check_popup1: {fileID: 1087666368}
+--- !u!4 &653910843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653910841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 728, y: 508, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &690724451
 GameObject:
   m_ObjectHideFlags: 0
@@ -4532,7 +4565,6 @@ GameObject:
   - component: {fileID: 1226772915}
   - component: {fileID: 1226772914}
   - component: {fileID: 1226772913}
-  - component: {fileID: 1226772912}
   m_Layer: 5
   m_Name: FinishButton
   m_TagString: Untagged
@@ -4540,23 +4572,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1226772912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226772911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46b3bb43b28e3f49a6cf0a2bfbd73c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzlePieceTag: shape
-  check_popup: {fileID: 1087666368}
-  ScoreText: {fileID: 0}
-  gameResult: {fileID: 0}
-  maxScore: 100
 --- !u!114 &1226772913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4601,9 +4616,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1226772912}
-        m_TargetAssemblyTypeName: FinishButtonManager, Assembly-CSharp
-        m_MethodName: onCheckPop
+      - m_Target: {fileID: 653910842}
+        m_TargetAssemblyTypeName: CheckPop, Assembly-CSharp
+        m_MethodName: onCheckPop1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6900,7 +6915,6 @@ GameObject:
   - component: {fileID: 1992689243}
   - component: {fileID: 1992689242}
   - component: {fileID: 1992689241}
-  - component: {fileID: 1992689240}
   m_Layer: 5
   m_Name: PreviousBtn
   m_TagString: Untagged
@@ -6927,18 +6941,6 @@ RectTransform:
   m_AnchoredPosition: {x: -296, y: -260}
   m_SizeDelta: {x: 300, y: 142}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1992689240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992689238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6cabb81a9f8fed43b4932a101515ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1992689241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6983,9 +6985,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1992689240}
-        m_TargetAssemblyTypeName: Button, Assembly-CSharp
-        m_MethodName: OnClick_close
+      - m_Target: {fileID: 653910842}
+        m_TargetAssemblyTypeName: CheckPop, Assembly-CSharp
+        m_MethodName: CloseCheckPop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7227,7 +7229,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2017808618}
         m_TargetAssemblyTypeName: FinishButtonManager, Assembly-CSharp
-        m_MethodName: OnResult
+        m_MethodName: OnFinishButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7695,7 +7697,6 @@ GameObject:
   - component: {fileID: 2126712197}
   - component: {fileID: 2126712196}
   - component: {fileID: 2126712195}
-  - component: {fileID: 2126712194}
   m_Layer: 5
   m_Name: nextButton
   m_TagString: Untagged
@@ -7722,31 +7723,6 @@ RectTransform:
   m_AnchoredPosition: {x: 826, y: 645}
   m_SizeDelta: {x: 184, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2126712194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126712192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b3002f2e36ef4546843f9158286e904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shapeButtonGroup: {fileID: 690724453}
-  colorButtonGroup: {fileID: 824585090}
-  prefabsToDisable:
-  - {fileID: 6830306970354463251, guid: 46ffc230310ee514381e983af0a51cc1, type: 3}
-  - {fileID: 2737189613260919869, guid: 4bc61314411fa664481502f2018f0dbb, type: 3}
-  - {fileID: 7849174449805159418, guid: 371bd25fe682b194d8c056d16c6d2ca6, type: 3}
-  - {fileID: 8113727178658214877, guid: 9d78b04fe9e51ed46aca2625eda2e74e, type: 3}
-  completeButtonObject: {fileID: 1226772911}
-  check_popup: {fileID: 1145335527}
-  puzzlePieceTag: shape
-  basePieceGroup: {fileID: 1042625468}
-  maxScore: 100
-  ScoreText: {fileID: 0}
 --- !u!114 &2126712195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7791,8 +7767,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2126712194}
-        m_TargetAssemblyTypeName: NextButtonManager, Assembly-CSharp
+      - m_Target: {fileID: 653910842}
+        m_TargetAssemblyTypeName: CheckPop, Assembly-CSharp
         m_MethodName: onCheckPop
         m_Mode: 1
         m_Arguments:
@@ -8045,3 +8021,4 @@ SceneRoots:
   - {fileID: 741207364}
   - {fileID: 1544004197}
   - {fileID: 626227498}
+  - {fileID: 653910843}

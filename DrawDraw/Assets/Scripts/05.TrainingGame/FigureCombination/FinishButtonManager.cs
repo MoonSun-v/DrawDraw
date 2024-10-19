@@ -40,8 +40,7 @@ public class FinishButtonManager : MonoBehaviour
     public void OnFinishButtonClick()
     {
         // 점수 저장 -> 결과 화면에서 게임클리어/오버 구분 위해서
-        gameResult.score = int.Parse(ScoreText.text);
-
+        gameResult.score = int.Parse(DisplayColorPieceCounts());
 
         // 현재 씬 이름 저장 : 결과 창에서 해당 게임으로 돌아오기 위해서 
         gameResult.previousScene = SceneManager.GetActiveScene().name;
@@ -58,21 +57,8 @@ public class FinishButtonManager : MonoBehaviour
         SceneManager.LoadScene("ResultScene");
     }
 
-    public void OnResult()
-    {
-        //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
-        DisplayColorPieceCounts();
-        //Text_GameResult.text = ScoreText.text + "점";
-
-        check_popup.SetActive(false); // 확인 팝업 창을 화면에 표시
-        //Debug.Log("완성 버튼 클릭, 색상 변경한 조각 개수 출력하기");
-        //DisplayColorPieceCounts();
-
-        SceneManager.LoadScene("ResultScene");
-    }
-
     // 전체 퍼즐 조각 클론 개수와 색상이 변경된 도형 개수를 출력하는 함수
-    void DisplayColorPieceCounts()
+    string DisplayColorPieceCounts()
     {
         /// 태그로 퍼즐 조각 클론들을 자동으로 찾기
         GameObject[] puzzlePieceClones = GameObject.FindGameObjectsWithTag(puzzlePieceTag);
@@ -114,5 +100,7 @@ public class FinishButtonManager : MonoBehaviour
         // 최종 점수 출력
         Debug.Log("도형 색칠하기 점수(50점 만점): " + score);
         Debug.Log("최종 점수: " + ScoreText.text);
+
+        return ScoreText.text;
     }
 }

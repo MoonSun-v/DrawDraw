@@ -42,6 +42,11 @@ public class NextButtonManager : MonoBehaviour
         check_popup.SetActive(true); // 확인 팝업 창을 화면에 표시
     }
 
+    public void CloseCheckPop()
+    {
+        check_popup.SetActive(false);
+    }
+
     public void OnNextButtonClick()
     {
         CalculateMatches();
@@ -177,20 +182,8 @@ public class NextButtonManager : MonoBehaviour
             // 두 퍼즐 조각과 기준 조각의 localScale 비교
             bool isScaleMatch = Mathf.Abs(puzzlePiece.transform.localScale.x - basePiece.transform.localScale.x) < localScaleTolerance &&
                                 Mathf.Abs(puzzlePiece.transform.localScale.y - basePiece.transform.localScale.y) < localScaleTolerance &&
-                                Mathf.Abs(puzzlePiece.transform.localScale.z - basePiece.transform.localScale.z) < localScaleTolerance;
-            //Debug.Log(basePiece + " isScaleMatch :" + isScaleMatch);
-            
-            if (isPositionMatch && isRotationMatch && !isScaleMatch)
-            {
-                Debug.Log("basePiece :" + basePiece);
-                Debug.Log(localScaleTolerance);
-                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.x - basePiece.transform.localScale.x));
-                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.y - basePiece.transform.localScale.y) );
-                Debug.Log(Mathf.Abs(puzzlePiece.transform.localScale.z - basePiece.transform.localScale.z) );
-            }
-
-
-
+                                Mathf.Abs(puzzlePiece.transform.localScale.z - basePiece.transform.localScale.z) < localScaleTolerance;     
+          
             // 4. 모든 조건이 일치하면 매치로 간주
             if (isPositionMatch && isRotationMatch && isScaleMatch)  // 위치, 회전, 크기 비교가 모두 일치할 경우
             {
