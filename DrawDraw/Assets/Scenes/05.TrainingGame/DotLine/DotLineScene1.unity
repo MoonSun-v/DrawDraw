@@ -6200,24 +6200,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dogObject: {fileID: 1996487082}
   catObject: {fileID: 328975643}
-  triggerObject1: {fileID: 0}
-  triggerObject2: {fileID: 0}
+  triggerObject1: {fileID: 89792319}
+  triggerObject2: {fileID: 89792319}
   catSounds:
   - {fileID: 8300000, guid: dbb9ea1982e50dd4bbbdd897d900e8ed, type: 3}
-  - {fileID: 8300000, guid: 699ddfe711270584e9314ce140223161, type: 3}
-  - {fileID: 8300000, guid: 78f072313d184d44a92a36e8f8a4e354, type: 3}
-  - {fileID: 8300000, guid: ffb3217057436d24bad212eeb0258ea6, type: 3}
-  - {fileID: 8300000, guid: 0c0b0c5ed89209d43bfc360a6e33abcf, type: 3}
-  - {fileID: 8300000, guid: e8a8e43538f26b84abe25b490da9de8c, type: 3}
-  - {fileID: 8300000, guid: 09a8860c9e7bcb946913f13cfdd0c222, type: 3}
   dogSounds:
   - {fileID: 8300000, guid: 7c15aeacfaffc594d8450592fea0408f, type: 3}
-  - {fileID: 8300000, guid: 1c0eee70d3a87f24ab010eccabc3e6a3, type: 3}
-  - {fileID: 8300000, guid: c69505a9b4d350c449e6f87c86a9afc0, type: 3}
-  - {fileID: 8300000, guid: d3619473ccb517141b04ae8b03db3bdf, type: 3}
-  - {fileID: 8300000, guid: c09af7b6244c3374b90b4dc4f5d98c9c, type: 3}
-  - {fileID: 8300000, guid: fb8537d6f4ff26b479be5b81ed54de6f, type: 3}
-  - {fileID: 8300000, guid: d12aa4a88d6eaef4b96abcde4bebb5c6, type: 3}
   audioSource: {fileID: 1249204378}
   TextChangeOnTrigger: {fileID: 0}
 --- !u!4 &1249204377

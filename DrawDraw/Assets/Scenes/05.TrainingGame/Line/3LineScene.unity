@@ -165,8 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dogObject: {fileID: 11646203}
   catObject: {fileID: 1647943515}
-  triggerObject1: {fileID: 0}
-  triggerObject2: {fileID: 0}
+  triggerObject1: {fileID: 492966418}
+  triggerObject2: {fileID: 492966418}
   catSounds:
   - {fileID: 8300000, guid: dbb9ea1982e50dd4bbbdd897d900e8ed, type: 3}
   dogSounds:
