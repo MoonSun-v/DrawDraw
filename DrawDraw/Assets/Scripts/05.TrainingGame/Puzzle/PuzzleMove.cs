@@ -25,6 +25,8 @@ public class PuzzleMove : MonoBehaviour
     private bool isStarted = true;
     private bool isScaled = false; // 크기 조정 여부
 
+    public LayerMask parentLayerMask;
+
     void Start()
     {
         correctPosition = correctForm.transform.position;
@@ -78,23 +80,30 @@ public class PuzzleMove : MonoBehaviour
         // 상태가 1일 때만 동작
         if (PuzzleManager.status == 1 && Input.GetMouseButtonDown(0))
         {
-            // 첫 번째 움직임일 때만 크기 변경
-            if (!isScaled)
+            // Raycast를 통해 'Parent' 레이어만 인식, Ignore Raycast 레이어는 무시
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, parentLayerMask);
+
+            if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Parent"))
             {
-                // Puzzle과 자식인 Piece의 크기를 한 번만 변경
-                Puzzle.transform.localScale *= 2.47f;
-                isScaled = true;  // 크기가 변경되었음을 표시
+                // 첫 번째 움직임일 때만 크기 변경
+                if (!isScaled)
+                {
+                    // Puzzle과 자식인 Piece의 크기를 한 번만 변경
+                    Puzzle.transform.localScale *= 2.47f;
+                    isScaled = true;  // 크기가 변경되었음을 표시
+                }
+
+                Vector2 mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+                startPosX = mousePos.x - this.transform.localPosition.x;
+                startPosY = mousePos.y - this.transform.localPosition.y;
+
+                isMoving = true;
             }
-
-            Vector2 mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
-
-            isMoving = true;
         }
     }
+
 
     private void OnMouseUp()
     {
@@ -102,7 +111,7 @@ public class PuzzleMove : MonoBehaviour
         if (PuzzleManager.status == 1)
         {
             isMoving = false;
-            
+
             SpriteRenderer puzzleRenderer = Puzzle.GetComponent<SpriteRenderer>();
             puzzleRenderer.sortingLayerName = layer;
 
@@ -129,6 +138,9 @@ public class PuzzleMove : MonoBehaviour
         return withinX && withinY;
     }
 }
+
+
+
 
 
 

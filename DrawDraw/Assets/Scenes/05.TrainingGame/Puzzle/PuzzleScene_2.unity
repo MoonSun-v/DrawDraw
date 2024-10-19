@@ -2060,6 +2060,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &279688196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2335,7 +2338,7 @@ GameObject:
   - component: {fileID: 342469966}
   - component: {fileID: 342469969}
   - component: {fileID: 342469970}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece5_1
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -2596,7 +2599,7 @@ GameObject:
   - component: {fileID: 359261423}
   - component: {fileID: 359261424}
   - component: {fileID: 359261427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece3
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -2920,7 +2923,7 @@ GameObject:
   - component: {fileID: 404374776}
   - component: {fileID: 404374777}
   - component: {fileID: 404374780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece4
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -3673,6 +3676,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &435449967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4774,6 +4780,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &719777315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4883,7 +4892,7 @@ GameObject:
   - component: {fileID: 726494513}
   - component: {fileID: 726494514}
   - component: {fileID: 726494515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4977,6 +4986,9 @@ MonoBehaviour:
   y: 1.5
   layer: 5
   correctForm: {fileID: 267484102}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &726494515
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5422,7 +5434,7 @@ GameObject:
   - component: {fileID: 823936094}
   - component: {fileID: 823936097}
   - component: {fileID: 823936098}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece5_2
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -5804,7 +5816,7 @@ GameObject:
   - component: {fileID: 910022372}
   - component: {fileID: 910022375}
   - component: {fileID: 910022376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5897,6 +5909,9 @@ MonoBehaviour:
   y: -0.5
   layer: 4
   correctForm: {fileID: 439500588}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &910022376
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6095,7 +6110,7 @@ GameObject:
   - component: {fileID: 945843966}
   - component: {fileID: 945843967}
   - component: {fileID: 945843970}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece2_1
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -7348,7 +7363,7 @@ GameObject:
   - component: {fileID: 1135402895}
   - component: {fileID: 1135402896}
   - component: {fileID: 1135402897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7441,6 +7456,9 @@ MonoBehaviour:
   y: -0.5
   layer: 6
   correctForm: {fileID: 1231033413}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &1135402897
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8207,7 +8225,7 @@ GameObject:
   - component: {fileID: 1315652759}
   - component: {fileID: 1315652760}
   - component: {fileID: 1315652763}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece1
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -8610,7 +8628,7 @@ GameObject:
   - component: {fileID: 1363570119}
   - component: {fileID: 1363570122}
   - component: {fileID: 1363570123}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece6
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -9035,7 +9053,7 @@ GameObject:
   - component: {fileID: 1410176756}
   - component: {fileID: 1410176759}
   - component: {fileID: 1410176760}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Piece2_2
   m_TagString: piece
   m_Icon: {fileID: 0}
@@ -9468,7 +9486,7 @@ GameObject:
   - component: {fileID: 1457966598}
   - component: {fileID: 1457966601}
   - component: {fileID: 1457966602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9561,6 +9579,9 @@ MonoBehaviour:
   y: -2.5
   layer: 3
   correctForm: {fileID: 1088470070}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &1457966602
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10119,6 +10140,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1516034471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10568,6 +10592,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1598690303
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10930,6 +10957,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1647682409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11160,6 +11190,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1676105844
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11512,7 +11545,7 @@ GameObject:
   - component: {fileID: 1775321892}
   - component: {fileID: 1775321895}
   - component: {fileID: 1775321896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11606,6 +11639,9 @@ MonoBehaviour:
   y: -2.5
   layer: 2
   correctForm: {fileID: 166414931}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &1775321896
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12552,7 +12588,7 @@ GameObject:
   - component: {fileID: 1873156213}
   - component: {fileID: 1873156216}
   - component: {fileID: 1873156217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Puzzle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12645,6 +12681,9 @@ MonoBehaviour:
   y: 1.5
   layer: 1
   correctForm: {fileID: 222314467}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!60 &1873156217
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -13667,6 +13706,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 0}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &2121057289
 BoxCollider2D:
   m_ObjectHideFlags: 0
