@@ -36,14 +36,23 @@ public class PuzzleColoring : MonoBehaviour
     {
         pieceColors = new Color[Pieces.Length];
 
+        // 퍼즐의 기본 레이어를 Ignore Raycast로 설정
+        foreach (GameObject puzzle in Puzzles)
+        {
+            puzzle.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+
+        // 퍼즐 조각(Piece)은 Child 레이어로 설정
         foreach (GameObject piece in Pieces)
         {
+            piece.layer = LayerMask.NameToLayer("Child");
             if (piece.GetComponent<Collider2D>() == null)
             {
                 piece.AddComponent<PolygonCollider2D>();
             }
         }
 
+        // 퍼즐 기본 색상 설정
         for (int i = 0; i < Puzzles.Length; i++)
         {
             SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
@@ -53,6 +62,7 @@ public class PuzzleColoring : MonoBehaviour
             }
         }
     }
+
 
     void Update()
     {
@@ -217,6 +227,18 @@ public class PuzzleColoring : MonoBehaviour
             resetBtn.SetActive(false);
             crayons.SetActive(false);
             puzzleboard.SetActive(true);
+
+            // Puzzle의 레이어를 Parent로 설정
+            foreach (GameObject puzzle in Puzzles)
+            {
+                puzzle.layer = LayerMask.NameToLayer("Parent");
+            }
+
+            // Piece의 레이어를 Ignore Raycast로 설정
+            foreach (GameObject piece in Pieces)
+            {
+                piece.layer = LayerMask.NameToLayer("Ignore Raycast");
+            }
 
             PuzzleManager.status = 1; // 상태 업데이트
         }
