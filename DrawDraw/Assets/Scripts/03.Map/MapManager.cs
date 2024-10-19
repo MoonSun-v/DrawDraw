@@ -20,12 +20,13 @@ public class MapManager : MonoBehaviour
     public Sprite DogMoveSprite;
     public Sprite CatMoveSprite;
     public Text Name;
-    public Slider ExpBar; 
+    public Slider ExpBar;
+    public Slider CharacterBar;
 
     // [ 프로필 팝업 관련 변수 ] 
     public GameObject Profile;
 
-    public GameObject StageManager;
+    // public GameObject StageManager;
 
 
 
@@ -76,6 +77,7 @@ public class MapManager : MonoBehaviour
         Name.text = GameData.instance.playerdata.PlayerName;
 
         ExpBar.value = GameData.instance.playerdata.PlayerExp;
+        CharacterBar.value = GameData.instance.playerdata.PlayerExp - 25;
     }
 
 
@@ -85,7 +87,7 @@ public class MapManager : MonoBehaviour
     public void OnProfilePopup()
     {
         Profile.SetActive(true);
-        StageManager.SetActive(true);
+        // StageManager.SetActive(true);
     }
     public void OffProfilePopup()
     {
