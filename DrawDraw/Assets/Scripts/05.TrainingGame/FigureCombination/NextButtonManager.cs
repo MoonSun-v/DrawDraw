@@ -37,16 +37,6 @@ public class NextButtonManager : MonoBehaviour
         SetCanvasGroupActive(colorButtonGroup, false);
     }
 
-    public void onCheckPop() // 확인창 띄우기
-    {
-        check_popup.SetActive(true); // 확인 팝업 창을 화면에 표시
-    }
-
-    public void CloseCheckPop()
-    {
-        check_popup.SetActive(false);
-    }
-
     public void OnNextButtonClick()
     {
         CalculateMatches();
@@ -67,8 +57,6 @@ public class NextButtonManager : MonoBehaviour
         completeButtonObject.SetActive(true);  // "완성" 버튼 오브젝트 활성화
 
         check_popup.SetActive(false);
-
-
     }
 
     private void DisableScriptsOnPrefabInstances(GameObject prefab)
