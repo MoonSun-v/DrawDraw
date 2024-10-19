@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PuzzleChecker : MonoBehaviour
 {
-    public PuzzleMove[] puzzlePieces;
-
-    public PuzzleManager PuzzleManager;
+    public PuzzleMove[] puzzleMoves;
 
     public GameObject CheckPopup; // 확인 팝업 창
     public GameResultSO gameResult;
@@ -22,6 +20,8 @@ public class PuzzleChecker : MonoBehaviour
     public void CheckPopUp()
     {
         CheckPopup.SetActive(true);
+        SetMoveEnabled("Ignore Raycast");
+
         // OnBlocker();
     }
 
@@ -30,6 +30,8 @@ public class PuzzleChecker : MonoBehaviour
     {
         // 팝업 비활성화
         CheckPopup.SetActive(false);
+        SetMoveEnabled("Parent");
+
         // OffBlocker();
     }
 
@@ -38,7 +40,7 @@ public class PuzzleChecker : MonoBehaviour
     {
         bool allInCorrectPosition = true;
 
-        foreach (PuzzleMove piece in puzzlePieces)
+        foreach (PuzzleMove piece in puzzleMoves)
         {
             if (!piece.IsInCorrectPosition())
             {
@@ -56,12 +58,21 @@ public class PuzzleChecker : MonoBehaviour
         else
         {
             print("실패");
-            gameResult.score = 100; // 점수 저장 
+            gameResult.score = 0; // 점수 저장 
             gameResult.previousScene = SceneManager.GetActiveScene().name; // 현재 씬 이름 저장
         }
 
         // 결과 화면으로 넘어가기 
         StartCoroutine(ResultSceneDelay()); // StartCoroutine( "메소드이름", 매개변수 );
+    }
+
+    void SetMoveEnabled(string layer)
+    {
+        // Puzzle의 레이어 설정
+        foreach (var puzzle in puzzleMoves)
+        {
+            puzzle.gameObject.layer = LayerMask.NameToLayer(layer); // layer 이름으로 레이어 변경
+        }
     }
 
     IEnumerator ResultSceneDelay()

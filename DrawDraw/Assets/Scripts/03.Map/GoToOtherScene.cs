@@ -47,7 +47,8 @@ public class GoToOtherScene : MonoBehaviour
     public void GoToFigureCombinationButton_3() { SceneManager.LoadScene("3FigurSelect"); }
 
 
-    // ∆€¡Ò -> æ¿ √ﬂ∞° « ø‰ 
-    public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene_2"); }
+    // ∆€¡Ò
+    public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene_1"); }
+    public void GoToPuzzle_2() { SceneManager.LoadScene("PuzzleScene_2"); }
 
 }

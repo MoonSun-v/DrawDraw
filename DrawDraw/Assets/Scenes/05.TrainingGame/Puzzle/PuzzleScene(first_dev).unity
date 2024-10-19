@@ -1107,9 +1107,6 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 772053187}
-  parentLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &404374775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,9 +1256,6 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 1801842576}
-  parentLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &436619494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,9 +2374,6 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 436619494}
-  parentLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1055469017
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,7 +3316,6 @@ GameObject:
   - component: {fileID: 1247959960}
   - component: {fileID: 1247959962}
   - component: {fileID: 1247959961}
-  - component: {fileID: 1247959963}
   m_Layer: 5
   m_Name: CheckPopUp (1)
   m_TagString: Untagged
@@ -3392,21 +3382,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247959959}
   m_CullTransparentMesh: 1
---- !u!114 &1247959963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247959959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageComponent: {fileID: 1247959961}
-  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
-  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &1287608482
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,9 +3595,6 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 535910685}
-  parentLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1332962095
 GameObject:
   m_ObjectHideFlags: 0
@@ -5651,7 +5623,6 @@ GameObject:
   - component: {fileID: 2016017673}
   - component: {fileID: 2016017675}
   - component: {fileID: 2016017674}
-  - component: {fileID: 2016017676}
   m_Layer: 5
   m_Name: CheckPopUp (0)
   m_TagString: Untagged
@@ -5718,21 +5689,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016017672}
   m_CullTransparentMesh: 1
---- !u!114 &2016017676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016017672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ee8ab24d55f4543bed1f7562a41479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageComponent: {fileID: 2016017674}
-  catImage: {fileID: 21300000, guid: e41ca52347940bc4f8a2f0c76a8d6359, type: 3}
-  dogImage: {fileID: 21300000, guid: b49aaec8e922500429115bf38b9c0e04, type: 3}
 --- !u!1 &2081390138
 GameObject:
   m_ObjectHideFlags: 0

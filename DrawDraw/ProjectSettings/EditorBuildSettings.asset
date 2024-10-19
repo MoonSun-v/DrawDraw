@@ -21,6 +21,24 @@ EditorBuildSettings:
     path: Assets/Scenes/04.TestGame/TestStartScene.unity
     guid: 350861dd25b935d47a9ebdffeba34b5e
   - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_1Line.unity
+    guid: 9ecc6967dd73f284e9fda19cf657a86c
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_2Line.unity
+    guid: 4f119c80cdab5be45a1105baba9c5516
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_3Line.unity
+    guid: ce8ecdde8c9498c4eb3fa59f84578168
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_4Line.unity
+    guid: d0cfb99f29ab7f648b028451f5f1e0e5
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_5Line.unity
+    guid: 564ab4832c3d72d48adc7eca518d25c3
+  - enabled: 1
+    path: Assets/Scenes/04.TestGame/Test_Lines/Test_6Line.unity
+    guid: 126a24ccf489549438ddebb56a7449e9
+  - enabled: 1
     path: Assets/Scenes/04.TestGame/Test_ColoringScene.unity
     guid: 47050d9717f287d45a21610d545226a1
   - enabled: 1
@@ -102,8 +120,8 @@ EditorBuildSettings:
     path: Assets/Scenes/05.TrainingGame/Tangram/TangramScene_Lv3.unity
     guid: 8430797c283db824cb325c73edffc6cf
   - enabled: 1
-    path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScen_1.unity
-    guid: 2b90c5ac705d0af43854a31eb7a78968
+    path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScene_1.unity
+    guid: 3fd8b9d760c1ff14d9c76707a4771330
   - enabled: 1
     path: Assets/Scenes/05.TrainingGame/Puzzle/PuzzleScene_2.unity
     guid: f80e8afc6e4be4f46b2ff2706c93c97e
@@ -122,22 +140,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/FigureSelectionScene.unity
     guid: 943eb7c16c729c44984807a14118fe0b
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_1Line.unity
-    guid: 9ecc6967dd73f284e9fda19cf657a86c
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_2Line.unity
-    guid: 4f119c80cdab5be45a1105baba9c5516
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_3Line.unity
-    guid: ce8ecdde8c9498c4eb3fa59f84578168
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_4Line.unity
-    guid: d0cfb99f29ab7f648b028451f5f1e0e5
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_5Line.unity
-    guid: 564ab4832c3d72d48adc7eca518d25c3
-  - enabled: 1
-    path: Assets/Scenes/04.TestGame/Test_Lines/Test_6Line.unity
-    guid: 126a24ccf489549438ddebb56a7449e9
   m_configObjects: {}

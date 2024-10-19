@@ -2263,7 +2263,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1206417086}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
-        m_MethodName: GoToPuzzle_1
+        m_MethodName: GoToPuzzle_2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

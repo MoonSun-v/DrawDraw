@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PuzzleManager : MonoBehaviour
     public PuzzleMove[] puzzleMoves;
 
     public GameObject[] button;
+
+    public Text explainText;
 
     void Start()
     {
@@ -23,6 +26,8 @@ public class PuzzleManager : MonoBehaviour
             PuzzleColoring.enabled = true;
             SetPuzzleMoveEnabled(false);
 
+            explainText.text = "¿øÇÏ´Â »öÀ¸·Î »öÄ¥ÇØºÁ";
+
             button[0].SetActive(true);
             button[1].SetActive(false);
         }
@@ -30,6 +35,8 @@ public class PuzzleManager : MonoBehaviour
         {
             PuzzleColoring.enabled = false;
             SetPuzzleMoveEnabled(true);
+
+            explainText.text = "ÆÛÁñÀ» ¸ÂÃçºÁ";
 
             button[0].SetActive(false);
             button[1].SetActive(true);

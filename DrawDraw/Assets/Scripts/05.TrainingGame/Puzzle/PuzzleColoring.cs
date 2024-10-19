@@ -117,59 +117,6 @@ public class PuzzleColoring : MonoBehaviour
         CheckPopup.SetActive(false);
     }
 
-    // 팝업 : 완성이야
-    /*
-    public void NextBtn()
-    {
-        CheckPopup.SetActive(false);
-
-        if (PuzzleManager.status == 0)
-        {
-            // 퍼즐 조각 색상 저장
-            for (int i = 0; i < Pieces.Length; i++)
-            {
-                SpriteRenderer spriteRenderer = Pieces[i].GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
-                {
-                    pieceColors[i] = spriteRenderer.color;
-                }
-            }
-
-            float m = 1.7f;
-
-            // 퍼즐 조각 위치와 크기 변경
-            for (int i = 0; i < Pieces.Length; i++)
-            {
-                Pieces[i].transform.localScale *= 0.5f;
-                Pieces[i].transform.position = new Vector3(5.4f, m, Pieces[i].transform.position.z);
-                m -= 1.7f;
-            }
-
-            float n = 1.7f;
-
-            for (int i = 0; i < Puzzles.Length; i++)
-            {
-                Puzzles[i].transform.localScale *= 0.5f;
-                Puzzles[i].transform.position = new Vector3(5.4f, n, Puzzles[i].transform.position.z);
-
-                SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
-                if (puzzleRenderer != null)
-                {
-                    puzzleRenderer.color = Color.white;
-                }
-
-                n -= 1.7f;
-            }
-
-            colorboard.SetActive(false);
-            resetBtn.SetActive(false);
-            crayons.SetActive(false);
-            puzzleboard.SetActive(true);
-
-            PuzzleManager.status = 1;
-        }
-    }
-    */
     public void NextBtn()
     {
         CheckPopup.SetActive(false);
@@ -195,32 +142,7 @@ public class PuzzleColoring : MonoBehaviour
                     puzzleRenderer.color = Color.white;
                 }
             }
-            /*
-            float m = 1.7f; // 초기 y 좌표
-
-            // 퍼즐(부모)과 그 자식(조각)들의 위치와 크기 변경
-
-            for (int i = 0; i < Puzzles.Length; i++)
-            {
-                // 부모(Puzzle)의 크기를 0.15로 변경
-                Puzzles[i].transform.localScale = new Vector3(0.15f, 0.15f, Puzzles[i].transform.localScale.z);
-
-                // 부모(Puzzle)의 위치를 새로 지정
-                Vector3 newPosition = new Vector3(5.4f, m, Puzzles[i].transform.position.z);
-                Puzzles[i].transform.position = newPosition;
-
-                // 자식(Piece)도 부모와 동일한 위치를 가지게 됨 (부모가 이동하면 자동으로 따라옴)
-
-                // 퍼즐 조각 색상 리셋
-                SpriteRenderer puzzleRenderer = Puzzles[i].GetComponent<SpriteRenderer>();
-                if (puzzleRenderer != null)
-                {
-                    puzzleRenderer.color = Color.white;
-                }
-
-                m -= 1.7f; // 다음 퍼즐을 위한 y 좌표 조정
-            }
-            */
+         
 
             // UI 변경
             colorboard.SetActive(false);
