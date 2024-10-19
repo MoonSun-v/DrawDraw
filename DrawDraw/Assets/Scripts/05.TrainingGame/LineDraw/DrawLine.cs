@@ -26,7 +26,6 @@ public class DrawLine : MonoBehaviour
     private bool isDrawing = false;
 
     public GameObject check; // 게임의 확인창 팝업
-    public GameObject finish; // 게임의 결과창 팝업
 
     public ColorManger ColorManager; // ColorManager 스크립트 참조 (colorCode 값 가져오기)
     private Color lineColor;
@@ -107,6 +106,10 @@ public class DrawLine : MonoBehaviour
         currentLineRenderer.startWidth = lineWidth;
         currentLineRenderer.endWidth = lineWidth;
         currentLineRenderer.positionCount = 0; // 선의 위치를 초기화합니다.
+
+        // 최근에 그린 선이 앞으로 보이도록 sortingOrder 설정
+        currentLineRenderer.sortingOrder = lines.Count;  // 리스트에 추가된 선의 개수에 따라 sortingOrder를 증가시킴
+
 
         // 현재 위치를 이전 위치로 설정
         previousPosition = GetInputPosition();

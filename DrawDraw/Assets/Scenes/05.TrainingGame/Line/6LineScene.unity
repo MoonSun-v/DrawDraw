@@ -1458,7 +1458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &759006402
 Transform:
   m_ObjectHideFlags: 0
@@ -2995,7 +2995,6 @@ MonoBehaviour:
   lineWidth: 0.1
   LineDrawManager: {fileID: 1271192400}
   check: {fileID: 1808491936}
-  finish: {fileID: 0}
   ColorManager: {fileID: 500541229}
 --- !u!4 &1571686940
 Transform:
