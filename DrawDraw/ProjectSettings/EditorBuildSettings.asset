@@ -140,4 +140,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/05.TrainingGame/FigureCombinationScene/FigureSelectionScene.unity
     guid: 943eb7c16c729c44984807a14118fe0b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: d35ee9b53287dbd498bda513b7cd0505, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 64effde2d19cb0944b59237e0ea40a07, type: 2}
