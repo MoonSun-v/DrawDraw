@@ -677,7 +677,6 @@ MonoBehaviour:
   lineWidth: 0.2
   LineDrawManager: {fileID: 1614019417}
   check: {fileID: 2108219558}
-  finish: {fileID: 0}
   ColorManager: {fileID: 1504587389}
 --- !u!4 &265295716
 Transform:
@@ -1741,7 +1740,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.07450981, g: 0.07450981, b: 0.07450981, a: 0}
+  m_BackGroundColor: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
