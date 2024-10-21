@@ -14,13 +14,6 @@ public class TestManager : MonoBehaviour
         StartCoroutine(CountSecCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     private IEnumerator CountSecCoroutine()
     {
         countText.text = "3";
@@ -30,7 +23,8 @@ public class TestManager : MonoBehaviour
         countText.text = "1";
         yield return new WaitForSeconds(1.0f);
         countText.text = "시작!";
+        yield return new WaitForSeconds(1.0f);
 
-        SceneManager.LoadScene("Test_1Line"); //선 그리기 씬으로 추후 변경 필요 -> 변경 완료!
+        SceneManager.LoadScene("Test_1Line");
     }
 }
