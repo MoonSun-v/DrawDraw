@@ -20,8 +20,14 @@ public class ResultManager : MonoBehaviour
     private bool isClear;   // 게임 클리어했는가? 
 
     //성공 실패 캐릭터 이미지
-    public Sprite[] CharacterImages; 
-    public Image Image;
+    public Image characterImage;
+    public Sprite[] CatImages;
+    public Sprite[] DogImages;
+
+    // 고양이와 강아지 소리 mp3 파일 리스트
+    public AudioClip[] catSounds;  // 고양이 소리 목록
+    public AudioClip[] dogSounds;  // 강아지 소리 목록
+    public AudioSource audioSource; // 오디오 소스
 
     // 플레이어 캐릭터 정보 불러오기
     bool isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
@@ -173,38 +179,9 @@ public class ResultManager : MonoBehaviour
 
 
         // 캐릭터 상태 세팅
-        //if (isClear) { scoreText.text = "축하하고 있는 캐릭터"; }
-        //else         { scoreText.text = "아쉬워하는 캐릭터"; }
+        SetCharacterState(isClear, isDog);
 
-        
-        if (isClear)
-        {
-            if (isDog)
-            {
-                Image.sprite = CharacterImages[0];
-                Debug.Log("강아지 성공");
-            }
-            else
-            {
-                Image.sprite = CharacterImages[1];
-                Debug.Log("고양이 성공");
-            }
-            StartCoroutine(ChangeSceneAfterDelay(5f));
-        }
-        else
-        {
-            if (isDog)
-            {
-                Image.sprite = CharacterImages[2];
-                Debug.Log("강아지 실패");
-            }
-            else
-            {
-                Image.sprite = CharacterImages[3];
-                Debug.Log("고양이 실패");
-            }
-            StartCoroutine(ChangeSceneAfterDelay(5f));
-        }
+        StartCoroutine(ChangeSceneAfterDelay(5f));
 
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();
@@ -244,10 +221,6 @@ public class ResultManager : MonoBehaviour
         // print($"{stagenum}번 스테이지의 결과값 저장 완료");
     }
 
-
-
-
-
     // ★ [ 씬 이동 버튼 ] -----------------------------------------------------------------------------
     //
     // Restart() : 이전 게임의 씬으로 돌아가기
@@ -261,5 +234,30 @@ public class ResultManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         SceneManager.LoadScene("MapScene");
+    }
+
+    // ★ [ 결과 화면 성공/실패 이미지 출력하는 메소드 ] ---------------------------------------------------
+    //
+    // isClear : 성공(0,1,2) or 실패(3,4,5)
+    // isDog   : 사용자 프로필
+    public void SetCharacterState(bool isClear, bool isDog)
+    {
+        // 성공 여부에 따라 인덱스 설정
+        int index = isClear ? Random.Range(0, 3) : Random.Range(3, 6);
+
+        // 캐릭터 상태에 따라 이미지와 사운드 설정 및 재생
+        if (isDog)
+        {
+            characterImage.sprite = DogImages[index];
+            audioSource.clip = dogSounds[index];
+        }
+        else
+        {
+            characterImage.sprite = CatImages[index];
+            audioSource.clip = catSounds[index];
+        }
+
+        // 오디오 재생
+        audioSource.Play();
     }
 }
