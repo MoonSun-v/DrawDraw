@@ -34,7 +34,7 @@ public class NextButtonManager : MonoBehaviour
     {
         // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
         //SetCanvasGroupActive(shapeButtonGroup, true);
-        SetCanvasGroupActive(colorButtonGroup, false);
+        //SetCanvasGroupActive(colorButtonGroup, false);
     }
 
     public void OnNextButtonClick()
