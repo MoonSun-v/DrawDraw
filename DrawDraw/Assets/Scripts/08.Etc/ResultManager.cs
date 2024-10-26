@@ -81,8 +81,8 @@ public class ResultManager : MonoBehaviour
             if (gameResult.previousScene == "1LineScene") { StageNum = 1; }
             else if (gameResult.previousScene == "2LineScene") { StageNum = 3; }
             else if (gameResult.previousScene == "3LineScene") { StageNum = 5; }
-            else if (gameResult.previousScene == "4LineScene") { StageNum = 6; }
-            else if (gameResult.previousScene == "5LineScene") { StageNum = 10; }
+            else if (gameResult.previousScene == "4LineScene") { StageNum = 8; }
+            else if (gameResult.previousScene == "5LineScene") { StageNum = 11; }
             else if (gameResult.previousScene == "6LineScene") { StageNum = 16; }
 
             #endregion
@@ -101,7 +101,7 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "ScratchScene1")      { StageNum = 7; }
+            if (gameResult.previousScene == "ScratchScene1")      { StageNum = 6; }
             else if (gameResult.previousScene == "ScratchScene2") { StageNum = 12; }
 
             #endregion
@@ -124,7 +124,7 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
             
-            if (gameResult.previousScene == "1Pinwheel" || gameResult.previousScene == "1Sun") { StageNum = 8; }
+            if (gameResult.previousScene == "1Pinwheel" || gameResult.previousScene == "1Sun") { StageNum = 7; }
             else if (gameResult.previousScene == "2Rocket" || gameResult.previousScene == "2Ship") { StageNum = 9; }
             else if (gameResult.previousScene == "3Person" || gameResult.previousScene == "3TheTrain") { StageNum = 13; }
 
@@ -145,7 +145,7 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "TangramScene_Lv1")    { StageNum = 11; }
+            if (gameResult.previousScene == "TangramScene_Lv1")    { StageNum = 10; }
             else if (gameResult.previousScene == "TangramScene_Lv2") { StageNum = 15; }
             else if (gameResult.previousScene == "TangramScene_Lv3") { StageNum = 18; }
 
