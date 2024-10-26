@@ -73,6 +73,9 @@ public class ResultManager : MonoBehaviour
 
         // 2. [ 선 따라 그리기 ]
         // 6번 이상의 충돌 : 게임 오버
+        // 60 % 미만           : 경험치 X  ,게임 실패
+        // 60 % 이상 80 % 미만 : 경험치 5  ,게임 성공
+        // 80 % 이상           : 경험치 10 ,게임 성공
 
         else if (LineScenes.Contains(gameResult.previousScene))
         {
@@ -87,8 +90,9 @@ public class ResultManager : MonoBehaviour
 
             #endregion
 
-            if (gameResult.score >= 6) { isClear = false; FailSetting(StageNum); } 
-            else                       { isClear = true; ClearSetting(StageNum); }
+            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
+            else                            { isClear = true; ClearSetting(StageNum); }
         }
 
 
