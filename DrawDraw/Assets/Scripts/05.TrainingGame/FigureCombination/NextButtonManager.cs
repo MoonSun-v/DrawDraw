@@ -30,13 +30,6 @@ public class NextButtonManager : MonoBehaviour
     // 일치한 퍼즐 조각 개수
     private int matchingPieceCount = 0;
 
-    void Start()
-    {
-        // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
-        //SetCanvasGroupActive(shapeButtonGroup, true);
-        //SetCanvasGroupActive(colorButtonGroup, false);
-    }
-
     public void OnNextButtonClick()
     {
         CalculateMatches();
@@ -44,6 +37,7 @@ public class NextButtonManager : MonoBehaviour
         // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
         SetCanvasGroupActive(shapeButtonGroup, false);
         SetCanvasGroupActive(colorButtonGroup, true);
+        Debug.Log("페인트 보이기");
 
         // 각 프리팹의 모든 인스턴스에 있는 모든 스크립트를 비활성화합니다.
         foreach (GameObject prefab in prefabsToDisable)

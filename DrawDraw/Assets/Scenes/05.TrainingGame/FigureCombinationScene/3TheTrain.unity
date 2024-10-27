@@ -1533,6 +1533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   check_popup: {fileID: 26374704}
   check_popup1: {fileID: 1219381562}
+  colorButtonGroup: {fileID: 1795291627}
 --- !u!4 &428861833
 Transform:
   m_ObjectHideFlags: 0
@@ -6456,7 +6457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1795291626
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6534,7 +6535,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1795291630
 Canvas:
   m_ObjectHideFlags: 0
