@@ -3016,7 +3016,7 @@ GameObject:
   - component: {fileID: 1959148639}
   - component: {fileID: 1959148638}
   m_Layer: 0
-  m_Name: Narration(Missing)
+  m_Name: Narration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,7 +3032,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
-  m_audioClip: {fileID: 8300000, guid: b9be0c2b2c7a5cc4f8380522b5177b20, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9c0501d418fcea74e8d7a0129db9c985, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
