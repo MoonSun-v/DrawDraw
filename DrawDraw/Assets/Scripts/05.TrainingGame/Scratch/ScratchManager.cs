@@ -40,6 +40,7 @@ public class ScratchManager : MonoBehaviour
 
     public GameObject ScratchDraw;
     public GameObject ScratchBlack;         // 검은도안 
+    public GameObject FinishButton; 
 
     // [ 도안 선택 버튼 ]
     public GameObject[] ImageButton = new GameObject[4];  
@@ -48,6 +49,8 @@ public class ScratchManager : MonoBehaviour
     public GameResultSO gameResult;         // 게임 결과 저장용 SO
     public SpriteRenderer spriteRenderer;   // 스프라이트 렌더러
     public Text ScoreText;                  // 임시 점수 표시용 텍스트
+
+    public Sprite FinishImg;
 
     private bool isReturn;
     private bool isEraser;
@@ -79,7 +82,6 @@ public class ScratchManager : MonoBehaviour
     {
         ReturnButtonState();  // '처음부터' 버튼            상태 처리
         ScratchDrawState();   // ScratchDraw와 ScratchBlack 상태 처리
-        // DrawingAreaLimits();  // 그리기 영역 제한   
     }
 
 
@@ -120,30 +122,6 @@ public class ScratchManager : MonoBehaviour
         }
     }
 
-
-
-    // ★ [ 그리기 영역 제한 ]
-    // 
-    /*
-    private void DrawingAreaLimits()
-    {
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        if (mousePos.x < Limit_l.position.x || mousePos.x > Limit_R.position.x ||
-            mousePos.y < Limit_B.position.y || mousePos.y > Limit_T.position.y)
-        {
-            if (scratchdraw.iscurrentLineRenderer())
-            {
-                scratchdraw.FinishLineRenderer();  // 현재 그리는 선 종료
-            }
-            scratchdraw.enabled = false;           
-        }
-        else
-        {
-            scratchdraw.enabled = true;           
-        }
-    }
-    */
 
 
     // ★ [ 완료 확인 팝업 ]
@@ -195,7 +173,6 @@ public class ScratchManager : MonoBehaviour
         gameResult.score = score;
         gameResult.previousScene = SceneManager.GetActiveScene().name; 
 
-        // StartCoroutine(ResultSceneDelay());
         ResultSceneDelay_();
     }
 
@@ -208,6 +185,7 @@ public class ScratchManager : MonoBehaviour
     // 
     private void StartScratchPhase()
     {
+        FinishButton.GetComponent<Image>().sprite = FinishImg;
         SetRaycastForCrayonChildren(false);
         CrayonAnim.SetBool("isCrayonBack", true);  
         EraserAnim.SetBool("isEraserFront", true); 
@@ -218,7 +196,6 @@ public class ScratchManager : MonoBehaviour
         BaseAnim.SetBool("isBlackBase", true); 
 
         StartCoroutine(SelectDrawDelay());
-        // SelectDrawDelay_();
     }
 
 
@@ -284,16 +261,6 @@ public class ScratchManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         SelectDraw.SetActive(true);
     }
-
-    /*
-    // ★ 1초 후 결과 화면으로 전환
-    //
-    IEnumerator ResultSceneDelay()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("ResultScene");
-    }
-    */
 
     void ResultSceneDelay_()
     {
