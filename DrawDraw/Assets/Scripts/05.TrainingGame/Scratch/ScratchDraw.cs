@@ -23,7 +23,7 @@ public class ScratchDraw: MonoBehaviour
     // [ 색상 선택 관련 변수 ]
     public GameObject previousButton;                 // 이전에 클릭된 버튼을 추적하기 위한 변수
     public Vector3 previousButtonOriginalPosition;    // 이전 버튼의 원래 위치를 저장
-    private const int CrayonMove = 60;                // 버튼 이동 거리
+    private const int CrayonMove = 90;                // 버튼 이동 거리
 
     // [ 그려진 선 추적 및 관리 ]
     public List<GameObject> lineRenderers = new List<GameObject>();     // 생성된 LineRenderer를 추적하기 위한 리스트
@@ -135,7 +135,13 @@ public class ScratchDraw: MonoBehaviour
     void PointToMousePos()
     {
         Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-
+        /*
+        if (Vector2.Distance(lastPos, mousePos) > 0.1f)
+        {
+            AddAPoint(mousePos);
+            lastPos = mousePos;
+        }
+        */
         if ((lastPos - mousePos).magnitude > 0.1f)
         {
             AddAPoint(mousePos);
@@ -211,6 +217,12 @@ public class ScratchDraw: MonoBehaviour
         
     }
 
+    /*
+    public bool iscurrentLineRenderer()
+    {
+        return currentLineRenderer != null;
+    }
+    */
 
     // ★ [ 브러시 프리팹 색상 변경 ]
     //

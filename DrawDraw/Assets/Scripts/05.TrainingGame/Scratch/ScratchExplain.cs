@@ -97,7 +97,7 @@ public class ScratchExplain : MonoBehaviour
                 print("Drawing 코루틴이 중단되었습니다.");
             }
 
-            Explain.text = "색칠을 모두 끝냈다면 다음 버튼을 클릭해보자";
+            Explain.text = "색칠을 모두 끝냈다면 완성 버튼을 클릭해보자";
 
             stopCalculating = true;
         }
