@@ -601,19 +601,19 @@ MonoBehaviour:
   gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
   characterImage: {fileID: 1051542846}
   CatImages:
-  - {fileID: 21300000, guid: 64675471629bb384f911aba59905474c, type: 3}
-  - {fileID: 21300000, guid: f1f10a8358675234483e79692633e6bc, type: 3}
-  - {fileID: 21300000, guid: 784aa93bf2fe2da4fbb6170f8a5733ce, type: 3}
-  - {fileID: 21300000, guid: f51fd23634cddb44e8cbf0ebdae6f460, type: 3}
-  - {fileID: 21300000, guid: affa8795368b3094aa9f44eb3027e470, type: 3}
-  - {fileID: 21300000, guid: adf3b8bfd1f7f574385c2b0785b89366, type: 3}
+  - {fileID: 21300000, guid: b5ce05c0255c47749894fae41ca3d380, type: 3}
+  - {fileID: 21300000, guid: b6599fc666f15c4408ca07dae08e715e, type: 3}
+  - {fileID: 21300000, guid: 5b809c3136c53ec4a8fc9db0fc847fc3, type: 3}
+  - {fileID: 21300000, guid: 050cb4135886d044bb25ea2852675cc4, type: 3}
+  - {fileID: 21300000, guid: 882885158bbdd844c9e694889262221b, type: 3}
+  - {fileID: 21300000, guid: 1eee2f92220e36c4ea06f8c4dc301567, type: 3}
   DogImages:
-  - {fileID: 21300000, guid: 7b53a49467e96d54bb8da7470d268dfb, type: 3}
-  - {fileID: 21300000, guid: 9bbba928b28956c44895ca973c361445, type: 3}
-  - {fileID: 21300000, guid: 70158b0a88abdbf45adb67020f7dd9e4, type: 3}
-  - {fileID: 21300000, guid: 6474e92a1ccb12f4289653cd70c62068, type: 3}
-  - {fileID: 21300000, guid: 38788dbac2a288a4cb0bf56e40915298, type: 3}
-  - {fileID: 21300000, guid: fac037cb90b2b69408343ab7c5bb6bd3, type: 3}
+  - {fileID: 21300000, guid: 8d15a7670d4720e4dabd09dc6f1891a1, type: 3}
+  - {fileID: 21300000, guid: 0ee34ce463c6d6e43a092fabec2a8899, type: 3}
+  - {fileID: 21300000, guid: 2dad494e64432bb45b6b0d6ba4a3cfea, type: 3}
+  - {fileID: 21300000, guid: 37ad5c8c883f6ad43ab006778a1636a0, type: 3}
+  - {fileID: 21300000, guid: 2e32c855485277a4b834bc73f2a3ea6d, type: 3}
+  - {fileID: 21300000, guid: 2c3d6fff561d64c42bc3ebb8f1f182f7, type: 3}
   catSounds:
   - {fileID: 8300000, guid: afb8ea3d50b79314e8d2316b6d1a8684, type: 3}
   - {fileID: 8300000, guid: e78034da8d5356740b145c3226ee8dde, type: 3}
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 64675471629bb384f911aba59905474c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5ce05c0255c47749894fae41ca3d380, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1003,7 +1003,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c7068d5c33964146be00c22b7c5cc23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b13dff3744e83b5469a59dbb0ce70542, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
