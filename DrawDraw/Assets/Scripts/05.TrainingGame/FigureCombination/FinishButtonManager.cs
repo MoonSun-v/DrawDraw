@@ -73,11 +73,11 @@ public class FinishButtonManager : MonoBehaviour
         //Debug.Log($"전체 퍼즐 조각 개수: {totalPieces}");
         //Debug.Log($"색상이 변경된 도형 개수: {changedPieces}");
 
-        // 점수 계산: 변경된 퍼즐 조각 수를 전체 퍼즐 조각 수로 나눈 뒤 100점을 기준으로 점수를 부여
+        // 점수 계산: 변경된 퍼즐 조각 수를 전체 퍼즐 조각 수로 나눈 뒤 50점을 기준으로 점수를 부여
         float score = 0f;
         if (totalPieces > 0)
         {
-            score = (changedPieces / (float)totalPieces) * 50f; //100점 기준
+            score = (changedPieces / (float)totalPieces) * 50f; //50점 기준
         }
 
         // 현재 ScoreText.text 값이 숫자로 변환 가능한지 확인

@@ -115,7 +115,7 @@ public class NextButtonManager : MonoBehaviour
         }
         else
         {
-            // 일치한 퍼즐 조각 개수를 100점 만점으로 환산
+            // 일치한 퍼즐 조각 개수를 50점 만점으로 환산
             score = (matchingPieceCount / (float)basePieceCount) * 50f;
         }
 
