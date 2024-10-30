@@ -13,6 +13,8 @@ public class ProfileManager : MonoBehaviour
     private bool isDog;
     private bool isCat;
 
+    public GameObject Light_Dog;
+    public GameObject Light_Cat;
 
 
     // ★ [ 이름 입력 제한 조건 ]
@@ -27,8 +29,8 @@ public class ProfileManager : MonoBehaviour
 
 
     // ★ [ 강아지 / 고양이 선택 메소드 ]
-    public void SelectDog(){ isDog = true; isCat = false; }
-    public void SelectCat(){ isDog = false; isCat = true; }
+    public void SelectDog(){ isDog = true; isCat = false; if (Light_Cat.activeSelf) { Light_Cat.SetActive(false); } Light_Dog.SetActive(true); }
+    public void SelectCat(){ isDog = false; isCat = true; if (Light_Dog.activeSelf) { Light_Dog.SetActive(false); } Light_Cat.SetActive(true); }
 
 
 
