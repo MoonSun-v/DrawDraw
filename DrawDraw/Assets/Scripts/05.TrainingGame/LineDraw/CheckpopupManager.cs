@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEditor.ShaderData;
 
 public class CheckpopupManager : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class CheckpopupManager : MonoBehaviour
 
     public GameResultSO gameResult; // 게임 결과화면 관리 SO
 
+    [SerializeField] public CollisionCounter collisionCounter;
+
+
     public void OnClick_close() // '창 닫기' 버튼을 클릭하며 호출 되어질 함수
     {
         checkPopup.transform.gameObject.SetActive(false);
@@ -44,7 +48,7 @@ public class CheckpopupManager : MonoBehaviour
             line2.SetActive(false);
             line3.SetActive(false);
 
-            if(curveline1 != null)
+            if (curveline1 != null)
             {
                 //곡선 활성화
                 curveline1.SetActive(true);
@@ -55,7 +59,7 @@ public class CheckpopupManager : MonoBehaviour
             ClearAllLines();
 
         }
-        else if(curveline1 == null) // 첫번째 그림만 있을 경우
+        else if (curveline1 == null) // 첫번째 그림만 있을 경우
         {
             goto_result();
         }
@@ -95,8 +99,10 @@ public class CheckpopupManager : MonoBehaviour
 
     private void goto_result() // 결과창의 '완성이야' 버튼을 클릭하며 호출 되어질 함수
     {
+        ScoreText.text = Score(collisionCounter.collisionCount, collisionCounter.pass);
+
         // 점수 저장 -> 결과 화면에서 게임클리어/오버 구분 위해서
-        gameResult.score = int.Parse(ScoreText.text);;
+        gameResult.score = int.Parse(ScoreText.text); ;
 
         // 현재 씬 이름 저장 : 결과 창에서 해당 게임으로 돌아오기 위해서 
         gameResult.previousScene = SceneManager.GetActiveScene().name;
@@ -120,5 +126,33 @@ public class CheckpopupManager : MonoBehaviour
     //    SceneManager.LoadScene("ResultScene");
     //}
 
+    private int maxCollisions = 10; // 기준 충돌 횟수 (20번 충돌하면 0점)
+    private float maxScore = 100f; // 현재 점수 (최대 100점)
+    private string Score(int collisionCount, bool pass)
+    {
+        if (collisionCount < 5 && pass==true)
+        {
+            maxScore = 100;
+        }
+
+        else if (pass == false  )
+        {
+            maxScore = 0;
+        }
+
+        else
+        {
+            // 충돌 횟수에 따른 점수 계산
+            maxScore = 100 * (float)(maxCollisions - collisionCount) / maxCollisions;
+            // 점수가 음수로 내려가는 것을 방지
+            if (maxScore < 0)
+            {
+                maxScore = 0;
+            }
+        }
+
+        ScoreText.text = maxScore.ToString("F0");
+        return ScoreText.text;
+    }
 }
 
