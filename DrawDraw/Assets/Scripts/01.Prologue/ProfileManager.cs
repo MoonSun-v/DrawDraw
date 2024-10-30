@@ -70,7 +70,7 @@ public class ProfileManager : MonoBehaviour
 
         // --------------------------------------------------------------------------------------
 
-        SceneManager.LoadScene("SelectScene");
+        SceneManager.LoadScene("TestStartScene");
 
     }
 
