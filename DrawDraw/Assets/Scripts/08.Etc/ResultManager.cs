@@ -184,6 +184,7 @@ public class ResultManager : MonoBehaviour
 
         // 캐릭터 상태 세팅
         SetCharacterState(isClear, isDog);
+        Effect(isClear);
 
         StartCoroutine(ChangeSceneAfterDelay(5f));
 
@@ -263,5 +264,39 @@ public class ResultManager : MonoBehaviour
 
         // 오디오 재생
         audioSource.Play();
+    }
+
+    // ★ [ 성공/실패 이펙트를 활성화하는 메소드 ] ---------------------------------------------------
+    //
+
+    // 성공 오브젝트들을 배열로 선언
+    public GameObject[] successObjects;
+
+    // 실패 오브젝트
+    public GameObject failObject;
+
+    // 성공 여부를 처리하는 메서드
+    public void Effect(bool isClear)
+    {
+        if (isClear)
+        {
+            // 모든 성공 오브젝트를 활성화
+            foreach (GameObject obj in successObjects)
+            {
+                obj.SetActive(true);
+            }
+            // 실패 오브젝트를 비활성화
+            failObject.SetActive(false);
+        }
+        else
+        {
+            // 모든 성공 오브젝트를 비활성화
+            foreach (GameObject obj in successObjects)
+            {
+                obj.SetActive(false);
+            }
+            // 실패 오브젝트를 활성화
+            failObject.SetActive(true);
+        }
     }
 }
