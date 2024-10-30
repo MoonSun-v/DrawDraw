@@ -283,7 +283,6 @@ GameObject:
   m_Component:
   - component: {fileID: 58305181}
   - component: {fileID: 58305180}
-  - component: {fileID: 58305179}
   m_Layer: 0
   m_Name: BTN sound effect
   m_TagString: Untagged
@@ -291,18 +290,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &58305179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58305178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51261689950f5e4f9ca545758fa6403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &58305180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -792,7 +779,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -948,7 +935,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -1364,7 +1351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -2410,7 +2397,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -2566,7 +2553,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -2977,7 +2964,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -3287,7 +3274,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -3519,7 +3506,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -3853,7 +3840,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -4084,7 +4071,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -4506,7 +4493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.3354, y: 21.2511}
+  m_AnchoredPosition: {x: -4.335388, y: 21.2511}
   m_SizeDelta: {x: 61.3293, y: 66.4146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1131465469
@@ -5054,7 +5041,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -5357,7 +5344,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -5513,7 +5500,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -5669,7 +5656,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -5825,7 +5812,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -6107,7 +6094,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -6263,7 +6250,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -6719,7 +6706,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -7005,7 +6992,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1
@@ -7390,7 +7377,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 58305179}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MultipleButtonSound, Assembly-CSharp
         m_MethodName: PlayAudio
         m_Mode: 1

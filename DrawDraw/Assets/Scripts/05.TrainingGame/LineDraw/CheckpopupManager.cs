@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.ShaderData;
+//using static UnityEditor.ShaderData;
 
 public class CheckpopupManager : MonoBehaviour
 {

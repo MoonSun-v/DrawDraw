@@ -616,8 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af58e295e9ae45459ed5021891e2312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePieces: []
-  PuzzleManager: {fileID: 0}
+  puzzleMoves: []
   CheckPopup: {fileID: 1247959959}
   gameResult: {fileID: 0}
 --- !u!1 &309310030
@@ -950,12 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af58e295e9ae45459ed5021891e2312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePieces:
-  - {fileID: 1315652762}
-  - {fileID: 945843969}
-  - {fileID: 359261426}
-  - {fileID: 404374779}
-  PuzzleManager: {fileID: 1817531135}
+  puzzleMoves: []
   CheckPopup: {fileID: 1247959959}
   gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!1 &359261422
@@ -1107,6 +1101,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 772053187}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &404374775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1253,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 1801842576}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &436619494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2374,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 436619494}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1055469017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,7 +2554,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1085878181}
   - component: {fileID: 1085878180}
-  - component: {fileID: 1085878179}
   m_Layer: 0
   m_Name: BTN sound effect
   m_TagString: Untagged
@@ -2559,18 +2561,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1085878179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085878178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51261689950f5e4f9ca545758fa6403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1085878180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3595,6 +3585,9 @@ MonoBehaviour:
   y: 1.7
   layer: 1
   correctForm: {fileID: 535910685}
+  parentLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1332962095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4725,8 +4718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af58e295e9ae45459ed5021891e2312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePieces: []
-  PuzzleManager: {fileID: 1817531135}
+  puzzleMoves: []
   CheckPopup: {fileID: 1247959959}
   gameResult: {fileID: 11400000, guid: 25c9251d62bad044e943f99104d371b5, type: 2}
 --- !u!114 &1789140219
@@ -5074,6 +5066,7 @@ MonoBehaviour:
   button:
   - {fileID: 553163325}
   - {fileID: 1789140216}
+  explainText: {fileID: 0}
 --- !u!1 &1821628144
 GameObject:
   m_ObjectHideFlags: 0
