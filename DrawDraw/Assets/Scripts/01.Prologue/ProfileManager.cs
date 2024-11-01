@@ -16,6 +16,11 @@ public class ProfileManager : MonoBehaviour
     public GameObject Light_Dog;
     public GameObject Light_Cat;
 
+    public GameObject Input_Dog;
+    public GameObject Input_Cat;
+    public GameObject InputText;
+
+
 
     // ★ [ 이름 입력 제한 조건 ]
     // - 이름 입력란의 글자 수 6자로 제한
@@ -47,15 +52,20 @@ public class ProfileManager : MonoBehaviour
 
         PlayerName = NameInput.GetComponent<InputField>().text;
 
-        // 캐릭터와 이름 확인 조건문 
+        // 캐릭터와 이름 입력 확인 조건문
+        if (string.IsNullOrEmpty(PlayerName) && !isDog && !isCat)
+        {
+            ShowRandomObjectAndMessage("캐릭터와 이름을 입력해줘!");
+            return;
+        }
         if (string.IsNullOrEmpty(PlayerName))
         {
-            print(isDog || isCat ? "이름을 적어주세요" : "캐릭터를 선택하고 이름을 적어주세요");
+            ShowRandomObjectAndMessage("이름을 입력해줘!");
             return;
         }
         if (!isDog && !isCat)
         {
-            print("캐릭터를 선택해 주세요");
+            ShowRandomObjectAndMessage("캐릭터를 선택해줘!");
             return;
         }
 
@@ -102,4 +112,27 @@ public class ProfileManager : MonoBehaviour
         GameData.instance.SavePlayerData();
         GameData.instance.LoadPlayerData();
     }
+
+
+    void ShowRandomObjectAndMessage(string message)
+    {
+        GameObject selectedObject = Random.Range(0, 2) == 0 ? Input_Dog : Input_Cat;
+        selectedObject.SetActive(true);
+        InputText.SetActive(true);
+
+        if (InputText != null)
+        {
+            InputText.GetComponent<Text>().text = message;
+        }
+
+        StartCoroutine(DeactivateObjectAfterDelay(selectedObject, 2f));
+    }
+
+    private IEnumerator DeactivateObjectAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
+        InputText.SetActive(false);
+    }
+
 }
