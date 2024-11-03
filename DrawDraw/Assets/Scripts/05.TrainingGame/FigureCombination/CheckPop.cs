@@ -13,7 +13,7 @@ public class CheckPop : MonoBehaviour
             // 처음 시작할 때 도형 버튼은 보이고, 색칠 버튼은 보이지 않도록 설정
             //SetCanvasGroupActive(shapeButtonGroup, true);
             SetCanvasGroupActive(colorButtonGroup, false);
-            Debug.Log("페인트 없애기");
+            //Debug.Log("페인트 없애기");
     }
 
     void SetCanvasGroupActive(CanvasGroup group, bool isActive)

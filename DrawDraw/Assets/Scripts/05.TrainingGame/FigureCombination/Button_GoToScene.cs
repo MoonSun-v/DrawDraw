@@ -63,19 +63,23 @@ public class Button_GoToScene : MonoBehaviour
     void Start()
     {
         // 각 프리팹의 초기 컬러 코드를 저장
-        foreach (GameObject prefab in shapePrefabs)
+        if(shapePrefabs != null)
         {
-            if (prefab != null)
+            foreach (GameObject prefab in shapePrefabs)
             {
-                SpriteRenderer spriteRenderer = prefab.GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
+                if (prefab != null)
                 {
-                    // Color 객체를 HEX 컬러 코드로 변환하여 저장
-                    string colorCode = "#" + ColorUtility.ToHtmlStringRGB(spriteRenderer.color);
-                    prefabOriginalColorCodes[prefab] = colorCode;
+                    SpriteRenderer spriteRenderer = prefab.GetComponent<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        // Color 객체를 HEX 컬러 코드로 변환하여 저장
+                        string colorCode = "#" + ColorUtility.ToHtmlStringRGB(spriteRenderer.color);
+                        prefabOriginalColorCodes[prefab] = colorCode;
+                    }
                 }
             }
         }
+       
     }
 
     public void OnRestartButtonClick()
