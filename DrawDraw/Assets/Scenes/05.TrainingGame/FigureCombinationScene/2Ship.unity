@@ -2712,6 +2712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebb5bc3b0ab7d54aa05c64b0e53cbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shapePrefabs:
+  - {fileID: 7934255381965411355, guid: 040209b5ef44e4045bc6881866bfcb40, type: 3}
+  - {fileID: 4462988345943081158, guid: b1fa6344b485e554dac5245a850f2f52, type: 3}
+  - {fileID: 7925916228646035606, guid: ed148adba23426e4b8c716485556f4b3, type: 3}
+  FinishButton: {fileID: 1691923194}
 --- !u!114 &943262820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2869,6 +2874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebb5bc3b0ab7d54aa05c64b0e53cbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shapePrefabs: []
+  FinishButton: {fileID: 0}
 --- !u!114 &968668703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4655,6 +4662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebb5bc3b0ab7d54aa05c64b0e53cbc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shapePrefabs: []
+  FinishButton: {fileID: 0}
 --- !u!114 &1491364817
 MonoBehaviour:
   m_ObjectHideFlags: 0
