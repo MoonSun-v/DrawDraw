@@ -52,7 +52,7 @@ public class FinishButtonManager : MonoBehaviour
     IEnumerator ResultSceneDelay()
     {
         // 2 초 후 실행
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene("ResultScene");
     }
