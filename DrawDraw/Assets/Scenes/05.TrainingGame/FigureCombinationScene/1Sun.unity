@@ -2120,6 +2120,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c69505a9b4d350c449e6f87c86a9afc0, type: 3}
   audioSource: {fileID: 619679987}
   TextChangeOnTrigger: {fileID: 619679986}
+  Delay: 1
 --- !u!4 &619679985
 Transform:
   m_ObjectHideFlags: 0
@@ -2165,7 +2166,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

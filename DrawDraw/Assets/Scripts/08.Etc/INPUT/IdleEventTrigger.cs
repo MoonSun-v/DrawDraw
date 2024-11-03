@@ -31,10 +31,27 @@ public class IdleEventTrigger : MonoBehaviour
     //private int triggerObjectIndex;
     public TextChangeOnTrigger TextChangeOnTrigger;
 
+    public bool Delay = false;
+
     private void Start()
     {
         userPreference = GameData.instance.playerdata.PlayerCharacter;
-        Debug.Log(userPreference);
+
+        if(GameData.instance.playerdata.PlayerCharacter)
+        {
+            userPreference = GameData.instance.playerdata.PlayerCharacter;
+
+        }
+        else
+        {
+            userPreference = false;
+        }
+
+        if (Delay == true)
+        {
+            idleTimeThreshold = 15f;
+            Debug.Log(idleTimeThreshold);
+        }
     }
 
     void Update()

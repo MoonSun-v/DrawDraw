@@ -3987,8 +3987,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dbb9ea1982e50dd4bbbdd897d900e8ed, type: 3}
   dogSounds:
   - {fileID: 8300000, guid: 7c15aeacfaffc594d8450592fea0408f, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 750987408}
   TextChangeOnTrigger: {fileID: 0}
+  Delay: 0
 --- !u!4 &750987407
 Transform:
   m_ObjectHideFlags: 0

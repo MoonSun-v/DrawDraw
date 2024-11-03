@@ -4740,6 +4740,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c69505a9b4d350c449e6f87c86a9afc0, type: 3}
   audioSource: {fileID: 1519871003}
   TextChangeOnTrigger: {fileID: 1519871002}
+  Delay: 1
 --- !u!4 &1519871001
 Transform:
   m_ObjectHideFlags: 0
