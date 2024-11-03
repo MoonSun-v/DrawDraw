@@ -4,45 +4,42 @@ using UnityEngine;
 
 public class SequentialAudio : MonoBehaviour
 {
-    public AudioSource firstAudioSource;  // 1번 사운드
-    public AudioSource secondAudioSource; // 2번 사운드
-    public AudioSource thirdAudioSource;  // 3번 사운드
+    public AudioSource audioSource;  // 1번 사운드
 
-    private bool hasPlayedSecondSound = false;  // 2번 사운드가 재생되었는지 체크하는 변수
-    private bool hasPlayedThirdSound = false;   // 3번 사운드가 재생되었는지 체크하는 변수
-
+    public AudioClip[] sequentialAudio;
 
     void Start()
     {
         // 첫 번째 사운드 재생을 시작합니다.
-        StartCoroutine(PlaySequentialSounds());
+        StartCoroutine(PlaySequentialSounds(audioSource, sequentialAudio));
 
     }
 
-    IEnumerator PlaySequentialSounds()
+    IEnumerator PlaySequentialSounds(AudioSource audioSource, AudioClip[] sequentialAudio)
     {
-        // 첫 번째 사운드를 재생합니다.
-        firstAudioSource.Play();
-
-        // 첫 번째 사운드가 끝날 때까지 대기합니다.
-        yield return new WaitForSeconds(firstAudioSource.clip.length);
-
-        // 두 번째 사운드가 아직 재생되지 않았을 때만 실행
-        if (!hasPlayedSecondSound)
+        if (sequentialAudio == null || sequentialAudio.Length == 0)
         {
-            // 두 번째 사운드를 재생합니다.
-            secondAudioSource.Play();
-            hasPlayedSecondSound = true;  // 2번 사운드가 재생되었음을 표시
-                                          // 두 번째 사운드가 끝날 때까지 대기합니다.
-            yield return new WaitForSeconds(secondAudioSource.clip.length);
+            Debug.LogWarning("사운드 클립 배열이 null이거나 비어 있습니다.");
+            yield break; // 배열이 유효하지 않으면 코루틴 종료
         }
 
-        // 세 번째 사운드가 null이 아니고 아직 재생되지 않았을 때만 실행
-        if (thirdAudioSource != null && !hasPlayedThirdSound)
+        for (int i = 0; i < sequentialAudio.Length; i++)
         {
-            // 세 번째 사운드를 재생합니다.
-            thirdAudioSource.Play();
-            hasPlayedThirdSound = true;  // 3번 사운드가 재생되었음을 표시
+            if (sequentialAudio[i] != null)
+            {
+                // 현재 오디오 클립 설정 및 재생
+                audioSource.clip = sequentialAudio[i];
+                audioSource.Play();
+
+                // 오디오 클립의 길이만큼 대기
+                yield return new WaitForSeconds(audioSource.clip.length);
+            }
+            else
+            {
+                Debug.LogWarning("배열의 " + i + "번째 요소가 null입니다. 다음 클립으로 넘어갑니다.");
+            }
         }
+
+        Debug.Log("모든 사운드 클립 재생이 완료되었습니다.");
     }
 }
