@@ -209,7 +209,8 @@ public class ScratchManager : MonoBehaviour
     private void StartScratchPhase()
     {
         SetRaycastForCrayonChildren(false);
-        CrayonAnim.SetBool("isCrayonBack", true);  
+        CrayonAnim.SetBool("isCrayonBack", true);
+        EraserButton.SetActive(true);
         EraserAnim.SetBool("isEraserFront", true); 
 
         CheckPopup.SetActive(false); 
@@ -283,6 +284,7 @@ public class ScratchManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         SelectDraw.SetActive(true);
+        Crayon.SetActive(false);
     }
 
     /*
