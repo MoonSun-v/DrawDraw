@@ -7,6 +7,8 @@ public class ProfileAudio : MonoBehaviour
     public AudioSource audioSource1;  // 버튼 1의 오디오 소스
     public AudioSource audioSource2;  // 버튼 2의 오디오 소스
 
+    public AudioSource GuideAudioSource;  
+
     // 버튼 1이 클릭되었을 때 실행될 함수
     public void PlayAudio1()
     {
@@ -14,6 +16,10 @@ public class ProfileAudio : MonoBehaviour
         if (audioSource2.isPlaying)
         {
             audioSource2.Stop();
+        }
+        if (GuideAudioSource.isPlaying)
+        {
+            GuideAudioSource.Stop();
         }
 
         // 버튼 1의 오디오를 재생
@@ -27,6 +33,10 @@ public class ProfileAudio : MonoBehaviour
         if (audioSource1.isPlaying)
         {
             audioSource1.Stop();
+        }
+        if (GuideAudioSource.isPlaying)
+        {
+            GuideAudioSource.Stop();
         }
 
         // 버튼 2의 오디오를 재생

@@ -24,13 +24,13 @@ public class StartManager : MonoBehaviour
             else
             {
                 Debug.Log("사전 테스트 정보가 충분하지 않습니다. 프롤로그에 입장합니다.");
-                SceneManager.LoadScene("Profile");
+                SceneManager.LoadScene("Prolog"); //프로필 -> 프롤로그 영상 씬으로 수정
             }
         }
         else
         {
             Debug.Log("사전 테스트 정보가 없습니다. 프롤로그에 입장합니다.");
-            SceneManager.LoadScene("Profile");
+            SceneManager.LoadScene("Prolog"); //프로필 -> 프롤로그 영상 씬으로 수정
         }
 
     }
