@@ -1212,6 +1212,7 @@ RectTransform:
   m_Children:
   - {fileID: 1327995277}
   - {fileID: 1379754998}
+  - {fileID: 1395041319}
   - {fileID: 1876917510}
   - {fileID: 2014849279}
   - {fileID: 1665523078}
@@ -1223,7 +1224,6 @@ RectTransform:
   - {fileID: 1127312428}
   - {fileID: 1167759607}
   - {fileID: 537554555}
-  - {fileID: 1395041319}
   - {fileID: 908293346}
   - {fileID: 630344519}
   m_Father: {fileID: 0}

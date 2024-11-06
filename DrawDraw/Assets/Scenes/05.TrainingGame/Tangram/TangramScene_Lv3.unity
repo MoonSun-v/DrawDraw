@@ -1306,6 +1306,7 @@ RectTransform:
   m_Children:
   - {fileID: 1327995277}
   - {fileID: 1379754998}
+  - {fileID: 2032223069}
   - {fileID: 1876917510}
   - {fileID: 2014849279}
   - {fileID: 311114146}
@@ -1317,7 +1318,6 @@ RectTransform:
   - {fileID: 1127312428}
   - {fileID: 1637357599}
   - {fileID: 2057288263}
-  - {fileID: 2032223069}
   - {fileID: 167382598}
   - {fileID: 1178885988}
   m_Father: {fileID: 0}
