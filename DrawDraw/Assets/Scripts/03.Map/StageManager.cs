@@ -27,6 +27,7 @@ public class StageManager : MonoBehaviour
         // [ 버튼 상태 설정 ]
         //
         // 1. Complete 상태 : ClearStage가 true인 경우  && ( Dog 는 0 or Cat 은 1 )
+        //                  : 마지막 스테이지는 엔딩씬 플레이 유무
         // 2. Activate 상태 : PlayerExp 기준 (기본)
         // 3. Deactivate 상태
         //
@@ -47,5 +48,8 @@ public class StageManager : MonoBehaviour
             }
         }
     }
+
+
+
 
 }

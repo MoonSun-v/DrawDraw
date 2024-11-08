@@ -51,4 +51,27 @@ public class GoToOtherScene : MonoBehaviour
     public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene_1"); }
     public void GoToPuzzle_2() { SceneManager.LoadScene("PuzzleScene_2"); }
 
+
+    // -------------------------------------------------------------------------------------------
+    // ★ [ 마지막 스테이지 ]
+    //
+    // 1. 진행 가능한 테스트가 1번 이상 남아있다면 -> 테스트 씬으로 넘어가기
+    //    ( 도장 완료 처리 기준 : 엔딩 씬 플레이 했는지? )
+    // 2. 모든 테스트를 완료했다면 -> 엔딩씬으로 넘어가기 
+
+    // 테스트 마지막 씬에서 -> 마지막 테스트 였다면? -> 엔딩 씬으로 넘어가기
+
+    public void GoToLastStage()
+    {
+        if(GameData.instance.testdata.TestResults.Count < 6)
+        {
+            SceneManager.LoadScene("TestStartScene");
+        }
+        else
+        {
+            // 엔딩씬으로 이동
+            print("모든 테스트를 완료하여 엔딩 씬으로 이동합니다.");
+        }
+    }
+
 }

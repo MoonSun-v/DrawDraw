@@ -26,9 +26,6 @@ public class MapManager : MonoBehaviour
     // [ 프로필 팝업 관련 변수 ] 
     public GameObject Profile;
 
-    // public GameObject StageManager;
-
-
 
     // ★ [ 초기 세팅 ] ★
     // 
