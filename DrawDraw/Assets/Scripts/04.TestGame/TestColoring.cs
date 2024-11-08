@@ -182,9 +182,9 @@ public class TestColoring : MonoBehaviour
         if (_score == 0) { _score += 1; }
 
         int currentKey = GameData.instance.GetKeyWithIncompleteData();
-        if (currentKey > 4)
+        if (currentKey > 5)
         {
-            Debug.LogWarning("TestResults에 더 이상 저장할 수 없습니다. 최대 키 값은 4입니다.");
+            Debug.LogWarning("TestResults에 더 이상 저장할 수 없습니다. 최대 키 값은 5입니다.");
             return;
         }
 

@@ -15,6 +15,7 @@ public class StatisticsManager : MonoBehaviour
     public Slider[] slidersKey2; // 키 2에 대응하는 4개의 슬라이더
     public Slider[] slidersKey3; // 키 3에 대응하는 4개의 슬라이더
     public Slider[] slidersKey4; // 키 4에 대응하는 4개의 슬라이더
+    public Slider[] slidersKey5; // 키 5에 대응하는 4개의 슬라이더
 
 
 
@@ -60,6 +61,7 @@ public class StatisticsManager : MonoBehaviour
         ApplyScoresToGroup(2, slidersKey2); // 키 2에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(3, slidersKey3); // 키 3에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(4, slidersKey4); // 키 4에 대한 점수 슬라이더 적용
+        ApplyScoresToGroup(5, slidersKey5); // 키 5에 대한 점수 슬라이더 적용
     }
 
     // [ 그룹 별로 매핑 ]

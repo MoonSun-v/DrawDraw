@@ -26,7 +26,7 @@ public class ImageLoad : MonoBehaviour
     {
         if (index < 1 || index > 6) { Debug.LogWarning("유효하지 않은 인덱스입니다."); return;  }
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             string base64Image = GetBase64ImageFromResults(index, i);
 
