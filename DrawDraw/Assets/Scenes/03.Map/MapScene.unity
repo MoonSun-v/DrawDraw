@@ -639,7 +639,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 10
+  m_DynamicPixelsPerUnit: 50
   m_PresetInfoIsWorld: 1
 --- !u!223 &83071734
 Canvas:
@@ -5163,7 +5163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Background: {fileID: 616462726}
-  newSprite: {fileID: 21300000, guid: 5b02c910e389802448139c0ce271a560, type: 3}
+  newSprite: {fileID: 21300000, guid: 0af5146d16576bc4898da3735abd6e35, type: 3}
   CharacterImg: {fileID: 1809281357}
   Charater_Move_Img: {fileID: 1131465470}
   DogSprite: {fileID: 21300000, guid: e481d0c81acc17748b306081a5eb30e9, type: 3}

@@ -195,7 +195,6 @@ public class ScratchManager : MonoBehaviour
         BaseAnim.SetBool("isBlackBase", true); 
 
         StartCoroutine(SelectDrawDelay());
-        // SelectDrawDelay_();
     }
 
 

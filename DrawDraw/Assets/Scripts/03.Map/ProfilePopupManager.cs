@@ -11,8 +11,6 @@ public class ProfilePopupManager : MonoBehaviour
     public Text Name;
 
     public Image[] stageButtonImages;     // 20개의 버튼 이미지 배열
-    // public Sprite deactivateImages_Dog;   // -> 완료 하지 않은 상태
-    // public Sprite deactivateImages_Cat;
     public Sprite deactivateImages;
     public Sprite[] completeImages_Dog;   // -> 완료한 상태
     public Sprite[] completeImages_Cat;
@@ -51,8 +49,6 @@ public class ProfilePopupManager : MonoBehaviour
             else
             {
                 buttonImage.sprite = deactivateImages;
-                // if (!GameData.instance.playerdata.PlayerCharacter) { buttonImage.sprite = deactivateImages_Dog; }
-                // else                                               { buttonImage.sprite = deactivateImages_Cat; }
             }
         }
 
