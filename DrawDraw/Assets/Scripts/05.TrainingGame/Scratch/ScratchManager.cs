@@ -122,30 +122,6 @@ public class ScratchManager : MonoBehaviour
 
 
 
-    // ★ [ 그리기 영역 제한 ]
-    // 
-    /*
-    private void DrawingAreaLimits()
-    {
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        if (mousePos.x < Limit_l.position.x || mousePos.x > Limit_R.position.x ||
-            mousePos.y < Limit_B.position.y || mousePos.y > Limit_T.position.y)
-        {
-            if (scratchdraw.iscurrentLineRenderer())
-            {
-                scratchdraw.FinishLineRenderer();  // 현재 그리는 선 종료
-            }
-            scratchdraw.enabled = false;           
-        }
-        else
-        {
-            scratchdraw.enabled = true;           
-        }
-    }
-    */
-
-
     // ★ [ 완료 확인 팝업 ]
     public void CheckPopUp() { CheckPopup.SetActive(true);  OnBlocker(); }
     
@@ -190,7 +166,7 @@ public class ScratchManager : MonoBehaviour
     private void DisplayScoreAndProceed(int score)
     {
         if (score < 100) {  score += 1; } // 최대 점수는 100점
-        ScoreText.text = $"{score} 점";
+        // ScoreText.text = $"{score} 점";
 
         gameResult.score = score;
         gameResult.previousScene = SceneManager.GetActiveScene().name; 
@@ -286,17 +262,6 @@ public class ScratchManager : MonoBehaviour
         SelectDraw.SetActive(true);
         Crayon.SetActive(false);
     }
-
-    /*
-    // ★ 1초 후 결과 화면으로 전환
-    //
-    IEnumerator ResultSceneDelay()
-    {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("ResultScene");
-    }
-    */
-
     void ResultSceneDelay_()
     {
         SceneManager.LoadScene("ResultScene");

@@ -171,7 +171,7 @@ public class ResultManager : MonoBehaviour
             #region previousScene에 따라 StageNum 할당
 
             if (gameResult.previousScene == "PuzzleScene_1") { StageNum = 14; }
-            else if (gameResult.previousScene == "PuzzleScene_1") { StageNum = 17; }
+            else if (gameResult.previousScene == "PuzzleScene_2") { StageNum = 17; }
 
             #endregion
 
