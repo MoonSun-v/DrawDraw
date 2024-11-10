@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StageManager : MonoBehaviour
 {
     public Image[] stageButtonImages; // 20개의 버튼 이미지 배열 -> 활성화 상태 (기본)
+    public Sprite[] activateImages;
     public Sprite[] deactivateImages; // -> 활성화 되지 않은 상태
     public Sprite[] completeImages_Dog;   // -> 완료한 상태
     public Sprite[] completeImages_Cat; 
@@ -50,6 +51,18 @@ public class StageManager : MonoBehaviour
     }
 
 
-
+    // ----------------------------------------------------------------------------------------------------------------------
+    // [ 시연용 : 스테이지 모두 해제 ] 
+    // 모든 스테이지를 Activate 상태로 만들기 : 이미지 변경 및 버튼 클릭 활성화 
+    //                                          (마지막 스테이지 제외) 
+    public void UnlockedStage()
+    {
+        for (int i = 0; i < stageButtonImages.Length-1; i++)
+        {
+            Image buttonImage = stageButtonImages[i];
+            buttonImage.sprite = activateImages[i];
+            buttonImage.raycastTarget = true; 
+        }
+    }
 
 }
