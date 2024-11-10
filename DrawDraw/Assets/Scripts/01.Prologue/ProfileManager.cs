@@ -16,8 +16,7 @@ public class ProfileManager : MonoBehaviour
     public GameObject Light_Dog;
     public GameObject Light_Cat;
 
-    public GameObject Input_Dog;
-    public GameObject Input_Cat;
+    public GameObject InputPopup;
     public GameObject InputText;
 
 
@@ -55,17 +54,17 @@ public class ProfileManager : MonoBehaviour
         // 캐릭터와 이름 입력 확인 조건문
         if (string.IsNullOrEmpty(PlayerName) && !isDog && !isCat)
         {
-            ShowRandomObjectAndMessage("캐릭터와 이름을 입력해줘!");
+            ShowMessage("캐릭터와 이름을 입력해줘!");
             return;
         }
         if (string.IsNullOrEmpty(PlayerName))
         {
-            ShowRandomObjectAndMessage("이름을 입력해줘!");
+            ShowMessage("이름을 입력해줘!");
             return;
         }
         if (!isDog && !isCat)
         {
-            ShowRandomObjectAndMessage("캐릭터를 선택해줘!");
+            ShowMessage("캐릭터를 선택해줘!");
             return;
         }
 
@@ -114,10 +113,9 @@ public class ProfileManager : MonoBehaviour
     }
 
 
-    void ShowRandomObjectAndMessage(string message)
+    void ShowMessage(string message)
     {
-        GameObject selectedObject = Random.Range(0, 2) == 0 ? Input_Dog : Input_Cat;
-        selectedObject.SetActive(true);
+        InputPopup.SetActive(true);
         InputText.SetActive(true);
 
         if (InputText != null)
@@ -125,7 +123,7 @@ public class ProfileManager : MonoBehaviour
             InputText.GetComponent<Text>().text = message;
         }
 
-        StartCoroutine(DeactivateObjectAfterDelay(selectedObject, 2f));
+        StartCoroutine(DeactivateObjectAfterDelay(InputPopup, 2f));
     }
 
     private IEnumerator DeactivateObjectAfterDelay(GameObject obj, float delay)
