@@ -71,6 +71,7 @@ public class GoToOtherScene : MonoBehaviour
         {
             // 엔딩씬으로 이동
             print("모든 테스트를 완료하여 엔딩 씬으로 이동합니다.");
+            SceneManager.LoadScene("EndingScene");
         }
     }
 
