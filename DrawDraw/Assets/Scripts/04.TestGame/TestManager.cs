@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour
 {
-    public Text countText;
+    // public Text countText;
 
-    // Start is called before the first frame update
+    public Image CountDown;
+    public Sprite Two;
+    public Sprite One;
+
     void Start()
     {
         StartCoroutine(CountSecCoroutine());
@@ -16,14 +19,11 @@ public class TestManager : MonoBehaviour
 
     private IEnumerator CountSecCoroutine()
     {
-        countText.text = "3";
-        yield return new WaitForSeconds(1.0f);
-        countText.text = "2";
-        yield return new WaitForSeconds(1.0f);
-        countText.text = "1";
-        yield return new WaitForSeconds(1.0f);
-        countText.text = "Ω√¿€!";
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1f);
+        CountDown.sprite = Two;
+        yield return new WaitForSeconds(1f);
+        CountDown.sprite = One;
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene("Test_1Line");
     }
