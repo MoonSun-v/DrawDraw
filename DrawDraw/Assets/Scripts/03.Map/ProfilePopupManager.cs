@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class ProfilePopupManager : MonoBehaviour
 {
+    [SerializeField] StageManager _stageManager;
     public Image CharacterImg;
     public Sprite DogSprite;   // 강아지 이미지
     public Sprite CatSprite;   // 고양이 이미지
     public Text Name;
 
-    public Image[] stageButtonImages;     // 20개의 버튼 이미지 배열
-    public Sprite deactivateImages;
+    public Image[] stageImages;     // 20개의 버튼 이미지 배열
+    // public Sprite deactivateImage;       // -> 활성화X 상태
+    public Sprite activateImage_Dog;     // -> 활성화O 상태
+    public Sprite activateImage_Cat;         
     public Sprite[] completeImages_Dog;   // -> 완료한 상태
     public Sprite[] completeImages_Cat;
 
@@ -36,23 +39,25 @@ public class ProfilePopupManager : MonoBehaviour
         Name.text = "LV." + level + " " + name;
 
 
+        int _activateCount = _stageManager.StateStage();
+
         // 스테이지 도장
-        for (int i = 0; i < stageButtonImages.Length; i++)
+        for (int i = 0; i < stageImages.Length; i++)
         {
-            Image buttonImage = stageButtonImages[i];
+            Image StageImage = stageImages[i];
 
             if (GameData.instance.trainingdata.ClearStage[i])
             {
-                if (!GameData.instance.playerdata.PlayerCharacter) { buttonImage.sprite = completeImages_Dog[i]; }
-                else                                               { buttonImage.sprite = completeImages_Cat[i]; }
+                if (!GameData.instance.playerdata.PlayerCharacter) { StageImage.sprite = completeImages_Dog[i]; }
+                else { StageImage.sprite = completeImages_Cat[i]; }
             }
-            else
+            else if (i < _activateCount) 
             {
-                buttonImage.sprite = deactivateImages;
+                if (!GameData.instance.playerdata.PlayerCharacter) { StageImage.sprite = activateImage_Dog; }
+                else                                               { StageImage.sprite = activateImage_Cat; }
             }
+            // else {  buttonImage.sprite = deactivateImage; }
         }
-
-
     }
 
 }

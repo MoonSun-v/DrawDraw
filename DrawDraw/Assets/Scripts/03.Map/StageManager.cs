@@ -15,15 +15,7 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         // [ PlayerExp에 따라 활성화된 버튼 수 계산 ]
-        int playerExp = GameData.instance.playerdata.PlayerExp;
-        int activateCount;
-
-        if (playerExp >= 190)       activateCount = 20;
-        else if (playerExp >= 160)  activateCount = 19;
-        else if (playerExp >= 120)  activateCount = 16;
-        else if (playerExp >= 80)   activateCount = 12;
-        else if (playerExp >= 40)   activateCount = 8;
-        else                        activateCount = 4;
+        int _activateCount = StateStage();
 
         // [ 버튼 상태 설정 ]
         //
@@ -41,7 +33,7 @@ public class StageManager : MonoBehaviour
                 if (!GameData.instance.playerdata.PlayerCharacter) { buttonImage.sprite = completeImages_Dog[i]; }
                 else                                               { buttonImage.sprite = completeImages_Cat[i];  }
             }
-            else if (i < activateCount) { }
+            else if (i < _activateCount) { }
             else
             {
                 buttonImage.sprite = deactivateImages[i];
@@ -50,6 +42,23 @@ public class StageManager : MonoBehaviour
         }
     }
 
+
+    // [ PlayerExp에 따라 활성화된 버튼 수 계산 ]
+    //
+    public int StateStage()
+    {
+        int playerExp = GameData.instance.playerdata.PlayerExp;
+        int activateCount;
+
+        if (playerExp >= 190) activateCount = 20;
+        else if (playerExp >= 160) activateCount = 19;
+        else if (playerExp >= 120) activateCount = 16;
+        else if (playerExp >= 80) activateCount = 12;
+        else if (playerExp >= 40) activateCount = 8;
+        else activateCount = 4;
+
+        return activateCount;
+    }
 
     // ----------------------------------------------------------------------------------------------------------------------
     // [ 시연용 : 스테이지 모두 해제 ] 
