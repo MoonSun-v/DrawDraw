@@ -6,20 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour
 {
-    // public Text countText;
-
     public Image CountDown;
     public Sprite Two;
     public Sprite One;
 
+    public GameObject Curtain;
+    private Animator animator;
+
     void Start()
     {
-        StartCoroutine(CountSecCoroutine());
+        animator = Curtain.GetComponent<Animator>();
+        StartCoroutine(StartCountDown());
     }
 
-    private IEnumerator CountSecCoroutine()
+    private IEnumerator StartCountDown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("isStart", true);
+        yield return new WaitForSeconds(3f);
         CountDown.sprite = Two;
         yield return new WaitForSeconds(1f);
         CountDown.sprite = One;

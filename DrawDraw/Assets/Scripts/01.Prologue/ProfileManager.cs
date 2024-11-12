@@ -19,6 +19,8 @@ public class ProfileManager : MonoBehaviour
     public GameObject InputPopup;
     public GameObject InputText;
 
+    public GameObject Curtain;
+    private Animator animator;
 
 
     // ★ [ 이름 입력 제한 조건 ]
@@ -28,6 +30,8 @@ public class ProfileManager : MonoBehaviour
     {
         NameInput.characterLimit = 6;
         NameInput.onValueChanged.AddListener(ValidateInput);
+
+        animator = Curtain.GetComponent<Animator>();
     }
 
 
@@ -78,10 +82,18 @@ public class ProfileManager : MonoBehaviour
         ProfileSetting(); // 플레이어 프로필 작성 정보 저장 
 
         // --------------------------------------------------------------------------------------
+        animator.SetBool("isEnd", true);
 
-        SceneManager.LoadScene("TestStartScene");
+        StartCoroutine(GoToTest());
 
     }
+
+    private IEnumerator GoToTest()
+    {
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("TestStartScene");
+    }
+
 
 
     // ★ [ 특수문자 필터링 메서드 ]
