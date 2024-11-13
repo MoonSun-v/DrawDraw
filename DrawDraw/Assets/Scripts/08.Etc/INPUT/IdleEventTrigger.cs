@@ -35,7 +35,7 @@ public class IdleEventTrigger : MonoBehaviour
 
     private void Start()
     {
-        userPreference = GameData.instance.playerdata.PlayerCharacter;
+        //userPreference = GameData.instance.playerdata.PlayerCharacter;
 
         if(GameData.instance.playerdata.PlayerCharacter)
         {
