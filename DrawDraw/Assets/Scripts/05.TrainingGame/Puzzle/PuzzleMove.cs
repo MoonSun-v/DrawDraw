@@ -45,7 +45,7 @@ public class PuzzleMove : MonoBehaviour
                 if (isStarted)
                 {
                     // 부모(Puzzle)의 크기를 0.5로 변경
-                    Puzzle.transform.localScale *= 0.45f;
+                    Puzzle.transform.localScale *= 0.47f;
 
                     // 부모(Puzzle)의 위치를 새로 지정
                     Vector3 newPosition = new Vector3(x, y, Puzzle.transform.position.z);
@@ -80,8 +80,8 @@ public class PuzzleMove : MonoBehaviour
             {
                 if (isStarted)
                 {
-                    // 부모(Puzzle)의 크기를 0.15로 변경
-                    Puzzle.transform.localScale *= 0.5f;
+                    // 부모(Puzzle)의 크기를 0.6으로 변경
+                    Puzzle.transform.localScale *= 0.6f;
 
                     // 부모(Puzzle)의 위치를 새로 지정
                     Vector3 newPosition = new Vector3(x, y, Puzzle.transform.position.z);
@@ -128,8 +128,15 @@ public class PuzzleMove : MonoBehaviour
                 // 첫 번째 움직임일 때만 크기 변경
                 if (!isScaled)
                 {
-                    // Puzzle과 자식인 Piece의 크기를 한 번만 변경
-                    Puzzle.transform.localScale *= 2.47f;
+                    if (SceneManager.GetActiveScene().name == "PuzzleScene_1")
+                    {
+                        // Puzzle과 자식인 Piece의 크기를 한 번만 변경
+                        Puzzle.transform.localScale *= 2.37f;
+                    }
+                    else if (SceneManager.GetActiveScene().name == "PuzzleScene_2") {
+                        // Puzzle과 자식인 Piece의 크기를 한 번만 변경
+                        Puzzle.transform.localScale *= 1.95f;
+                    }
                     isScaled = true;  // 크기가 변경되었음을 표시
                 }
 
