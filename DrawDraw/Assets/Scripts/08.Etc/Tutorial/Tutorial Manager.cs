@@ -68,9 +68,6 @@ public class TutorialManager : MonoBehaviour
             Debug.Log("튜토리얼 재생");
             Input.SetActive(false);
         }
-
-        
-
     }
 
     void OnVideoEnd(VideoPlayer vp)

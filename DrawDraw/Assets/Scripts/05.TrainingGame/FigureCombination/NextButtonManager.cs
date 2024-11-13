@@ -13,6 +13,7 @@ public class NextButtonManager : MonoBehaviour
     public GameObject[] prefabsToDisable; // 비활성화할 프리팹의 배열
 
     public GameObject completeButtonObject;  // Inspector에서 "완성" 버튼 오브젝트를 할당
+    public GameObject NextButtonObject;  // Inspector에서 "완성" 버튼 오브젝트를 할당
 
     public GameObject check_popup; // PopupManager 스크립트를 참조할 변수
 
@@ -47,7 +48,7 @@ public class NextButtonManager : MonoBehaviour
 
         //isButtonClicked = true;  // 버튼이 눌렸음을 표시
         //CalculateMatches();
-        gameObject.SetActive(false);  // "다음" 버튼 오브젝트 비활성화
+        NextButtonObject.SetActive(false);  // "다음" 버튼 오브젝트 비활성화
         completeButtonObject.SetActive(true);  // "완성" 버튼 오브젝트 활성화
 
         check_popup.SetActive(false);

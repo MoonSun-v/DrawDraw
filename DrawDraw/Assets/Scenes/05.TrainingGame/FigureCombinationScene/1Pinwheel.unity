@@ -3039,7 +3039,10 @@ MonoBehaviour:
   object2: {fileID: 1679168937}
   videoClip1: {fileID: 32900000, guid: 68d18e48d47a9f148aae9ef7fabf0a1c, type: 3}
   videoClip2: {fileID: 32900000, guid: a239cf275e224b8408d58a1c33ca4c40, type: 3}
+  renderTexture1: {fileID: 8400000, guid: ffd6d6ca59c333443b7e124cddfa5645, type: 2}
+  renderTexture2: {fileID: 8400000, guid: 331a31ce583f3f547bc045f088b5e6b3, type: 2}
   videoPlayer: {fileID: 951101956}
+  rawImage: {fileID: 2061944763}
 --- !u!328 &951101956
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -4247,6 +4250,7 @@ MonoBehaviour:
   - {fileID: 1016546349821710638, guid: 23614eb3f35a89f4ea0a642b1dcd5d47, type: 3}
   - {fileID: 479582582948080772, guid: 2f1d19a08de449c429e2b2b82e457b04, type: 3}
   completeButtonObject: {fileID: 1679168937}
+  NextButtonObject: {fileID: 1124929796}
   check_popup: {fileID: 785973567}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
