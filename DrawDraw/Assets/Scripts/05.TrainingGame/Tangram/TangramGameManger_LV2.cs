@@ -8,7 +8,6 @@ public class TangramGameManager_LV2 : MonoBehaviour
     public GameObject patternSelectPanel;
     public GameObject patternbutton;
     public Sprite[] patternImages;
-    public GameObject boardImage;
     private Image patternButtonImage;
     public GameObject[] patternSilhouettes;
     public GameObject[] patternPieces;
@@ -36,7 +35,6 @@ public class TangramGameManager_LV2 : MonoBehaviour
 
         patternSelectPanel.SetActive(true);
         patternButtonImage.gameObject.SetActive(true);
-        boardImage.SetActive(false);
         foreach (var silhouette in patternSilhouettes)
         {
             silhouette.SetActive(false);
@@ -54,8 +52,7 @@ public class TangramGameManager_LV2 : MonoBehaviour
     public void SelectPattern(int patternIndex)
     {
         patternSelectPanel.SetActive(false);
-        patternButtonImage.gameObject.SetActive(true); // 패턴 버튼 이미지 활성화
-        boardImage.SetActive(true);
+        patternButtonImage.gameObject.SetActive(true);
         foreach (var silhouette in patternSilhouettes)
         {
             silhouette.SetActive(false);
