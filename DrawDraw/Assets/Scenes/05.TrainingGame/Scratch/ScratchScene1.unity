@@ -5645,7 +5645,10 @@ MonoBehaviour:
   object2: {fileID: 642980233}
   videoClip1: {fileID: 32900000, guid: dfa0a164778c49d4c9141e2753f67074, type: 3}
   videoClip2: {fileID: 32900000, guid: f0889e0f459f5f8468c3069b4fc72037, type: 3}
+  renderTexture1: {fileID: 8400000, guid: ffd6d6ca59c333443b7e124cddfa5645, type: 2}
+  renderTexture2: {fileID: 8400000, guid: 331a31ce583f3f547bc045f088b5e6b3, type: 2}
   videoPlayer: {fileID: 1707423642}
+  rawImage: {fileID: 232739843}
 --- !u!328 &1707423642
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -5679,7 +5682,7 @@ VideoPlayer:
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!4 &1707423643

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class VideoSourceManager : MonoBehaviour
@@ -11,30 +12,39 @@ public class VideoSourceManager : MonoBehaviour
     public VideoClip videoClip1; // 첫 번째 영상
     public VideoClip videoClip2; // 두 번째 영상
 
+    public RenderTexture renderTexture1;  // 첫 번째 타겟 텍스처
+    public RenderTexture renderTexture2;  // 두 번째 타겟 텍스처
+
     public VideoPlayer videoPlayer; // VideoPlayer 컴포넌트
+
+    public RawImage rawImage;             // 비디오를 표시할 RawImage
 
     void Update()
     {
         if (videoPlayer != null)
         {
-            AssignAndPlayVideo();
+            // 매 프레임마다 오브젝트 활성화 상태 확인 후 비디오 클립과 텍스처 설정
+            if (object1 != null && object1.activeSelf)
+            {
+                SetVideoSource(videoClip1, renderTexture1);
+            }
+            else if (object2 != null && object2.activeSelf)
+            {
+                SetVideoSource(videoClip2, renderTexture2);
+            }
         }
     }
 
-    private void AssignAndPlayVideo()
+    private void SetVideoSource(VideoClip clip, RenderTexture targetTexture)
     {
-        if (videoPlayer == null) return;
+        // 비디오 클립과 텍스처 할당
+        if (videoPlayer.clip != clip || videoPlayer.targetTexture != targetTexture)
+        {   
+            videoPlayer.clip = clip;
+            videoPlayer.targetTexture = targetTexture;
 
-        // 오브젝트1이 활성화되었을 때 1번 영상을 할당 및 재생
-        if (object1 != null && object1.activeSelf)
-        {
-            videoPlayer.clip = videoClip1;
-
-        }
-        // 오브젝트2가 활성화되었을 때 2번 영상을 할당 및 재생
-        if (object2 != null && object2.activeSelf)
-        {
-            videoPlayer.clip = videoClip2;
+            // RawImage 텍스처 업데이트
+            rawImage.texture = targetTexture;
         }
     }
 }
