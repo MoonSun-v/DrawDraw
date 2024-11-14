@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
-    
+
     // gameResult : 게임 결과 가져오는 스크립터블오브젝트
     // StageNum   : 플레이한 스테이지 정보를 숫자로 표기하는 변수 
     //              스테이지 순서대로 0번~18번의 숫자를 가진다. 
     //
     public GameResultSO gameResult;
-    private int StageNum = 30; 
+    private int StageNum = 30;
 
 
     // ( 임시 변수들 )
@@ -35,7 +35,7 @@ public class ResultManager : MonoBehaviour
 
 
     // ★ [ 각 훈련 게임별 스테이지 이름 ]
-    List<string> dotLineScenes = new List<string> { "DotLineScene1", "DotLineScene2", "DotLineScene3" }; 
+    List<string> dotLineScenes = new List<string> { "DotLineScene1", "DotLineScene2", "DotLineScene3" };
     List<string> LineScenes = new List<string> { "1LineScene", "2LineScene", "3LineScene", "4LineScene", "5LineScene", "6LineScene" };
     List<string> ScratchScenes = new List<string> { "ScratchScene1", "ScratchScene2" };
     List<string> FigureCombiScenes = new List<string> { "1Pinwheel", "1Sun", "2Rocket", "2Ship", "3Person", "3TheTrain" };
@@ -53,20 +53,20 @@ public class ResultManager : MonoBehaviour
         // 50 % 미만           : 경험치 X  ,게임 실패
         // 50 % 이상 60 % 미만 : 경험치 5  ,게임 성공
         // 60 % 이상           : 경험치 10 ,게임 성공
-        
+
         if (dotLineScenes.Contains(gameResult.previousScene))
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "DotLineScene1") { StageNum = 0; }       
+            if (gameResult.previousScene == "DotLineScene1") { StageNum = 0; }
             else if (gameResult.previousScene == "DotLineScene2") { StageNum = 2; }
             else if (gameResult.previousScene == "DotLineScene3") { StageNum = 4; }
 
             #endregion
 
-            if (gameResult.score < 50)       { isClear = false; FailSetting(StageNum); }    
-            else if (gameResult.score < 60)  { isClear = true;  SuccessSetting(StageNum); }  
-            else                             { isClear = true;  ClearSetting(StageNum); }    
+            if (gameResult.score < 50) { isClear = false; FailSetting(StageNum); }
+            else if (gameResult.score < 60) { isClear = true; SuccessSetting(StageNum); }
+            else { isClear = true; ClearSetting(StageNum); }
         }
 
 
@@ -90,9 +90,9 @@ public class ResultManager : MonoBehaviour
 
             #endregion
 
-            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            if (gameResult.score < 60) { isClear = false; FailSetting(StageNum); }
             else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
-            else                            { isClear = true; ClearSetting(StageNum); }
+            else { isClear = true; ClearSetting(StageNum); }
         }
 
 
@@ -105,14 +105,14 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "ScratchScene1")      { StageNum = 6; }
+            if (gameResult.previousScene == "ScratchScene1") { StageNum = 6; }
             else if (gameResult.previousScene == "ScratchScene2") { StageNum = 12; }
 
             #endregion
 
-            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            if (gameResult.score < 60) { isClear = false; FailSetting(StageNum); }
             else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
-            else                            { isClear = true; ClearSetting(StageNum); }
+            else { isClear = true; ClearSetting(StageNum); }
 
         }
 
@@ -127,16 +127,16 @@ public class ResultManager : MonoBehaviour
         else if (FigureCombiScenes.Contains(gameResult.previousScene))
         {
             #region previousScene에 따라 StageNum 할당
-            
+
             if (gameResult.previousScene == "1Pinwheel" || gameResult.previousScene == "1Sun") { StageNum = 7; }
             else if (gameResult.previousScene == "2Rocket" || gameResult.previousScene == "2Ship") { StageNum = 9; }
             else if (gameResult.previousScene == "3Person" || gameResult.previousScene == "3TheTrain") { StageNum = 13; }
 
             #endregion
 
-            if (gameResult.score < 60)      { isClear = false; FailSetting(StageNum); }
+            if (gameResult.score < 60) { isClear = false; FailSetting(StageNum); }
             else if (gameResult.score < 80) { isClear = true; SuccessSetting(StageNum); }
-            else                            { isClear = true; ClearSetting(StageNum); }
+            else { isClear = true; ClearSetting(StageNum); }
 
         }
 
@@ -149,13 +149,13 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "TangramScene_Lv1")    { StageNum = 10; }
+            if (gameResult.previousScene == "TangramScene_Lv1") { StageNum = 10; }
             else if (gameResult.previousScene == "TangramScene_Lv2") { StageNum = 15; }
             else if (gameResult.previousScene == "TangramScene_Lv3") { StageNum = 18; }
 
             #endregion
 
-            if (gameResult.score == 0)        { isClear = false; FailSetting(StageNum); }
+            if (gameResult.score == 0) { isClear = false; FailSetting(StageNum); }
             else if (gameResult.score == 100) { isClear = true; ClearSetting(StageNum); }
             else { Debug.LogWarning("gameResult.score 값이 잘못 할당되었습니다. 0 또는 100을 할당해주세요"); }
 
@@ -175,7 +175,7 @@ public class ResultManager : MonoBehaviour
 
             #endregion
 
-            if (gameResult.score == 0)        { isClear = false; FailSetting(StageNum); }
+            if (gameResult.score == 0) { isClear = false; FailSetting(StageNum); }
             else if (gameResult.score == 100) { isClear = true; ClearSetting(StageNum); }
             else { Debug.LogWarning("gameResult.score 값이 잘못 할당되었습니다. 0 또는 100을 할당해주세요"); }
 
@@ -184,7 +184,6 @@ public class ResultManager : MonoBehaviour
 
         // 캐릭터 상태 세팅
         SetCharacterState(isClear, isDog);
-        Effect(isClear);
 
         StartCoroutine(ChangeSceneAfterDelay(5f));
 
@@ -192,8 +191,8 @@ public class ResultManager : MonoBehaviour
         GameData.instance.SaveTrainingData();
         GameData.instance.LoadPlayerData();
         GameData.instance.LoadTrainingData();
-        
-     }
+
+    }
 
 
 
@@ -231,8 +230,8 @@ public class ResultManager : MonoBehaviour
     // Restart() : 이전 게임의 씬으로 돌아가기
     // End()     : 맵화면으로 돌아가기
 
-    public void Restart(){ SceneManager.LoadScene(gameResult.previousScene); }
-    public void End(){ SceneManager.LoadScene("MapScene"); }
+    public void Restart() { SceneManager.LoadScene(gameResult.previousScene); }
+    public void End() { SceneManager.LoadScene("MapScene"); }
 
     private IEnumerator ChangeSceneAfterDelay(float delay)
     {
@@ -264,6 +263,9 @@ public class ResultManager : MonoBehaviour
 
         // 오디오 재생
         audioSource.Play();
+
+        // 효과 활성화
+        Effect(isClear, index);
     }
 
     // ★ [ 성공/실패 이펙트를 활성화하는 메소드 ] ---------------------------------------------------
@@ -273,10 +275,10 @@ public class ResultManager : MonoBehaviour
     public GameObject[] successObjects;
 
     // 실패 오브젝트
-    public GameObject failObject;
+    public GameObject[] failObjects;
 
     // 성공 여부를 처리하는 메서드
-    public void Effect(bool isClear)
+    public void Effect(bool isClear, int index)
     {
         if (isClear)
         {
@@ -285,8 +287,42 @@ public class ResultManager : MonoBehaviour
             {
                 obj.SetActive(true);
             }
-            // 실패 오브젝트를 비활성화
-            failObject.SetActive(false);
+
+            // 모든 실패 오브젝트를 비활성화
+            foreach (GameObject obj in failObjects)
+            {
+                obj.SetActive(false);
+            }
+
+            // 인덱스에 따라 successObjects[0]과 successObjects[1] 위치 설정
+            switch (index)
+            {
+                case 0: // 잘해줘서 고마워
+                    successObjects[0].transform.position = new Vector3(-2, 0.4f, -1); // 원하는 위치 설정
+                    successObjects[1].transform.position = new Vector3(-2.5f, -2, -1); // 원하는 위치 설정
+                    successObjects[2].transform.position = new Vector3(3.14f, -0.37f, -1); // 원하는 위치 설정
+                    successObjects[3].transform.position = new Vector3(3, -2, -1); // 원하는 위치 설정
+                    break;
+
+                case 1: // 우와 대단해 너 정말 잘한다
+                    successObjects[0].transform.position = new Vector3(-4, -1.5f, -1); // 원하는 위치 설정
+                    successObjects[1].transform.position = new Vector3(-2.5f, 0.6f, -1); // 원하는 위치 설정
+                    successObjects[2].transform.position = new Vector3(3.3f, 0.8f, -1); // 원하는 위치 설정
+                    successObjects[3].transform.position = new Vector3(4, -2, -1); // 원하는 위치 설정
+                    break;
+
+                case 2: // 넌 정말 최고야
+                    successObjects[0].transform.position = new Vector3(-3, -1.5f, -1); // 원하는 위치 설정
+                    successObjects[1].transform.position = new Vector3(-2, 0.3f, -1); // 원하는 위치 설정
+                    successObjects[2].transform.position = new Vector3(3.3f, 1, -1); // 원하는 위치 설정
+                    successObjects[3].transform.position = new Vector3(4.5f, -1, -1); // 원하는 위치 설정
+                    break;
+                default:
+                    // 다른 인덱스일 경우 기본 위치 설정(필요 시 추가)
+                    break;
+            }
+
+
         }
         else
         {
@@ -296,7 +332,16 @@ public class ResultManager : MonoBehaviour
                 obj.SetActive(false);
             }
             // 실패 오브젝트를 활성화
-            failObject.SetActive(true);
+            // index가 3인 경우 failObjects[0] 활성화
+            if (index == 3)
+            {
+                failObjects[1].SetActive(true);
+            }
+            else
+            {
+                failObjects[0].SetActive(true);
+            }
+
         }
     }
 }
