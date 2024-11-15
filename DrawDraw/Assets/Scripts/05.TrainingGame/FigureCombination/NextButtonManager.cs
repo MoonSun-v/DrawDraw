@@ -31,6 +31,10 @@ public class NextButtonManager : MonoBehaviour
     // 일치한 퍼즐 조각 개수
     private int matchingPieceCount = 0;
 
+    public Text Text_explain;
+    public string newText; // 변경할 텍스트 내용
+
+
     public void OnNextButtonClick()
     {
         CalculateMatches();
@@ -52,6 +56,11 @@ public class NextButtonManager : MonoBehaviour
         completeButtonObject.SetActive(true);  // "완성" 버튼 오브젝트 활성화
 
         check_popup.SetActive(false);
+
+        if (Text_explain != null)
+        {
+            Text_explain.text = newText;
+        }
     }
 
     private void DisableScriptsOnPrefabInstances(GameObject prefab)

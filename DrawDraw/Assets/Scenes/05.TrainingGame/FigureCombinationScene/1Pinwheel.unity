@@ -4034,6 +4034,8 @@ MonoBehaviour:
   check_popup: {fileID: 785973567}
   puzzlePieceTag: shape
   basePieceGroup: {fileID: 1042625468}
+  Text_explain: {fileID: 2035900790}
+  newText: "\uB3C4\uD615\uC5D0 \uC0C9\uC744 \uC785\uD600\uBCF4\uC790!"
   maxScore: 100
   ScoreText: {fileID: 1064060020}
 --- !u!114 &1260370407
@@ -5683,8 +5685,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC67C\uCABD\uC5D0 \uC788\uB294 \uB3C4\uD615\uC744 \uB611\uAC19\uC774
-    \uB9CC\uB4E4\uC5B4\uBCFC\uAE4C?"
+  m_Text: "\uC624\uB978\uCABD \uB3C4\uD615\uC744 \uB20C\uB7EC \uAC00\uC838\uC640
+    \uB3C4\uD615\uC744 \uB9DE\uCDB0\uBCF4\uC790!"
 --- !u!222 &2035900791
 CanvasRenderer:
   m_ObjectHideFlags: 0
