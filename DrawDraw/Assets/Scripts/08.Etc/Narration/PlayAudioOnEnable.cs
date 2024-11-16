@@ -22,6 +22,8 @@ public class PlayAudioOnEnable : MonoBehaviour
     public SequentialAudio sequentialAudio;
     public bool Blocker_activeSelf_false;
 
+    public AudioClip hintAudioClip;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -74,7 +76,28 @@ public class PlayAudioOnEnable : MonoBehaviour
             // SequentialAudio 스크립트의 모든 코루틴을 중지
             sequentialAudio.StopAllCoroutines();
         }
-        audioSource.clip = clip;
+
+        if (clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+
+            // 첫 번째 clip의 길이만큼 대기한 뒤 hintAudioClip 재생
+            if (hintAudioClip != null)
+            {
+                Invoke(nameof(PlayHintAudioClip), clip.length);
+            }
+        }
+        else if (hintAudioClip != null)
+        {
+            // clip이 없으면 바로 hintAudioClip 재생
+            PlayHintAudioClip();
+        }
+    }
+
+    private void PlayHintAudioClip()
+    {
+        audioSource.clip = hintAudioClip;
         audioSource.Play();
     }
 }

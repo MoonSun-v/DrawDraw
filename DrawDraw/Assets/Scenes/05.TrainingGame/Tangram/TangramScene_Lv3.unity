@@ -3060,6 +3060,7 @@ MonoBehaviour:
   gameObject4: {fileID: 995834645}
   sequentialAudio: {fileID: 0}
   Blocker_activeSelf_false: 0
+  hintAudioClip: {fileID: 8300000, guid: 43cc2aea1c20c0544916606a22afcc95, type: 3}
 --- !u!4 &1003637217
 Transform:
   m_ObjectHideFlags: 0
