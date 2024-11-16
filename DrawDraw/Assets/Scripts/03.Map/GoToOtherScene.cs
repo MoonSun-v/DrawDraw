@@ -13,16 +13,18 @@ public class GoToOtherScene : MonoBehaviour
 
 
     // ★ [ 각 훈련 게임 스테이지로 이동하는 버튼 메소드 ] ★
-
+    //
+    // 1. 각 훈련 게임 1단계는 튜토리얼 영상 씬으로 이동
+    //    ( 도형조합, 칠교는 도안 선택 후 튜토리얼 영상 시청 후 게임 씬으로 이동 ) 
 
     // 점선 따라 그리기
-    public void GoToDotLineButton_1() { SceneManager.LoadScene("DotLineScene1"); }
+    public void GoToDotLineButton_1() { SceneManager.LoadScene("T_DotLineScene1"); }
     public void GoToDotLineButton_2() { SceneManager.LoadScene("DotLineScene2"); }
     public void GoToDotLineButton_3() { SceneManager.LoadScene("DotLineScene3"); }
 
 
     // 선 따라 그리기
-    public void GoToLineButton_1() { SceneManager.LoadScene("1LineScene"); }
+    public void GoToLineButton_1() { SceneManager.LoadScene("T_1LineScene"); }
     public void GoToLineButton_2() { SceneManager.LoadScene("2LineScene"); }
     public void GoToLineButton_3() { SceneManager.LoadScene("3LineScene"); }
     public void GoToLineButton_4() { SceneManager.LoadScene("4LineScene"); }
@@ -31,12 +33,12 @@ public class GoToOtherScene : MonoBehaviour
 
 
     // 스크래치
-    public void GoToScratchButton_1() { SceneManager.LoadScene("ScratchScene1"); }
+    public void GoToScratchButton_1() { SceneManager.LoadScene("T_ScratchScene1"); }
     public void GoToScratchButton_2() { SceneManager.LoadScene("ScratchScene2"); }
 
 
     // 칠교
-    public void GoToTangramButton_1() { SceneManager.LoadScene("TangramScene_Lv1"); }
+    public void GoToTangramButton_1() { SceneManager.LoadScene("1TangramSelect"); }
     public void GoToTangramButton_2() { SceneManager.LoadScene("TangramScene_Lv2"); }
     public void GoToTangramButton_3() { SceneManager.LoadScene("TangramScene_Lv3"); }
 
@@ -48,7 +50,7 @@ public class GoToOtherScene : MonoBehaviour
 
 
     // 퍼즐
-    public void GoToPuzzle_1() { SceneManager.LoadScene("PuzzleScene_1"); }
+    public void GoToPuzzle_1() { SceneManager.LoadScene("T_PuzzleScene_1"); }
     public void GoToPuzzle_2() { SceneManager.LoadScene("PuzzleScene_2"); }
 
 

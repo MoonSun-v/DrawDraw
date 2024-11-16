@@ -16,13 +16,13 @@ public class Button_GoToScene : MonoBehaviour
     // 1단계
     public void ChangeScene_Sun()
     {
-        SceneManager.LoadScene("1Sun");
+        SceneManager.LoadScene("T_1Sun");
         Debug.Log("해 도형 조합을 진행합니다.");
     }
 
     public void ChangeScene_Pinwheel()
     {
-        SceneManager.LoadScene("1Pinwheel");
+        SceneManager.LoadScene("T_1Pinwheel");
         Debug.Log("바람개비 도형 조합을 진행합니다.");
     }
 

@@ -39,7 +39,7 @@ public class ResultManager : MonoBehaviour
     List<string> LineScenes = new List<string> { "1LineScene", "2LineScene", "3LineScene", "4LineScene", "5LineScene", "6LineScene" };
     List<string> ScratchScenes = new List<string> { "ScratchScene1", "ScratchScene2" };
     List<string> FigureCombiScenes = new List<string> { "1Pinwheel", "1Sun", "2Rocket", "2Ship", "3Person", "3TheTrain" };
-    List<string> TangramScenes = new List<string> { "TangramScene_Lv1", "TangramScene_Lv2", "TangramScene_Lv3" };
+    List<string> TangramScenes = new List<string> { "TangramScene_Lv1_boat","TangramScene_Lv1_duck", "TangramScene_Lv2", "TangramScene_Lv3" };
     List<string> PuzzleScenes = new List<string> { "PuzzleScene_1", "PuzzleScene_2" };
 
 
@@ -149,7 +149,7 @@ public class ResultManager : MonoBehaviour
         {
             #region previousScene에 따라 StageNum 할당
 
-            if (gameResult.previousScene == "TangramScene_Lv1") { StageNum = 10; }
+            if (gameResult.previousScene == "TangramScene_Lv1_boat" || gameResult.previousScene == "TangramScene_Lv1_duck") { StageNum = 10; }
             else if (gameResult.previousScene == "TangramScene_Lv2") { StageNum = 15; }
             else if (gameResult.previousScene == "TangramScene_Lv3") { StageNum = 18; }
 
