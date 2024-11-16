@@ -38,24 +38,24 @@ public class PlayAudioOnEnable : MonoBehaviour
         // 게임오브젝트2가 null이 아니고 활성화되면 2번 오디오 재생 (한 번만)
         if (gameObject2 != null && gameObject2.activeSelf && !hasPlayedClip2)
         {
-            PlayAudio(audioClip2);
+            PlayAudio(audioClip2); 
             hasPlayedClip2 = true;
         }
 
-         // 게임오브젝트3이 null이 아니고 비활성화되면 3번 오디오 재생 (한 번만)
-         if (gameObject3 != null && !gameObject3.activeSelf && !hasPlayedClip3 && Blocker_activeSelf_false && hasPlayedClip2)
-            {
-                PlayAudio(audioClip3);
-                hasPlayedClip3 = true;
-            }
+        // 게임오브젝트3이 null이 아니고 비활성화되면 3번 오디오 재생 (한 번만)
+        if (gameObject3 != null && !gameObject3.activeSelf && !hasPlayedClip3 && Blocker_activeSelf_false && hasPlayedClip2)
+        {
+            PlayAudio(audioClip3);
+            hasPlayedClip3 = true;
+        }
 
-            // 게임오브젝트3이 null이 아니고 활성화되면 3번 오디오 재생 (한 번만)
-            if (gameObject3 != null && gameObject3.activeSelf && !hasPlayedClip3 && !Blocker_activeSelf_false && hasPlayedClip2)
-            {
-                PlayAudio(audioClip3);
-                hasPlayedClip3 = true;
-            }
-        
+        // 게임오브젝트3이 null이 아니고 활성화되면 3번 오디오 재생 (한 번만)
+        if (gameObject3 != null && gameObject3.activeSelf && !hasPlayedClip3 && !Blocker_activeSelf_false && hasPlayedClip2)
+        {
+            PlayAudio(audioClip3);
+            hasPlayedClip3 = true;
+        }
+
         // 게임오브젝트4가 null이 아니고 활성화되면 4번 오디오 재생 (한 번만)
         if (gameObject4 != null && gameObject4.activeSelf && !hasPlayedClip4)
         {

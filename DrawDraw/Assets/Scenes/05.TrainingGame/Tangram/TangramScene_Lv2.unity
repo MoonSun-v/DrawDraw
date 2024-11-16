@@ -1390,8 +1390,8 @@ MonoBehaviour:
   triggerObject1: {fileID: 1187895576}
   triggerObject2: {fileID: 995834645}
   catSounds:
-  - {fileID: 8300000, guid: 78f072313d184d44a92a36e8f8a4e354, type: 3}
-  - {fileID: 8300000, guid: 78f072313d184d44a92a36e8f8a4e354, type: 3}
+  - {fileID: 8300000, guid: 699ddfe711270584e9314ce140223161, type: 3}
+  - {fileID: 8300000, guid: 699ddfe711270584e9314ce140223161, type: 3}
   dogSounds:
   - {fileID: 8300000, guid: 1c0eee70d3a87f24ab010eccabc3e6a3, type: 3}
   - {fileID: 8300000, guid: 1c0eee70d3a87f24ab010eccabc3e6a3, type: 3}
@@ -3813,8 +3813,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9c17847f99ace9f4b9fec2a3c6f17e89, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3911,13 +3911,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe826acc3cefc6b448256fc0454a770c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip1: {fileID: 0}
+  audioClip1: {fileID: 8300000, guid: 9c17847f99ace9f4b9fec2a3c6f17e89, type: 3}
   audioClip2: {fileID: 8300000, guid: c64720d5cd43b604b953f6df641fc914, type: 3}
-  audioClip3: {fileID: 8300000, guid: c64720d5cd43b604b953f6df641fc914, type: 3}
-  audioClip4: {fileID: 0}
+  audioClip3: {fileID: 0}
+  audioClip4: {fileID: 8300000, guid: c64720d5cd43b604b953f6df641fc914, type: 3}
   gameObject2: {fileID: 995834645}
-  gameObject3: {fileID: 1187895576}
-  gameObject4: {fileID: 0}
+  gameObject3: {fileID: 0}
+  gameObject4: {fileID: 1187895576}
   sequentialAudio: {fileID: 0}
   Blocker_activeSelf_false: 0
 --- !u!4 &1213325771
