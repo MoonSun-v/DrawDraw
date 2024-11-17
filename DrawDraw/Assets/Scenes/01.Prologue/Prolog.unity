@@ -205,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292139158}
   - component: {fileID: 292139157}
+  - component: {fileID: 292139159}
   m_Layer: 0
   m_Name: Video
   m_TagString: Untagged
@@ -245,7 +246,7 @@ VideoPlayer:
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 0
+  m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!4 &292139158
@@ -263,6 +264,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292139159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292139156}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309b24d0cfe03354a8d4220bc8447063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoClipName: prolog
+  videoPlayer: {fileID: 292139157}
+  playOnReady: 1
 --- !u!1 &1848933473
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -680, y: 692}
+  m_AnchoredPosition: {x: -200, y: 692}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2126661656
@@ -678,7 +694,6 @@ MonoBehaviour:
   nextSceneButton: {fileID: 2107609208}
   delay: 3
   videoPlayer: {fileID: 292139157}
-  nextScecne: Profile
 --- !u!4 &2131370592
 Transform:
   m_ObjectHideFlags: 0
