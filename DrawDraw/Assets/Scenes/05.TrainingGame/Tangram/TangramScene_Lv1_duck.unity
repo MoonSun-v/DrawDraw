@@ -638,10 +638,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1353668683}
   TutorialButton: {fileID: 1395041320}
-  videoPlayerObject: {fileID: 445592443}
+  videoPlayerObject1: {fileID: 445592443}
+  videoPlayerObject2: {fileID: 0}
   Input: {fileID: 1075902235}
   TutorialRawImage: {fileID: 630344517}
   TutorialBG: {fileID: 908293344}
+  object1: {fileID: 2014849278}
+  object2: {fileID: 0}
 --- !u!4 &285372687
 Transform:
   m_ObjectHideFlags: 0

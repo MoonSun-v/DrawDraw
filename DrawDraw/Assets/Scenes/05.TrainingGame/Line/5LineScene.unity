@@ -388,6 +388,7 @@ MonoBehaviour:
   gameObject4: {fileID: 0}
   sequentialAudio: {fileID: 0}
   Blocker_activeSelf_false: 0
+  hintAudioClip: {fileID: 0}
 --- !u!4 &301884542
 Transform:
   m_ObjectHideFlags: 0
@@ -2653,10 +2654,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 301884540}
   TutorialButton: {fileID: 714777513}
-  videoPlayerObject: {fileID: 1953047113}
+  videoPlayerObject1: {fileID: 1953047113}
+  videoPlayerObject2: {fileID: 0}
   Input: {fileID: 1060306113}
   TutorialRawImage: {fileID: 1428530573}
   TutorialBG: {fileID: 2073507487}
+  object1: {fileID: 492966418}
+  object2: {fileID: 0}
 --- !u!4 &1795301407
 Transform:
   m_ObjectHideFlags: 0

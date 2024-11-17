@@ -1945,10 +1945,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1213325769}
   TutorialButton: {fileID: 2044522061}
-  videoPlayerObject: {fileID: 785375683}
+  videoPlayerObject1: {fileID: 785375683}
+  videoPlayerObject2: {fileID: 785375683}
   Input: {fileID: 487122303}
   TutorialRawImage: {fileID: 296450964}
   TutorialBG: {fileID: 569612008}
+  object1: {fileID: 1876917509}
+  object2: {fileID: 2014849278}
 --- !u!4 &630059287
 Transform:
   m_ObjectHideFlags: 0

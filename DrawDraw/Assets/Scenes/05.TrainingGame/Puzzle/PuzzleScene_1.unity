@@ -5216,7 +5216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1418158871}
   - component: {fileID: 1418158870}
-  - component: {fileID: 1418158869}
   m_Layer: 0
   m_Name: Video
   m_TagString: Untagged
@@ -5224,26 +5223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1418158869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418158868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99b1b3a75a71b144b05d9e3b2f579ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  object1: {fileID: 553163325}
-  object2: {fileID: 1789140216}
-  videoClip1: {fileID: 32900000, guid: f42af19b6cfedac44a0dc42d716a1f56, type: 3}
-  videoClip2: {fileID: 32900000, guid: 039ede80caef22e44acb12d07895bc73, type: 3}
-  renderTexture1: {fileID: 8400000, guid: ffd6d6ca59c333443b7e124cddfa5645, type: 2}
-  renderTexture2: {fileID: 8400000, guid: 331a31ce583f3f547bc045f088b5e6b3, type: 2}
-  videoPlayer: {fileID: 1418158870}
-  rawImage: {fileID: 1350848065}
 --- !u!328 &1418158870
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -5252,7 +5231,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418158868}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: f42af19b6cfedac44a0dc42d716a1f56, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -5700,10 +5679,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2118256469}
   TutorialButton: {fileID: 1193994643}
-  videoPlayerObject: {fileID: 1418158868}
+  videoPlayerObject1: {fileID: 1418158868}
+  videoPlayerObject2: {fileID: 1621869387}
   Input: {fileID: 407873590}
   TutorialRawImage: {fileID: 1350848065}
   TutorialBG: {fileID: 33669434}
+  object1: {fileID: 553163325}
+  object2: {fileID: 1789140216}
 --- !u!4 &1611929350
 Transform:
   m_ObjectHideFlags: 0
@@ -5711,6 +5693,74 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611929348}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 992.8369, y: 1071.7738, z: 0.4511956}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1621869387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621869389}
+  - component: {fileID: 1621869388}
+  m_Layer: 0
+  m_Name: Video (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &1621869388
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621869387}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 039ede80caef22e44acb12d07895bc73, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: ffd6d6ca59c333443b7e124cddfa5645, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &1621869389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621869387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 992.8369, y: 1071.7738, z: 0.4511956}
@@ -7338,6 +7388,7 @@ MonoBehaviour:
   gameObject4: {fileID: 0}
   sequentialAudio: {fileID: 0}
   Blocker_activeSelf_false: 0
+  hintAudioClip: {fileID: 0}
 --- !u!4 &2118256468
 Transform:
   m_ObjectHideFlags: 0
@@ -7465,5 +7516,6 @@ SceneRoots:
   - {fileID: 733421599}
   - {fileID: 407873592}
   - {fileID: 545554533}
-  - {fileID: 1418158871}
   - {fileID: 1611929350}
+  - {fileID: 1418158871}
+  - {fileID: 1621869389}
