@@ -19,7 +19,7 @@ public class StartManager : MonoBehaviour
             if (resultData.Game10Score != 0)
             {
                 Debug.Log("기존 데이터가 존재합니다");
-                SceneManager.LoadScene("SelectScene");
+                SceneManager.LoadScene("MapScene");
             }
             else
             {
