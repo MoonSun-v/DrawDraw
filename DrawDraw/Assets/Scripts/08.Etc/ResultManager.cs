@@ -14,9 +14,9 @@ public class ResultManager : MonoBehaviour
     public GameResultSO gameResult;
     private int StageNum = 30;
 
+    public GameObject Curtain;
+    private Animator animator;
 
-    // ( 임시 변수들 )
-    //public Text scoreText;  // 프로토타입에서만 사용 
     private bool isClear;   // 게임 클리어했는가? 
 
     //성공 실패 캐릭터 이미지
@@ -48,6 +48,7 @@ public class ResultManager : MonoBehaviour
     //
     void Start()
     {
+        animator = Curtain.GetComponent<Animator>();
 
         // 1. [ 점선 따라 그리기 ]
         // 50 % 미만           : 경험치 X  ,게임 실패
@@ -185,7 +186,9 @@ public class ResultManager : MonoBehaviour
         // 캐릭터 상태 세팅
         SetCharacterState(isClear, isDog);
 
-        StartCoroutine(ChangeSceneAfterDelay(5f));
+
+        CheckTestActive();
+        
 
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();
@@ -195,15 +198,14 @@ public class ResultManager : MonoBehaviour
     }
 
 
-
     // ★ [ 훈련게임 결과 정보 저장하는 메소드 ] ★ -------------------------------------------------
     //
-    // 1. FailSetting()    : 경험치 X,  게임 실패 -> 3회 이상 실패 시, 힌트 이벤트 작동 
+    // 1. FailSetting()    : 경험치 X,  게임 실패 -> 3회 이상 실패 시, 힌트 이벤트 작동 (없어짐)
     // 2. SuccessSetting() : 경험치 5,  게임 성공 
     // 3. ClearSetting()   : 경험치 10, 게임 성공  
     // => 각 함수는 지정된 스테이지의 숫자를 받아온다.=(int stagenum) 
 
-    void FailSetting(int stagenum)
+    void FailSetting(int stagenum) // 없어짐 
     {
         // GameData.instance.trainingdata.FailNum[stagenum] += 1;
         // print($"{stagenum}번 스테이지의 실패 횟수 저장 완료");
@@ -225,6 +227,37 @@ public class ResultManager : MonoBehaviour
         // print($"{stagenum}번 스테이지의 결과값 저장 완료");
     }
 
+
+    // ★ [ 테스트 씬 이동 필요 확인 ] ★ -------------------------------------------------
+    // 
+    // 경험치에 따라 테스트 씬으로 이동이 필요한지 확인
+    // 경험치 확인 후 -> 일정 경험치 달성 했는데 일정 테스트 횟수 불충족 이라면 -> 테스트 씬으로 이동
+    // 
+    void CheckTestActive()
+    {
+        int CompletedTestCount = GameData.instance.testdata.TestResults.Count; // 지금까지 테스트 진행 횟수 
+        int TotalTestCount = GetTotalTestCount(GameData.instance.playerdata.PlayerExp); // 레벨에 따른 총 테스트 횟수
+        int RemainingTestCount = TotalTestCount - CompletedTestCount; // 현재 가능한 테스트 횟수 
+
+        print("현재 남은 테스트 횟수 : " + RemainingTestCount);
+        if (RemainingTestCount < 0) { RemainingTestCount = 0; print("테스트 횟수 오류 입니다"); }
+        
+        if(RemainingTestCount>=1) { StartCoroutine(ChangeTestScene(5f)); }
+        else if(RemainingTestCount == 0) { StartCoroutine(ChangeMainScene(5f)); }
+    }
+
+    // 레벨에 따른 총 테스트 횟수 반환
+    private int GetTotalTestCount(int playerExp)
+    {
+        if (playerExp >= 190) return 6;
+        else if (playerExp >= 160) return 5; // level 5
+        else if (playerExp >= 120) return 4; // level 4
+        else if (playerExp >= 80) return 3;  // level 3 
+        else if (playerExp >= 40) return 2;  // level 2 
+        return 1;                            // level 1
+    }
+
+
     // ★ [ 씬 이동 버튼 ] -----------------------------------------------------------------------------
     //
     // Restart() : 이전 게임의 씬으로 돌아가기
@@ -233,12 +266,22 @@ public class ResultManager : MonoBehaviour
     public void Restart() { SceneManager.LoadScene(gameResult.previousScene); }
     public void End() { SceneManager.LoadScene("MapScene"); }
 
-    private IEnumerator ChangeSceneAfterDelay(float delay)
+    private IEnumerator ChangeMainScene(float delay)
     {
         yield return new WaitForSeconds(delay);
 
         SceneManager.LoadScene("MapScene");
     }
+
+    private IEnumerator ChangeTestScene(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("isEnd", true);
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("TestStartScene");
+    }
+
+
 
     // ★ [ 결과 화면 성공/실패 이미지 출력하는 메소드 ] ---------------------------------------------------
     //
