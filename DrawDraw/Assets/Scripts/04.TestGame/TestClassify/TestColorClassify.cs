@@ -128,7 +128,7 @@ public class TestColorClassify : MonoBehaviour
         }
         else
         {
-            // 마지막 테스트가 아니라면 -> 선택화면으로 이동 
+            // 마지막 테스트가 아니라면 -> 맵화면으로 이동 
             SceneManager.LoadScene("MapScene");
         }
     }
