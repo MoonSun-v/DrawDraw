@@ -24,6 +24,6 @@ public class TestBackToSelect : MonoBehaviour
     public void YesBtn()
     {
         CheckPopup.SetActive(false);
-        SceneManager.LoadScene("SelectScene");
+        SceneManager.LoadScene("MapScene");
     }
 }
