@@ -692,8 +692,8 @@ MonoBehaviour:
   TextImage: {fileID: 1218506518}
   DogText: {fileID: 21300000, guid: d7b7c361fa85c5c4f91cbdf255492876, type: 3}
   CountDown: {fileID: 1203328243}
-  Two: {fileID: 21300000, guid: 804c9759457133449a279425c656608a, type: 3}
-  One: {fileID: 21300000, guid: 127aaa2022d4b1b4d90908d5a92307e9, type: 3}
+  Two: {fileID: 21300000, guid: 992fee58ffe185042bc46ca3c60b4034, type: 3}
+  One: {fileID: 21300000, guid: 0223d4cfd4115004bbc2137155381256, type: 3}
   Curtain: {fileID: 1808095167}
 --- !u!82 &1062945470
 AudioSource:

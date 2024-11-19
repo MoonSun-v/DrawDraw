@@ -66,11 +66,20 @@ public class StageManager : MonoBehaviour
     //                                          (마지막 스테이지 제외) 
     public void UnlockedStage()
     {
+        /*
         for (int i = 0; i < stageButtonImages.Length-1; i++)
         {
             Image buttonImage = stageButtonImages[i];
             buttonImage.sprite = activateImages[i];
             buttonImage.raycastTarget = true; 
+        }
+        */
+
+        for (int i = 0; i < stageButtonImages.Length; i++)
+        {
+            Image buttonImage = stageButtonImages[i];
+            buttonImage.sprite = activateImages[i];
+            buttonImage.raycastTarget = true;
         }
     }
 

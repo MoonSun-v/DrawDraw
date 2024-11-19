@@ -59,14 +59,20 @@ public class EndingManager : MonoBehaviour
     {
         // 현재 씬의 다음 씬으로 이동
         GameData.instance.trainingdata.ClearStage[19] = true; // : 맵화면 아이콘 완료버전 처리 위해서..!
+        GameData.instance.SaveTrainingData();
+        GameData.instance.LoadTrainingData();
         SceneManager.LoadScene("StartScene");
+        // SceneManager.LoadScene("MapScene");
     }
 
     private void OnVideoEnd(VideoPlayer vp)
     {
         // 지정된 씬으로 이동
         GameData.instance.trainingdata.ClearStage[19] = true; // : 맵화면 아이콘 완료버전 처리 위해서..!
+        GameData.instance.SaveTrainingData();
+        GameData.instance.LoadTrainingData();
         SceneManager.LoadScene("StartScene");
+        // SceneManager.LoadScene("MapScene");
     }
 
     public void PlaySelectedVideo()

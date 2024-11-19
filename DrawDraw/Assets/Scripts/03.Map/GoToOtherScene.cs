@@ -65,6 +65,9 @@ public class GoToOtherScene : MonoBehaviour
 
     public void GoToLastStage()
     {
+        SceneManager.LoadScene("EndingScene");
+
+        /*
         if(GameData.instance.testdata.TestResults.Count < 6)
         {
             SceneManager.LoadScene("TestStartScene");
@@ -75,6 +78,7 @@ public class GoToOtherScene : MonoBehaviour
             print("모든 테스트를 완료하여 엔딩 씬으로 이동합니다.");
             SceneManager.LoadScene("EndingScene");
         }
+        */
     }
 
 }
