@@ -202,6 +202,12 @@ public class AudioManager : MonoBehaviour
                 newClip = bgmClips[2];
                 break;
 
+
+            //Parents BGM
+            case "ParentsScene":
+                newClip = bgmClips[2];
+                break;
+
             default:
                 newClip = bgmClips[0];  // ±âº» BGM
                 break;
