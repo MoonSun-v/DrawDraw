@@ -12640,7 +12640,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2006516377}
         m_TargetAssemblyTypeName: GoToOtherScene, Assembly-CSharp
-        m_MethodName: GoToSelectSceneButton
+        m_MethodName: GoToMapButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

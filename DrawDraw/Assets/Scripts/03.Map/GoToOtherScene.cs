@@ -8,7 +8,7 @@ public class GoToOtherScene : MonoBehaviour
 
     public void GoToMapButton() { SceneManager.LoadScene("MapScene"); }
 
-    public void GoToSelectSceneButton() { SceneManager.LoadScene("SelectScene"); }
+    //public void GoToSelectSceneButton() { SceneManager.LoadScene("SelectScene"); }
 
 
 
