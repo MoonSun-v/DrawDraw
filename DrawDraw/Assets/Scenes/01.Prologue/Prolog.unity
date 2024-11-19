@@ -205,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292139158}
   - component: {fileID: 292139157}
+  - component: {fileID: 292139159}
   m_Layer: 0
   m_Name: Video
   m_TagString: Untagged
@@ -220,7 +221,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292139156}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 46268e2a6c3bd8e4f9e8b0694642d1c3, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 357a88ce6e408ba4f9d2e8a7ef6dd952, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -263,6 +264,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292139159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292139156}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309b24d0cfe03354a8d4220bc8447063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoClipName: prolog
+  videoPlayer: {fileID: 292139157}
+  playOnReady: 1
 --- !u!1 &1848933473
 GameObject:
   m_ObjectHideFlags: 0
