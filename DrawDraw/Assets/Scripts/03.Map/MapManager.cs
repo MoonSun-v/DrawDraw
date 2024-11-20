@@ -91,4 +91,10 @@ public class MapManager : MonoBehaviour
         Profile.SetActive(false);
     }
 
+
+    // [ ½Ã¿¬¿ë ³· -> ¹ã ¹öÆ° ]
+    public void BackgroundChange()
+    {
+        BackgroundImg.sprite = newSprite;
+    }
 }
