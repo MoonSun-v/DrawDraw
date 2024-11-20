@@ -122,7 +122,10 @@ public class TestColorClassify : MonoBehaviour
 
     private void GoToNextScene()
     {
-        if( GameData.instance.testdata.TestResults.Count > 5 )
+        SceneManager.LoadScene("TestFinishScene");
+
+        /*
+        if ( GameData.instance.testdata.TestResults.Count > 5 )
         {
             // 마지막 테스트라면 -> 엔딩씬으로 이동
             // ** 스크립트 추가 필요 **
@@ -137,5 +140,6 @@ public class TestColorClassify : MonoBehaviour
             // 마지막 테스트가 아니라면 -> 맵화면으로 이동 
             SceneManager.LoadScene("MapScene");
         }
+        */
     }
 }
