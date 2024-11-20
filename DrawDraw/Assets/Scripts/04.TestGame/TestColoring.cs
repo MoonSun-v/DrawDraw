@@ -29,8 +29,15 @@ public class TestColoring : MonoBehaviour
     public Sprite previousButtonOriginalSprite;       // 이전 버튼의 원래 스프라이트를 저장
 
 
+    public Image Fighting;
+    public Sprite DogFighting;
+    private bool isDog;
+
     void Start()
     {
+        isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
+        if (isDog) { Fighting.sprite = DogFighting; }
+
         foreach (GameObject shape in Shapes)
         {
             SpriteRenderer shapeRenderer = shape.GetComponent<SpriteRenderer>();

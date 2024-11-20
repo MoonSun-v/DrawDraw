@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TestShapesClassify : MonoBehaviour
 {
@@ -10,10 +11,15 @@ public class TestShapesClassify : MonoBehaviour
 
     public GameObject CheckPopup;
 
+    public Image Fighting;
+    public Sprite DogFighting;
+    private bool isDog;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
+        if (isDog) { Fighting.sprite = DogFighting; }
     }
 
     // Update is called once per frame

@@ -19,14 +19,22 @@ public class TestDotLine : MonoBehaviour
 
     public Draw draw;
 
+    public Image Fighting;
+    public Sprite DogFighting;
+    private bool isDog;
 
     private void Awake()
     {
         mainCamera = Camera.main;    // "Maincamera" 태그를 가지고 있는 오브젝트 탐색 후 Camera 컴포넌트 정보 전달
     }
 
+    void Start()
+    {
+        isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
+        if (isDog) { Fighting.sprite = DogFighting; }
+    }
 
-    void Update()
+        void Update()
     {
         // 마우스 누르고 있는 동안 
         if (Input.GetMouseButton(0))

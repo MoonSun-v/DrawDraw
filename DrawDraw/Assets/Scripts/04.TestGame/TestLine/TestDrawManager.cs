@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestDrawManager : MonoBehaviour
 {
@@ -13,10 +14,17 @@ public class TestDrawManager : MonoBehaviour
 
     public bool DrawActivate = true; // 활성화 여부
 
+    public Image Fighting;
+    public Sprite DogFighting;
+    private bool isDog;
+
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
+
+        isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
+        if (isDog) { Fighting.sprite = DogFighting; }
 
         spriteRenderer = DrawArea.GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
