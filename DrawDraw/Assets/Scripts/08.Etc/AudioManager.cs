@@ -80,9 +80,12 @@ public class AudioManager : MonoBehaviour
                 newClip = bgmClips[1];
                 break;
 
-            //Test Start Silent
+            //Silent
             case "TestStartScene":
                 bgmSource.Pause(); 
+                break;
+            case "EndingScene":
+                bgmSource.Pause();
                 break;
 
             //Dot Line BGM
