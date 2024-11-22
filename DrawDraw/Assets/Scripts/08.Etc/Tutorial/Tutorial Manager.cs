@@ -132,8 +132,7 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("두 번째 애니메이션 재생");
                 StartCoroutine(DisableAfterAnimation(animator, animationObject2));
             }
-
-            HideObject4.SetActive(false);
+            if(isTangram)  HideObject4.SetActive(false);
         }
 
         if (Input != null)
@@ -229,6 +228,10 @@ public class TutorialManager : MonoBehaviour
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = mainCamera;
             canvas.planeDistance = 1;
+
+            // Canvas의 Sorting Layer를 설정
+            canvas.sortingOrder = 5;
+
             Debug.Log("Canvas를 Camera 모드로 설정");
         }
     }
