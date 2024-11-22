@@ -9,49 +9,60 @@ public class TutorialManager : MonoBehaviour
     public AudioSource audioSource; // 오디오 소스 참조
     public Button  TutorialButton; // 비활성화할 버튼 오브젝트
 
-    public GameObject videoPlayerObject1; // 첫 번째 비디오 플레이어 오브젝트
-    public GameObject videoPlayerObject2; // 두 번째 비디오 플레이어 오브젝트
+    public GameObject animationObject1; // 첫 번째 애니메이션 오브젝트
+    public GameObject animationObject2; // 두 번째 애니메이션 오브젝트
 
-    private VideoPlayer videoPlayer;
+    public string animationName1; // 첫 번째 애니메이션 상태 이름
+    public string animationName2; // 두 번째 애니메이션 상태 이름
+
+    private Animator animator;
+    private AudioSource TurorialAudioSource;
 
     public GameObject Input;
 
-    public RawImage TutorialRawImage; // 활성화할 RawImage
     public Image TutorialBG;
 
     public GameObject object1; // 첫 번째 오브젝트
     public GameObject object2; // 두 번째 오브젝트
 
+    public Canvas canvas; // Canvas 오브젝트
+    public Camera mainCamera; // Camera 참조
+
     // Start is called before the first frame update
     void Start()
     {
-        if (videoPlayerObject1 != null)
-        {
-            var videoPlayer1 = videoPlayerObject1.GetComponent<VideoPlayer>();
-            if (videoPlayer1 != null)
-            {
-                videoPlayer1.loopPointReached += OnVideoEnd;
-            }
-        }
-
-        if (videoPlayerObject2 != null)
-        {
-            var videoPlayer2 = videoPlayerObject2.GetComponent<VideoPlayer>();
-            if (videoPlayer2 != null)
-            {
-                videoPlayer2.loopPointReached += OnVideoEnd;
-            }
-        }
-
         // 초기 상태 설정
-        if (TutorialRawImage != null)
-        {
-            TutorialRawImage.gameObject.SetActive(false);
-        }
-
         if (TutorialBG != null)
         {
             TutorialBG.gameObject.SetActive(false);
+        }
+
+        if (animationObject1 != null)
+        {
+            animationObject1.SetActive(false);
+            animator = animationObject1.GetComponent<Animator>();
+            TurorialAudioSource = animationObject1.GetComponent<AudioSource>();
+            if (animator != null)
+            {
+                animator.enabled = false; // 초기에는 비활성화
+            }
+        }
+
+        if (animationObject2 != null)
+        {
+            animationObject2.SetActive(false);
+            animator = animationObject2.GetComponent<Animator>();
+            TurorialAudioSource = animationObject2.GetComponent<AudioSource>();
+            if (animator != null)
+            {
+                animator.enabled = false; // 초기에는 비활성화
+            }
+        }
+
+        // Canvas 기본 설정
+        if (canvas != null)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay; // 기본은 Overlay 모드
         }
 
     }
@@ -73,40 +84,42 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void PlayVideo()
+    public void PlayAnimation()
     {
-        if (TutorialRawImage != null)
-        {
-            // RawImage를 활성화
-            TutorialRawImage.gameObject.SetActive(true);
-            TutorialBG.gameObject.SetActive(true);
-        }
+        // Canvas의 RenderMode를 Camera로 변경
+        SetCanvasToCamera();
 
         // 오브젝트 1이 활성화된 경우
         if (object1.activeSelf)
         {
-            videoPlayer = videoPlayerObject1.GetComponent<VideoPlayer>();
-            if (videoPlayer != null)
-            {
-                // VideoPlayer의 RenderTexture를 RawImage의 texture로 설정
-                TutorialRawImage.texture = videoPlayer.targetTexture;
+            TutorialBG.gameObject.SetActive(true);
 
-                videoPlayerObject1.SetActive(true);
-                videoPlayer.Play();
-                Debug.Log("첫 번째 비디오 재생");
+            animationObject1.SetActive(true);
+            animator = animationObject1.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.enabled = true; // 애니메이터 활성화
+                animator.Play(animationName1); // "Animation1"은 Animator 상태 이름
+                PlayAnimationWithAudio(animationObject1, animationName1);
+                Debug.Log("첫 번째 애니메이션 재생");
+                StartCoroutine(DisableAfterAnimation(animator, animationObject1));
             }
         }
+
         // 오브젝트 2가 활성화된 경우
         else if (object2.activeSelf)
         {
-            videoPlayer = videoPlayerObject2.GetComponent<VideoPlayer>();
-            if (videoPlayer != null)
+            TutorialBG.gameObject.SetActive(true);
+
+            animationObject2.SetActive(true);
+            animator = animationObject2.GetComponent<Animator>();
+            if (animator != null)
             {
-                videoPlayerObject2.SetActive(true);
-                // VideoPlayer의 RenderTexture를 RawImage의 texture로 설정
-                TutorialRawImage.texture = videoPlayer.targetTexture;
-                videoPlayer.Play();
-                Debug.Log("두 번째 비디오 재생");
+                animator.enabled = true; // 애니메이터 활성화
+                animator.Play(animationName2); // "Animation2"는 Animator 상태 이름
+                PlayAnimationWithAudio(animationObject2, animationName2);
+                Debug.Log("두 번째 애니메이션 재생");
+                StartCoroutine(DisableAfterAnimation(animator, animationObject2));
             }
         }
 
@@ -116,21 +129,70 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    void OnVideoEnd(VideoPlayer vp)
+    private IEnumerator DisableAfterAnimation(Animator animator, GameObject animationObject)
     {
-        // 영상 재생이 끝나면 RawImage와 비디오 오브젝트 비활성화
-        if (videoPlayerObject1 != null)
-            videoPlayerObject1.SetActive(false);
+        // 애니메이션의 길이를 가져와 대기
+        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(animationLength);
 
-        if (videoPlayerObject2 != null)
-            videoPlayerObject2.SetActive(false);
+        // 애니메이션 종료 후 처리
+        animator.enabled = false;
+        animationObject.SetActive(false);
 
-        TutorialRawImage.gameObject.SetActive(false);
-        TutorialBG.gameObject.SetActive(false);
+        if (TutorialBG != null)
+        {
+            TutorialBG.gameObject.SetActive(false);
+        }
 
         if (Input != null)
         {
             Input.SetActive(true);
+        }
+
+        // Canvas의 RenderMode를 Overlay로 복원
+        SetCanvasToOverlay();
+
+        Debug.Log("애니메이션 종료 및 비활성화");
+    }
+
+    private void PlayAnimationWithAudio(GameObject animationObject, string animationName)
+    {
+        animator = animationObject.GetComponent<Animator>();
+        TurorialAudioSource = animationObject.GetComponent<AudioSource>();
+
+        if (animator != null)
+        {
+            animator.enabled = true; // 애니메이터 활성화
+            animator.Play(animationName); // 애니메이션 재생
+            Debug.Log($"{animationName} 애니메이션 재생");
+        }
+
+        if (TurorialAudioSource != null)
+        {
+            TurorialAudioSource.Play(); // 오디오 재생
+            Debug.Log("오디오 재생");
+        }
+
+        StartCoroutine(DisableAfterAnimation(animator, animationObject));
+    }
+
+    private void SetCanvasToCamera()
+    {
+        if (canvas != null)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.worldCamera = mainCamera;
+            canvas.planeDistance = 1;
+            Debug.Log("Canvas를 Camera 모드로 설정");
+        }
+    }
+
+    private void SetCanvasToOverlay()
+    {
+        if (canvas != null)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            Debug.Log("Canvas를 Overlay 모드로 복원");
         }
     }
 }
