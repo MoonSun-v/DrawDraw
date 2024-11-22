@@ -607,6 +607,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &211618306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1772033848541016359, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+  m_PrefabInstance: {fileID: 1800527445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &285372685
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,13 +643,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1353668683}
   TutorialButton: {fileID: 1395041320}
-  videoPlayerObject1: {fileID: 445592443}
-  videoPlayerObject2: {fileID: 0}
+  animationObject1: {fileID: 211618306}
+  animationObject2: {fileID: 0}
+  animationName1: Tangram Animation
+  animationName2: 
   Input: {fileID: 1075902235}
-  TutorialRawImage: {fileID: 630344517}
   TutorialBG: {fileID: 908293344}
   object1: {fileID: 2014849278}
   object2: {fileID: 0}
+  canvas: {fileID: 431910179}
+  mainCamera: {fileID: 1599106188}
 --- !u!4 &285372687
 Transform:
   m_ObjectHideFlags: 0
@@ -933,74 +941,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &445592443
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 445592446}
-  - component: {fileID: 445592445}
-  m_Layer: 0
-  m_Name: Video
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!328 &445592445
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445592443}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a7ea629d04ef46f47a45e7319090875e, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: ffd6d6ca59c333443b7e124cddfa5645, type: 2}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 1
-  m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
-  m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
---- !u!4 &445592446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445592443}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 992.8369, y: 1071.7738, z: 0.4511956}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &537554554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8236990643709527475, guid: 75e7c44329bf9d64ba89ec59a0231d0f, type: 3}
@@ -3471,7 +3411,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 285372686}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: PlayVideo
+        m_MethodName: PlayAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4272,6 +4212,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0f524e81f11be42b9edd9aac51b48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1800527445
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1772033848541016359, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_Name
+      value: Tangram000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772033848541016359, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113741815444807504, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
 --- !u!1 &1875761796
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,5 +4938,5 @@ SceneRoots:
   - {fileID: 826675128}
   - {fileID: 1075902237}
   - {fileID: 1613488440}
-  - {fileID: 445592446}
   - {fileID: 285372687}
+  - {fileID: 1800527445}
