@@ -28,6 +28,8 @@ public class TutorialManager : MonoBehaviour
     public Canvas canvas; // Canvas 오브젝트
     public Camera mainCamera; // Camera 참조
 
+    public GameObject HideObject3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,6 +129,11 @@ public class TutorialManager : MonoBehaviour
         {
             Input.SetActive(false);
         }
+
+        if(HideObject3 != null)
+        {
+            HideObject3.SetActive(false);
+        }
     }
 
     private IEnumerator DisableAfterAnimation(Animator animator, GameObject animationObject)
@@ -147,6 +154,11 @@ public class TutorialManager : MonoBehaviour
         if (Input != null)
         {
             Input.SetActive(true);
+        }
+
+        if (HideObject3 != null)
+        {
+            HideObject3.SetActive(true);
         }
 
         // Canvas의 RenderMode를 Overlay로 복원
