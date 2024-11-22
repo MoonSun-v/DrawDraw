@@ -11,14 +11,12 @@ public class EndingManager : MonoBehaviour
     // GameData.instance.trainingdata.ClearStage[19] = true; // : 맵화면 아이콘 완료버전 처리 위해서..!
 
     public Button nextSceneButton; // 버튼 오브젝트를 할당
-    public float delay = 3.0f;     // 지연 시간 (초 단위)
+    private float delay = 5.0f;     // 지연 시간 (초 단위)
 
-    public VideoPlayer videoPlayer;   // VideoPlayer 컴포넌트를 할당
+    public GameObject dogObject;  // 강아지 오브젝트
+    public GameObject catObject;  // 고양이 오브젝트
 
     private bool userPreference = false; // 사용자 정보를 기반으로 결정 ("dog" 또는 "cat")
-
-    public VideoClip dogVideoClip; // 첫 번째 비디오 플레이어
-    public VideoClip catVideoClip; // 두 번째 비디오 플레이어
 
     private void Start()
     {
@@ -29,22 +27,17 @@ public class EndingManager : MonoBehaviour
         // 지연 시간 후 버튼을 활성화하는 코루틴 시작
         StartCoroutine(ShowButtonAfterDelayCoroutine());
 
-        // 비디오 재생 완료 시 호출될 이벤트 등록
-        videoPlayer.loopPointReached += OnVideoEnd;
-
-        //userPreference = GameData.instance.playerdata.PlayerCharacter;
-
+        // userPreference 값 설정 (기본값: false)
         if (GameData.instance.playerdata.PlayerCharacter)
         {
             userPreference = GameData.instance.playerdata.PlayerCharacter;
-
         }
         else
         {
             userPreference = false;
         }
 
-        PlaySelectedVideo();
+        PlaySelectedAnimation();
     }
 
     private IEnumerator ShowButtonAfterDelayCoroutine()
@@ -65,33 +58,57 @@ public class EndingManager : MonoBehaviour
         // SceneManager.LoadScene("MapScene");
     }
 
-    private void OnVideoEnd(VideoPlayer vp)
+    public void PlaySelectedAnimation()
     {
-        // 지정된 씬으로 이동
-        GameData.instance.trainingdata.ClearStage[19] = true; // : 맵화면 아이콘 완료버전 처리 위해서..!
-        GameData.instance.SaveTrainingData();
-        GameData.instance.LoadTrainingData();
-        SceneManager.LoadScene("StartScene");
-        // SceneManager.LoadScene("MapScene");
+        // 모든 오브젝트의 Animator를 초기화
+        ResetAllAnimations();
+
+        if (userPreference == false) // 강아지 애니메이션 실행
+        {
+            if (dogObject != null)
+            {
+                Animator dogAnimator = dogObject.GetComponent<Animator>();
+                if (dogAnimator != null)
+                {
+                    dogAnimator.Play("DogEnding Animation"); // 강아지 애니메이션 이름
+                }
+            }
+        }
+        else // 고양이 애니메이션 실행
+        {
+            if (catObject != null)
+            {
+                Animator catAnimator = catObject.GetComponent<Animator>();
+                if (catAnimator != null)
+                {
+                    catAnimator.Play("CatEnding Animation"); // 고양이 애니메이션 이름
+                }
+            }
+        }
     }
 
-    public void PlaySelectedVideo()
+    private void ResetAllAnimations()
     {
-        // 현재 재생 중인 비디오 정지
-        videoPlayer.Stop();
-
-        // bool 값에 따라 비디오 선택
-        // PlayerCharacter: false->강아지 , true->고양이 
-        if (userPreference == false && dogVideoClip != null)
+        // 강아지 오브젝트 애니메이션 정지
+        if (dogObject != null)
         {
-            videoPlayer.clip = dogVideoClip;
-        }
-        else if (userPreference == true && catVideoClip != null)
-        {
-            videoPlayer.clip = catVideoClip;
+            Animator dogAnimator = dogObject.GetComponent<Animator>();
+            if (dogAnimator != null)
+            {
+                dogAnimator.Rebind();
+                dogAnimator.Update(0);
+            }
         }
 
-        // 선택한 비디오 재생
-        videoPlayer.Play();
+        // 고양이 오브젝트 애니메이션 정지
+        if (catObject != null)
+        {
+            Animator catAnimator = catObject.GetComponent<Animator>();
+            if (catAnimator != null)
+            {
+                catAnimator.Rebind();
+                catAnimator.Update(0);
+            }
+        }
     }
 }
