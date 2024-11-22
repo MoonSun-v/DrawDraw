@@ -29,6 +29,10 @@ public class TutorialManager : MonoBehaviour
     public Camera mainCamera; // Camera 참조
 
     public GameObject HideObject3;
+    public GameObject HideObject4;
+
+    public bool isFigure =false;
+    public bool isTangram = false;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +110,11 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("첫 번째 애니메이션 재생");
                 StartCoroutine(DisableAfterAnimation(animator, animationObject1));
             }
+
+            if (isTangram)
+            {
+                HideObject3.SetActive(false);
+            }
         }
 
         // 오브젝트 2가 활성화된 경우
@@ -123,6 +132,8 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("두 번째 애니메이션 재생");
                 StartCoroutine(DisableAfterAnimation(animator, animationObject2));
             }
+
+            HideObject4.SetActive(false);
         }
 
         if (Input != null)
@@ -133,6 +144,11 @@ public class TutorialManager : MonoBehaviour
         if(HideObject3 != null)
         {
             HideObject3.SetActive(false);
+        }
+
+        if(isFigure && CloneManager.Instance != null)
+        {
+            CloneManager.Instance.DeactivateAllClones();
         }
     }
 
@@ -156,9 +172,27 @@ public class TutorialManager : MonoBehaviour
             Input.SetActive(true);
         }
 
-        if (HideObject3 != null)
+        if (isTangram)
+        {
+            if (object1.activeSelf)
+            {
+                HideObject3.SetActive(true);
+            }
+            else if (object2.activeSelf)
+            {
+                HideObject4.SetActive(true);
+            }
+
+        }
+        else if (HideObject3 != null)
         {
             HideObject3.SetActive(true);
+        }
+
+
+        if (isFigure && CloneManager.Instance != null)
+        {
+            CloneManager.Instance.ActivateAllClones();
         }
 
         // Canvas의 RenderMode를 Overlay로 복원

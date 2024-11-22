@@ -6557,6 +6557,10 @@ MonoBehaviour:
   object2: {fileID: 2014849278}
   canvas: {fileID: 431910179}
   mainCamera: {fileID: 1599106188}
+  HideObject3: {fileID: 1018932808}
+  HideObject4: {fileID: 76074131}
+  isFigure: 0
+  isTangram: 1
 --- !u!4 &1879661995
 Transform:
   m_ObjectHideFlags: 0

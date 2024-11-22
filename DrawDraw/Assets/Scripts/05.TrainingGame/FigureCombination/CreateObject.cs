@@ -36,6 +36,12 @@ public class CreateObject : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         // 프리팹을 Canvas 하위에 생성 (필요 시)
         spawnedObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
+        // 생성된 클론을 CloneManager에 등록
+        if (CloneManager.Instance != null)
+        {
+            CloneManager.Instance.RegisterClone(spawnedObject);
+        }
+
         // 생성된 프리팹의 Collider를 참조
         prefabCollider = spawnedObject.GetComponent<Collider2D>();
 
