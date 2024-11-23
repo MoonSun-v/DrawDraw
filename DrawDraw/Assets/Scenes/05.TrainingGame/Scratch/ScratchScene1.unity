@@ -3884,10 +3884,10 @@ MonoBehaviour:
   dogObject: {fileID: 295701324}
   catObject: {fileID: 1429691443}
   triggerObject1: {fileID: 2112446343}
-  triggerObject2: {fileID: 108851468}
+  triggerObject2: {fileID: 642980233}
   catSounds:
   - {fileID: 8300000, guid: e8a8e43538f26b84abe25b490da9de8c, type: 3}
-  - {fileID: 8300000, guid: 09a8860c9e7bcb946913f13cfdd0c222, type: 3}
+  - {fileID: 8300000, guid: 9b8f11e18b489574a94d0b52f14f1fdf, type: 3}
   dogSounds:
   - {fileID: 8300000, guid: fb8537d6f4ff26b479be5b81ed54de6f, type: 3}
   - {fileID: 8300000, guid: d12aa4a88d6eaef4b96abcde4bebb5c6, type: 3}
@@ -3924,9 +3924,9 @@ MonoBehaviour:
   dogPanel: {fileID: 295701324}
   catPanel: {fileID: 1429691443}
   triggerObject1: {fileID: 2112446343}
-  triggerObject2: {fileID: 108851468}
+  triggerObject2: {fileID: 642980233}
   text1: "\uB9C8\uC74C\uAECF \uC0C9\uCE60\uD574\uBD10!"
-  text2: "\uAE68\uB057\uD788 \uC9C0\uC6CC\uBD10!"
+  text2: "\uAE68\uB057\uD558\uAC8C \uC9C0\uC6CC\uBD10!"
   index: 0
 --- !u!82 &1243302046
 AudioSource:
