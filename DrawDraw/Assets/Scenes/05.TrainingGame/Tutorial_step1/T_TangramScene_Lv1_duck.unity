@@ -2601,8 +2601,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1772033848541016359, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1678101308}
   m_SourcePrefab: {fileID: 100100000, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+--- !u!1 &1678101306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1772033848541016359, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+  m_PrefabInstance: {fileID: 1678101305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1678101307 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3669347972819683608, guid: 59b0a09b48c877f408c8ef9d37a2d5ca, type: 3}
+  m_PrefabInstance: {fileID: 1678101305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678101308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678101306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48454eb7f627df47ac776da037a938b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1678101307}
+  animationName: Tangram Animation
+  nextSceneName: TangramScene_Lv1_duck
 --- !u!1 &1692350546
 GameObject:
   m_ObjectHideFlags: 0
