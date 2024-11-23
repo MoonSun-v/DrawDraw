@@ -19,6 +19,9 @@ public class TestManager : MonoBehaviour
     private Animator animator_curtain;
     private Animator animator_character;
 
+    public AudioClip DogAudio;
+    private AudioSource audioSource; // 오디오 소스 컴포넌트
+
     // 플레이어 캐릭터 정보 불러오기
     bool isDog;
 
@@ -33,11 +36,11 @@ public class TestManager : MonoBehaviour
         
         animator_curtain = Curtain.GetComponent<Animator>();
         animator_character = Character.gameObject.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
-        if (isDog) { Character.sprite = DogCharacter; TextImage.sprite = DogText; }
-
-
+        if (isDog) { Character.sprite = DogCharacter; TextImage.sprite = DogText; audioSource.clip = DogAudio; }
+        
         StartCoroutine(CharacterAppear());
         
     }
@@ -48,6 +51,7 @@ public class TestManager : MonoBehaviour
         animator_character.SetBool("isUp", true);
         yield return new WaitForSeconds(2f);
         TextImage.gameObject.SetActive(true);
+        audioSource.Play();
         yield return new WaitForSeconds(2.5f);
         TextImage.gameObject.SetActive(false);
         animator_character.SetBool("isDown", true);

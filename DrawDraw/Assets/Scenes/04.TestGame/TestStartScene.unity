@@ -695,6 +695,7 @@ MonoBehaviour:
   Two: {fileID: 21300000, guid: 992fee58ffe185042bc46ca3c60b4034, type: 3}
   One: {fileID: 21300000, guid: 0223d4cfd4115004bbc2137155381256, type: 3}
   Curtain: {fileID: 1808095167}
+  DogAudio: {fileID: 8300000, guid: cb204e230f4bc66479902a642ed9d7cd, type: 3}
 --- !u!82 &1062945470
 AudioSource:
   m_ObjectHideFlags: 0
@@ -705,8 +706,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 83d36414b7a9c5b478da0e12bbc773e3, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: d02925d0f8d323f4b8984460d0427249, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
