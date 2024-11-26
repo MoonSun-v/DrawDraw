@@ -1549,12 +1549,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1898594374}
   - {fileID: 2087491045}
   - {fileID: 2057480953}
   - {fileID: 877644612}
   - {fileID: 437714552}
   - {fileID: 1248820719}
-  - {fileID: 1898594374}
   m_Father: {fileID: 177098224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
