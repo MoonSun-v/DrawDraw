@@ -361,6 +361,7 @@ Transform:
   m_Children:
   - {fileID: 1922906279}
   - {fileID: 1656184145}
+  - {fileID: 1893234196}
   - {fileID: 2041512117}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2174,7 +2175,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 154083376}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 177098224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2262,7 +2263,7 @@ SpriteRenderer:
   m_Size: {x: 20.48, y: 15.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1976038857
@@ -2538,7 +2539,6 @@ SceneRoots:
   - {fileID: 1704743086}
   - {fileID: 1015485689}
   - {fileID: 177098224}
-  - {fileID: 1893234196}
   - {fileID: 1003398235}
   - {fileID: 130100064}
   - {fileID: 102970779}

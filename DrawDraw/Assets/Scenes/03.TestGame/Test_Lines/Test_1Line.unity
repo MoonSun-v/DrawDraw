@@ -651,7 +651,7 @@ SpriteRenderer:
   m_Size: {x: 20.880001, y: 15.761953}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &177098223
@@ -686,8 +686,8 @@ Transform:
   - {fileID: 1656184145}
   - {fileID: 166510208}
   - {fileID: 1003398235}
-  - {fileID: 680821930}
   - {fileID: 690053782}
+  - {fileID: 680821930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299597029
