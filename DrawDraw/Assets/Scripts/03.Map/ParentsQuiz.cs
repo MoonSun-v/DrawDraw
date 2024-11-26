@@ -47,7 +47,7 @@ public class ParentsQuiz : MonoBehaviour
         // 문제 텍스트를 생성
         if (quizText != null)  // quizText가 null인지 확인
         {
-            quizText.text = $"{a} * {b} + {c} =";
+            quizText.text = $"{a}X{b}+{c} =";
         }
         else
         {
