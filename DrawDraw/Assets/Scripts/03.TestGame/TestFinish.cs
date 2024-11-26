@@ -16,7 +16,7 @@ public class TestFinish : MonoBehaviour
     void Start()
     {
         isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
-        if (isDog) { dog.SetActive(false); }
+        if (isDog) { dog.SetActive(true); }
         else { cat.SetActive(true); }
 
         StartCoroutine(LoadMapSceneAfterDelay());
