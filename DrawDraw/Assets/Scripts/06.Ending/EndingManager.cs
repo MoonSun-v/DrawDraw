@@ -18,6 +18,8 @@ public class EndingManager : MonoBehaviour
 
     private bool userPreference = false; // 사용자 정보를 기반으로 결정 ("dog" 또는 "cat")
 
+    private Animator currentAnimator;
+
     private void Start()
     {
         // 버튼을 처음에 비활성화
@@ -37,9 +39,16 @@ public class EndingManager : MonoBehaviour
             userPreference = false;
         }
 
-        PlaySelectedAnimation();
+        // 애니메이션 실행 및 Animator 참조 저장
+        PlaySelectedAnimation(userPreference);
+        StartCoroutine(CheckAnimationEndCoroutine());
     }
 
+    void LoadNextScene()
+    {
+        // 다음 씬으로 이동
+        SceneManager.LoadScene("StartScene");
+    }
     private IEnumerator ShowButtonAfterDelayCoroutine()
     {
         yield return new WaitForSeconds(delay);
@@ -58,19 +67,20 @@ public class EndingManager : MonoBehaviour
         // SceneManager.LoadScene("MapScene");
     }
 
-    public void PlaySelectedAnimation()
+    public void PlaySelectedAnimation(bool userPreference)
     {
         // 모든 오브젝트의 Animator를 초기화
         ResetAllAnimations();
 
+        // PlayerCharacter: false->강아지 , true->고양이 
         if (userPreference == false) // 강아지 애니메이션 실행
         {
             if (dogObject != null)
             {
-                Animator dogAnimator = dogObject.GetComponent<Animator>();
-                if (dogAnimator != null)
+                currentAnimator = dogObject.GetComponent<Animator>();
+                if (currentAnimator != null)
                 {
-                    dogAnimator.Play("DogEnding Animation"); // 강아지 애니메이션 이름
+                    currentAnimator.Play("DogEnding Animation"); // 강아지 애니메이션 이름
                 }
             }
         }
@@ -78,10 +88,10 @@ public class EndingManager : MonoBehaviour
         {
             if (catObject != null)
             {
-                Animator catAnimator = catObject.GetComponent<Animator>();
-                if (catAnimator != null)
+                currentAnimator = catObject.GetComponent<Animator>();
+                if (currentAnimator != null)
                 {
-                    catAnimator.Play("CatEnding Animation"); // 고양이 애니메이션 이름
+                    currentAnimator.Play("CatEnding Animation"); // 고양이 애니메이션 이름
                 }
             }
         }
@@ -109,6 +119,23 @@ public class EndingManager : MonoBehaviour
                 catAnimator.Rebind();
                 catAnimator.Update(0);
             }
+        }
+    }
+
+    private IEnumerator CheckAnimationEndCoroutine()
+    {
+        // 애니메이션 종료 감지
+        if (currentAnimator != null)
+        {
+            AnimatorStateInfo stateInfo = currentAnimator.GetCurrentAnimatorStateInfo(0);
+            while (stateInfo.normalizedTime < 1.0f || stateInfo.loop)
+            {
+                stateInfo = currentAnimator.GetCurrentAnimatorStateInfo(0);
+                yield return null; // 다음 프레임까지 대기
+            }
+
+            // 애니메이션이 종료되면 다음 씬으로 이동
+            LoadNextScene();
         }
     }
 }
