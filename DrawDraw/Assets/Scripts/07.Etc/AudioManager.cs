@@ -84,6 +84,18 @@ public class AudioManager : MonoBehaviour
             case "TestStartScene":
                 bgmSource.Pause(); 
                 break;
+            case "TestIntroScene":
+                bgmSource.Pause();
+                break;
+            case "TestFinishScene":
+                bgmSource.Pause();
+                break;
+            case "TestPreparationScene":
+                bgmSource.Pause();
+                break;
+            case "ResultScene":
+                bgmSource.Pause();
+                break;
             case "EndingScene":
                 bgmSource.Pause();
                 break;
@@ -208,7 +220,7 @@ public class AudioManager : MonoBehaviour
 
             //Parents BGM
             case "ParentsScene":
-                newClip = bgmClips[2];
+                newClip = bgmClips[4];
                 break;
 
             default:

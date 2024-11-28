@@ -1272,7 +1272,7 @@ SpriteRenderer:
   m_Size: {x: 20.483318, y: 50.909996}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1889017815
@@ -1437,6 +1437,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7a903eaf0d3ba774f8dfc4f4df863c42, type: 3}
   - {fileID: 8300000, guid: 4a1ff46e1b06aff41b98651f6b525cfa, type: 3}
   - {fileID: 8300000, guid: cd48246c86dd65944963457a3f990bc1, type: 3}
+  - {fileID: 8300000, guid: 43dd67fe6f6c01c448fad4f475f72d59, type: 3}
   sfxSources: []
 --- !u!1 &2001570328
 GameObject:

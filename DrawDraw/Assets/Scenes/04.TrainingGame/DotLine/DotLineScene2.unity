@@ -7088,6 +7088,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6373427485269052028, guid: 9e1b5f02af822184eaee70886f5ebaf4, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
     - target: {fileID: 7349414815469228320, guid: 9e1b5f02af822184eaee70886f5ebaf4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

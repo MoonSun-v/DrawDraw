@@ -7316,6 +7316,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6085136596255890464, guid: 2e46501750e52a14c987c9339c597d9f, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
     - target: {fileID: 7312259562022022702, guid: 2e46501750e52a14c987c9339c597d9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7413,6 +7417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5443329283453159239, guid: 39c392e586f7df94998df4e28246873a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 4551130950588376266, guid: b81ce67220bfcb647922fc93c2e7025b, type: 2}
     - target: {fileID: 8205782741491218221, guid: 39c392e586f7df94998df4e28246873a, type: 3}
       propertyPath: m_Name
       value: Puzzle000

@@ -29,6 +29,10 @@ public class ResultManager : MonoBehaviour
     public AudioClip[] dogSounds;  // 강아지 소리 목록
     public AudioSource audioSource; // 오디오 소스
 
+    //bgm
+    public AudioSource bgmAudioSource; // 오디오 소스
+    public AudioClip[] BGMs;
+
     // 플레이어 캐릭터 정보 불러오기
     bool isDog = !GameData.instance.playerdata.PlayerCharacter;  // 강아지면 true, 고양이면 false
 
@@ -303,6 +307,19 @@ public class ResultManager : MonoBehaviour
             characterImage.sprite = CatImages[index];
             audioSource.clip = catSounds[index];
         }
+
+        if (isClear)
+        {
+            bgmAudioSource.clip = BGMs[0];
+        }
+        else
+        {
+            bgmAudioSource.clip = BGMs[1];
+        }
+
+        // BGM 재생 (bgmAudioSource 사용)
+        bgmAudioSource.loop = false;    // BGM 반복 재생 설정
+        bgmAudioSource.Play();
 
         // 오디오 재생
         audioSource.Play();
