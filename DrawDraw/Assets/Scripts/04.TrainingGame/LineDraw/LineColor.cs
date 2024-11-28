@@ -16,6 +16,8 @@ public class LineColor : MonoBehaviour
     private bool color = false;
     public CheckpopupManager CheckpopupManager;
 
+    public TutorialManager TutorialManager;
+
     public void OnClick_color() // 확인창 완성 버튼을 클릭 -> 결과 보여주기
     {
         if (color)
@@ -34,6 +36,7 @@ public class LineColor : MonoBehaviour
             MoveClones();
 
             color = true;
+            TutorialManager.isLine = true;
         }
 
         checkPopup.SetActive(false);
@@ -49,6 +52,5 @@ public class LineColor : MonoBehaviour
             clone.transform.position += Vector3.left * 1.5f;
         }
     }  
-
 
 }

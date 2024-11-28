@@ -30,9 +30,10 @@ public class TutorialManager : MonoBehaviour
 
     public GameObject HideObject3;
     public GameObject HideObject4;
-
+    
     public bool isFigure =false;
     public bool isTangram = false;
+    public bool isLine =  false;
 
     // Start is called before the first frame update
     void Start()
@@ -183,9 +184,18 @@ public class TutorialManager : MonoBehaviour
             }
 
         }
-        else if (HideObject3 != null)
+        else if (isLine)
         {
             HideObject3.SetActive(true);
+        }
+        else if (!isLine)
+        {
+            HideObject3.SetActive(false);
+        }
+        else if (HideObject3 != null)
+        {
+                HideObject3.SetActive(true);
+
         }
 
 

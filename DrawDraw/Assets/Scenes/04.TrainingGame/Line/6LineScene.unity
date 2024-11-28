@@ -1768,10 +1768,11 @@ MonoBehaviour:
   object2: {fileID: 0}
   canvas: {fileID: 1470337432}
   mainCamera: {fileID: 1960644290}
-  HideObject3: {fileID: 759006401}
+  HideObject3: {fileID: 969708010}
   HideObject4: {fileID: 0}
   isFigure: 0
   isTangram: 0
+  isLine: 0
 --- !u!4 &801869367
 Transform:
   m_ObjectHideFlags: 0
@@ -4054,6 +4055,7 @@ MonoBehaviour:
   baseSquare2: {fileID: 1499432477}
   checkPopup: {fileID: 1808491936}
   CheckpopupManager: {fileID: 506617415}
+  TutorialManager: {fileID: 801869366}
 --- !u!1001 &1722851394
 PrefabInstance:
   m_ObjectHideFlags: 0
