@@ -190,9 +190,9 @@ public class ResultManager : MonoBehaviour
         // 캐릭터 상태 세팅
         SetCharacterState(isClear, isDog);
 
+        StartCoroutine(ChangeMainScene(5f));
+        // CheckTestActive();
 
-        CheckTestActive();
-        
 
         GameData.instance.SavePlayerData();
         GameData.instance.SaveTrainingData();

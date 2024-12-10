@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class MapManager : MonoBehaviour
     // [ 프로필 팝업 관련 변수 ] 
     public GameObject Profile;
 
+    public Image EndImg;
 
     // ★ [ 초기 세팅 ] ★
     // 
@@ -96,5 +98,20 @@ public class MapManager : MonoBehaviour
     public void BackgroundChange()
     {
         BackgroundImg.sprite = newSprite;
+    }
+
+
+    // ◆ 졸업 전시 시연용 ◆
+    // 
+    public void EndButton()
+    {
+        EndImg.gameObject.SetActive(true);
+        StartCoroutine(GotoStartScene());
+    }
+    private IEnumerator GotoStartScene()
+    {
+        yield return new WaitForSeconds(1.5f);
+       
+        SceneManager.LoadScene("StartScene");
     }
 }

@@ -7,7 +7,6 @@ public class DataReset : MonoBehaviour
 {
     string path;
 
-
     // [ 시연용 : 데이터 삭제 버튼 클릭 시, 작동 ]
     // 
     public void DeleteAllData()
@@ -30,12 +29,14 @@ public class DataReset : MonoBehaviour
         if (File.Exists(playerFilePath))
         {
             File.Delete(playerFilePath);
+            GameData.instance.LoadPlayerData();
             // Debug.Log("플레이어 데이터 삭제");
         }
         else
         {
-            // Debug.Log("플레이어 데이터가 존재하지 않습니다.");
+            Debug.Log("플레이어 데이터가 존재하지 않습니다.");
         }
+
     }
 
     // 훈련 데이터 삭제
@@ -45,6 +46,7 @@ public class DataReset : MonoBehaviour
         if (File.Exists(trainingFilePath))
         {
             File.Delete(trainingFilePath);
+            GameData.instance.LoadTrainingData();
             // Debug.Log("훈련 데이터 삭제");
         }
         else
@@ -60,6 +62,7 @@ public class DataReset : MonoBehaviour
         if (File.Exists(testFilePath))
         {
             File.Delete(testFilePath);
+            GameData.instance.LoadTestData();
             // Debug.Log("테스트 데이터 삭제");
         }
         else

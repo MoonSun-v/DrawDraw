@@ -11,12 +11,27 @@ public class StartManager : MonoBehaviour
     // 
     public void GameStart()
     {
+        // 시연용 
+        // 경험치 리셋 , 스테이지 리셋
+        GameData.instance.playerdata.PlayerExp = 0;
+
+        for (int i = 0; i < GameData.instance.trainingdata.ClearStage.Length; i++)
+        {
+            GameData.instance.trainingdata.ClearStage[i] = false;
+        }
+
+        SceneManager.LoadScene("Prolog");
+
+        /*
         if (GameData.instance.testdata.TestResults.ContainsKey(0))
         {
-            bool shouldGoToTestStartScene = false;
-            int playerExp = GameData.instance.playerdata.PlayerExp;
+            // bool shouldGoToTestStartScene = false;
+            // int playerExp = GameData.instance.playerdata.PlayerExp;
 
+            // 전시 시연용 : 테스트는 한번만 진행
+            // 
             // PlayerExp에 따라 확인할 TestResults 키 결정
+            
             if (playerExp >= 40 && playerExp < 80)
             {
                 shouldGoToTestStartScene = CheckTestResultForGame10Score(1);
@@ -37,6 +52,7 @@ public class StartManager : MonoBehaviour
             {
                 shouldGoToTestStartScene = CheckTestResultForGame10Score(5);
             }
+            
 
             if (shouldGoToTestStartScene)
             {
@@ -44,6 +60,7 @@ public class StartManager : MonoBehaviour
                 SceneManager.LoadScene("TestStartScene");
                 return;
             }
+            
 
             if (GameData.instance.testdata.TestResults[0].Game10Score != 0)
             {
@@ -60,7 +77,7 @@ public class StartManager : MonoBehaviour
         {
             Debug.Log("사전 테스트 정보가 없습니다. 프롤로그에 입장합니다.");
             SceneManager.LoadScene("Prolog"); // 프로필 -> 프롤로그 영상 씬으로 수정
-        }
+        }*/
     }
 
     private bool CheckTestResultForGame10Score(int key)
@@ -75,6 +92,5 @@ public class StartManager : MonoBehaviour
         {
             return true;
         }
-
     }
 }

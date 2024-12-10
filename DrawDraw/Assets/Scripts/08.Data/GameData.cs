@@ -163,12 +163,12 @@ public class GameData : MonoBehaviour
         {                                                             
             string data = File.ReadAllText(Path + PlayerFileName);    
             playerdata = JsonUtility.FromJson<PlayerData>(data);     
-            // print("플레이어 데이터 불러오기 완료");
+            print("플레이어 데이터 불러오기 완료");
         }
         else
         {
             SavePlayerData();                                         
-            // print("기본 플레이어 데이터 생성 완료");
+            print("기본 플레이어 데이터 생성 완료");
         }
     }
 

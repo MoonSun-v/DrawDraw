@@ -57,11 +57,13 @@ public class StatisticsManager : MonoBehaviour
     {
         // 각 키의 데이터를 대응하는 슬라이더 그룹에 할당
         ApplyScoresToGroup(0, slidersKey0); // 키 0에 대한 점수 슬라이더 적용
+        /*
         ApplyScoresToGroup(1, slidersKey1); // 키 1에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(2, slidersKey2); // 키 2에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(3, slidersKey3); // 키 3에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(4, slidersKey4); // 키 4에 대한 점수 슬라이더 적용
         ApplyScoresToGroup(5, slidersKey5); // 키 5에 대한 점수 슬라이더 적용
+        */
     }
 
     // [ 그룹 별로 매핑 ]
